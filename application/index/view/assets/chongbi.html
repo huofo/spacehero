@@ -1,0 +1,277 @@
+<html style="font-size: 120px;">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+<!-- 是否启用全屏模式 -->
+<meta name="apple-mobile-web-app-capable" content="yes">
+<!-- 全屏时状态颜色设置 -->
+<meta name="apple-mobile-web-status-bar-style" content="white">
+<!-- 禁用电话号码自动识别 -->
+<meta name="format-detection" content="telephone=no">
+<!--禁止读取本地缓存模板-->
+<meta http-equiv="Pragma" contect="no-cache">
+<script type="text/javascript">
+window.onload=function(){
+//设置适配rem
+var change_rem = ((window.screen.width > 450) ? 450 : window.screen.width)/375*100;
+document.getElementsByTagName("html")[0].style.fontSize=change_rem+"px";
+window.onresize = function(){
+    change_rem = ((window.screen.width > 450) ? 450 : window.screen.width)/375*100;
+    document.getElementsByTagName("html")[0].style.fontSize=change_rem+"px";
+}
+}
+
+</script>
+<title>{$Think.lang.tt_cb}</title>
+<link href="/index/css/index_for.css" rel="stylesheet" type="text/css">
+<!--<link href="__HOME__/css/pay1.css" rel="stylesheet" media="screen">-->
+<script type="text/javascript" src="__HOME__/js/jquery-3.2.1.min.js"></script>
+<script type="text/javascript" src="__HOME__/js/lk/user.js"></script>
+
+<!--layui插件-->
+<link href="__HOME__/layui/css/layui.css" rel="stylesheet">
+<script src="__HOME__/layui/layui.js"></script>
+<!--图标字体插件-->
+<link rel="stylesheet" href="/index/iconfont/iconfont.css">
+    <!--        夜间白天切换的文件-->
+    {if $_SESSION["night"]=="yes"}<link rel="stylesheet" href="/index/css/assets-chongbi.css" >{/if}
+<script type="text/javascript" src="/index/iconfont/iconfont.js"></script>
+<!--复制插件-->
+<script type="text/javascript" src="/index/js/jquery.min.js"></script>
+<script type="text/javascript" src="/index/js/clipboard.js"></script>
+<script type="text/javascript" src="/index/js/clipboard.min.js"></script>
+<style>
+    body{background: #0b1622;font-size: 14px}
+    .bar-stable{width: 100%; height: 40px; position: fixed;top: 0;left: 0;z-index: 3;background: #102030;}
+    .bottom-nav ul li{float: left;text-align: center;height: 0.5rem;padding: 1% 0 0;}
+    .headerbar .header-item{color: #fff; background-color: #102030; }
+    .bar-header .close{color: #fff;}
+    .cb-top{
+        padding: 15px;
+        border-radius: 4px;
+        background: #102030;
+    }
+    .czbt_fz{
+        width: 80px;
+        height: 30px;
+        margin: 0 auto;
+        line-height: 30px;
+        border-radius: 4px;
+        background: #1881d2;
+        font-size: 12px;
+        color: #ffffff!important;
+    }
+    .cz-input-box{
+        margin-top: 20px;
+        text-align: left;
+    }
+    .cz-input-box .blueinput{
+        width: 100%;
+        padding: 0 5%;
+        height: 30px;
+        line-height: 30px;
+        border: 1px solid #007aff;
+        background: none;
+        color: #ffffff;
+        box-sizing: border-box;
+        margin-top: 10px;
+    }
+    .czbt_tj{
+        width: 80px;
+        height: 30px;
+        line-height: 30px;
+        border-radius: 4px;
+        background: #1881d2;
+        font-size: 12px;
+        color: #ffffff!important;
+        border: none;
+    }
+
+    .tb-two{width: 100%;height: 34px; margin-top: 10px;}
+    .tb-two>div{width: 33.3%; height: 34px; font-size: 12px; color: #f2f5ff;text-align: center;line-height: 34px;}
+    .tb-two>div.active{background-color: #007aff;}
+    .tb-two>div{background-color: #102030;width: 33.3%}
+</style>
+</head>
+
+<body id="cbxq">
+    <ion-nav-bar class="bar-stable headerbar nav-bar-container" nav-bar-transition="ios" nav-bar-direction="swap" nav-swipe="">
+        <div class="nav-bar-block" nav-bar="active">
+            <ion-header-bar class="bar-stable headerbar bar bar-header" align-title="center">
+                <div class="title title-center header-item" style="transition-duration: 0ms; transform: translate3d(0px, 0px, 0px);">{$Think.lang.tt_cb}</div>
+                <a class="close" href="javascript:void(0)" onclick="javascript:history.back(-1);">
+                    <i class="iconfont icon-back_icon"></i>
+                </a>
+            </ion-header-bar>
+        </div>
+    </ion-nav-bar>
+
+    <div style="width: 100%;height: 40px"></div>
+
+
+    <div class="plr15" style="padding: 20px 15px 0;color: #9fbedc;font-size: 12px;box-sizing: border-box">
+        <div class="cb-top wl_flex wl_align_center wl_justify_between">
+            <span>{$Think.lang.cb_dqbz}</span>
+            <span>{$name}</span>
+        </div>
+
+        {if $name eq 'USDT'}
+        <div class="tb-two wl_flex wl_justify_between">
+            <div class="active" date-type="0">ERC20</div>
+            <div date-type="1">OMNI</div>
+            <div date-type="2">TRC20</div>
+        </div>
+        {/if}
+        
+        <div class="chewmdv" style="margin-top: 10px;background: #102030;padding: 20px 15px">
+
+            <div class="codebox">
+                <div style="width: 100%;height: 1px"></div>
+                <div class="codes wl_flex wl_align_center wl_justify-content" style="margin: 40px auto 10px;height: 220px;overflow: hidden">
+                    <div id="code" style="padding: 0;margin: 0 auto;width: 218px;height: 218px;border: none">
+                        <img id="urlimg" src="{$url}" style="width: 218px;height: 218px"  />
+                    </div>
+                </div>
+            </div>
+            <div class="address tc plr10 ft14" id="cz_cbadz">{$urltext}</div>
+            <div class="copy blue tc mt10 ft14 czbt_fz" data-clipboard-action="copy" data-clipboard-target="#cz_cbadz">{$Think.lang.cb_fzdz}</div>
+
+            <div class="cz-input-box">
+                <p>
+                    <span>{$Think.lang.cb_cbsl}</span>
+                </p>
+                <input type="number" class="blueinput" id="num" placeholder="{$Think.lang.cb_qsrcbsl}" />
+            </div>
+            <div class="cz-input-box">
+                <p>
+                    <span>{$Think.lang.cb_cbdz}</span>
+                </p>
+                <input type="text" class="blueinput" id="cbdz" placeholder="{$Think.lang.cb_qsrcbdz}" />
+            </div>
+            
+            <div style="width: 100%;text-align: center">
+                <button type="button" class="copy blue tc mt10 ft14 czbt_tj" id="tijiao">{$Think.lang.cb_tjsh}</button>
+            </div>
+        </div>
+        <div class="ft12 colorGrey" style="margin-top: 20px;color: #9fbedc;">
+            <span>{$Think.lang.cb_butt1}</span> <span class="titles">{$name}</span><span>{$Think.lang.ti_zc}</span><span>{$Think.lang.cd_butt2}</span><br>
+            <span>{$Think.lang.cd_butt3}</span><br>
+            <span>{$Think.lang.cd_butt4}</span><br>
+            {if $name eq 'USDT'}
+            <span>{$Think.lang.cd_butt5}<span>20 </span><span class="titles">USDT</span>{$Think.lang.cd_butt6}</span><br>
+            {/if}
+            
+            {if $name eq 'BTC'}
+            <span>{$Think.lang.cd_butt5}：<span>0.01000000 </span><span class="titles">BTC</span>{$Think.lang.cd_butt6}</span><br>
+            {/if}
+            
+            {if $name eq 'ETH'}
+            <span>{$Think.lang.cd_butt5}<span>0.01000000 </span><span class="titles">ETH</span>{$Think.lang.cd_butt6}</span><br>
+            {/if}
+            
+            <span>{$Think.lang.cd_butt7}</span><br>
+            <span>{$Think.lang.cd_butt8}</span><br>
+            <span>{$Think.lang.cd_butt9}</span>
+
+        </div>
+    </div>
+
+    <script>
+        layui.use(['layer', 'form'], function(){
+            var layer = layui.layer
+                ,form = layui.form;
+        });
+
+        //复制文本 JS
+        var clipboard = new Clipboard('.czbt_fz');
+        clipboard.on('success', function(e) {
+            layer.msg('{$Think.lang.cd_fzcg}');
+            console.log("{$Think.lang.cd_fzcg}");
+            console.log(e);
+        });
+        clipboard.on('error', function(e) {
+            layer.msg("{$Think.lang.cd_fzsb}");
+            console.log("{$Think.lang.cd_fzsb}");
+            console.log(e);
+        });
+
+        //新选项卡切换效果
+        $(function () {
+            
+           
+            $(".tb-two div").click(function () {
+                
+                $(".tb-two div").removeClass('active');
+                $(this).addClass('active');
+                var types = $(this).attr('date-type');
+              
+                $('#urlimg').attr('src',''); 
+                $('#cz_cbadz').html("{$Think.lang.cd_hqz}");
+                $('#alt').attr('src','{$Think.lang.cd_hqz}');
+              
+                 $.ajax({
+                        type:'POST',
+                        url:'/index/assets/url',
+                        data:{types:types},
+                        success: function(msg){
+                            var msg = eval("(" + msg + ")");
+                            $('#cz_cbadz').html(msg.urltext);
+                            $('#urlimg').attr('src',msg.url); 
+        
+                        }
+                    })
+                
+            })
+        })
+        
+        
+        
+         $("#tijiao").click(function(){
+            var num =  $("#num").val();
+            var cbdz =  $("#cbdz").val();
+            var usdt_type = '';
+            if('{$name}'=='USDT'){
+               usdt_type = $(".tb-two .active").html()
+            
+            }
+            
+            if(cbdz==''){
+                layer.msg('{$Think.lang.cb_qsrcbdz}');return;
+            }
+            
+            if(num==''||num<=0){
+                layer.msg('{$Think.lang.cb_qsrcbsl}');return;
+            }
+           
+    
+    
+            $.ajax({
+                url: '/index/assets/dorecharge',
+                type: 'post',
+                data: {num:num,cbdz:cbdz,name:'{$name}',usdt_type:usdt_type},
+                success: function(res){
+                    res =$.parseJSON(res);
+    
+                    if(res.error==1){
+                        layer.msg(res.msg);
+                    }else{
+    
+                        layer.msg("{$Think.lang.cb_tjcg}", {
+                            time: 1500,
+                            end: function(){
+                                window.location.href="index/assets/bibi";
+                            }
+                        });
+    
+                    }
+    
+                }
+            });
+    
+        });
+
+      
+
+    </script>
+</body>
+</html>

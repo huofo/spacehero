@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0, user-scalable=no">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+    <!-- 是否启用全屏模式 -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <!-- 全屏时状态颜色设置 -->
+    <meta name="apple-mobile-web-status-bar-style" content="white">
+    <!-- 禁用电话号码自动识别 -->
+    <meta name="format-detection" content="telephone=no">
+    <!--禁止读取本地缓存模板-->
+    <meta http-equiv="Pragma" contect="no-cache">
+    {include file="alyslt" /}
+    <link rel="stylesheet" href="/index/css/optional.css" >
+    {if $_SESSION["night"]=="yes"}<link rel="stylesheet" href="/index/css/optional.css" >{else}<link rel="stylesheet" href="/index/css/user-cance.css" >{/if}
+    <link rel="stylesheet" href="/static/bootstrap-4.6.1-dist/css/bootstrap.min.css" >
+<!--    黑夜模式-->
+<!--    <link rel="stylesheet" href="/index/css/user-cance.css" >-->
+    <script src="/index/js/jquery-2.1.4.min.js"></script>
+    <script src="/static/bootstrap-4.6.1-dist/js/bootstrap.bundle.js"></script>
+    <script src="/static/bootstrap-4.6.1-dist/js/bootstrap.min.js"></script>
+
+</head>
+<body>
+<div class="ods-hode">
+    <div><a href="javascript:window.history.go(-1);"><i class="iconfont icon-31fanhui1"></i></a></div>
+    <div>{$Think.lang.fbjy_ddlb}</div>
+    <div></div>
+</div>
+<div class="ods-top">
+    <div class="ods-top-whole">
+        <p><span class="ods-top-sp1">!</span>{$Think.lang.bibi_wxts}</p>
+        <p>1.{$Think.lang.fbjy_rgnyjxmjfk}</p>
+        <p>2.{$Think.lang.fbjy_mjdljsbqx}</p>
+    </div>
+</div>
+<div class="ods-whole">
+    <p>{$Think.lang.fbjy_qgswmnwsm}</p>
+<!--    <ul>-->
+<!--        <li><div class="ods-li1"><div></div></div><span>我不想交易了</span></li>-->
+<!--        <li><div class="ods-li1"><div></div></div><span>我不满足广告交易条款的要求</span></li>-->
+<!--        <li><div class="ods-li1"><div></div></div><span>卖家要额外收取费用</span></li>-->
+<!--        <li><div class="ods-li1"><div></div></div><span>卖家收款方式有问题，无法成功打款</span></li>-->
+<!--        <li><div class="ods-li1"><div></div></div><span>其他</span></li>-->
+<!--    </ul>-->
+    <div class="form-check">
+        <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="option1" checked>
+        <label class="form-check-label" for="exampleRadios1">
+            {$Think.lang.fbjy_wbxjyl}
+        </label>
+    </div>
+    <div class="form-check">
+        <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="option2">
+        <label class="form-check-label" for="exampleRadios2">
+            {$Think.lang.fbjy_wbmzggjy}
+        </label>
+    </div>
+    <div class="form-check">
+        <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios3" value="option2">
+        <label class="form-check-label" for="exampleRadios3">
+            {$Think.lang.fbjy_mjyewsqfz}
+        </label>
+    </div>
+    <div class="form-check">
+        <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios4" value="option2">
+        <label class="form-check-label" for="exampleRadios4">
+            {$Think.lang.fbjy_mjskfsywt}
+        </label>
+    </div>
+    <div class="form-check">
+        <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios5" value="option2">
+        <label class="form-check-label" for="exampleRadios5">
+            {$Think.lang.fbjy_qsrqxly}
+        </label>
+    </div>
+</div>
+<div class="ods-area">
+    <textarea placeholder="{$Think.lang.fbjy_qt}"></textarea>
+</div>
+<button class="ods-butt">{$Think.lang.fbjy_qrqxdd}</button>
+</body>
+</html>

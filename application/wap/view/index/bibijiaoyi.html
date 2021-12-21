@@ -1,0 +1,1275 @@
+<!DOCTYPE html>
+{include file="nodejs" /}
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>B.King</title>
+    <link href="/index/css/xinhuaaiai.css" rel="stylesheet" media="screen">
+    <link href="/index/css/mango.css" rel="stylesheet" media="screen">
+    {include file="alyslt" /}
+    <!--        夜间白天切换的文件-->
+    {if $_SESSION["night"]=="yes"}<link rel="stylesheet" href="/index/css/wap_css/index_bibijioayi.css" >{/if}
+    <script type="text/javascript" src="/static/index/js/jquery-3.2.1.min.js"></script>
+    <script type="text/javascript" src="/static/index/js/lk/user.js"></script>
+    <script type="text/javascript" src="/static/public/js/jquery.base64.js"></script>
+    <script src="/static/layer/layer.js"></script>
+    <script>
+        // var wap_zc_bunk='{$Think.lang.wap_zc_bunk}';
+
+    </script>
+</head>
+<body>
+<style>
+    input{padding-left: 10px!important;}
+    input{padding-left: 10px!important;}
+    .bbjyss{text-align: center;margin-top: 9px;padding-left: 4%;}
+    .bbjyss>i{color:  #494b4e; font-size: 20px;}
+</style>
+{include file="daohang" /}
+
+<div class="wodehezi">
+    <div class="hunvbk">
+        <div class="zuohung" style="float: left">
+            <div class="dazihh xh_flex xh_align-items-start">
+                <div class="bbjyss"><i class="iconfont icon-chaxun" onclick="search()"></i></div>
+                <div>
+                    <input type="text" id="keyword" placeholder="{$Think.lang.wap_bibi_tianxie}"style="height: 40px;width: 350px;margin-left: 10px;border: none;background: none;">
+                </div>
+                </div>
+            <div class="gfjha">
+                <div class="hhhsha xh_flex">
+
+                    <div class="hsjka hhuvb"><a href="javascript:void(0)" style="text-decoration: none;color: #79797d;display: block;" class="active" data-id="0">{$Think.lang.ti_qb}</a></div>
+
+                    <!-- {volist name="proclass" id="vo"} -->
+                    <div class="hsjka"><a href="javascript:void(0)" data-id="{$vo.pcid}" style="text-decoration: none;color: #79797d;display: block;">{$vo.pcname}</a></div>
+                    <!-- {/volist} -->
+
+
+                    <div class="hsjka knm"><a href="javascript:void(0)"style="text-decoration: none;color: #79797d;display: none;">{$Think.lang.wap_bibi_cx}</a></div>
+                    <div class="hsjka"><a href="#"style="text-decoration: none;color: #79797d;display: none;">{$Think.lang.wap_bibi_dfq}</a></div></div>
+
+<!--                <div class="jklhka"><span style="color: #8f98f7;margin-left: 15px">USDT</span></div>-->
+            </div>
+            <div id="shuju">
+                <!-- {volist name="pro" id="vo"} -->
+                <div class="shakod xh_flex xh_justify_between uhb " data-id="{$vo.pid}" id="pid{$vo.pid}">
+                    <div style="margin-left: 10px;width: 33%" class="prtitle"></div>
+                    <div class="now-value" style="width: 33%;text-align: center"></div>
+                    <div style="margin-right: 10px;color: #dd1a20;width: 33%;text-align: right" class="rise-rate"></div>
+                </div>
+                <!-- {/volist} -->
+            </div>
+
+<!--            <div class="shakod xh_flex xh_justify_between uhb">-->
+<!--                <div style="margin-left: 10px;">ETH/USDT</div>-->
+<!--                <div>3131.1234</div>-->
+<!--                <div style="margin-right: 10px;color: #12b886">+3.33%</div>-->
+<!--            </div>-->
+<!--            <div class="shakod xh_flex xh_justify_between uhb">-->
+<!--                <div style="margin-left: 10px;">BTC/USDT</div>-->
+<!--                <div>54321.1234</div>-->
+<!--                <div style="margin-right: 10px;color: red">-0.61%</div>-->
+<!--            </div>-->
+<!--            <div class="shakod xh_flex xh_justify_between uhb">-->
+<!--                <div style="margin-left: 10px;">ETH/USDT</div>-->
+<!--                <div>3131.1234</div>-->
+<!--                <div style="margin-right: 10px;color: #12b886">+3.33%</div>-->
+<!--            </div>-->
+<!--            <div class="shakod xh_flex xh_justify_between uhb">-->
+<!--                <div style="margin-left: 10px;">BTC/USDT</div>-->
+<!--                <div>54321.1234</div>-->
+<!--                <div style="margin-right: 10px;color: red">-0.61%</div>-->
+<!--            </div>-->
+<!--            <div class="shakod xh_flex xh_justify_between uhb">-->
+<!--                <div style="margin-left: 10px;">ETH/USDT</div>-->
+<!--                <div>3131.1234</div>-->
+<!--                <div style="margin-right: 10px;color: #12b886">+3.33%</div>-->
+<!--            </div>-->
+<!--            <div class="shakod xh_flex xh_justify_between uhb">-->
+<!--                <div style="margin-left: 10px;">ETH/USDT</div>-->
+<!--                <div>3131.1234</div>-->
+<!--                <div style="margin-right: 10px;color: #12b886">+3.33%</div>-->
+<!--            </div>-->
+<!--            <div class="shakod xh_flex xh_justify_between ijn">-->
+<!--                <div style="margin-left: 10px;">QTUM/USDT</div>-->
+<!--                <div>10.4321</div>-->
+<!--                <div style="margin-right: 10px;color: red">-4.64%</div>-->
+<!--            </div>-->
+<!--            <div class="shakod xh_flex xh_justify_between uhb">-->
+<!--                <div style="margin-left: 10px;">ETH/USDT</div>-->
+<!--                <div>3131.1234</div>-->
+<!--                <div style="margin-right: 10px;color: #12b886">+3.33%</div>-->
+<!--            </div>-->
+<!--            <div class="shakod xh_flex xh_justify_between uhb">-->
+<!--                <div style="margin-left: 10px;">BTC/USDT</div>-->
+<!--                <div>54321.1234</div>-->
+<!--                <div style="margin-right: 10px;color: red">-0.61%</div>-->
+<!--            </div>-->
+<!--            <div class="shakod xh_flex xh_justify_between uhb">-->
+<!--                <div style="margin-left: 10px;">ETH/USDT</div>-->
+<!--                <div>3131.1234</div>-->
+<!--                <div style="margin-right: 10px;color: #12b886">+3.33%</div>-->
+<!--            </div>-->
+<!--            <div class="shakod xh_flex xh_justify_between uhb">-->
+<!--                <div style="margin-left: 10px;">ETH/USDT</div>-->
+<!--                <div>3131.1234</div>-->
+<!--                <div style="margin-right: 10px;color: #12b886">+3.33%</div>-->
+<!--            </div>-->
+<!--            <div class="shakod xh_flex xh_justify_between ijn">-->
+<!--                <div style="margin-left: 10px;">QTUM/USDT</div>-->
+<!--                <div>10.4321</div>-->
+<!--                <div style="margin-right: 10px;color: red">-4.64%</div>-->
+<!--            </div>-->
+<!--            <div class="shakod xh_flex xh_justify_between uhb">-->
+<!--                <div style="margin-left: 10px;">ETH/USDT</div>-->
+<!--                <div>3131.1234</div>-->
+<!--                <div style="margin-right: 10px;color: #12b886">+3.33%</div>-->
+<!--            </div>-->
+<!--            <div class="shakod xh_flex xh_justify_between ijn">-->
+<!--                <div style="margin-left: 10px;">QTUM/USDT</div>-->
+<!--                <div>10.4321</div>-->
+<!--                <div style="margin-right: 10px;color: red">-4.64%</div>-->
+<!--            </div>-->
+<!--            <div class="shakod xh_flex xh_justify_between ijn">-->
+<!--                <div style="margin-left: 10px;">QTUM/USDT</div>-->
+<!--                <div>10.4321</div>-->
+<!--                <div style="margin-right: 10px;color: red">-4.64%</div>-->
+<!--            </div>-->
+<!--            <div class="shakod xh_flex xh_justify_between ijn">-->
+<!--                <div style="margin-left: 10px;">QTUM/USDT</div>-->
+<!--                <div>10.4321</div>-->
+<!--                <div style="margin-right: 10px;color: red">-4.64%</div>-->
+<!--            </div>-->
+        </div>
+        <div class="youhjik xh_flex xh_align_center" style="float: right">
+            <div class="shabdhaj">
+                <div class="hskasja xh_flex xh_justify_between">
+                    <div class="ssxsz" style="line-height: 60px;background: none">
+                        <span class="protitle" style="font-size: 1rem;background: white"></span></div>
+                    <div class="ssxsz">
+                        <div class="shjaksba data-price"><span ></span></div>
+                        <div class="shjaksba"style="line-height: 20px"><span style="color: #596a7a">{$Think.lang.wap_bibi_zhc}</span></div>
+                    </div>
+                    <div class="ssxsz">
+                        <div class="shjaksba highest"><span style="color: #b0b8db"></span></div>
+                        <div class="shjaksba"style="line-height: 20px"><span style="color: #596a7a">{$Think.lang.wap_bibi_zg}</span></div>
+                    </div>
+                    <div class="ssxsz">
+                        <div class="shjaksba lowest"><span style="color: #b0b8db"></span></div>
+                        <div class="shjaksba"style="line-height: 20px"><span style="color: #596a7a">{$Think.lang.wap_bibi_zd}</span></div>
+                    </div>
+                    <div class="ssxsz">
+                        <div class="shjaksba change_rate" ><span style="color: red"></span></div>
+                        <div class="shjaksba"style="line-height: 20px"><span style="color: #596a7a">{$Think.lang.wap_bibi_zf}</span></div>
+                    </div>
+                </div>
+                <div class="sgdvga" style="height: 50px;">
+                    <div class="xiaodaol xh_flex xh_align_center">
+                        <!--                        <div class="xiaodianji"><span>Time</span></div>-->
+                        <div class="xiaodianji"><span class="active">1min</span></div>
+                        <div class="xiaodianji"><span>5min</span></div>
+                        <div class="xiaodianji"><span>15min</span></div>
+                        <div class="xiaodianji"><span>30min</span></div>
+                        <div class="xiaodianji"><span>1hour</span></div>
+                        <div class="xiaodianji"><span>1D</span></div>
+                    </div>
+                </div>
+                <div class="sgdvga" id="container">
+
+                </div>
+                <div class="bhsgdav">
+                    <div class="kongxiaohell"></div>
+                    <div class="cghus">
+                        <div style="text-align: center;width: 50px;float: left;background: white"><span></span></div>
+                        <div style="background:white;float: right">
+<!--                            <span style="color: #50dab5;">54321.12</span> ≈<a><span>296909.1234</span>CNY</a>-->
+                        </div>
+                    </div>
+                    <div class="xiaokonglan" style="width: 100%;height: 5px;background: white"></div>
+                    <div class="okuhj xh_flex xh_justify_between">
+                        <div class="zuoshng" style="margin-left: 10px">
+                            <div class="shadbuyt xh_flex xh_justify_between">
+                                <span style="margin-left: 5px">{$Think.lang.bi_mc}</span>
+                                <span style="margin-right: 5px">
+<!--                                    总量:BTC <a> 1.1924</a>-->
+                                </span>
+                            </div>
+                            <div class="shajshba xh_flex xh_justify_between">
+                                <span style="margin-left: 5px;color: #596a7a">{$Think.lang.gs_fx}</span>
+                                <span style="color: #596a7a">{$Think.lang.wap_bibi_jg}</span>
+                                <span style="margin-right: 5px;color: #596a7a">{$Think.lang.bi_sl}</span>
+                            </div>
+                            <div class="shajshba xh_flex xh_justify_between" id="jia0" style="background: #e3f4d3">
+                                <span style="margin-left: 5px;color: #3ec742">{$Think.lang.wap_bibi_my}</span>
+                                <span class="jiage" onclick="changeprice('jia0')"></span>
+                                <span class="shuliang" style="margin-right: 5px"></span>
+                            </div>
+                            <div class="shajshba xh_flex xh_justify_between" id="jia1" style="background: #e3f4d3">
+                                <span style="margin-left: 5px;color: #3ec742">{$Think.lang.wap_bibi_me}</span>
+                                <span class="jiage" onclick="changeprice('jia1')"></span>
+                                <span class="shuliang" style="margin-right: 5px"></span>
+                            </div>
+                            <div class="shajshba xh_flex xh_justify_between" id="jia2" style="background: #e3f4d3">
+                                <span style="margin-left: 5px;color: #3ec742">{$Think.lang.wap_bibi_ms}</span>
+                                <span class="jiage" onclick="changeprice('jia2')"></span>
+                                <span class="shuliang" style="margin-right: 5px"></span>
+                            </div>
+                            <div class="shajshba xh_flex xh_justify_between" id="jia3" style="background: #e3f4d3">
+                                <span style="margin-left: 5px;color: #3ec742">{$Think.lang.wap_bibi_msi}</span>
+                                <span class="jiage" onclick="changeprice('jia3')"></span>
+                                <span class="shuliang" style="margin-right: 5px"></span>
+                            </div>
+                            <div class="shajshba xh_flex xh_justify_between" id="jia4" style="background: #e3f4d3">
+                                <span style="margin-left: 5px;color: #3ec742">{$Think.lang.wap_bibi_mw}</span>
+                                <span class="jiage" onclick="changeprice('jia5')"></span>
+                                <span class="shuliang" style="margin-right: 5px"></span>
+                            </div>
+                        </div>
+                        <div class="zuoshng" style="margin-right: 10px">
+                            <div class="shadbuyt xh_flex xh_justify_between">
+                                <span style="margin-left: 5px">{$Think.lang.bi_mc2}</span>
+                                <span style="margin-right: 5px">
+<!--                                    总量:BTC <a> 1.1924</a>-->
+                                </span>
+                            </div>
+                            <div class="shajshba xh_flex xh_justify_between">
+                                <span style="margin-left: 5px;color: #596a7a">{$Think.lang.gs_fx}</span>
+                                <span style="color: #596a7a">{$Think.lang.wap_bibi_jg}</span>
+                                <span style="margin-right: 5px;color: #596a7a">{$Think.lang.bi_sl}</span>
+                            </div>
+                            <div class="shajshba xh_flex xh_justify_between" id="jian0" style="background: lightpink;">
+                                <span style="margin-left: 5px;color: #dd1a20">{$Think.lang.wap_bibi_wy}</span>
+                                <span class="jiage" onclick="changenowprice('jian0')"></span>
+                                <span style="margin-right: 5px" class="shuliang"></span>
+                            </div>
+                            <div class="shajshba xh_flex xh_justify_between" id="jian1" style="background: lightpink;">
+                                <span style="margin-left: 5px;color: #dd1a20">{$Think.lang.wap_bibi_we}</span>
+                                <span class="jiage" onclick="changenowprice('jian1')"></span>
+                                <span style="margin-right: 5px" class="shuliang"></span>
+                            </div>
+                            <div class="shajshba xh_flex xh_justify_between" id="jian2" style="background: lightpink;">
+                                <span style="margin-left: 5px;color: #dd1a20">{$Think.lang.wap_bibi_ws}</span>
+                                <span class="jiage" onclick="changenowprice('jian2')"></span>
+                                <span style="margin-right: 5px" class="shuliang"></span>
+                            </div>
+                            <div class="shajshba xh_flex xh_justify_between" id="jian3" style="background: lightpink;">
+                                <span style="margin-left: 5px;color: #dd1a20">{$Think.lang.wap_bibi_wss}</span>
+                                <span class="jiage" onclick="changenowprice('jian3')"></span>
+                                <span style="margin-right: 5px" class="shuliang"></span>
+                            </div>
+                            <div class="shajshba xh_flex xh_justify_between" id="jian4" style="background: lightpink;">
+                                <span style="margin-left: 5px;color: #dd1a20">{$Think.lang.wap_bibi_w5}</span>
+                                <span class="jiage" onclick="changenowprice('jian4')"></span>
+                                <span style="margin-right: 5px" class="shuliang"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="nbfjhsb">
+
+                <div class="lixinli xh_flex xh_justify_between">
+                    <span ><a href=" javascript:void(0)" class="active" data-id="1"> {$Think.lang.wap_bibi_sjjy}</a></span>
+                    <span><a href=" javascript:void(0)"  data-id="2">{$Think.lang.wap_bibi_xjjy}</a></span>
+<!--                    <span><a href="http://208.109.36.146/wap/index/weituoyemian"style="text-decoration: none;color: black;height: 100%;display: block">委托订单</a></span>-->
+                </div>
+
+                <div class="kubhgts xh_flex xh_align_center xh_justify_between">
+                    <div class="kyi bibi_kai"><a class="active" data-id="0">{$Think.lang.bi_mc}<span class="base_name"></span></a></div>
+                    <div class="ker bibi_kai"><a data-id="1">{$Think.lang.bi_mc2}<span class="base_name"></span></a></div>
+                </div>
+                    <div class="hhngys hhyi">
+                        <div class="juexink"style="border-bottom: 1px solid #a9a9a9;line-height: 45px;height: 45px"><span style="color: #596a7a;">{$Think.lang.bi_ky} <span id="u_money">0.0000</span> <span>USDT</span> </span></div>
+                        <div class="juexink xh_flex xh_align_center"style="margin-top: 10px;">
+                            <div class="bibi_mairu">{$Think.lang.wap_bibi_mrj}</div>
+                            <div style="width: 80%;"><input type="text" id="buy_price"  placeholder="" value="{$Think.lang.best_price_trade}" style="width: 100%;height: 35px;border: 1px solid #cad7e0;border-radius: 3px;"></div>
+                        </div>
+
+                        <div class="juexink xh_flex xh_align_center"style="margin-top: 10px;">
+                            <div class="bibi_mairu">{$Think.lang.wap_bibi_mrl}</div>
+                            <div style="width: 80%;"><input type="text" id="buy_amount" placeholder="" style="width: 100%;height: 35px;border: 1px solid #cad7e0;border-radius: 3px;"></div>
+                        </div>
+<!--                        <div class="juexink"style="height: 10px;background: yellow;margin-top: 10px;margin-bottom: 10px;"></div>-->
+                        <div class="juexink"style="height: 25px;margin-top: 20px;margin-bottom: 5px;"><span style="color: #596a7a">{$Think.lang.bi_jye} <span id="buy_exchange_amount">0.0000</span>  USDT</span></div>
+                        <div class="juexink"style="margin-top: 10px;height: 40px;line-height: 40px;text-align: center;border-radius: 5px;background: #12b886" onclick="addordersbibi(0)" ><a href=" javascript:void(0)"style="text-decoration: none;color: white" >{$Think.lang.bi_mc}</a></div>
+                    </div>
+                <div class="hhngys hher">
+                    <div class="juexink"style="border-bottom: 1px solid #596a7a;line-height: 45px;height: 45px"><span style="color: #596a7a">{$Think.lang.bi_ky} <span id="base_money"></span><span class="base_name"></span></span></div>
+                    <div class="juexink xh_flex xh_align_center"style="margin-top: 10px;">
+                        <div class="bibi_mairu">{$Think.lang.wap_bibi_mcj}</div>
+                        <div style="width: 80%;"><input type="text" id="sell_price" value="{$Think.lang.best_price_trade}"  placeholder=""style="width: 100%;height: 35px;border: 1px solid #cad7e0;border-radius: 3px;"></div>
+                    </div>
+                    <div class="juexink xh_flex xh_align_center"style="margin-top: 10px;">
+                        <div class="bibi_mairu">{$Think.lang.wap_bibi_mcl}</div>
+                        <div style="width: 80%;"><input type="text" id="sell_amount" placeholder=""style="width: 100%;height: 35px;border: 1px solid #cad7e0;border-radius: 3px;"></div>
+                    </div>
+<!--                    <div class="juexink"style="height: 10px;background: yellow;margin-top: 10px;margin-bottom: 10px;"></div>-->
+                    <div class="juexink"style="height: 25px;margin-top: 20px;margin-bottom: 5px;"><span style="color: #596a7a">{$Think.lang.bi_jye} <span id="sell_exchange_amount">0.0000 </span> USDT</span></div>
+                    <div class="juexink"style="margin-top: 10px;height: 40px;line-height: 40px;text-align: center;border-radius: 5px;background: #cc4951" onclick="addordersbibi(1)"><a href=" javascript:void(0)"style="text-decoration: none;color: white" >{$Think.lang.bi_mc2}</a></div>
+                </div>
+            <div class="zuihoudajib">
+                <div class="daohangkung"><span style="color: #8f98f7;">{$Think.lang.bi_dqcc}</span></div>
+                <div class="hold_list bibi_hold xh_flex xh_justify_between">
+                    <span class="bibi_diyi">{$Think.lang.le_sj}</span>
+                    <span class="bibi_dier">{$Think.lang.bi_js}</span>
+                    <span class="bibi_disan">{$Think.lang.or_jyl}</span>
+                </div>
+                <div id="hold_list">
+                    <div class="jnuhh xh_flex xh_justify_between"style="color: #3ec742">
+                        <span class="bibi_diyi">12:00:00</span>
+                        <span class="bibi_dier">45638.1234</span>
+                        <span class="bibi_disan">0.0069</span>
+                    </div>
+                    <div class="jnuhh xh_flex xh_justify_between"style="color: #dd1a20">
+                        <span class="bibi_diyi">12:00:00</span>
+                        <span class="bibi_dier">45638.1234</span>
+                        <span class="bibi_disan">0.0069</span>
+                    </div>
+                </div>
+                <div style="width: 100%;height: 20px;background: #f5f5f5"></div>
+            </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--<script src="/index/js/jquery-2.1.4.min.js"></script>-->
+<script src="/static/index/js/lk/chardata.js"></script>
+<script src="/static/index/js/echarts.js"></script>
+<!--<script src="/static/public/js/new_echarts.min.js"></script>-->
+<script src="/static/index/js/pcm.js"></script>
+<script>
+    var order_pid = '{$order_id}';
+    var cs_kp = '{$Think.lang.cs_kp}';
+    var m_sp = '{$Think.lang.m_sp}';
+    var  iin_zd = '{$Think.lang.iin_zd}';
+    var iin_zg = '{$Think.lang.iin_zg}';
+    var ex_type = 1;
+
+
+    var buy_pirce = 0;
+    var buy_amount = 0;
+    var sell_amount = 0;
+    var sell_price = 0;
+    var buy_exchange_amount = 0;
+    var sell_exchange_amount = 0;
+
+    $(function () {
+        $(".neirongji p:eq(1)").addClass('active');
+    });
+</script>
+<script>
+    window.onload = function(){
+        setInterval("ajaxpro()",5000);
+        setInterval("ajaxpros()",5000);
+        get_user_money();
+        get_hold_list();
+    }
+    function ajaxpros(){
+        // var old_price = $('#goodsprice').html()
+        var geturl = "/index/Goods/heyuegoodsajax/pid/"+order_pid+"/old_price/0";
+        var type = '';
+        $.get(geturl,function(data){
+            if (data) {
+
+                //bzj();add
+                data = jQuery.parseJSON($.base64.decode(data));
+
+
+                //
+                // if(data.zdf<0){
+                //     $('#head_DiffRate').html(data.zdf+"%");
+                // }else {
+                //     $('#head_DiffRate').html("+"+data.zdf+"%");
+                // }
+                //
+                //
+                // $('#goodsprice').html(data.price);
+                //
+                // if(data.fx == 'up'){
+                //
+                //     $('#goodsprice').addClass('gre')
+                //     $('#goodsprice').removeClass('red')
+                // }else{
+                //     $('#goodsprice').addClass('red')
+                //     $('#goodsprice').removeClass('gre')
+                // }
+
+
+                $.each(data.jia,function(k,v){
+                    $('#jia'+k+' .jiage').html(v.jiage);
+
+                    $('#jia'+k+' .shuliang').html(v.shuliang);
+
+                });
+
+                $.each(data.jian,function(k,v){
+
+
+                    $('#jian'+k+' .jiage').html(v.jiage);
+
+                    $('#jian'+k+' .shuliang').html(v.shuliang);
+
+
+                });
+            }
+
+        });
+    }
+    function ajaxpro(){
+        var geturl = "/wap/index/ajaxindexpro";
+        var type = '';
+        $.get(geturl,function(data){
+            if (data) {
+                data = jQuery.parseJSON($.base64.decode(data));
+                $.each(data,function(k,v){
+
+                    $('#pid'+v.pid+' .prtitle').html(v.ptitle);
+                    $('#pid'+v.pid+' .prbase').html(v.prbase);
+                    $('#pid'+v.pid+' .now-value').html(v.Price);
+                    $('#pid'+v.pid+' .rise-rate').html(v.DiffRate+'%');
+
+                    $('#pid'+v.pid+' .price-min').html(v.Low);
+                    $('#pid'+v.pid+' .price-max').html(v.High);
+                    $('#pid'+v.pid+' .exchange-amount').html(v.vol);
+
+                    if(v.DiffRate >0){
+
+                        $('#pid'+v.pid+' .rise-rate').addClass('rise');
+                        $('#pid'+v.pid+' .rise-rate').removeClass('down');
+
+                    }else if(v.isup == 0){
+                        $('#pid'+v.pid+' .rise-rate').removeClass('rise');
+                        $('#pid'+v.pid+' .rise-rate').addClass('down');
+
+                    }
+
+
+                });
+            }
+
+        });
+    }
+
+    function get_user_money() {
+        var geturl = "/wap/index/userPidInfo?pid="+order_pid;
+        var type = '';
+        $.get(geturl,function(data){
+            if (data) {
+                data = jQuery.parseJSON(data);
+
+                $('.base_name').html(data.base_name);
+                $('#u_money').html(data.u_money);
+                $('#base_money').html(data.base_money);
+            }
+
+        });
+    }
+
+    function changeprice(jia){
+        if(ex_type != 1){
+            var pricebuy = $('#'+jia+' .jiage').html();
+            buy_pirce = pricebuy;
+            sell_price = pricebuy;
+            $('#sell_price').val(pricebuy);
+            $('#buy_price').val(pricebuy);
+        }
+
+    }
+
+    function changenowprice(jian){
+        if(ex_type != 1) {
+            var old_price = $('#' + jian + ' .jiage').html();
+            sell_price = old_price;
+            buy_price = old_price;
+            $('#buy_price').val(old_price);
+            $('#sell_price').val(old_price);
+        }
+    }
+
+    function addordersbibi(type){
+
+
+        var price_type = '市价';// = ex_type//市价、限价
+
+       // var act = $('.kubhgts a .active').data('id')//买或卖;
+
+
+        if(type == 0){
+            var move_share = $('#buy_amount').val();//数量
+
+            var jiage = $('#buy_amount').val();//价格
+        }else{
+            var move_share = $('#sell_amount').val();//数量
+
+            var jiage = $('#sell_amount').val();//价格
+
+        }
+
+        if(move_share<0||move_share=='' ){
+
+            layer.msg('{$Think.lang.cd_qsrjysl}');
+            return;
+        }
+
+        if(ex_type == 2 ){
+             price_type = '限价'
+            if(jiage<0||jiage=='' ){
+
+                layer.msg('{$Think.lang.bi_qsrjyjg}');
+                return;
+            }
+        }
+
+
+
+
+
+        var postdata = "order_type="+type+"&order_pid="+order_pid+"&newprice="+jiage+"&move_share="+move_share+"&price_type="+price_type;
+
+        var posturl = "/index/order/addordersbibi";
+
+
+        $.post(posturl,postdata,function(resdata){
+
+            layer.msg(resdata.data, resdata.data == '{$Think.lang.od_xdcg}' && {
+                time: 1500,
+                end: function(){
+                    window.location.href = '/wap/index/bibijiaoyi?pid='+order_pid;
+                }
+            });
+
+        });
+    }
+
+    function get_hold_list() {
+        var geturl = "/wap/index/ajax_get_hold_bibi?pid="+order_pid;
+        var type = '';
+        var html = '';
+        $.get(geturl,function(data){
+            if (data) {
+                data = jQuery.parseJSON($.base64.decode(data));
+
+                $.each(data,function(k,v){
+                    if(v.ostyle == 0){
+                        html += '  <div class="jnuhh xh_flex xh_justify_between"style="color: #3ec742">\n' +
+                            '                    <span class="bibi_diyi">'+v.nyr+' '+v.sfm+'</span>\n' +
+                            '                    <span class="bibi_dier">'+v.buyprice+'</span>\n' +
+                            '                    <span class="bibi_disan">'+v.chicang+'</span>\n' +
+                            '                </div>\n' ;
+                    }else{
+                        html += ' <div class="jnuhh xh_flex xh_justify_between"style="color: #dd1a20">\n' +
+                            '                    <span class="bibi_diyi">'+v.nyr+' '+v.sfm+'</span>\n' +
+                            '                    <span class="bibi_dier">'+v.buyprice+'</span>\n' +
+                            '                    <span class="bibi_disan">'+v.chicang+'</span>\n' +
+                            '                </div>';
+                    }
+
+
+
+                });
+
+                $('#hold_list').html(html);
+            }
+
+        });
+    }
+</script>
+<script>
+    $(function () {
+        $(".hhhsha a").click(function () {
+            $(".hhhsha a").removeClass('active');
+            $(this).addClass('active');
+            var obj = $(this);
+            var int = obj.data('id');
+            $.ajax({
+                type:"post",
+                url:"{:url('/wap/index/ajaxclass_bibi')}",
+                data:{
+                    int:int
+                },
+                dataType:'JSON',
+                async:false,
+                beforeSend: function(){
+                    // $('#mask').css({'display':'block'});
+                },
+                success:function(msg){
+                    $('#shuju').html(msg);
+                    // $('.scroll-view.ionic-scroll.scroll-y').html(msg);
+                    // $('.product-classification div').removeClass('current');
+                    // obj.addClass('current');
+                },
+                complete: function () {
+                    // $('#mask').css({'display':'none'});
+                },
+                error:function(){
+                    alert('{$Think.lang.ti_wlfm}');
+                }
+            });
+        })
+
+
+
+
+    });
+    function change_oid(oid){
+        $(".shakod").removeClass('shuju_active');
+        var obj = $(this);
+        $(this).addClass('shuju_active');
+
+        order_pid = oid
+        getMaindata('k');
+        get_user_money();
+        get_hold_list();
+    }
+    $(".shakod").on('click',function () {
+        $(".shakod").removeClass('shuju_active');
+        var obj = $(this);
+        $(this).addClass('shuju_active');
+        var id = obj.data('id');
+        console.log(id);
+        order_pid = id;
+        getMaindata('k');
+        get_user_money();
+        get_hold_list();
+        //console.log(id);
+    });
+    function get_klie_data() {
+
+    }
+
+    function search() {
+        var keyword = $("#keyword").val();
+        if(!keyword){
+            layer.msg('请填写交易对');
+            return false;
+        }
+        $.ajax({
+            type:"post",
+            url:"{:url('/wap/index/search_bibi')}",
+            data:{
+                keyword:keyword
+            },
+            dataType:'JSON',
+            async:false,
+            beforeSend: function(){
+                // $('#mask').css({'display':'block'});
+            },
+            success:function(msg){
+                $('#shuju').html(msg);
+                // $('.scroll-view.ionic-scroll.scroll-y').html(msg);
+                // $('.product-classification div').removeClass('current');
+                // obj.addClass('current');
+            },
+            complete: function () {
+                // $('#mask').css({'display':'none'});
+            },
+            error:function(){
+                alert('{$Think.lang.ti_wlfm}');
+            }
+        });
+    }
+</script>
+<script>
+    $(function () {
+        $(".kubhgts a").click(function () {
+            $(".kubhgts a").removeClass('active');
+            $(this).addClass('active');
+        })
+    });
+</script>
+<script>
+    $(function () {
+        $(".xiaodianji span").click(function () {
+            $(".xiaodianji span").removeClass('active');
+            $(this).addClass('active');
+            change_chart_period();
+        })
+    });
+    $(function () {
+        $(".lixinli a").click(function () {
+            $(".lixinli a").removeClass('active');
+            $(this).addClass('active');
+            ex_type = $(this).data('id');
+            if(ex_type == 1){
+                $('#buy_price').val('{$Think.lang.best_price_trade}');
+
+                $('#sell_price').val('{$Think.lang.best_price_trade}');
+            }else{
+                $('#buy_price').val('');
+                $('#sell_price').val('');
+            }
+        })
+    });
+
+    $("#buy_price").bind("input propertychange",function(event){
+        buy_pirce = parseFloat($("#buy_price").val());
+        buy_exchange_amount = buy_pirce * buy_amount;
+        buy_exchange_amount = buy_exchange_amount.toFixed('6')
+        $('#buy_exchange_amount').html(buy_exchange_amount);
+    });
+    $("#buy_amount").bind("input propertychange",function(event){
+        buy_amount = parseFloat($("#buy_amount").val());
+        if(ex_type == 1){
+            buy_pirce = newprice;
+        }
+        buy_exchange_amount = buy_pirce * buy_amount;
+        buy_exchange_amount = buy_exchange_amount.toFixed('6')
+        $('#buy_exchange_amount').html(buy_exchange_amount);
+    });
+    $("#sell_price").bind("input propertychange",function(event){
+        sell_price = parseFloat($("#sell_price").val());
+        sell_exchange_amount = sell_price * sell_amount;
+        sell_exchange_amount = sell_exchange_amount.toFixed('6')
+        $('#sell_exchange_amount').html(sell_exchange_amount);
+    });
+    $("#sell_amount").bind("input propertychange",function(event){
+        sell_amount = parseFloat($("#sell_amount").val());
+        if(ex_type == 1){
+            sell_price = newprice;
+        }
+        sell_exchange_amount = sell_price * sell_amount;
+        sell_exchange_amount = sell_exchange_amount.toFixed('6')
+        $('#sell_exchange_amount').html(sell_exchange_amount);
+    });
+</script>
+<script>
+    // 类名是需要隐藏的div
+    $(".hhyi").show();
+    $(".hher").hide();
+    // 点击的按钮
+    $(".kyi>a").click(function(){
+        // 类名是需要隐藏的div
+        $(".hhyi").show();
+        $(".hher").hide();
+    });
+</script>
+<script>
+    // 类名是需要隐藏的div
+    $(".hhyi").show();
+    $(".hher").hide();
+    // 点击的按钮
+    $(".ker>a").click(function(){
+        // 类名是需要隐藏的div
+        $(".hhyi").hide();
+        $(".hher").show();
+    });
+</script>
+<script>
+    // 类名是需要隐藏的div
+    $(".uhb").show();
+    $(".ijn").hide();
+    // 点击的按钮
+    $(".jnm>a").click(function(){
+        // 类名是需要隐藏的div
+        $(".uhb").show();
+        $(".ijn").hide();
+    });
+</script>
+<script>
+    // 类名是需要隐藏的div
+    $(".uhb").show();
+    $(".ijn").hide();
+    // 点击的按钮
+    $(".knm>a").click(function(){
+        // 类名是需要隐藏的div
+        $(".ijn").show();
+        $(".uhb").hide();
+    });
+</script>
+<script>
+    // 类名是需要隐藏的div
+    $(".ijn").show();
+    $(".uhb").show();
+    // 点击的按钮
+    $(".hhuvb>a").click(function(){
+        // 类名是需要隐藏的div
+        $(".ijn").show();
+        $(".uhb").show();
+    });
+</script>
+
+
+<!--后面加的-->
+<script>
+    // 类名是需要隐藏的div
+    $(".huhuhus").show();
+    $(".gugugus").show();
+    // 点击的按钮
+    $(".kjkjkj>a").click(function(){
+        // 类名是需要隐藏的div
+        $(".huhuhus").show();
+        $(".gugugus").show();
+    });
+    $(".klklkl>a").click(function(){
+        // 类名是需要隐藏的div
+        $(".huhuhus").show();
+        $(".gugugus").hide();
+    });
+    $(".kukuku>a").click(function(){
+        // 类名是需要隐藏的div
+        $(".zhuliuugh").show();
+        $(".huhuhus").hide();
+        $(".gugugus").hide();
+    });
+</script>
+<script>
+    var cssdropdown={
+        disappeardelay: 250,
+        disablemenuclick: false,
+        enableswipe: 1,
+        enableiframeshim: 1,
+        dropmenuobj: null, ie: document.all, firefox: document.getElementById&&!document.all, swipetimer: undefined, bottomclip:0,
+
+        getposOffset:function(what, offsettype){
+            var totaloffset=(offsettype=="left")? what.offsetLeft : what.offsetTop;
+            var parentEl=what.offsetParent;
+            while (parentEl!=null){
+                totaloffset=(offsettype=="left")? totaloffset+parentEl.offsetLeft : totaloffset+parentEl.offsetTop;
+                parentEl=parentEl.offsetParent;
+            }
+            return totaloffset;
+        },
+
+        swipeeffect:function(){
+            if (this.bottomclip<parseInt(this.dropmenuobj.offsetHeight)){
+                this.bottomclip+=10+(this.bottomclip/10)
+                this.dropmenuobj.style.clip="rect(0 auto "+this.bottomclip+"px 0)"
+            }
+            else
+                return
+            this.swipetimer=setTimeout("cssdropdown.swipeeffect()", 10)
+        },
+
+        showhide:function(obj, e){
+            if (this.ie || this.firefox)
+                this.dropmenuobj.style.left=this.dropmenuobj.style.top="-500px"
+            if (e.type=="click" && obj.visibility==hidden || e.type=="mouseover"){
+                if (this.enableswipe==1){
+                    if (typeof this.swipetimer!="undefined")
+                        clearTimeout(this.swipetimer)
+                    obj.clip="rect(0 auto 0 0)"
+                    this.bottomclip=0
+                    this.swipeeffect()
+                }
+                obj.visibility="visible"
+            }
+            else if (e.type=="click")
+                obj.visibility="hidden"
+        },
+
+        iecompattest:function(){
+            return (document.compatMode && document.compatMode!="BackCompat")? document.documentElement : document.body
+        },
+
+        clearbrowseredge:function(obj, whichedge){
+            var edgeoffset=0
+            if (whichedge=="rightedge"){
+                var windowedge=this.ie && !window.opera? this.iecompattest().scrollLeft+this.iecompattest().clientWidth-15 : window.pageXOffset+window.innerWidth-15
+                this.dropmenuobj.contentmeasure=this.dropmenuobj.offsetWidth
+                if (windowedge-this.dropmenuobj.x < this.dropmenuobj.contentmeasure)
+                    edgeoffset=this.dropmenuobj.contentmeasure-obj.offsetWidth
+            }
+            else{
+                var topedge=this.ie && !window.opera? this.iecompattest().scrollTop : window.pageYOffset
+                var windowedge=this.ie && !window.opera? this.iecompattest().scrollTop+this.iecompattest().clientHeight-15 : window.pageYOffset+window.innerHeight-18
+                this.dropmenuobj.contentmeasure=this.dropmenuobj.offsetHeight
+                if (windowedge-this.dropmenuobj.y < this.dropmenuobj.contentmeasure){
+                    edgeoffset=this.dropmenuobj.contentmeasure+obj.offsetHeight
+                    if ((this.dropmenuobj.y-topedge)<this.dropmenuobj.contentmeasure)
+                        edgeoffset=this.dropmenuobj.y+obj.offsetHeight-topedge
+                }
+            }
+            return edgeoffset
+        },
+
+        dropit:function(obj, e, dropmenuID){
+            if (this.dropmenuobj!=null)
+                this.dropmenuobj.style.visibility="hidden"
+            this.clearhidemenu()
+            if (this.ie||this.firefox){
+                obj.onmouseout=function(){cssdropdown.delayhidemenu()}
+                obj.onclick=function(){return !cssdropdown.disablemenuclick}
+                this.dropmenuobj=document.getElementById(dropmenuID)
+                if(!this.dropmenuobj) return;
+                this.dropmenuobj.onmouseover=function(){cssdropdown.clearhidemenu()}
+                this.dropmenuobj.onmouseout=function(e){cssdropdown.dynamichide(e)}
+                this.dropmenuobj.onclick=function(){cssdropdown.delayhidemenu()}
+                this.showhide(this.dropmenuobj.style, e)
+                this.dropmenuobj.x=this.getposOffset(obj, "left")
+                this.dropmenuobj.y=this.getposOffset(obj, "top")
+                this.dropmenuobj.style.left=this.dropmenuobj.x-this.clearbrowseredge(obj, "rightedge")+"px"
+                this.dropmenuobj.style.top=this.dropmenuobj.y-this.clearbrowseredge(obj, "bottomedge")+obj.offsetHeight+1+"px"
+                this.positionshim()
+            }
+        },
+
+        positionshim:function(){
+            if (this.enableiframeshim && typeof this.shimobject!="undefined"){
+                if (this.dropmenuobj.style.visibility=="visible"){
+                    this.shimobject.style.width=this.dropmenuobj.offsetWidth+"px"
+                    this.shimobject.style.height=this.dropmenuobj.offsetHeight+"px"
+                    this.shimobject.style.left=this.dropmenuobj.style.left
+                    this.shimobject.style.top=this.dropmenuobj.style.top
+                }
+                this.shimobject.style.display=(this.dropmenuobj.style.visibility=="visible")? "block" : "none"
+            }
+        },
+
+        hideshim:function(){
+            if (this.enableiframeshim && typeof this.shimobject!="undefined")
+                this.shimobject.style.display='none'
+        },
+
+        contains_firefox:function(a, b) {
+            while (b.parentNode)
+                if ((b = b.parentNode) == a)
+                    return true;
+            return false;
+        },
+
+        dynamichide:function(e){
+            var evtobj=window.event? window.event : e
+            if (this.ie&&!this.dropmenuobj.contains(evtobj.toElement))
+                this.delayhidemenu()
+            else if (this.firefox&&e.currentTarget!= evtobj.relatedTarget&& !this.contains_firefox(evtobj.currentTarget, evtobj.relatedTarget))
+                this.delayhidemenu()
+        },
+
+        delayhidemenu:function(){
+            this.delayhide=setTimeout("cssdropdown.dropmenuobj.style.visibility='hidden'; cssdropdown.hideshim()",this.disappeardelay)
+        },
+
+        clearhidemenu:function(){
+            if (this.delayhide!="undefined")
+                clearTimeout(this.delayhide)
+        },
+
+        startchrome:function(){
+            for (var ids=0; ids<arguments.length; ids++){
+                var menuitems=document.getElementById(arguments[ids]).getElementsByTagName("a")
+                for (var i=0; i<menuitems.length; i++){
+                    if (menuitems[i].getAttribute("rel")){
+                        var relvalue=menuitems[i].getAttribute("rel")
+                        menuitems[i].onmouseover=function(e){
+                            var event=typeof e!="undefined"? e : window.event
+                            cssdropdown.dropit(this,event,this.getAttribute("rel"))
+                        }
+                    }
+                }
+            }
+            if (window.createPopup && !window.XmlHttpRequest){
+                document.write('<IFRAME id="iframeshim"  src="" style="display: none; left: 0; top: 0; z-index: 90; position: absolute; filter: progid:DXImageTransform.Microsoft.Alpha(style=0,opacity=0)" frameBorder="0" scrolling="no"></IFRAME>')
+                this.shimobject=document.getElementById("iframeshim")
+            }
+        }
+
+    }
+</script><script type="text/javascript">cssdropdown.startchrome("navMenu")</script>
+<script>
+    var cssdropdowns={
+        disappeardelay: 250,
+        disablemenuclick: false,
+        enableswipe: 1,
+        enableiframeshim: 1,
+        dropmenuobj: null, ie: document.all, firefox: document.getElementById&&!document.all, swipetimer: undefined, bottomclip:0,
+
+        getposOffset:function(what, offsettype){
+            var totaloffset=(offsettype=="left")? what.offsetLeft : what.offsetTop;
+            var parentEl=what.offsetParent;
+            while (parentEl!=null){
+                totaloffset=(offsettype=="left")? totaloffset+parentEl.offsetLeft : totaloffset+parentEl.offsetTop;
+                parentEl=parentEl.offsetParent;
+            }
+            return totaloffset;
+        },
+
+        swipeeffect:function(){
+            if (this.bottomclip<parseInt(this.dropmenuobj.offsetHeight)){
+                this.bottomclip+=10+(this.bottomclip/10)
+                this.dropmenuobj.style.clip="rect(0 auto "+this.bottomclip+"px 0)"
+            }
+            else
+                return
+            this.swipetimer=setTimeout("cssdropdown.swipeeffect()", 10)
+        },
+
+        showhide:function(obj, e){
+            if (this.ie || this.firefox)
+                this.dropmenuobj.style.left=this.dropmenuobj.style.top="-500px"
+            if (e.type=="click" && obj.visibility==hidden || e.type=="mouseover"){
+                if (this.enableswipe==1){
+                    if (typeof this.swipetimer!="undefined")
+                        clearTimeout(this.swipetimer)
+                    obj.clip="rect(0 auto 0 0)"
+                    this.bottomclip=0
+                    this.swipeeffect()
+                }
+                obj.visibility="visible"
+            }
+            else if (e.type=="click")
+                obj.visibility="hidden"
+        },
+
+        iecompattest:function(){
+            return (document.compatMode && document.compatMode!="BackCompat")? document.documentElement : document.body
+        },
+
+        clearbrowseredge:function(obj, whichedge){
+            var edgeoffset=0
+            if (whichedge=="rightedge"){
+                var windowedge=this.ie && !window.opera? this.iecompattest().scrollLeft+this.iecompattest().clientWidth-15 : window.pageXOffset+window.innerWidth-15
+                this.dropmenuobj.contentmeasure=this.dropmenuobj.offsetWidth
+                if (windowedge-this.dropmenuobj.x < this.dropmenuobj.contentmeasure)
+                    edgeoffset=this.dropmenuobj.contentmeasure-obj.offsetWidth
+            }
+            else{
+                var topedge=this.ie && !window.opera? this.iecompattest().scrollTop : window.pageYOffset
+                var windowedge=this.ie && !window.opera? this.iecompattest().scrollTop+this.iecompattest().clientHeight-15 : window.pageYOffset+window.innerHeight-18
+                this.dropmenuobj.contentmeasure=this.dropmenuobj.offsetHeight
+                if (windowedge-this.dropmenuobj.y < this.dropmenuobj.contentmeasure){
+                    edgeoffset=this.dropmenuobj.contentmeasure+obj.offsetHeight
+                    if ((this.dropmenuobj.y-topedge)<this.dropmenuobj.contentmeasure)
+                        edgeoffset=this.dropmenuobj.y+obj.offsetHeight-topedge
+                }
+            }
+            return edgeoffset
+        },
+
+        dropit:function(obj, e, dropmenuID){
+            if (this.dropmenuobj!=null)
+                this.dropmenuobj.style.visibility="hidden"
+            this.clearhidemenu()
+            if (this.ie||this.firefox){
+                obj.onmouseout=function(){cssdropdown.delayhidemenu()}
+                obj.onclick=function(){return !cssdropdown.disablemenuclick}
+                this.dropmenuobj=document.getElementById(dropmenuID)
+                if(!this.dropmenuobj) return;
+                this.dropmenuobj.onmouseover=function(){cssdropdown.clearhidemenu()}
+                this.dropmenuobj.onmouseout=function(e){cssdropdown.dynamichide(e)}
+                this.dropmenuobj.onclick=function(){cssdropdown.delayhidemenu()}
+                this.showhide(this.dropmenuobj.style, e)
+                this.dropmenuobj.x=this.getposOffset(obj, "left")
+                this.dropmenuobj.y=this.getposOffset(obj, "top")
+                this.dropmenuobj.style.left=this.dropmenuobj.x-this.clearbrowseredge(obj, "rightedge")+"px"
+                this.dropmenuobj.style.top=this.dropmenuobj.y-this.clearbrowseredge(obj, "bottomedge")+obj.offsetHeight+1+"px"
+                this.positionshim()
+            }
+        },
+
+        positionshim:function(){
+            if (this.enableiframeshim && typeof this.shimobject!="undefined"){
+                if (this.dropmenuobj.style.visibility=="visible"){
+                    this.shimobject.style.width=this.dropmenuobj.offsetWidth+"px"
+                    this.shimobject.style.height=this.dropmenuobj.offsetHeight+"px"
+                    this.shimobject.style.left=this.dropmenuobj.style.left
+                    this.shimobject.style.top=this.dropmenuobj.style.top
+                }
+                this.shimobject.style.display=(this.dropmenuobj.style.visibility=="visible")? "block" : "none"
+            }
+        },
+
+        hideshim:function(){
+            if (this.enableiframeshim && typeof this.shimobject!="undefined")
+                this.shimobject.style.display='none'
+        },
+
+        contains_firefox:function(a, b) {
+            while (b.parentNode)
+                if ((b = b.parentNode) == a)
+                    return true;
+            return false;
+        },
+
+        dynamichide:function(e){
+            var evtobj=window.event? window.event : e
+            if (this.ie&&!this.dropmenuobj.contains(evtobj.toElement))
+                this.delayhidemenu()
+            else if (this.firefox&&e.currentTarget!= evtobj.relatedTarget&& !this.contains_firefox(evtobj.currentTarget, evtobj.relatedTarget))
+                this.delayhidemenu()
+        },
+
+        delayhidemenu:function(){
+            this.delayhide=setTimeout("cssdropdown.dropmenuobj.style.visibility='hidden'; cssdropdown.hideshim()",this.disappeardelay)
+        },
+
+        clearhidemenu:function(){
+            if (this.delayhide!="undefined")
+                clearTimeout(this.delayhide)
+        },
+
+        startchrome:function(){
+            for (var ids=0; ids<arguments.length; ids++){
+                var menuitems=document.getElementById(arguments[ids]).getElementsByTagName("a")
+                for (var i=0; i<menuitems.length; i++){
+                    if (menuitems[i].getAttribute("rel")){
+                        var relvalue=menuitems[i].getAttribute("rel")
+                        menuitems[i].onmouseover=function(e){
+                            var event=typeof e!="undefined"? e : window.event
+                            cssdropdown.dropit(this,event,this.getAttribute("rel"))
+                        }
+                    }
+                }
+            }
+            if (window.createPopup && !window.XmlHttpRequest){
+                document.write('<IFRAME id="iframeshim"  src="" style="display: none; left: 0; top: 0; z-index: 90; position: absolute; filter: progid:DXImageTransform.Microsoft.Alpha(style=0,opacity=0)" frameBorder="0" scrolling="no"></IFRAME>')
+                this.shimobject=document.getElementById("iframeshim")
+            }
+        }
+
+    }
+</script><script type="text/javascript">cssdropdown.startchrome("navMenus")</script>
+<script>
+    var cssdropdownv={
+        disappeardelay: 250,
+        disablemenuclick: false,
+        enableswipe: 1,
+        enableiframeshim: 1,
+        dropmenuobj: null, ie: document.all, firefox: document.getElementById&&!document.all, swipetimer: undefined, bottomclip:0,
+
+        getposOffset:function(what, offsettype){
+            var totaloffset=(offsettype=="left")? what.offsetLeft : what.offsetTop;
+            var parentEl=what.offsetParent;
+            while (parentEl!=null){
+                totaloffset=(offsettype=="left")? totaloffset+parentEl.offsetLeft : totaloffset+parentEl.offsetTop;
+                parentEl=parentEl.offsetParent;
+            }
+            return totaloffset;
+        },
+
+        swipeeffect:function(){
+            if (this.bottomclip<parseInt(this.dropmenuobj.offsetHeight)){
+                this.bottomclip+=10+(this.bottomclip/10)
+                this.dropmenuobj.style.clip="rect(0 auto "+this.bottomclip+"px 0)"
+            }
+            else
+                return
+            this.swipetimer=setTimeout("cssdropdown.swipeeffect()", 10)
+        },
+
+        showhide:function(obj, e){
+            if (this.ie || this.firefox)
+                this.dropmenuobj.style.left=this.dropmenuobj.style.top="-500px"
+            if (e.type=="click" && obj.visibility==hidden || e.type=="mouseover"){
+                if (this.enableswipe==1){
+                    if (typeof this.swipetimer!="undefined")
+                        clearTimeout(this.swipetimer)
+                    obj.clip="rect(0 auto 0 0)"
+                    this.bottomclip=0
+                    this.swipeeffect()
+                }
+                obj.visibility="visible"
+            }
+            else if (e.type=="click")
+                obj.visibility="hidden"
+        },
+
+        iecompattest:function(){
+            return (document.compatMode && document.compatMode!="BackCompat")? document.documentElement : document.body
+        },
+
+        clearbrowseredge:function(obj, whichedge){
+            var edgeoffset=0
+            if (whichedge=="rightedge"){
+                var windowedge=this.ie && !window.opera? this.iecompattest().scrollLeft+this.iecompattest().clientWidth-15 : window.pageXOffset+window.innerWidth-15
+                this.dropmenuobj.contentmeasure=this.dropmenuobj.offsetWidth
+                if (windowedge-this.dropmenuobj.x < this.dropmenuobj.contentmeasure)
+                    edgeoffset=this.dropmenuobj.contentmeasure-obj.offsetWidth
+            }
+            else{
+                var topedge=this.ie && !window.opera? this.iecompattest().scrollTop : window.pageYOffset
+                var windowedge=this.ie && !window.opera? this.iecompattest().scrollTop+this.iecompattest().clientHeight-15 : window.pageYOffset+window.innerHeight-18
+                this.dropmenuobj.contentmeasure=this.dropmenuobj.offsetHeight
+                if (windowedge-this.dropmenuobj.y < this.dropmenuobj.contentmeasure){
+                    edgeoffset=this.dropmenuobj.contentmeasure+obj.offsetHeight
+                    if ((this.dropmenuobj.y-topedge)<this.dropmenuobj.contentmeasure)
+                        edgeoffset=this.dropmenuobj.y+obj.offsetHeight-topedge
+                }
+            }
+            return edgeoffset
+        },
+
+        dropit:function(obj, e, dropmenuID){
+            if (this.dropmenuobj!=null)
+                this.dropmenuobj.style.visibility="hidden"
+            this.clearhidemenu()
+            if (this.ie||this.firefox){
+                obj.onmouseout=function(){cssdropdown.delayhidemenu()}
+                obj.onclick=function(){return !cssdropdown.disablemenuclick}
+                this.dropmenuobj=document.getElementById(dropmenuID)
+                if(!this.dropmenuobj) return;
+                this.dropmenuobj.onmouseover=function(){cssdropdown.clearhidemenu()}
+                this.dropmenuobj.onmouseout=function(e){cssdropdown.dynamichide(e)}
+                this.dropmenuobj.onclick=function(){cssdropdown.delayhidemenu()}
+                this.showhide(this.dropmenuobj.style, e)
+                this.dropmenuobj.x=this.getposOffset(obj, "left")
+                this.dropmenuobj.y=this.getposOffset(obj, "top")
+                this.dropmenuobj.style.left=this.dropmenuobj.x-this.clearbrowseredge(obj, "rightedge")+"px"
+                this.dropmenuobj.style.top=this.dropmenuobj.y-this.clearbrowseredge(obj, "bottomedge")+obj.offsetHeight+1+"px"
+                this.positionshim()
+            }
+        },
+
+        positionshim:function(){
+            if (this.enableiframeshim && typeof this.shimobject!="undefined"){
+                if (this.dropmenuobj.style.visibility=="visible"){
+                    this.shimobject.style.width=this.dropmenuobj.offsetWidth+"px"
+                    this.shimobject.style.height=this.dropmenuobj.offsetHeight+"px"
+                    this.shimobject.style.left=this.dropmenuobj.style.left
+                    this.shimobject.style.top=this.dropmenuobj.style.top
+                }
+                this.shimobject.style.display=(this.dropmenuobj.style.visibility=="visible")? "block" : "none"
+            }
+        },
+
+        hideshim:function(){
+            if (this.enableiframeshim && typeof this.shimobject!="undefined")
+                this.shimobject.style.display='none'
+        },
+
+        contains_firefox:function(a, b) {
+            while (b.parentNode)
+                if ((b = b.parentNode) == a)
+                    return true;
+            return false;
+        },
+
+        dynamichide:function(e){
+            var evtobj=window.event? window.event : e
+            if (this.ie&&!this.dropmenuobj.contains(evtobj.toElement))
+                this.delayhidemenu()
+            else if (this.firefox&&e.currentTarget!= evtobj.relatedTarget&& !this.contains_firefox(evtobj.currentTarget, evtobj.relatedTarget))
+                this.delayhidemenu()
+        },
+
+        delayhidemenu:function(){
+            this.delayhide=setTimeout("cssdropdown.dropmenuobj.style.visibility='hidden'; cssdropdown.hideshim()",this.disappeardelay)
+        },
+
+        clearhidemenu:function(){
+            if (this.delayhide!="undefined")
+                clearTimeout(this.delayhide)
+        },
+
+        startchrome:function(){
+            for (var ids=0; ids<arguments.length; ids++){
+                var menuitems=document.getElementById(arguments[ids]).getElementsByTagName("a")
+                for (var i=0; i<menuitems.length; i++){
+                    if (menuitems[i].getAttribute("rel")){
+                        var relvalue=menuitems[i].getAttribute("rel")
+                        menuitems[i].onmouseover=function(e){
+                            var event=typeof e!="undefined"? e : window.event
+                            cssdropdown.dropit(this,event,this.getAttribute("rel"))
+                        }
+                    }
+                }
+            }
+            if (window.createPopup && !window.XmlHttpRequest){
+                document.write('<IFRAME id="iframeshim"  src="" style="display: none; left: 0; top: 0; z-index: 90; position: absolute; filter: progid:DXImageTransform.Microsoft.Alpha(style=0,opacity=0)" frameBorder="0" scrolling="no"></IFRAME>')
+                this.shimobject=document.getElementById("iframeshim")
+            }
+        }
+
+    }
+</script><script type="text/javascript">cssdropdown.startchrome("navMenuv")</script>

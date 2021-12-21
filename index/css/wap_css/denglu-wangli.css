@@ -1,0 +1,14 @@
+body{background-color: #1c242c!important;}
+.wg-div1 {color: #FFFFFF;}
+.wg-div2>p {color: #FFFFFF;}
+.zc-p1 {color: #FFFFFF!important;}
+.wg-div2>input { color: #FFFFFF; background-color: inherit;}
+.zc-div10>div:nth-child(1)>input {background-color: inherit;}
+.zc-div10>div:nth-child(1) { border: 1px solid #cad7e0; background-color: #000000;}
+.zc-div10>div:nth-child(2) {background-color: #7a98f7;}
+.zc-div10>div:nth-child(2)>a {color: #FFFFFF;}
+.zc-div10>div:nth-child(1)>input {color: #FFFFFF!important; background-color: initial;}
+.zc-div10>div:nth-child(1) {background-color: initial;}
+
+
+

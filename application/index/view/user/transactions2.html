@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0, user-scalable=no">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+    <!-- 是否启用全屏模式 -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <!-- 全屏时状态颜色设置 -->
+    <meta name="apple-mobile-web-status-bar-style" content="white">
+    <!-- 禁用电话号码自动识别 -->
+    <meta name="format-detection" content="telephone=no">
+    <!--禁止读取本地缓存模板-->
+    <meta http-equiv="Pragma" contect="no-cache">
+    <title></title>
+    {include file="alyslt" /}
+    <link rel="stylesheet" href="/index/css/optional.css" >
+    {if $_SESSION["night"]=="yes"}<link rel="stylesheet" href="/index/css/optional.css" >{else} <link rel="stylesheet" href="/index/css/user-transactions2.css" >{/if}
+<!--    黑夜模式-->
+<!--    <link rel="stylesheet" href="/index/css/user-transactions2.css" >-->
+    <script src="/index/js/jquery-2.1.4.min.js"></script>
+</head>
+<body>
+<style>
+    .tran-hode{width: 100%; height: 40px; line-height: 40px;}
+    .tran-hode>div{float: left;}
+    .tran-hode>div:nth-child(1){width: 20%; height: 100%;  text-indent:2%;}
+    .tran-hode>div:nth-child(2){width: 60%;height: 100%;text-align: center; font-weight: 700; }
+    .tran-whole{width: 100%; margin-bottom: 8%;}
+    .tran-whole>ul{width: 92%; margin: 0 auto;}
+    .tran-whole>ul>li{width: 100%; margin: 0 auto; padding: 5% 0; border-bottom: 1px solid #e5e5e5;}
+    .tran-whole>ul>li>p{width: 100%; font-size: 14px; height: 25px; line-height: 25px; overflow: hidden;}
+    .tran-whole>ul>li>p:nth-child(1){font-weight: 700;}
+    .tran-whole>ul>li>p:nth-child(3){font-size: 16px; font-weight: 700;}
+    .tran-whole>ul>li>p:nth-child(4){color: #999999;}
+    .tran-whole>ul>li>p:nth-child(2),.tran-whole>ul>li>p:nth-child(3),.tran-whole>ul>li>p:nth-child(4),.tran-whole>ul>li>p:nth-child(5),.tran-whole>ul>li>p:nth-child(6){text-indent: 15px;}
+    .tran-ul-p1>span:nth-child(2){float: right;}
+    .icon-xiugai{color: #333333;}
+    .tran-butt{ width: 92%; color: #333333; border: none; display: block; border-radius: 5px; height: 30px; position: fixed;bottom: 1%; outline: none; left: 4%; background-color: rgb(245,213,90);}
+    .tran-whole-cancel{ float: right;}
+    .tran-whole-cancel>a{color: #333333;}
+</style>
+<div class="tran-hode">
+    <div><a href="javascript:window.history.go(-1)"><i class="iconfont icon-31fanhui1"></i></a></div>
+    <div>{$Think.lang.sksz_skfs}</div>
+</div>
+<div class="tran-whole">
+    <ul>
+        {volist name="payment" id="item"}
+        <li>
+            <p class="tran-ul-p1"><span class="tran-ul-sp1"><i class="iconfont icon-fuzhushuxian" style="color:{$item.color};"></i>{$item.typename}</span><span> <a href="/index/user/skfs_edit.html?id={$item.id}"><i class="iconfont icon-xiugai"></i></a></span>
+                </span>
+            </p>
+            {if $item.account_name}
+            <p>{$item.account_name}</p>
+            {/if}
+            {if $item.account_num}
+            <p>{$item.account_num}</p>
+            {/if}
+            {if $item.bank_num}
+            <p>{$item.bank_num}</p>
+            {/if}
+            {if $item.bank_name}
+            <p>{$item.bank_name}</p>
+            {/if}
+            <p><span class="tran-whole-cancel"> <a href="javascript:void(0)" onclick="del_payment({$item.id})"><i class="iconfont icon-cha"></i></a></span></p>
+        </li>
+        {/volist}
+     <!--   <li>
+            <p class="tran-ul-p1"><span class="tran-ul-sp1"><i class="iconfont icon-fuzhushuxian" style="color: #3485ec;"></i>支付宝</span><span><a href=""><i class="iconfont icon-xiugai"></i></a></span></p>
+            <p>张三</p>
+            <p>1564899846@qq.com</p>
+&lt;!&ndash;            <p>中国工商银行</p>&ndash;&gt;
+        </li>-->
+    </ul>
+</div>
+<button class="tran-butt" onclick="javascript:window.location.href='/index/currencytrade/addpayment'">{$Think.lang.fbjy_tjskfs}</button>
+</body>
+<script src="/static/layer/layer.js"></script>
+<script>
+    var isdelete_confirm = "{$Think.lang.isdelete_confirm}";
+    function del_payment(id) {
+        layer.confirm(isdelete_confirm, {
+            btn: ['YES','NO'] //按钮
+        }, function(){
+
+
+            $.ajax({
+                url: '/index/currencytrade/payment_del',
+                type: 'post',
+                dataType: 'json',
+                data: {
+                    'id': id,
+                },
+                success: function (res) {
+                    layer.msg(res.msg);
+                    if(res.code == 1){
+                        setTimeout(function () {
+                            window.location.reload();
+                        },2000)
+
+                    }
+                }
+            });
+
+
+        }, function(){
+
+        });
+
+    }
+</script>
+</html>

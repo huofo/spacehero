@@ -1,0 +1,64 @@
+a{text-decoration: none;}
+.headerbar {background-color: #FFFFFF!important;}
+icon{color: #1B1B1B!important;}
+.back-button{color: #1B1B1B!important;}
+*, *:before{color: inherit;}
+*,*:after {color: #1B1B1B;}
+.headerbar .header-item {color: #0b1622 !important;}
+.scroll {background-color: #FFFFFF}
+.trade-content header {border: none;}
+.trade-content nav {background-color: #FFFFFF;}
+.trade-content nav article {background-color: #FFFFFF;}
+.trade-content nav article span.active {background-color: #FFFFFF;}
+.trade-content nav article span.active {box-shadow: none;}
+#container {background-color: #FFFFFF;}
+.trade-view .trade_bar section:nth-of-type(1){background-color: rgba(102,102,102,0.9);color: #FFFFFF;}
+.trade-view .trade_bar section:nth-of-type(1) i{color: #FFFFFF!important;}
+.trade-view .trade_bar section:nth-of-type(1) p{color: #FFFFFF;}
+.left-buttons a{color: #333333!important;}
+.trade-view .order-confirm-panel {background-color: #FFFFFF;}
+.order-confirm-panel .panel-header, .order-state-panel .panel-header {background-color: #FFFFFF;}
+.order-confirm-panel .panel-body, .order-state-panel .panel-body {background-color: #FFFFFF;}
+.close-position.active {background-image: initial;}
+.close-position {background-color: #FFFFFF;}
+.period-widget {background-color: #f1f1f1; background-image: initial;}
+.period-widget.active {background-image: initial;}
+.order-confirm-panel .period_footer {background-color: #f8f8f8;}
+.amount-box.active {background-color: #FFFFFF;background-image: initial; }
+.amount-box { color: #333333; background-color: #FFFFFF;}
+.other-amount input {background-color: #FFFFFF;}
+input {border: 1px solid #333333;}
+.icon--17{color: #FFFFFF;}
+.icon--18{color: #FFFFFF;}
+.maizhang{color: #FFFFFF;}
+.maidie{color: #FFFFFF;}
+.trade-view .order-confirm-panel .period {border-top: 1px solid #cccccc7a;}
+.order-detail-view .order-detail {border-top: 1px solid #cccccc7a;}
+.amount-box {border: 1px solid #dddddd;}
+.trade-view .order-confirm-panel .amount .scroll-view {margin-right: 0px;}
+.pay_order_buypricee{color: #333333!important;}
+.yuce{color: #333333!important;}
+.pane {background-color: #ffffff!important;}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

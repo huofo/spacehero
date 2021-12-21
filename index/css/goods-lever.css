@@ -1,0 +1,23 @@
+*, *:before, *:after {color: #333333;}
+ion-header-bar.bar-stable.headerbar.bar.bar-header.wl_flex.wl_justify_between { background-color: #FFFFFF!important; }
+#place .bgColor {background-color: #f7f7fb;}
+.pull-left.active {background-color: #f7f7fb;}
+.pull-right.active1 {background-color: #f7f7fb;}
+div#data div.active div.deal span {background-color: #FFFFFF;}
+.flex1.mr5 {color: #333333;}
+.dropdown-content {background-color: #FFFFFF;}
+.dropdown-contentst {background-color: #FFFFFF!important;}
+input[disabled], select[disabled], textarea[disabled], input[readonly]:not(.cloned-text-input), textarea[readonly]:not(.cloned-text-input), select[readonly] { color: #333333!important;  background-color: #FFFFFF;}
+#bibi-text { color: #333; background-color: #f7f7fb;}
+.flex2.tc.gray.ft12.shuliang {color: #333333;}
+.bibi-sl-inp1 { color: #333333!important; background-color: #f7f7fb;}
+body{background-color: #f7f7fb!important;}
+.msxfjx{background-color: #f7f7fb!important;border-color: #f7f7fb!important;}
+.mpc{color: #333333!important;}
+.bottom-nav {background-color: #FFFFFF;}
+.nav-box-header{color: #333333!important;}
+.nav-box{background-color: #FFFFFF!important;}
+div#left-hidden-box ul li {border-bottom: 1px solid rgba(102,102,102,0.1)!important;}
+.mlever-div1{background-color: #f7f7fb!important; border: none!important;}
+.control>input{background-color: initial; color: #333333!important;}
+.mlevpc{color: #333333!important;}

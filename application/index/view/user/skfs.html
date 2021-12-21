@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0, user-scalable=no">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+    <!-- 是否启用全屏模式 -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <!-- 全屏时状态颜色设置 -->
+    <meta name="apple-mobile-web-status-bar-style" content="white">
+    <!-- 禁用电话号码自动识别 -->
+    <meta name="format-detection" content="telephone=no">
+    <!--禁止读取本地缓存模板-->
+    <meta http-equiv="Pragma" contect="no-cache">
+    <title></title>
+    {include file="alyslt" /}
+    <link rel="stylesheet" href="/index/css/optional.css" >
+    {include file="fbjy_js" /}
+    {if $_SESSION["night"]=="yes"}<link rel="stylesheet" href="/index/css/optional.css" >{else}<link rel="stylesheet" href="/index/css/user-fkfs.css" >{/if}
+<!--    黑夜模式-->
+<!--    <link rel="stylesheet" href="/index/css/user-fkfs.css" >-->
+    <script src="/index/js/jquery-2.1.4.min.js"></script>
+    <link rel="stylesheet" href="/static/index/layui/css/modules/layer/default/layer.css?v=3.1.1" >
+    <script type="text/javascript" src="/static/index/layui/lay/modules/layer.js"></script>
+    <link rel="stylesheet" href="/new/layui/css/layui.css">
+    <script src="/new/layui/layui.js"></script>
+    <script src="/static/public/js/getFormData.js"></script>
+</head>
+<body>
+<div class="ods-hode">
+    <div><a href="javascript:window.history.go(-1);"><i class="iconfont icon-31fanhui1"></i></a></div>
+    <div>{$Think.lang.fbjy_qxzskfs}</div>
+    <div></div>
+</div>
+<div class="skfs-top">
+
+    {if $payments neq ''}
+        {volist name="payments" id="list"}
+             <div onclick="add_payment({$list.id})"><a><span>{$list.name}</span><i class="iconfont icon-youjiantou-copy">&#8195;</i></a></div>
+        {/volist}
+    {/if}
+
+
+  <!--  <div onclick="add_payment(2)"><a><span>银行卡</span><i class="iconfont icon-youjiantou-copy">&#8195;</i></a></div>
+    {if $currency == 'CNY'}
+    <div onclick="add_payment(1)"><a><span>支付宝</span><i class="iconfont icon-youjiantou-copy">&#8195;</i></a></div>
+    <div onclick="add_payment(0)"><a><span>微信</span><i class="iconfont icon-youjiantou-copy">&#8195;</i></a></div>
+    {/if}-->
+
+    <div></div>
+</div>
+{if $payments neq ''}
+{volist name="payments" id="item"}
+<div class="skfs-tjzfb skfs-tjzfb-{$item.id}">
+    <div class="ods-hode">
+        <div><a><i class="iconfont icon-31fanhui1"></i></a></div>
+        <div>{$Think.lang.fbjy_tj} {$item.name}</div>
+        <div></div>
+    </div>
+    <form id="alipay_form_{$item.id}">
+
+        {volist name="$item.use_values" id="val"}
+            {if $val eq 'account_name'}
+            <div class="cld-whole">
+                <div class="cld-whole-noe">
+                    <p>{$Think.lang.sr_xm}</p>
+                    <div><input name="account_name" placeholder="{$Think.lang.fbjy_qsrnbzsxm}" /></div>
+                </div>
+            </div>
+            {/if}
+
+            {if $val eq 'account_num'}
+            <div class="cld-whole">
+                <div class="cld-whole-noe">
+                    <p>{$item.name}{$Think.lang.fbjy_zh}</p>
+                    <div><input  name="account_num" placeholder="{$Think.lang.fbjy_qsrnd}{$item.name}{$Think.lang.fbjy_zh}" /></div>
+                </div>
+            </div>
+            {/if}
+
+        {if $val eq 'bank_name'}
+        <div class="cld-whole">
+            <div class="cld-whole-noe">
+                <p>{$Think.lang.fbjy_hykh}</p>
+                <div><input  name="bank_name" placeholder="{$Think.lang.fbjy_qsryhkmc}" /></div>
+            </div>
+        </div>
+        {/if}
+        {if $val eq 'bank_num'}
+        <div class="cld-whole">
+            <div class="cld-whole-noe">
+                <p>{$Think.lang.fbjy_zh}</p>
+                <div><input  name="bank_num" placeholder="{$Think.lang.fbjy_qsrnd}{$Think.lang.fbjy_zh}" /></div>
+            </div>
+        </div>
+        {/if}
+
+        {if $val eq 'bank_branch'}
+        <div class="cld-whole">
+            <div class="cld-whole-noe">
+                <p>{$Think.lang.sksz_khzh}</p>
+                <div><input  name="bank_branch" placeholder="{$Think.lang.fbjy_qsrkhzhmc}" /></div>
+            </div>
+        </div>
+        {/if}
+        {if $val eq 'note'}
+        <div class="cld-whole">
+            <div class="cld-whole-noe">
+                <p>{$Think.lang.fbjy_bz}</p>
+                <div><input  name="note" placeholder="{$Think.lang.fbjy_qsrbz}" /></div>
+            </div>
+        </div>
+        {/if}
+
+        <style>
+            .skfs-sctp-div2>img{width: 100px;height: 100px;}
+        </style>
+            {if $val eq 'image'}
+                <div class="skfs-sctp">
+                    <p>{$Think.lang.fbjy_sjewmbt}</p>
+                    <div class="upimg" >
+                        <i class="iconfont icon-shangchuan"></i>
+                        <p>{$Think.lang.fbjy_sc}</p>
+                    </div>
+                    <input type="hidden" name="image" class="image">
+                    <div class="skfs-sctp-div2"><img src="/Uploads/images/payment/2021-11-09/A_lectqf.jpg" /></div>
+                </div>
+                <img class="show_image" src="" style="display: none"></img>
+            {/if}
+        {/volist}
+
+    </form>
+    <!--    <input type="file">-->
+    <div class="skfs-sctp skfs-sctp2">
+        <p>
+            {$Think.lang.fbjy_wxtsdnd}
+        </p>
+        <button class="skfs-xzfqr" onclick="go_upload()">{$Think.lang.wap_wa_qrs}</button>
+    </div>
+
+</div>
+{/volist}
+{/if}
+<!--<div class="skfs-tjzfb skfs-tjzfb-2">
+    <div class="ods-hode">
+        <div><a><i class="iconfont icon-31fanhui1"></i></a></div>
+        <div>添加 yhk</div>
+        <div></div>
+    </div>
+    <form id="alipay_form_2">
+        <div class="cld-whole">
+            <div class="cld-whole-noe">
+                <p>姓名</p>
+                <div><input name="account_name" placeholder="请输入你的正式姓名" /></div>
+            </div>
+        </div>
+        <div class="cld-whole">
+            <div class="cld-whole-noe">
+                <p>支付宝账号</p>
+                <div><input  name="account_num" placeholder="请输入您的支付宝账号" /></div>
+            </div>
+        </div>
+
+        <div class="skfs-sctp">
+            <p>收款二维码(必填)</p>
+            <div id="upimg2" >
+                <i class="iconfont icon-shangchuan"></i>
+                <p>上传</p>
+            </div>
+            <input type="hidden" name="image" id="image2">
+        </div>
+    </form>
+    &lt;!&ndash;    <input type="file">&ndash;&gt;
+    <div class="skfs-sctp skfs-sctp2">
+        <p>
+            温馨提示:当您出售数字货币时，您选择的收款方式将向买方展示，请确认信息填写准确无误。
+        </p>
+        <button class="skfs-xzfqr" onclick="go_upload()">确认</button>
+    </div>
+
+</div>
+<div class="skfs-tjzfb skfs-tjzfb-1">
+    <div class="ods-hode">
+        <div><a><i class="iconfont icon-31fanhui1"></i></a></div>
+        <div>添加 支付宝</div>
+        <div></div>
+    </div>
+    <form id="alipay_form_1">
+        <div class="cld-whole">
+            <div class="cld-whole-noe">
+                <p>姓名</p>
+                <div><input name="account_name" placeholder="请输入你的正式姓名" /></div>
+            </div>
+        </div>
+        <div class="cld-whole">
+            <div class="cld-whole-noe">
+                <p>支付宝账号</p>
+                <div><input  name="account_num" placeholder="请输入您的支付宝账号" /></div>
+            </div>
+        </div>
+
+        <div class="skfs-sctp">
+            <p>收款二维码(必填)</p>
+            <div id="upimg1" >
+                <i class="iconfont icon-shangchuan"></i>
+                <p>上传</p>
+            </div>
+            <input type="hidden" name="image" id="image1">
+        </div>
+    </form>
+    &lt;!&ndash;    <input type="file">&ndash;&gt;
+    <div class="skfs-sctp skfs-sctp2">
+        <p>
+            温馨提示:当您出售数字货币时，您选择的收款方式将向买方展示，请确认信息填写准确无误。
+        </p>
+        <button class="skfs-xzfqr" onclick="go_upload()">确认</button>
+    </div>
+
+</div>
+<div class="skfs-tjzfb skfs-tjzfb-0">
+    <div class="ods-hode">
+        <div><a><i class="iconfont icon-31fanhui1"></i></a></div>
+        <div>添加 wx</div>
+        <div></div>
+    </div>
+    <form id="alipay_form_0">
+    <div class="cld-whole">
+        <div class="cld-whole-noe">
+            <p>姓名</p>
+            <div><input name="account_name" placeholder="请输入你的正式姓名" /></div>
+        </div>
+    </div>
+    <div class="cld-whole">
+        <div class="cld-whole-noe">
+            <p>支付宝账号</p>
+            <div><input  name="account_num" placeholder="请输入您的支付宝账号" /></div>
+        </div>
+    </div>
+
+    <div class="skfs-sctp">
+        <p>收款二维码(必填)</p>
+        <div id="upimg0" >
+            <i class="iconfont icon-shangchuan"></i>
+            <p>上传</p>
+        </div>
+        <input type="hidden" name="image" id="image0">
+    </div>
+    </form>
+&lt;!&ndash;    <input type="file">&ndash;&gt;
+    <div class="skfs-sctp skfs-sctp2">
+        <p>
+            温馨提示:当您出售数字货币时，您选择的收款方式将向买方展示，请确认信息填写准确无误。
+        </p>
+        <button class="skfs-xzfqr" onclick="go_upload()">确认</button>
+    </div>
+
+</div>-->
+<script src="/index/js/m-fbjy.js"></script>
+<script>
+
+
+    //进入添加支付宝页面
+    $(".skfs-tjzfb").hide();
+    // $(".skfs-top>div").eq(1).click(function () {
+    //     $(".skfs-tjzfb").show();
+    // });
+    $(".ods-hode>div>a").click(function () {
+        $(".skfs-tjzfb").hide();
+    });
+    var type = -1;
+    var currency = "{$currency}";
+    function add_payment(num){
+        type = num;
+        $(".skfs-tjzfb-"+num).show();
+    }
+
+    //输入框有值时确认按钮颜色发生改变
+    $('.cld-whole-noe>div>input').bind('input propertychange', function() {
+        $(".skfs-sctp2>button").css("background-color","#f1c025");
+        $(".skfs-sctp2>button").css("color","#000000");
+    });
+    // $('.skfs-sctp2>button').click(function () {
+    //     var tex2 =$('.cld-whole-noe>div>input').eq(1).val();
+    //     if (!tex2){alert("支付宝账户不能为空"); return;}
+    //     if (tex2.length<11){alert("支付宝账号格式不正确"); return;}
+    // })
+
+    //跳转页面到安全验证页面
+    // $(".skfs-xzfqr").click(function () {
+    //    window.location.href="/index/User/anquan";
+    // });
+    function go_upload() {
+       var data =   getFormData('alipay_form_'+type);
+       data['type'] = type;
+       data['currency'] = currency;
+       console.log(data);
+
+
+
+
+       //  if(data.account_name == ''){
+       //     layer.msg('请填写姓名');return;
+       // }
+       //
+       // if(type == 2){
+       //     if(data.bank_name == ''){
+       //         layer.msg('请填写银行名称');return;
+       //     }else if(data.bank_num){
+       //         layer.msg('请填写银行卡号');return;
+       //     }
+       // }else{
+       //      if(data.account_num == ''){
+       //         layer.msg('请填写收款账号');return;
+       //     }else if(data.image == ''){
+       //         layer.msg('请上传收款二维码');return;
+       //     }
+       // }
+        var list = {};
+        for (var key in data) {
+            list[key] = data[key];
+        }
+        $.ajax({
+            url:'/index/Currencytrade/add_payment',
+            type:'post',
+            dataType:'json',
+            data:list,
+            success:function (res) {
+                if(res.code == 1){
+                    window.location.href="/index/User/anquan?id="+res.id;
+                }else{
+                    layer.msg(res.msg);return;
+                }
+
+            }
+        });
+
+
+    }
+    layui.use('layer', function(){
+        var layer = layui.layer;
+
+    });
+
+    $(".skfs-sctp-div2").hide();
+    layui.use('upload', function(){
+
+        var upload = layui.upload;
+        //执行实例
+        var uploadInst0 = upload.render({
+            elem:'.upimg' //绑定元素
+            ,url:'{:url("Currencytrade/upload_payment_qrcode")}' //上传接口
+            , exts:'jpg|png|gif|bmp|jpeg'         //可传输文件的后缀
+            , accept:'images'              //video audio images
+            ,done: function(res){
+                if(res.error==1){
+                    layer.msg(res.msg);
+                }else{
+                    //拼接html
+                    //通过回调值把图片显示到页面
+                    $('.image').val(res.path);
+                    var urls =$('.show_image').attr('src',res.path);
+                    $(".upimg").hide();
+                    $(".skfs-sctp-div2").show();
+                    var urls2=urls["2"];
+                    var urls3=urls2["src"];
+                   var urls4 =urls3.split("bbys.trendex.name/index/User/bbys.trendex.name");
+                    urls4=urls4[1];
+                    $(".skfs-sctp-div2").html('<img src="'+urls4+'">');
+                }
+                //上传完毕回调
+            }
+            ,error: function(){
+                layer.msg(fbjy_qqycqcs);
+            }
+        });
+
+        // var uploadInst1 = upload.render({
+        //     elem:'#upimg1' //绑定元素
+        //     ,url:'{:url("Currencytrade/upload_payment_qrcode")}' //上传接口
+        //     , exts:'jpg|png|gif|bmp|jpeg'         //可传输文件的后缀
+        //     , accept:'images'              //video audio images
+        //     ,done: function(res){
+        //         if(res.error==1){
+        //             layer.msg(res.msg);
+        //         }else{
+        //             //拼接html
+        //             $('#image1').val(res.path);
+        //         }
+        //         //上传完毕回调
+        //     }
+        //     ,error: function(){
+        //         layer.msg('请求异常, 请重试');
+        //     }
+        // });
+        // var uploadInst2 = upload.render({
+        //     elem:'#upimg2' //绑定元素
+        //     ,url:'{:url("Currencytrade/upload_payment_qrcode")}' //上传接口
+        //     , exts:'jpg|png|gif|bmp|jpeg'         //可传输文件的后缀
+        //     , accept:'images'              //video audio images
+        //     ,done: function(res){
+        //         if(res.error==1){
+        //             layer.msg(res.msg);
+        //         }else{
+        //             //拼接html
+        //             $('#image2').val(res.path);
+        //         }
+        //         //上传完毕回调
+        //     }
+        //     ,error: function(){
+        //         layer.msg('请求异常, 请重试');
+        //     }
+        // });
+    });
+
+</script>
+</body>
+</html>

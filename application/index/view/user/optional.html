@@ -1,0 +1,1087 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0, user-scalable=no">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+    <!-- 是否启用全屏模式 -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <!-- 全屏时状态颜色设置 -->
+    <meta name="apple-mobile-web-status-bar-style" content="white">
+    <!-- 禁用电话号码自动识别 -->
+    <meta name="format-detection" content="telephone=no">
+    <!--禁止读取本地缓存模板-->
+    <meta http-equiv="Pragma" contect="no-cache">
+    <title></title>
+    {include file="alyslt" /}
+    {include file="fbjy_js" /}
+    <link rel="stylesheet" href="/index/css/optional.css" >
+
+    {if $_SESSION["night"]=="yes"}<link rel="stylesheet" href="/index/css/optional.css" >{else} <link class="fbjyfh-btms2s" rel="stylesheet" href="/index/css/user-optional.css" >{/if}
+
+<!--    黑夜模式-->
+<!--    <link class="fbjyfh-btms2s" rel="stylesheet" href="/index/css/user-optional.css" >-->
+    <link rel="stylesheet" href="/static/index/layui/css/modules/layer/default/layer.css?v=3.1.1" >
+    <script src="/index/js/jquery-2.1.4.min.js"></script>
+    <script type="text/javascript" src="/static/index/layui/lay/modules/layer.js"></script>
+    <script type="text/javascript" src="/static/public/js/lowgetmoredata.js"></script>
+
+</head>
+<style>
+    .unuseful_btn {
+        background-color:#d9dde0;
+        color:#999999;
+    }
+
+    .useful_btn {
+        background-color:#5eba89;
+        color:#ffffff;
+    }
+    .fabi-qrcs {font-size: 12px;}
+    .fabi-qrcs-whole-tow-div3{margin-bottom: 5%}
+
+</style>
+<body style="background-color: rgba(245,213,90,0.5);">
+<div class="daohang">
+    <div class="daohang-zuo">
+        <a href="javascript:void(0)" onclick="javascript:history.back(-1);">
+            <i class="iconfont icon-31fanhui1"></i>
+        </a>
+        <div class="fajy-kzq">
+            <span>{$Think.lang.fbjy_zxq}</span><span style="color: #d1a954;">{$Think.lang.fbjy_zxq}</span><i class="iconfont icon-xiangxia1"></i><i class="iconfont icon-xiangshang1" style="color: #d1a954;"></i>
+        </div>
+    </div>
+    <div class="daohang-zhong"><span class="cur_name">{$default_currency}&#8194;</span><i class="iconfont icon-huazhuan"></i></div>
+</div>
+<div class="opti-whole">
+    <div class="opti-whole-div1">
+        <div class="opti-mm">
+            <div>
+                <span onclick="change_trade_type(0)">{$Think.lang.fb_wym} &#8194;</span>
+                <span onclick="change_trade_type(1)">&#8194; {$Think.lang.fb_wym2}</span>
+            </div>
+            <div><a href="/index/User/ordes"><i class="iconfont icon-icon2"></i></a></div>
+        </div>
+        <div class="opti-bz">
+
+            <ul>
+                {volist name="currencys" id="data"}
+                <li onclick="change_symbol('{$data.Name}')" id="{$data.pid}" data-price="{$data.price}" data-name="{$data.Name}" data-money="{$data.sl}">
+                    <p>{$data.Name}</p>
+                </li>
+                {/volist}
+            </ul>
+        </div>
+        <div class="opti-list" id="sell_list">
+         <!--   <ul>
+                <li>
+                    <div class="opti-list-div1">
+                        <div><span class="opti-list-bq">萌</span><span>&#8194;萌小牛</span></div>
+                        <div><span>成单量859&#8194; </span><span> &#8194;94.46%</span></div>
+                    </div>
+                    <div class="opti-list-div2">
+                        <div class="opti-list-div2-p1">
+                            <p>单价</p>
+                            <p><span class="currency_icon">{$default_currency_icon}</span> <span>6.30</span></p>
+                            <p>数量 <span>154,663.05 <span class="symbol_name">{$default_symbol['Name']}</span></span></p>
+                            <p>限额 <span><span class="currency_icon">{$default_currency_icon}</span>40,000,00 - <span class="currency_icon">{$default_currency_icon}</span>111,170.43</span></p>
+                        </div>
+                        <div class="opti-list-div2-bott opti-list-div2-bott1">
+                            <button>购买</button>
+                        </div>
+                        <div class="opti-list-div2-p2"><p><span></span>&#8194;银行</p></div>
+                    </div>
+                </li>
+                <li>
+                    <div class="opti-list-div1">
+                        <div><span class="opti-list-bq">萌</span><span>&#8194;萌小牛</span></div>
+                        <div><span>成单量859&#8194; </span><span> &#8194;94.46%</span></div>
+                    </div>
+                    <div class="opti-list-div2">
+                        <div class="opti-list-div2-p1">
+                            <p>单价</p>
+                            <p><span class="currency_icon">{$default_currency_icon}</span> <span>6.30</span></p>
+                            <p>数量 <span>154,663.05 <span class="symbol_name">{$default_symbol['Name']}</span></span></p>
+                            <p>限额 <span><span class="currency_icon">{$default_currency_icon}</span>40,000,00 - <span class="currency_icon">{$default_currency_icon}</span>111,170.43</span></p>
+                        </div>
+                        <div class="opti-list-div2-bott opti-list-div2-bott1">
+                            <button>购买</button>
+                        </div>
+                        <div class="opti-list-div2-p2"><p><span></span>&#8194;银行</p></div>
+                    </div>
+                </li>
+                <li>
+                    <div class="opti-list-div1">
+                        <div><span class="opti-list-bq">萌</span><span>&#8194;萌小牛</span></div>
+                        <div><span>成单量859&#8194; </span><span> &#8194;94.46%</span></div>
+                    </div>
+                    <div class="opti-list-div2">
+                        <div class="opti-list-div2-p1">
+                            <p>单价</p>
+                            <p><span class="currency_icon">{$default_currency_icon}</span> <span>6.30</span></p>
+                            <p>数量 <span>154,663.05 <span class="symbol_name">{$default_symbol['Name']}</span></span></p>
+                            <p>限额 <span><span class="currency_icon">{$default_currency_icon}</span>40,000,00 - <span class="currency_icon">{$default_currency_icon}</span>111,170.43</span></p>
+                        </div>
+                        <div class="opti-list-div2-bott opti-list-div2-bott1">
+                            <button>购买</button>
+                        </div>
+                        <div class="opti-list-div2-p2"><p><span></span>&#8194;银行</p></div>
+                    </div>
+                </li>
+                <li>
+                    <div class="opti-list-div1">
+                        <div><span class="opti-list-bq">萌</span><span>&#8194;萌小牛</span></div>
+                        <div><span>成单量859&#8194; </span><span> &#8194;94.46%</span></div>
+                    </div>
+                    <div class="opti-list-div2">
+                        <div class="opti-list-div2-p1">
+                            <p>单价</p>
+                            <p><span class="currency_icon">{$default_currency_icon}</span> <span>6.30</span></p>
+                            <p>数量 <span>154,663.05 <span class="symbol_name">{$default_symbol['Name']}</span></span></p>
+                            <p>限额 <span><span class="currency_icon">{$default_currency_icon}</span>40,000,00 - <span class="currency_icon">{$default_currency_icon}</span>111,170.43</span></p>
+                        </div>
+                        <div class="opti-list-div2-bott opti-list-div2-bott1">
+                            <button>购买</button>
+                        </div>
+                        <div class="opti-list-div2-p2"><p><span></span>&#8194;银行</p></div>
+                    </div>
+                </li>
+            </ul>-->
+        </div>
+
+        <div class="opti-list" id="buy_list">
+           <!-- <ul>
+                <li>
+                    <div class="opti-list-div1">
+                        <div><span class="opti-list-bq">萌</span><span>&#8194;萌小牛</span></div>
+                        <div><span>成单量859&#8194; </span><span> &#8194;94.46%</span></div>
+                    </div>
+                    <div class="opti-list-div2">
+                        <div class="opti-list-div2-p1">
+                            <p>单价</p>
+                            <p><span class="currency_icon">{$default_currency_icon}</span> <span>6.30</span></p>
+                            <p>数量 <span>154,663.05 <span class="symbol_name">{$default_symbol['Name']}</span></span></p>
+                            <p>限额 <span><span class="currency_icon">{$default_currency_icon}</span>40,000,00 - <span class="currency_icon">{$default_currency_icon}</span>111,170.43</span></p>
+                        </div>
+                        <div class="opti-list-div2-bott opti-list-div2-bott2">
+                            <button>出售</button>
+                        </div>
+                        <div class="opti-list-div2-p2"><p><span></span>&#8194;银行</p></div>
+                    </div>
+                </li>
+                <li>
+                    <div class="opti-list-div1">
+                        <div><span class="opti-list-bq">萌</span><span>&#8194;萌小牛</span></div>
+                        <div><span>成单量859&#8194; </span><span> &#8194;94.46%</span></div>
+                    </div>
+                    <div class="opti-list-div2">
+                        <div class="opti-list-div2-p1">
+                            <p>单价</p>
+                            <p><span class="currency_icon">{$default_currency_icon}</span> <span>6.30</span></p>
+                            <p>数量 <span>154,663.05 <span class="symbol_name">{$default_symbol['Name']}</span></span></p>
+                            <p>限额 <span><span class="currency_icon">{$default_currency_icon}</span>40,000,00 - <span class="currency_icon">{$default_currency_icon}</span>111,170.43</span></p>
+                        </div>
+                        <div class="opti-list-div2-bott opti-list-div2-bott2">
+                            <button>出售</button>
+                        </div>
+                        <div class="opti-list-div2-p2"><p><span></span>&#8194;银行</p></div>
+                    </div>
+                </li>
+                <li>
+                    <div class="opti-list-div1">
+                        <div><span class="opti-list-bq">萌</span><span>&#8194;萌小牛</span></div>
+                        <div><span>成单量859&#8194; </span><span> &#8194;94.46%</span></div>
+                    </div>
+                    <div class="opti-list-div2">
+                        <div class="opti-list-div2-p1">
+                            <p>单价</p>
+                            <p><span class="currency_icon">{$default_currency_icon}</span> <span>6.30</span></p>
+                            <p>数量 <span>154,663.05 <span class="symbol_name">{$default_symbol['Name']}</span></span></p>
+                            <p>限额 <span><span class="currency_icon">{$default_currency_icon}</span>40,000,00 - <span class="currency_icon">{$default_currency_icon}</span>111,170.43</span></p>
+                        </div>
+                        <div class="opti-list-div2-bott opti-list-div2-bott2">
+                            <button>出售</button>
+                        </div>
+                        <div class="opti-list-div2-p2"><p><span></span>&#8194;银行</p></div>
+                    </div>
+                </li>
+                <li>
+                    <div class="opti-list-div1">
+                        <div><span class="opti-list-bq">萌</span><span>&#8194;萌小牛</span></div>
+                        <div><span>成单量859&#8194; </span><span> &#8194;94.46%</span></div>
+                    </div>
+                    <div class="opti-list-div2">
+                        <div class="opti-list-div2-p1">
+                            <p>单价</p>
+                            <p><span class="currency_icon">{$default_currency_icon}</span> <span>6.30</span></p>
+                            <p>数量 <span>154,663.05 <span class="symbol_name">{$default_symbol['Name']}</span></span></p>
+                            <p>限额 <span><span class="currency_icon">{$default_currency_icon}</span>40,000,00 - <span class="currency_icon">{$default_currency_icon}</span>111,170.43</span></p>
+                        </div>
+                        <div class="opti-list-div2-bott opti-list-div2-bott2">
+                            <button>出售</button>
+                        </div>
+                        <div class="opti-list-div2-p2"><p><span></span>&#8194;银行</p></div>
+                    </div>
+                </li>
+            </ul>-->
+        </div>
+    </div>
+</div>
+<div class="fbjy-xzquu">
+    <div class="fbjy-xzquu-div1">
+        <div>
+            <div class="fbjy-xzquu-div2">
+                <a href="/index/user/fbjy">
+                    <p class="fbjy-xzquu-p1">{$Think.lang.fbjy_kjq}</p>
+                    <p>{$Think.lang.fbjy_yjmmksjy}</p>
+                </a>
+            </div>
+            <div class="fbjy-xzquu-div3"></div>
+        </div>
+        <div>
+            <div class="fbjy-xzquu-div2">
+                <a href="/index/User/optional">
+                    <p class="fbjy-xzquu-p1">{$Think.lang.fbjy_zxq}</p>
+                    <p>{$Think.lang.fbjy_gdxzzyjy}</p>
+                </a>
+            </div>
+            <div class="fbjy-xzquu-div3"><i class="iconfont icon-dagou"></i></div>
+        </div>
+    </div>
+    <div></div>
+</div>
+<div class="fabi-xzfb">
+    <div class="fabi-xzfb-hode">
+        <div><a class="fabi-fh"><i class="iconfont icon-31fanhui1"></i></a></div>
+        <div class="">{$Think.lang.fbjy_xzfb}</div>
+        <div class=""></div>
+    </div>
+    <div class="fabi-xzfb-div1">
+        <span><i class="iconfont icon-chaxun"></i></span>
+        <input placeholder="{$Think.lang.fbjy_qsrfb}" id="search_curr" oninput="search_curr()">
+    </div>
+    <div class="fabi-xzfb-list">
+        {volist name="firstw" id="data"}
+
+
+        <div class="fabi-xzfb-list2 old_list">
+
+            <div class="fabi-xzfb-bt">{$data}</div>
+
+            <ul>
+                {volist name="tenderWord[$data]" id="item"}
+                <li data-name="{$item.name}" data-rate="{$item.exc_rate}" data-icon="{$item.symbol}"><span>{$item.symbol}</span><span>{$item.name}</span></li>
+                {/volist}
+            </ul>
+
+        </div>
+
+        {/volist}
+
+        <div class="fabi-xzfb-list2 new_list">
+
+
+
+        </div>
+    <!--    <div class="fabi-xzfb-list2">
+            <div class="fabi-xzfb-bt">A</div>
+            <ul>
+                <li><span>TK.</span><span>ARS</span></li>
+                <li><span>B&</span><span>ADT</span></li>
+                <li><span>A$</span><span>AMD</span></li>
+                <li><span>πU</span><span>AUD</span></li>
+            </ul>
+        </div>
+        <div class="fabi-xzfb-list2">
+            <div class="fabi-xzfb-bt">B</div>
+            <ul>
+                <li><span>TK.</span><span>BDT</span></li>
+                <li><span>B&</span><span>BDT</span></li>
+                <li><span>A$</span><span>BDT</span></li>
+                <li><span>πU</span><span>BDT</span></li>
+                <li><span>C$</span><span>BDT</span></li>
+            </ul>
+        </div>-->
+    </div>
+</div>
+<div class="purchase buy_div">
+    <div class="purchase-hoad">
+        <div><a><i class="iconfont icon-31fanhui1"></i></a></div>
+        <div>{$Think.lang.sw_gm} <span class="symbol_name">{$default_symbol['Name']}</span></div>
+    </div>
+    <div class="purchase-m-wholeqbdiv">
+        <div class="purchase-top">
+            <p>{$Think.lang.fbjy_dj} <span class="purchase-top-sp"><span class="currency_icon">{$default_currency_icon}</span>
+                <span class="one_amount"></span>
+            </span> <i class="iconfont icon-jiazai"  ></i></p>
+            <p>{$Think.lang.fbjy_zde} <span class="currency_icon">{$default_currency_icon}</span> <span id="max_buy_amount"></span> </p>
+            <p>{$Think.lang.fbjy_zdl} <span id="max_buy_num"></span><span class="symbol_name">{$default_symbol['Name']}</span> </p>
+        </div>
+     <!--   <div class="purchase-whole">-->
+<!--            <div class="purchase-whole-div1">-->
+<!--                <div class="purchase-whole-div-noe">-->
+<!--&lt;!&ndash;                    <div onclick="change_base(0)">&ndash;&gt;-->
+<!--&lt;!&ndash;                        <p>{$Think.lang.fbjy_ajegm}</p>&ndash;&gt;-->
+<!--&lt;!&ndash;                        <span></span>&ndash;&gt;-->
+<!--&lt;!&ndash;                    </div>&ndash;&gt;-->
+<!--                    <div onclick="change_base(1)">-->
+<!--                        <p>{$Think.lang.fbjy_aslgm}</p>-->
+<!--                        <span></span>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--&lt;!&ndash;                <div class="purchase-whole-div-tow">&ndash;&gt;-->
+<!--&lt;!&ndash;                    <span><span class="currency_icon">{$default_currency_icon}</span></span>&ndash;&gt;-->
+<!--&lt;!&ndash;                    <input id="buy_amount" placeholder="{$Think.lang.fbjy_qsrgmje}" oninput="get_fin_price('buy_amount')" />&ndash;&gt;-->
+<!--&lt;!&ndash;                    <span onclick="get_all('buy_amount')">{$Think.lang.ti_qb}</span>&ndash;&gt;-->
+<!--&lt;!&ndash;                </div>&ndash;&gt;-->
+<!--                <div class="purchase-whole-div-three">-->
+<!--                    <p><span>{$Think.lang.bi_sl}</span>-->
+<!--                        <span>-->
+<!--                            <span class="fin_buy_num"></span>-->
+<!--                            <span class="symbol_name">{$default_symbol['Name']}</span>-->
+<!--                        </span>-->
+<!--                    </p>-->
+<!--                    <p>-->
+<!--                        <span>{$Think.lang.fbjy_ze}</span>-->
+<!--                        <span>-->
+<!--                            <span class="fin_buy_amount"></span>-->
+<!--                            <span class="cur_name">{$default_currency}</span>-->
+<!--                        </span></p>-->
+<!--                </div>-->
+<!--                <button class="purchase-whole-div-butt buy_amount_btn">{$Think.lang.sw_gm}<span class="symbol_name">{$default_symbol['Name']}</span></button>-->
+<!--            </div>-->
+   <!--     </div>-->
+        <div class="purchase-whole">
+            <div class="purchase-whole-div1">
+                <div class="purchase-whole-div-noe">
+<!--                    <div onclick="change_base(0)">-->
+<!--                        <p>{$Think.lang.fbjy_ajegm}</p>-->
+<!--                        <span></span>-->
+<!--                    </div>-->
+                    <div onclick="change_base(1)">
+                        <p>{$Think.lang.fbjy_aslgm}</p>
+<!--                        <span></span>-->
+                    </div>
+                </div>
+                <div class="purchase-whole-div-tow">
+                    <input id="buy_num" placeholder="{$Think.lang.fbjy_qsrgmsl}" oninput="get_fin_price('buy_num')" style="width: 68%; padding-left: 2%;"/>
+                    <span style="font-size: 14px;"><span class="symbol_name">{$default_symbol['Name']}</span></span>
+                    <span onclick="get_all('buy_num')">{$Think.lang.ti_qb}</span>
+                </div>
+                <div class="purchase-whole-div-three">
+                    <p><span>{$Think.lang.bi_sl}</span>
+                        <span>
+                            <span class="fin_buy_num"></span>
+                            <span class="symbol_name">{$default_symbol['Name']}</span>
+                        </span>
+                    </p>
+                    <p><span>{$Think.lang.fbjy_ze}</span>
+                        <span>
+                             <span class="fin_buy_amount"></span>
+                            <span class="cur_name">{$default_currency}</span>
+                        </span>
+                    </p>
+                </div>
+                <button class="purchase-whole-div-butt buy_num_btn">{$Think.lang.sw_gm}<span class="symbol_name">{$default_symbol['Name']}</span></button>
+            </div>
+        </div>
+        <div class="purchase-clause">
+            <i class="iconfont icon-gantanhao" style=" color: #d1a954; font-size: 12px;"></i> {$Think.lang.fbjy_jyqqzxyd}<i class="iconfont icon-jiantou_yemian_xiangxia_o"></i>
+        </div>
+        <div class="purchase-information">
+            <p>{$Think.lang.fbjy_jyxx}</p>
+            <p><span>{$Think.lang.fbjy_fksx}</span><span>{$Think.lang.fbjy_swfz}</span></p>
+            <p><span>{$Think.lang.fbjy_mjnc}</span>
+                <span ><span id="seller_name"></span>
+                    <i class="iconfont icon-youjiantou-copy"></i></span></p>
+            <p><span>{$Think.lang.fbjy_jyfs}</span><span id="seller_payment"></span></p>
+        </div>
+        <div class="purchase-clause2">
+            <p>{$Think.lang.fbjy_jytk}</p>
+            <div>
+                {$Think.lang.fbjy_wxts}
+            </div>
+        </div>
+    </div>
+</div>
+<!--出售-->
+<div class="purchase sell_div">
+    <div class="purchase-hoad">
+        <div><a><i class="iconfont icon-31fanhui1"></i></a></div>
+        <div>{$Think.lang.fbjy_cs} <span class="symbol_name">{$default_symbol['Name']}</span></div>
+    </div>
+    <div class="purchase-m-wholeqbdiv">
+        <div class="purchase-top">
+            <p>{$Think.lang.fbjy_dj} <span class="purchase-top-sp"><span class="currency_icon">{$default_currency_icon}</span><span class="one_amount"></span></span> <i class="iconfont icon-jiazai"  ></i></p>
+            <p>{$Think.lang.fbjy_zdkm} <span class="currency_icon">{$default_currency_icon}</span><span id="max_sell_amount"></span></p>
+            <p>{$Think.lang.fbjy_zdkml} <span id="max_sell_num"></span><span class="symbol_name">{$default_symbol['Name']}</span> </p>
+        </div>
+        <div class="purchase-whole">
+            <div class="purchase-whole-div1">
+                <div class="purchase-whole-div-noe">
+<!--                    <div onclick="change_base(0)">-->
+<!--                        <p>{$Think.lang.fbjy_ajecs}</p>-->
+<!--                        <span></span>-->
+<!--                    </div>-->
+                    <div onclick="change_base(1)">
+                        <p>{$Think.lang.fbjy_aslcs}</p>
+<!--                        <span></span>-->
+                    </div>
+                </div>
+                <div class="purchase-whole-div-tow">
+                    <!--<span><span class="currency_icon">{$default_currency_icon}</span></span>-->
+
+                    <input id="sell_num" placeholder="{$Think.lang.fbjy_qsrcssl}" oninput="get_sell_fin('sell_num')" style="padding-left: 6px;" />
+                    <span onclick="get_sell_all('sell_num')">{$Think.lang.ti_qb}</span>
+                </div>
+                <p class="opti-yue">{$Think.lang.gs_ye} <span class="has_money_s"></span> <span class="symbol_name">{$default_symbol['Name']}</span> ≈ <span class="has_money_c"></span> <span class="cur_name">{$default_currency}</span></p>
+                <div class="opti--xzskfs"><a><span>{$Think.lang.fbjy_qxzskfs}</span><i class="iconfont icon-youjiantou-copy"></i></a></div>
+                <div class="purchase-whole-div-three">
+                    <p><span>{$Think.lang.bi_sl}</span><span> <span class="fin_sell_num"></span><span class="symbol_name">{$default_symbol['Name']}</span></span></p>
+                    <p><span>{$Think.lang.fbjy_ze}</span><span> <span class="fin_sell_amount"></span><span class="cur_name">{$default_currency}</span></span></p>
+                </div>
+                <button class="purchase-whole-div-butt sell_num_btn">{$Think.lang.fbjy_cs}<span class="symbol_name">{$default_symbol['Name']}</span></button>
+            </div>
+        </div>
+<!--        <div class="purchase-whole">-->
+<!--            <div class="purchase-whole-div1">-->
+<!--                <div class="purchase-whole-div-noe">-->
+<!--                    <div onclick="change_base(0)">-->
+<!--                        <p>{$Think.lang.fbjy_ajecs}</p>-->
+<!--&lt;!&ndash;                        <span></span>&ndash;&gt;-->
+<!--                    </div>-->
+<!--                    <div onclick="change_base(1)">-->
+<!--                        <p>{$Think.lang.fbjy_aslcs}</p>-->
+<!--&lt;!&ndash;                        <span></span>&ndash;&gt;-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--                <div class="purchase-whole-div-tow">-->
+<!--                    <input id="sell_num"  style="width: 68%; padding-left: 2%;"  oninput="get_sell_fin('sell_num')" placeholder="{$Think.lang.fbjy_srsl}"/>-->
+<!--                    <span style="font-size: 14px;"><span class="symbol_name">{$default_symbol['Name']}</span></span>-->
+<!--                    <span onclick="get_sell_all('sell_num')">{$Think.lang.ti_qb}</span>-->
+<!--                </div>-->
+<!--                <p class="opti-yue">{$Think.lang.gs_ye} <span class="has_money_s"></span> <span class="symbol_name">{$default_symbol['Name']}</span> ≈ <span class="has_money_c"></span> <span class="cur_name">{$default_currency}</span></p>-->
+<!--                <div class="opti&#45;&#45;xzskfs"><a><span>{$Think.lang.fbjy_qxzskfs}</span><i class="iconfont icon-youjiantou-copy"></i></a></div>-->
+<!--                <div class="purchase-whole-div-three">-->
+<!--                    <p><span>{$Think.lang.bi_sl}</span><span><span class="fin_sell_num"></span><span class="symbol_name">{$default_symbol['Name']}</span></span></p>-->
+<!--                    <p><span>{$Think.lang.fbjy_ze}</span><span><span class="fin_sell_amount"></span><span class="cur_name">{$default_currency}</span></span></p>-->
+<!--                </div>-->
+<!--                <button class="purchase-whole-div-butt sell_num_btn">{$Think.lang.fbjy_cs}<span class="symbol_name">{$default_symbol['Name']}</span></button>-->
+<!--            </div>-->
+<!--        </div>-->
+        <div class="purchase-clause">
+            <i class="iconfont icon-gantanhao" style=" color: #d1a954; font-size: 12px;"></i>{$Think.lang.fbjy_jyqqxzxyd} <i class="iconfont icon-jiantou_yemian_xiangxia_o"></i>
+        </div>
+        <div class="purchase-information">
+            <p>{$Think.lang.fbjy_jyxx}</p>
+            <p><span>{$Think.lang.fbjy_fksx}</span><span>{$Think.lang.fbjy_swfz}</span></p>
+            <p><span>{$Think.lang.fbjy_mjnc}</span><span id="buyer_name">{$Think.lang.fbjy_bxlm} <i class="iconfont icon-youjiantou-copy"></i></span></p>
+            <p><span>{$Think.lang.fbjy_jyfs}</span><span id="buyer_payment">{$Think.lang.fbjy_yhk}</span></p>
+        </div>
+        <div class="purchase-clause2">
+            <p>{$Think.lang.fbjy_jytk}</p>
+            <div>
+                {$Think.lang.fbjy_wxts}
+            </div>
+        </div>
+    </div>
+</div>
+<div class="fabi-qrcs">
+    <div class="fabi-qrcs-whole">
+        <div class="fabi-qrcs-whole-noe">
+            <div><span>{$Think.lang.fbjy_qxzskfs}</span><i class="iconfont icon-cha m-sqxzfkfs"></i></div>
+            <p class="fabi-qrcs-whole-p1">{$Think.lang.sksz_skfs}</p>
+            <div id="payment_method">
+                <div class="fabi-qrcs-whole-tow" id="2">
+                    <div>
+                        <p class="fabi-qrcs-whole-tow-p1"><span>{$Think.lang.fbjy_zfb}</span><span>￥6.20</span></p>
+                        <p class="fabi-qrcs-whole-tow-p2"><span>{$Think.lang.fbjy_djzy}</span></p>
+                    </div>
+                    <div class="fabi-qrcs-whole-tow-div2">
+                        <div></div><span>975****.com</span>
+                    </div>
+                </div>
+                <div class="fabi-qrcs-whole-tow" id="3">
+                    <div>
+                        <p class="fabi-qrcs-whole-tow-p1"><span>{$Think.lang.fbjy_wx}</span><span>￥6.20</span></p>
+                        <p class="fabi-qrcs-whole-tow-p2"><span>{$Think.lang.fbjy_djzy}</span></p>
+                    </div>
+                    <div class="fabi-qrcs-whole-tow-div2">{$Think.lang.fbjy_zwzffs}</div>
+                </div>
+                <div class="fabi-qrcs-whole-tow" id="4">
+                    <div>
+                        <p class="fabi-qrcs-whole-tow-p1"><span>{$Think.lang.fbjy_yhk}</span><span>￥6.20</span></p>
+                        <!--                    <p class="fabi-qrcs-whole-tow-p2"><span>单价最优</span></p>-->
+                    </div>
+                    <div class="fabi-qrcs-whole-tow-div2">{$Think.lang.fbjy_zwzffs}</div>
+                </div>
+            </div>
+            <div class="fabi-qrcs-whole-tow-div3">
+                <p><a href="javascript:void (0)" onclick="gopage_addpayment()">+ {$Think.lang.fbjy_tjskfs}</a></p>
+<!--                <button onclick="confirm_sell()">确认出售</button>-->
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
+<!--<script>-->
+<!--    $(".opti-zxq").hide();-->
+<!--    $(".").click(function () {-->
+
+<!--    });-->
+<!--</script>-->
+<script src="/index/js/m-fbjy.js"></script>
+<script>
+
+    // 选择收款方式
+    $(".fabi-qrcs").hide();
+    $(".opti--xzskfs").click(function () {
+        get_payment();
+       // $(".fabi-qrcs").show();
+    });
+    $(".m-sqxzfkfs").click(function () {
+        $(".fabi-qrcs").hide();
+    });
+    $(".fabi-qrcs-whole-tow").click(function () {
+        var id =$(this).attr("id");
+        var tex =$("#"+id+" .fabi-qrcs-whole-tow-p1>span").eq(0).text();
+        var tex2=$("#"+id+" .fabi-qrcs-whole-tow-div2").text();
+         if(tex2==fbjy_zwzffs){alert(fbjy_nhwtjskfs);return;}
+        console.log(tex2);
+        $(".opti--xzskfs").html('<a>'+tex+'</a>');
+        $(".fabi-qrcs").hide();
+    });
+
+
+
+
+    var page_0 = 0;
+    var page_1 = 0;
+    var trade_type = 0; // 买
+    var base_type = 1;//数量
+    var default_currency = "{$default_currency}";//默认币种
+    var default_currency_price = "{$default_currency_price}";//默认币种对美元汇率
+    var default_symbol_name = "{$default_symbol['Name']}";//默认交易对名称
+    var default_symbol_price = "{$default_symbol['price']}";//默认交易对价格
+    var default_symbol_pid = "{$default_symbol['pid']}";
+    var symbol_money = "{$default_symbol['sl']}";
+    var currency_icon = '{$default_currency_icon}';//法币图标
+
+    var oid = 0;
+
+    var shoukuan = 0;//收款方式
+
+    function change_symbol(name){
+        var a =$(this).attr("id");
+        default_symbol_price = $(this).data('price');
+
+        if(default_symbol_name !== name ){
+            default_symbol_name = name;//$(this).data('name');
+            $('#sell_list').html('');
+            $('#buy_list').html('');
+            page_0 = 0;
+            page_1 = 0;
+            getmore();
+        }
+        symbol_money = $(this).data('money');
+        $('.symbol_name').html(default_symbol_name);
+    }
+
+    //改变 买 或 卖
+    function change_trade_type(num){
+        if(trade_type !== num ){
+            $('#sell_list').html('');
+            $('#buy_list').html('');
+            page_0 = 0;
+            page_1 = 0;
+            console.log(num);
+            trade_type = num;
+            getmore();
+        }
+
+    }
+    //改变 金额 或 数量
+    function change_base(num) {
+        base_type = num;
+    }
+
+
+    //选择收款方式
+    function check_payment(id) {
+        shoukuan = id;
+
+        var tex =$("#"+id+" .fabi-qrcs-whole-tow-p1>span").eq(0).text();
+        var tex2=$("#"+id+" .fabi-qrcs-whole-tow-div2").text();
+        if(tex2==fbjy_zwzffs){layer.msg(fbjy_nhwtjskfs);return;}
+        console.log(tex2);
+        $(".opti--xzskfs").html('<a>'+tex+' - '+tex2+'</a>');
+        $(".fabi-qrcs").hide();
+    }
+
+    getmore();
+
+
+    //获取订单列表
+    function getmore(){
+
+        $.ajax({
+            url: '/index/Currencytrade/get_shevles_order',
+            type: 'post',
+            dataType: 'json',
+            data: {
+                'currency': default_currency,
+                'symbol':default_symbol_name,
+                'page': eval('page_'+trade_type),
+                'trade_type':trade_type
+            },
+            success: function (res) {
+                //console.log(res);
+                var html = '';
+                if(res.code == 1){
+
+
+
+                    if(trade_type == 0){
+                        html += '<ul>\n' ;
+                        $.each(res.list,function (index,item) {
+                            html +=
+                                '                <li>\n' +
+                                '                    <div class="opti-list-div1">\n' +
+                                '                        <div><span class="opti-list-bq">'+item.nickname_f+'</span><span>&#8194;'+item.nickname+' - <span style="color: #cccccc">'+item.user_type+'</span></span></div>\n' +
+                                '                        <div><span>'+fbjy_cdl+''+item.success_onum+'&#8194; </span><span> &#8194;'+item.success_rate+'%</span></div>\n' +
+                                '                    </div>\n' +
+                                '                    <div class="opti-list-div2">\n' +
+                                '                        <div class="opti-list-div2-p1">\n' +
+                                '                            <p>'+fbjy_dj+'</p>\n' +
+                                '                            <p>'+item.icon+' <span>'+item.one_amount+'</span></p>\n' +
+                                '                            <p>'+bi_sl+' <span>'+item.isnotdone_num+item.symbol+'</span></p>\n' +
+                                //'                            <p>限额 <span><span class="currency_icon">{$default_currency_icon}</span>40,000,00 - <span class="currency_icon">{$default_currency_icon}</span>111,170.43</span></p>\n' +
+                                '                        </div>\n' +
+                                '                        <div class="opti-list-div2-bott opti-list-div2-bott1">\n' +
+                                '                            <button onclick="buy('+item.id+')">'+sw_gm+'</button>\n' +
+                                '                        </div>\n' +
+                                '                        <div class="opti-list-div2-p2"><p><span></span>&#8194;'+item.payment_name+'</p></div>\n' +
+                                '                    </div>\n' +
+                                '                </li>'
+                        })
+                        html += '</ul>';
+                        page_0 += 1;
+                        $('#sell_list').append(html);
+                    }else{
+                        html += '<ul>\n' ;
+                        $.each(res.list,function (index,item) {
+                            html += ' <li>\n' +
+                                '                    <div class="opti-list-div1">\n' +
+                                '                        <div><span class="opti-list-bq">'+item.nickname_f+'</span><span>&#8194;'+item.nickname+' - <span style="color: #cccccc">'+item.user_type+'</span></span></div>\n' +
+                                '                        <div><span>'+fbjy_cdl+''+item.success_onum+'&#8194; </span><span> &#8194;'+item.success_rate+'%</span></div>\n' +
+                                '                    </div>\n' +
+                                '                    <div class="opti-list-div2">\n' +
+                                '                        <div class="opti-list-div2-p1">\n' +
+                                '                            <p>'+fbjy_dj+'</p>\n' +
+                                '                            <p>'+item.icon+'  <span>'+item.one_amount+'</span></p>\n' +
+                                '                            <p>'+bi_sl+' <span>'+item.isnotdone_num+item.symbol+'</span></p>\n' +
+                                //'                            <p>限额 <span><span class="currency_icon">{$default_currency_icon}</span>40,000,00 - <span class="currency_icon">{$default_currency_icon}</span>111,170.43</span></p>\n' +
+                                '                        </div>\n' +
+                                '                        <div class="opti-list-div2-bott opti-list-div2-bott2">\n' +
+                                '                            <button onclick="sell('+item.id+')">'+fbjy_cs+'</button>\n' +
+                                '                        </div>\n' +
+                                '                        <div class="opti-list-div2-p2"><p><span></span>&#8194;'+item.payment_name+'</p></div>\n' +
+                                '                    </div>\n' +
+                                '                </li>';
+                        })
+                        html += '</ul>';
+                        page_1 += 1;
+                        $('#buy_list').append(html);
+                    }
+
+                }
+
+            }
+        });
+    }
+    //单价
+    var one_amount = 0;
+    //购买
+    function buy(id){
+        oid = id;
+        $('.buy_div').show();
+        $.ajax({
+            url: '/index/Currencytrade/get_order_info',
+            type: 'post',
+            dataType: 'json',
+            data: {
+                'id':id,
+            },
+            success: function (res) {
+                if(res.code == 1){
+
+
+
+                    var data = res.data;
+                    console.log(data);
+
+                    $('#max_buy_amount').html(data.one_amount * data.isnotdone_num);
+                    $('#max_buy_num').html( data.isnotdone_num);
+                    $('#seller_name').html(data.payment_name);
+                    $('#seller_payment').html(data.payment_num);
+                    $('.one_amount').html(data.one_amount);
+
+                }
+            }
+        });
+
+    }
+    //计算最终价和最终数量
+    function get_fin_price(idname) {
+        var one_price = parseFloat($('.one_amount').eq(0).html())  ;
+        var base = parseFloat($('#'+idname).val()) ;
+        console.log(base);
+        if(idname == 'buy_num'){
+            $('.fin_'+idname).html(base);
+            $('.fin_buy_amount').html(base*one_price);
+        }else if(idname == 'buy_amount'){
+            $('.fin_'+idname).html(base);
+            var amount = base/one_price;
+            $('.fin_buy_num').html(amount.toFixed(6));
+        }
+        $('.purchase-whole-div-butt').removeClass('useful_btn');
+        $('.'+idname+'_btn').addClass('useful_btn');
+    }
+    //出售输入框
+     function  get_sell_fin(idname) {
+         var one_price = parseFloat($('.one_amount').eq(1).html())  ;
+         var base = parseFloat($('#'+idname).val()) ;
+         console.log(base);
+         if(idname == 'sell_num'){
+             $('.fin_'+idname).html(base);
+             var amount = base*one_price;
+             $('.fin_sell_amount').html(amount.toFixed(2));
+         }else if(idname == 'sell_amount'){
+             $('.fin_'+idname).html(base);
+             var amount = base/one_price;
+             $('.fin_sell_num').html(amount.toFixed(6));
+         }
+         $('.purchase-whole-div-butt').removeClass('useful_btn');
+         $('.'+idname+'_btn').addClass('useful_btn');
+     }
+    //卖
+    function sell(id){
+        oid = id;
+        $('.sell_div').show();
+        $.ajax({
+            url: '/index/Currencytrade/get_order_info',
+            type: 'post',
+            dataType: 'json',
+            data: {
+                'id':id,
+            },
+            success: function (res) {
+                if(res.code == 1){
+                    var data = res.data;
+                    console.log(data);
+                    let amount = data.one_amount * data.isnotdone_num;
+                    $('.has_money_s').html(res.has_money_s);
+                    $('.has_money_c').html(res.has_money_c);
+                    $('#max_sell_amount').html(amount.toFixed(2));
+                    $('#max_sell_num').html( data.isnotdone_num);
+                    $('#buyer_name').html(data.nickname);
+                    $('#buyer_payment').html(data.payment_name);
+                    $('.one_amount').html(data.one_amount);
+                    one_amount = data.one_amount;
+                }
+            }
+        });
+    }
+
+    //全部
+    function get_all(idname){
+        var num = $('#max_'+idname).html();
+        $('#'+idname).val(num);
+        get_fin_price(idname);
+        // $('.purchase-whole-div-butt').removeClass('useful_btn');
+        //
+        // $('.'+idname+'_btn').addClass('useful_btn');
+
+    }
+    function get_sell_all(idname){
+        var num = $('#max_'+idname).html();
+        $('#'+idname).val(num);
+        get_sell_fin(idname);
+        // $('.purchase-whole-div-butt').removeClass('useful_btn');
+        //
+        // $('.'+idname+'_btn').addClass('useful_btn');
+    }
+
+
+    //选择 法币
+    $(".fabi-xzfb-list2>ul>li").click(function () {
+        $(".icon-dagou").css("color","#ffffff");
+        //console.log('123');
+        default_currency_price = $(this).data('rate');
+        default_currency = $(this).data('name');
+        let icon = $(this).data('icon');
+        currency_icon = icon;
+        $('.currency_icon').html(icon);
+        $('.cur_name').html(default_currency);
+
+        payment = 0;
+        $('#sell_list').html('');
+        $('#buy_list').html('');
+        page_0 = 0;
+        page_1 = 0;
+        getmore();
+        $(".fabi-xzfb").css('display','none');
+    });
+    $(document).on('click','.fabi-xzfb-list2>ul>li',function () {
+        $(".icon-dagou").css("color","#ffffff");
+        //console.log('123');
+        default_currency_price = $(this).data('rate');
+        default_currency = $(this).data('name');
+        let icon = $(this).data('icon');
+        currency_icon = icon;
+        $('.currency_icon').html(icon);
+        $('.cur_name').html(default_currency);
+
+        payment = 0;
+        $('#sell_list').html('');
+        $('#buy_list').html('');
+        page_0 = 0;
+        page_1 = 0;
+        getmore();
+        $(".fabi-xzfb").css('display','none');
+    })
+
+
+    //添加收款方式
+    function gopage_addpayment() {
+        window.location.href = "/index/User/skfs?c="+default_currency+"&p="+pay_id;
+    }
+    //下单
+    $(document).on('click',".useful_btn",function(){
+        console.log(oid);
+        if(trade_type == 0){
+            if(base_type == 0){
+                var num = 0;
+                var amount = $('#buy_amount').val();
+                if(!amount){
+                    layer.msg(fbjy_qtxje);return;
+                }
+            }else{
+                var amount = 0;
+                var num = $('#buy_num').val();
+                if(!num){
+                    layer.msg(fbjy_txsl);return;
+                }
+            }
+        }else{
+            if(base_type == 0){
+                var num = 0;
+                var amount = $('#sell_amount').val();
+                if(!amount){
+                    layer.msg(fbjy_qtxje);return;
+                }
+            }else{
+                var amount = 0;
+                var num = $('#sell_num').val();
+                if(!num){
+                    layer.msg(fbjy_txsl);return;
+                }
+            }
+
+            if(shoukuan == 0){
+                layer.msg(fbjy_qxzskfs);return;
+            }
+        }
+
+
+
+
+        //
+        $.ajax({
+            url: '/index/Currencytrade/self_check_order',
+            type: 'post',
+            dataType: 'json',
+            data: {
+                'amount': amount,
+                'num': num,
+                'id': oid,
+                'payment':shoukuan
+            },
+            success: function (res) {
+                   if(res.code == 1){
+                       if(trade_type == 0){
+                           window.location.href="/index/User/qfk?id="+res.id;
+                       }else{
+                           window.location.href="/index/User/payment?id="+res.id;
+                       }
+
+
+
+
+                   }else{
+                        layer.msg(res.msg);
+                   }
+            }
+        });
+    });
+
+
+    var pay_id = 0;
+    //获取收款方式
+    function get_payment(){
+
+        $.ajax({
+            url:'/index/Currencytrade/optional_get_payment',
+            type:'post',
+            dataType:'json',
+            data:{
+                'oid':oid,
+                'currency':default_currency,
+                'symbol':default_symbol_name,
+            },
+            success:function (res) {
+                console.log(res);
+                var html = '';
+                if(res.code === 0 ){
+
+                    if(res.list){
+                        $.each(res.list ,function (index,item) {
+
+                            html +=  '<div class="fabi-qrcs-whole-tow">\n' +
+                                '                    <div>\n' +
+                                '                        <p class="fabi-qrcs-whole-tow-p1"><span>'+item.name+'</span><span>'+currency_icon+one_amount+'</span></p>\n' +
+                                '                        <p class="fabi-qrcs-whole-tow-p2"><span>'+fbjy_djzy+'</span></p>\n' +
+                                '                    </div>\n' +
+                                '                    <div class="fabi-qrcs-whole-tow-div2">\n' +
+                                '                        '+fbjy_zwzffs+'\n' +
+                                '                    </div>\n' +
+                                '                </div>\n' ;
+                        })
+
+                    }
+
+                    // html += '<div class="fabi-qrcs-whole-tow">\n' +
+                    //     '                    <div>\n' +
+                    //     '                        <p class="fabi-qrcs-whole-tow-p1"><span>支付宝</span><span>'+currency_icon+sc_price+'</span></p>\n' +
+                    //     '                        <p class="fabi-qrcs-whole-tow-p2"><span>单价最优</span></p>\n' +
+                    //     '                    </div>\n' +
+                    //     '                    <div class="fabi-qrcs-whole-tow-div2">\n' +
+                    //     '                        暂无支付方式\n' +
+                    //     '                    </div>\n' +
+                    //     '                </div>\n' +
+                    //     '                <div class="fabi-qrcs-whole-tow">\n' +
+                    //     '                    <div>\n' +
+                    //     '                        <p class="fabi-qrcs-whole-tow-p1"><span>微信</span><span>'+currency_icon+sc_price+'</span></p>\n' +
+                    //     '                        <p class="fabi-qrcs-whole-tow-p2"><span>单价最优</span></p>\n' +
+                    //     '                    </div>\n' +
+                    //     '                    <div class="fabi-qrcs-whole-tow-div2">\n' +
+                    //     '                        暂无支付方式\n' +
+                    //     '                    </div>\n' +
+                    //     '                </div>\n' +
+                    //     '                <div class="fabi-qrcs-whole-tow">\n' +
+                    //     '                    <div>\n' +
+                    //     '                        <p class="fabi-qrcs-whole-tow-p1"><span>银行卡</span><span>'+currency_icon+sc_price+'</span></p>\n' +
+                    //     '    <!--                    <p class="fabi-qrcs-whole-tow-p2"><span>单价最优</span></p>-->\n' +
+                    //     '                    </div>\n' +
+                    //     '                    <div class="fabi-qrcs-whole-tow-div2">\n' +
+                    //     '                        暂无支付方式\n' +
+                    //     '                    </div>\n' +
+                    //     '                </div>';
+                }
+                else{
+
+                    $.each(res.data,function (index,item) {
+
+                        html += '   <div class="fabi-qrcs-whole-tow" id="'+item.id+'" onclick="check_payment('+item.id+')">\n' +
+                            '                    <div>\n' +
+                            '                        <p class="fabi-qrcs-whole-tow-p1"><span>'+item.type_name+'</span><span>'+currency_icon+one_amount+'</span></p>\n' +
+                            '                        <p class="fabi-qrcs-whole-tow-p2"><span>'+fbjy_djzy+'</span></p>\n' +
+                            '                    </div>\n' +
+                            '                    <div class="fabi-qrcs-whole-tow-div2">\n' +
+                            '                       <div></div><span>'+item.account_num+'</span>\n' +
+                            '                    </div>\n' +
+                            '                </div>';
+                    })
+                }
+                pay_id = res.pay_id;
+                $('#payment_method').html(html);
+                $(".fabi-qrcs").show();
+            }
+        })
+
+
+    }
+
+    //搜索法币
+    function search_curr(){
+        var keyword = $('#search_curr').val();
+
+        if(keyword !== ''){
+            $.ajax({
+                type:"post",
+                url:"{:url('Currencytrade/search_curr')}",
+                data:{
+                    keyword:keyword,
+
+                },
+                dataType:'JSON',
+                async:false,
+                success:function(msg){
+                    if(msg.code == 1){
+                        var html = '';
+                        html += ' <div class="fabi-xzfb-bt ">'+keyword+'</div>\n' ;
+
+                        html +=    '\n' +
+                            '            <ul>\n' ;
+
+                        $.each(msg.data,function (index,item) {
+                            html +=   ' <li data-name="'+item.name+'" data-rate="'+item.huilv+'" data-icon="'+item.symbol+'"><span>'+item.symbol+'</span><span>'+item.name+'</span></li>\n' ;
+                        })
+
+                        html +=    '            </ul>';
+
+                        $('.new_list').show();
+                        $('.old_list').hide();
+                        $('.new_list').html(html);
+
+                    }else{
+                        $('.new_list').hide();
+                        $('.old_list').show();
+                        layer.msg("没有该币种的相关搜索结果！",{time:2*1000});
+
+                    }
+                },
+                error:function(){
+                    $('.new_list').hide();
+                    $('.old_list').show();
+                    layer.msg("网络出错..",{time:2*1000});
+                }
+            });
+        }else{
+            $('.new_list').hide();
+            $('.old_list').show();
+        }
+    }
+
+    // $(".useful_btn").click(function () {
+    //     var texts2 =$(".purchase-whole-div-tow>input").eq(0).val();
+    //     var texts3 =$(".purchase-whole-div-tow>input").eq(1).val();
+    //     var texts4 =$(".purchase-whole-div-tow>input").eq(2).val();
+    //     var texts5 =$(".purchase-whole-div-tow>input").eq(3).val();
+    //
+    //     //
+    //     // if (!texts2){layer.msg("输入的值不能为空");return;}
+    //     // if (texts2<=0){layer.msg("输入的值不能小于或等于0"); return;}
+    //     // if (!texts3){layer.msg("输入的值不能为空");return;}
+    //     // if (texts3<=0){layer.msg("输入的值不能小于或等于0"); return;}
+    //     // if (!texts4){layer.msg("输入的值不能为空");return;}
+    //     // if (texts4<=0){layer.msg("输入的值不能小于或等于0"); return;}
+    //     // if (!texts5){layer.msg("输入的值不能为空");return;}
+    //     // if (texts5<=0){layer.msg("输入的值不能小于或等于0"); return;}
+    //     //
+    //
+    //
+    //     window.location.href="/index/User/qfk";
+    // });
+</script>

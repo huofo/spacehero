@@ -1,0 +1,64 @@
+body{background-color: rgb(22,31,62)!important;}
+.fbjy-div1>div>span {color: rgb(153,153,153);}
+.fbjy-gmje {background-color: #16263e;}
+.fbjy-gmje2-p1 {color: #ffffff;}
+.fbjy-gmje2-div2>div {color: #dddddd;}
+.fbjy-gmje2-div {border: 1px solid #888888; background-color: inherit;}
+.currency_icon{color: #ffffff;}
+.fbjy-gmje2-div>input {color: #ffffff;}
+.fbjy-gmje {box-shadow: none;}
+.fbjy-gmje{padding: 0 0;}
+.daohang{background-color: rgb(22,31,62) !important;}
+.daohang-zuo{padding: 0 0;}
+.daohang{padding: 0 0;}
+.daohang-zuo>a>i{color: #ffffff;}
+.fajy-kzq{color: #ffffff;}
+.cur_name{color: #ffffff;}
+.fbjy-xzquu-div1 {background-color: #161f3e;}
+.fbjy-xzquu-div2>a {color: #ffffff;}
+.symbol_name{color: #ffffff;}
+.fabi-xzfb {
+    background-color: #666666;
+}
+.fabi-xzfb-bt {
+    background-color: #999999;
+}
+.fabi-xzfb-list2>ul>li>span:nth-child(1) {border-bottom: 1px solid #999999;}
+.fabi-xzfb-list2>ul>li>span:nth-child(2) {border-bottom: 1px solid #999999;}
+.icon-31fanhui1 {color: #ffffff;}
+.fabi-xzfb-hode>div:nth-child(2) {color: #ffffff;}
+.fabi-xzfb-div1 { border: 1px solid #999999; background-color: #666666;}
+.fabi-xzfb-div1>input {color: #ffffff; background-color: inherit;}
+.fabi-xzfb-div1>span>i{color: #e5e5e5;}
+.fabi-xzfb-list2>ul>li>span:nth-child(2) {color: #eeeeee;}
+.fbjy-xzbz>ul>li {background-color: #e5e5e5;}
+.fbjy-xzquu-div1>div {border-top: 1px solid #666666;}
+.fabi-xzfb {padding: 0 0!important;}
+.fabi-xzfb-hode {padding: 0 0!important;}
+.fbjy-whole{padding: 0 0!important;}
+.fabi-xzfb-list{padding: 0 0!important;}
+body, div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, code, form, fieldset, legend, input, button, textarea, p, blockquote, th, td, hr {padding: 0 0;}
+.fbjy-qrgm-div0 {background-color: #16263e;}
+.fbjy-qrgm-whole>p {color: #dddddd;}
+.fbjy-qrgm-whole-noe>div { color: #ffffff; background-color: inherit;}
+.fabi-qrcs-whole {background-color: #16263e;}
+.fabi-qrcs-whole-noe>div:nth-child(1) {color: #e5e5e5;}
+.fabi-qrcs-whole-tow { color: #eeeeee;background-color: #666666;}
+.fabi-qrcs-whole-tow-p1>span:nth-child(2) {color: #eeeeee;}
+.fabi-qrcs-whole-tow-div2 {color: #eeeeee;}
+.fabi-qrcs-whole-tow-p2>span {color: #333333;}
+.fabi-qrcs-whole-tow-div3>p>a {color: #eeeeee;}
+
+
+::-webkit-input-placeholder { /* WebKit browsers */
+    color: #e5e5e5;
+}
+:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+    color: #e5e5e5;
+}
+::-moz-placeholder { /* Mozilla Firefox 19+ */
+    color: #e5e5e5;
+}
+:-ms-input-placeholder { /* Internet Explorer 10+ */
+    color: #e5e5e5;
+}

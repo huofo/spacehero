@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0, user-scalable=no">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+    <!-- 是否启用全屏模式 -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <!-- 全屏时状态颜色设置 -->
+    <meta name="apple-mobile-web-status-bar-style" content="white">
+    <!-- 禁用电话号码自动识别 -->
+    <meta name="format-detection" content="telephone=no">
+    <!--禁止读取本地缓存模板-->
+    <meta http-equiv="Pragma" contect="no-cache">
+    <title></title>
+    {include file="alyslt" /}
+    {include file="fbjy_js" /}
+    <link rel="stylesheet" href="/index/css/optional.css" >
+    {if $_SESSION["night"]=="yes"}<link rel="stylesheet" href="/index/css/optional.css" >{else}<link rel="stylesheet" href="/index/css/user-anquan_confirmpay.css" >{/if}
+<!--    黑夜模式-->
+<!--    <link rel="stylesheet" href="/index/css/user-anquan_confirmpay.css" >-->
+    <script src="/index/js/jquery-2.1.4.min.js"></script>
+    <link rel="stylesheet" href="/static/index/layui/css/modules/layer/default/layer.css?v=3.1.1" >
+    <script type="text/javascript" src="/static/index/layui/lay/modules/layer.js"></script>
+</head>
+<body>
+<div class="ods-hode">
+    <div><a href="javascript:window.history.go(-1);"><i class="iconfont icon-31fanhui1"></i></a></div>
+    <div></div>
+    <div></div>
+</div>
+<style>
+    .aq-top{width: 92%; margin: 0 auto;}
+    .index-h2{line-height: 40px;}
+    .ap-whole{width: 92%; margin: 0 auto;}
+    .purchase-whole-div-noe>div {color: #333333;}
+    .purchase-whole-div-noe>div>span {background-color: #d1a954;}
+    .ap-whole-two{margin-top: 5%;}
+    .ap-whole-two-p1{font-size: 12px; color: #999999; line-height: 40px;}
+    .ap-whole-two-div1{ height: 40px; padding-left: 2%; border-radius: 5px; background-color: #e5e5e5;}
+    .ap-whole-two-div1>input{width: 70%; height: 100%; border: none; outline: none; float: left; background-color: inherit;}
+    .ap-whole-two-div1>span{width: 30%; height: 100%; font-size: 14px; color: #bf9435; display: block; text-align: center; line-height: 40px; float: left;}
+    .ap-whole-butt{width: 100%;line-height: 35px; border: none; margin-top: 15%; border-radius: 5px; background-color: #d4d6e3;}
+    .ap-whole-two-p2{ text-align: center; }
+    .ap-whole-two-p2>a{font-size: 12px;line-height: 30px; color: #bf9435;}
+
+
+</style>
+<div class="aq-top">
+    <h2 class="index-h2">{$Think.lang.fbjy_aqyz}</h2>
+</div>
+<div class="aq-top ap-whole">
+    <div class="purchase-whole-div-noe">
+        <div>
+            <p>{$Think.lang.fbjy_aqyz}</p>
+            <span></span>
+        </div>
+        <div>
+        </div>
+    </div>
+    <div class="ap-whole-two">
+        <p class="ap-whole-two-p1">{$Think.lang.fbjy_jfsyzmdnn} {$utel} {$Think.lang.ri_yx}</p>
+        <div class="ap-whole-two-div1"><input id="code" placeholder="{$Think.lang.fbjy_yxyzm}" /><span class="code_btn_dl" onclick="get_svgdl()">{$Think.lang.wap_wa_fs}</span></div>
+    </div>
+    <button class="ap-whole-butt">{$Think.lang.or_tj}</button>
+    <p class="ap-whole-two-p2"><a href="">{$Think.lang.fbjy_aqyzbky}?</a></p>
+</div>
+<script src="/index/js/m-fbjy.js"></script>
+<script>
+    //输入框输入事件改变按钮颜色
+    butt('.ap-whole-two-div1>input',".ap-whole-butt");
+    function get_svgdl() {
+
+
+        var url = "/index/login/sendmsm_suiji";
+        $.get(url,function(resdata){
+            layer.msg(resdata.data);
+            if(resdata.type == 1){
+                $(".code_btn_dl").attr('onclick',"return false;");
+                listion_bangdl();
+            }
+        })
+        return false;
+    }
+
+    function listion_bangdl(){
+
+        var time= 61;
+        setTime=setInterval(function(){
+            if(time<=1){
+                clearInterval(setTime);
+                $(".code_btn_dl").html("{$Think.lang.rj_zfyc}");
+                $(".code_btn_dl").attr('onclick',"return get_svgdl();");
+                return;
+            }
+            time--;
+            $(".code_btn_dl").html(time+"s");
+
+        },1000);
+    }
+
+    var id = {$id};
+    $(".ap-whole-butt").click(function () {
+        var code = $('#code').val();
+        if(!code){
+            layer.msg(fbjy_qtxyzm); return;
+        }
+        $.ajax({
+            url:'/index/Currencytrade/getmoney_comfirm',
+            type:'post',
+            dataType:'json',
+            data:{
+                'code':code,
+                'id':id
+            },
+            success:function (res) {
+                if(res.code == 1){
+                    layer.msg(fbjy_qewc);
+                    window.location.href="/index/User/fbjy";
+                }else if(res.code == 2){
+                    window.location.href="/index/User/fbjy";
+                }
+                else{
+                    layer.msg(res.msg);
+                }
+            }
+        });
+
+        //window.location.href="/index/User/fbjy";
+    });
+</script>
+</body>
+</html>

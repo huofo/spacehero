@@ -1,0 +1,326 @@
+{include file="head" /}
+
+{include file="menu" /}
+
+<!--main content start-->
+      <section id="main-content">
+          <section class="wrapper">
+              
+            
+          <div class="row">
+                  <div class="col-sm-12">
+                      <aside class="profile-info col-lg-9">
+                      <section class="panel">
+                          
+                          <div class="panel-body bio-graph-info">
+                              <h1> {$isedit?'编辑代理商':'添加代理商'}</h1>
+                              <form class="form-horizontal" role="form" action="" method="post" id="formid">
+                                  
+                                  <div class="form-group">
+                                      <label class="col-lg-2 control-label">代理商名称</label>
+                                      <div class="col-lg-6">
+                                          <input type="text" class="form-control"  value="{$username?$username:''}" name="username" {if isset($isedit) && $isedit == 1} disabled="true"  {/if}>（登录账号）
+                                      </div>
+                                  </div>
+                 {if $_SESSION['otype'] == 3}
+                <div class="form-group">
+                                      <label class="col-lg-2 control-label">账户等级</label>
+                                      <div class="col-lg-6">
+                                          <select name="level" class="selectpicker show-tick form-control">
+                                          <option {if isset($level) && $level == 'level_zero'} selected="selected" {/if} value="level_zero">普通账户</option>
+                                          	  <option {if isset($level) && $level == 'level_one'} selected="selected" {/if} value="level_one">标准账户</option>
+                                          	  <option {if isset($level) && $level == 'level_two'} selected="selected" {/if} value="level_two">白银账户</option>
+                                              <option {if isset($level) && $level == 'level_three'} selected="selected" {/if} value="level_three">黄金账户</option>
+                                          	  <option {if isset($level) && $level == 'level_four'} selected="selected" {/if} value="level_four">钻石账户</option>
+                                          </select>
+                                      </div>
+                                  </div>
+                                  
+                                   <div class="form-group">
+                                      <label class="col-lg-2 control-label">类型</label>
+                                      <div class="col-lg-6">
+                                          <select name="user_type" class="selectpicker show-tick form-control">
+                                              <option {if isset($user_type) && $user_type == '0'} selected="selected" {/if} value="0">卡商</option>
+                                              <option {if isset($user_type) && $user_type == '1'} selected="selected" {/if} value="1">承兑商</option>
+
+                                          </select>
+                                      </div>
+                                  </div>
+                                  
+                {/if}
+                
+                
+                                {if isset($isedit) && $isedit == 1}
+                                  <div class="form-group">
+                                      <label class="col-lg-2 control-label">状态</label>
+                                      <div class="col-lg-6">
+                                          <select name="ustatus" class="selectpicker show-tick form-control">
+                                              <option {if isset($ustatus) && $ustatus == 0} selected="selected" {/if} value="1">正常</option>
+                                              <option {if isset($ustatus) && $ustatus == 1} selected="selected" {/if} value="2">冻结</option>
+                                          </select>
+                                      </div>
+                                  </div>
+                                {/if}
+                                
+                                
+                                
+                                  
+                                  
+                                  {if isset($isedit) && $isedit == 1}
+                                  
+                                  <div class="form-group" style="display:none">
+                                      <label class="col-lg-2 control-label">余额</label>
+                                      <div class="col-lg-6">
+                                          {if $_SESSION['otype'] == 3}
+                                          <input type="text" class="form-control"  value="{$usermoney?$usermoney:'0'}" name="usermoney" {if isset($isedit) && $isedit != 1} disabled="true"  {/if}>
+                                          {else/}
+                                            <p class="form-control" disabled="true">{$usermoney?$usermoney:'0'}</p>
+                                          {/if}
+                                      </div>
+                                  </div>
+                                  {else/}
+                                  
+                                  
+                                  {/if}
+                                  
+
+                                  <div class="form-group">
+                                      <label class="col-lg-2 control-label">邮箱</label>
+                                      <div class="col-lg-6">
+                                          <input type="text" class="form-control"  value="{$utel?$utel:''}" name="utel">
+                                      </div>
+                                  </div>
+
+                                  <div class="form-group">
+                                      <label class="col-lg-2 control-label">真实姓名</label>
+                                      <div class="col-lg-6">
+                                          <input type="text" class="form-control"  value="{$nickname?$nickname:''}" name="nickname">
+                                      </div>
+                                  </div>
+
+                                  <div class="form-group">
+                                      <label class="col-lg-2 control-label">专属商户ID</label>
+                                      <div class="col-lg-6">
+                                          <input type="text" class="form-control"  value="{$customer_id?$customer_id:''}" name="customer_id">
+                                          多个商户用“|”分隔，例：2022|2023
+                                      </div>
+                                  </div>
+
+                                  <div class="form-group">
+                                      <label class="col-lg-2 control-label">代付专属商户ID</label>
+                                      <div class="col-lg-6">
+                                          <input type="text" class="form-control"  value="{$customer_daifu?$customer_daifu:''}" name="customer_daifu">
+                                          多个商户用“|”分隔，例：2022|2023
+                                      </div>
+                                  </div>
+                                  
+                                  {if $otype == 101}
+                                 
+                                 	{if $channelfk ==1}
+
+                                  <div class="form-group"  >
+                                      <label class="col-lg-2 control-label">概率（%）</label>
+                                      <div class="col-lg-6">
+                                          <input type="text"  onkeyup="this.value=this.value.replace(/[^0-9]/g,'')" onafterpaste="this.value=this.value.replace(/[^0-9]/g,'')"  class="form-control"  value="{$chance?$chance:'0'}" name="chance"  {if !isset($uid) || $_SESSION['userid'] != $uid} name="rebate" {else} disabled="true" {/if}>
+                                      </div>
+                                  </div>
+
+
+                               
+                                    {/if}
+                                 	
+                                 {/if}
+                                  
+                                     {if $_SESSION['otype'] == 3}
+                                    <div class="form-group">
+                                      <label class="col-lg-2 control-label">概率（%）</label>
+                                      <div class="col-lg-6">
+                                          <input type="text"  onkeyup="this.value=this.value.replace(/[^0-9]/g,'')" onafterpaste="this.value=this.value.replace(/[^0-9]/g,'')"  class="form-control"  value="{$chance?$chance:'0'}" name="chance">
+                                      </div>
+                                  </div>
+                                  
+                                  <div class="form-group">
+                                      <label class="col-lg-2 control-label">合约点差</label>
+                                      <div class="col-lg-6">
+                                          <input type="text"    class="form-control"  value="{$income_range?$income_range:'0,0'}" name="income_range">格式为 涨点差,跌点差，例：5,5，(前一个数是涨点差,后一个数为跌点差)只能是两个，且必须用英文逗号字符。不设置可以填0,0  请严格按照格式填写。
+                                      </div>
+                                  </div>
+                                  {/if}
+                                  
+
+                                  <div class="form-group" style="display:none">
+                                      <label class="col-lg-2 control-label">红利比例（%）</label>
+                                      <div class="col-lg-6">
+                                          <input type="text" class="form-control"   value="{$rebate?$rebate:''}" {if !isset($uid) || $_SESSION['userid'] != $uid} name="rebate" {else} disabled="true" {/if}>
+                                          
+                                      </div>
+                                  </div>
+                                  <div class="form-group"  style="display:none" >
+                                      <label class="col-lg-2 control-label">佣金比例（%）</label>
+                                      <div class="col-lg-6">
+                                          <input type="text" class="form-control"  value="{$feerebate?$feerebate:''}" {if !isset($uid) || $_SESSION['userid'] != $uid} name="feerebate" {else} disabled="true" {/if}>
+                                          
+                                      </div>
+                                  </div>
+                                  
+                                 <div class="form-group" style="display:none">
+                                      <label class="col-lg-2 control-label">保证金</label>
+                                      <div class="col-lg-6">
+                                          <input type="text" class="form-control"  value="{$minprice?$minprice:''}" name="minprice">
+                                          <div class="alert alert-block alert-danger fade in" style="margin:10px 0 0 0 ">
+                                         <strong>说明：</strong> 大于此保证金才可以提现。
+                                    </div>
+                                      </div>
+                                  </div>
+
+                {if isset($isedit) && $isedit == 1}
+                
+                <div class="form-group">
+                                      <label class="col-lg-2 control-label">身份证号</label>
+                                      <div class="col-lg-6">
+                                          <input type="text" class="form-control"  value="{$id_card?$id_card:''}"  name="id_card">
+                                      </div>
+                                  </div>
+                                  
+                                  {if isset($zm_img) && $zm_img != ''}
+                                  <div class="form-group">
+                                      <label class="col-lg-2 control-label">身份证正面</label>
+                                      <div class="col-lg-6">
+                                      
+                                          <img src="{$zm_img?$zm_img:''}" style="height:100px">
+                                      
+                                      </div>
+                                  </div>
+                                   {/if}
+                                     {if isset($fm_img) && $fm_img != ''}
+                                  <div class="form-group">
+                                      <label class="col-lg-2 control-label">身份证反面</label>
+                                      <div class="col-lg-6">
+                                        
+                                          <img src="{$fm_img?$fm_img:''}"  style="height:100px">
+                                          
+                                      </div>
+                                  </div>
+                 {/if}
+                
+                <div class="form-group" style="display:none">
+                                      <label class="col-lg-2 control-label">旧密码</label>
+                                      <div class="col-lg-6">
+                                          <input type="text" class="form-control"  value="" name="ordpwd">
+                                      </div>
+                                  </div>
+                                  <input type="hidden" class="form-control"  value="{$uid?$uid:''}" name="uid">
+                {else/}
+                <input type="hidden" class="form-control"  value="" name="ordpwd">
+                {/if}
+                                  <div class="form-group">
+                                      <label class="col-lg-2 control-label">密码</label>
+                                      <div class="col-lg-6">
+                                          <input type="text" class="form-control"  value="" name="upwd">
+                                      </div>
+                                  </div>
+
+                                  <div class="form-group">
+                                      <label class="col-lg-2 control-label">确认密码</label>
+                                      <div class="col-lg-6">
+                                          <input type="text" class="form-control"  value="" name="upwd2">
+                                      </div>
+                                  </div>
+                                  
+                <div class="form-group" >
+                        			<label class="control-label col-xs-2">实名认证</label>
+                        			<div class="col-md-4">
+                        
+                        				<label><input name="smsh_state" type="radio" value="0" {if isset($smsh_state) && $smsh_state eq 0} checked {/if} />待审核 </label>
+                        				<label><input name="smsh_state" type="radio" value="1" {if isset($smsh_state) && $smsh_state eq 1} checked {/if}/>审核中 </label>
+                        				<label><input name="smsh_state" type="radio" value="2" {if isset($smsh_state) && $smsh_state eq 2} checked {/if}/>审核通过 </label>
+                        				<label><input name="smsh_state" type="radio" value="3" {if isset($smsh_state) && $smsh_state eq 3} checked {/if}/>审核不通过 </label>
+                        
+                        
+                        			</div>
+                        		</div>
+                                  
+                                  
+                                  
+                                  
+
+                                  <div class="form-group">
+                                      <div class="col-lg-offset-2 col-lg-10">
+                                          <button type="submit" class="btn btn-success" onclick="return edituser(this.form)" >提交</button>
+                                          
+                                      </div>
+                                  </div>
+                              </form>
+                          </div>
+                      </section>
+                      
+                  </aside>
+                  </div>
+
+          </div>       
+          
+          
+             
+
+          </section>
+      </section>
+      <!--main content end-->
+  </section>
+
+{include file="foot" /}
+<script>
+var c_otype = '';
+var type = "{$isedit}";
+
+$('.selectotype').change(function(argument) {
+  c_otype = $(this).val();
+  if(c_otype == 4){
+    $('.choosejl').show();
+  }else{
+    $('.choosejl').hide();
+  }
+});
+  function edituser(form){
+    
+    var utel = form.utel.value;
+    var nickname = form.nickname.value;
+    var username = form.username.value;
+    var upwd = form.upwd.value;
+    var upwd2 = form.upwd2.value;
+    // var adminpwd = form.adminpwd.value;
+    var ordpwd = form.ordpwd.value;
+    // var otype = form.otype.value;
+    // var oid = form.oid.value;
+
+    
+    if(!username){layer.msg('请输入用户名'); return false;}
+    
+    if(type == 0){
+      var formurl = "{:Url('user/vipuseradd')}";
+      if(!utel){layer.msg('请输入邮箱'); return false;}
+    }else{
+      var formurl = "{:Url('user/vipuseredit')}";
+    }
+
+    if(!nickname){layer.msg('请输入真实姓名'); return false;}
+    
+    if(type == 0 || (type == 1 && ordpwd)){ 
+      if(!upwd){layer.msg('请输入密码'); return false;}
+      if(upwd.length < 6){layer.msg('密码长度大于6位'); return false;}
+      if(!upwd2){layer.msg('请再输入密码'); return false;}
+      if(upwd !== upwd2){layer.msg('两次输入密码不同'); return false;}
+    }
+    
+
+      
+      var data = $('#formid').serialize();
+      var locurl = "{:Url('user/userlist')}";
+
+      WPpost(formurl,data,locurl);
+
+      return false;
+  }
+
+
+
+</script>

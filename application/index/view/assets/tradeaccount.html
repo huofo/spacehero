@@ -1,0 +1,143 @@
+﻿<html style="font-size: 120px;">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+<!-- 是否启用全屏模式 -->
+<meta name="apple-mobile-web-app-capable" content="yes">
+<!-- 全屏时状态颜色设置 -->
+<meta name="apple-mobile-web-status-bar-style" content="white">
+<!-- 禁用电话号码自动识别 -->
+<meta name="format-detection" content="telephone=no">
+<!--禁止读取本地缓存模板-->
+<meta http-equiv="Pragma" contect="no-cache">
+<script type="text/javascript">
+window.onload=function(){
+//设置适配rem
+var change_rem = ((window.screen.width > 450) ? 450 : window.screen.width)/375*100;
+document.getElementsByTagName("html")[0].style.fontSize=change_rem+"px";
+window.onresize = function(){
+    change_rem = ((window.screen.width > 450) ? 450 : window.screen.width)/375*100;
+    document.getElementsByTagName("html")[0].style.fontSize=change_rem+"px";
+}
+}
+</script>
+<title>{$zhlx}</title>
+<link href="/index/css/index_for.css" rel="stylesheet" type="text/css">
+<script type="text/javascript" src="__HOME__/js/jquery-3.2.1.min.js"></script>
+<script type="text/javascript" src="__HOME__/js/lk/user.js"></script>
+<link rel="stylesheet" href="/index/iconfont/iconfont.css">
+    <!--        夜间白天切换的文件-->
+    {if $_SESSION["night"]=="yes"}<link rel="stylesheet" href="/index/css/assets-tradeaccount.css" >{/if}
+<script type="text/javascript" src="/index/iconfont/iconfont.js"></script>
+<style>
+    body{background: #102030;}
+    .bar-stable{width: 100%; height: 40px; position: fixed;top: 0;left: 0;z-index: 3;}
+    .bottom-nav ul li{float: left;text-align: center;height: 0.5rem;padding: 1% 0 0;}
+    .headerbar .header-item{color: #fff; background-color: #102030; }
+    .bar-header .close{color: #fff;}
+    .alcenter>li>span{color: #9fbedc;}
+</style>
+</head>
+
+<body id="heyuezhanghu">
+    <ion-nav-bar class="bar-stable headerbar nav-bar-container" nav-bar-transition="ios" nav-bar-direction="swap" nav-swipe="">
+        <div class="nav-bar-block" nav-bar="active">
+            <ion-header-bar class="bar-stable headerbar bar bar-header" align-title="center">
+                <div class="title title-center header-item" style="transition-duration: 0ms; transform: translate3d(0px, 0px, 0px);">{$zhlx}</div>
+                <a class="close" href="javascript:void(0)" onclick="javascript:history.back(-1);">
+                    <i class="iconfont icon-back_icon"></i>
+                </a>
+            </ion-header-bar>
+        </div>
+    </ion-nav-bar>
+
+    <div style="width: 100%;height: 40px"></div>
+
+    <div class="pd85 bgWhite">
+        <div class="ggbox plr15">
+            <div class="gtop flex between alcenter">
+                <div class="title ft20 bold blue">{$account.cp}</div>
+            </div>
+            <ul class="flex titlebox mt10 white_gray ft12 bgWhite">
+                <li>{$Think.lang.bii_ky}</li>
+                <li>{$Think.lang.bii_dj}</li>
+                <li class="tr">{$Think.lang.bii_dj}($)</li>
+            </ul>
+            <ul class="listbox ft12 bgWhite">
+                <li class="flex alcenter">
+                    <span class="balance-num">{$account.sl}</span>
+                    <span class="lock-num">{$account.dj}</span>
+                    <span class="tr cny-num">{$account.rmb}</span>
+                </li>
+            </ul>
+        </div>
+
+        <div class="mtrasxfgx" style="height:10px;background:#102030;margin:20px 0"></div>
+
+        <div class="apply plr15 mb20 bgWhite">
+            <div class="flex between alcenter">
+                <p class="ft20 bold">{$Think.lang.tt_cwjl}</p>
+            </div>
+            <div class="recordnone tc flex alcenter hide">
+                <div style="width:100%">
+                    <img src="/index/images/zcico_anonymous.png">
+                    <p>{$Think.lang.tt_zwjl}</p>
+                </div>
+            </div>
+            <div class="record_ul_box">
+                <div class="record_li flex mt10 alcenter  ft14 plr20">
+                    <span class="flex1 tl bold">{$Think.lang.bi_sl}</span>
+                    <span class="flex1 tc bold">{$Think.lang.tt_jl}</span>
+                    <span class="flex1 tr bold">{$Think.lang.le_sj}</span>
+                </div>
+                <div class="ul_list_box">
+                    <ul class="record_ul colorGrey">
+                        
+                         {volist name="log" id="vo"  key="k"}
+                        <li class="record_li flex alcentercolor1 ft12">
+                            <span class="flex1 tl">{$vo.sl}</span>
+                            <span class="flex1 tl">{$vo.remark}</span>
+                            <span class="flex1 tr">{$vo.shijian}</span>
+                        </li>
+                        {/volist}
+                        
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="btbox wl_flex wl_align_center wl_justify-content" style="text-align: center;">
+            <a class="huazhuan" href="{:url('assets/huazhuan',array('name'=>$account.cp,'qb'=>$qblx))}">
+                <div class="iconbox flex alcenter">
+                    <img src="/index/images/newico/nico_zhhz.png" />
+                </div>
+
+                <p class="mt5 ">{$Think.lang.tt_hz}</p>
+            </a>
+            
+            {if $qblx eq 1 && in_array($cp,array('BTC','USDT','ETH'))}
+            <a class="huazhuan"  href="{:url('assets/chongbi',array('name'=>$account.cp))}">
+                <div class="iconbox flex alcenter">
+                    <img src="/index/images/newico/nico_zhcz.png" />
+                </div>
+
+                <p class="mt5 ">{$Think.lang.tt_cb}</p>
+            </a>
+            {/if}
+
+
+             {if $qblx eq 1 && !in_array($cp,array('AGC'))}
+            <a class="huazhuan" href="{:url('assets/tibi',array('name'=>$account.cp))}">
+                <div class="iconbox flex alcenter">
+                    <img src="/index/images/newico/nico_zhtx.png" />
+                </div>
+
+                <p class="mt5 ">{$Think.lang.tt_tb}</p>
+            </a>
+            
+             {/if}
+        </div>
+    </div>
+
+
+</body>
+</html>

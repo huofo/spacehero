@@ -1,0 +1,20 @@
+body{background-color: #000000!important;}
+.bi-two {background-color: #16263e;}
+.bi-two>div {color: #FFFFFF;}
+.bi-content {background-color: #16263e;}
+.bi-shujv {background-color: #16263e;}
+.bi-shujv-top>p {color: #FFFFFF;}
+.bi-shujv-top>div>div {color: #FFFFFF;}
+.bi-shujv-jilvl>ul>li>div {color: #FFFFFF;}
+.bi-shujv-jilvl>ul>li {border-bottom: 1px solid #000033;}
+.zjhz-div1 {color: #FFFFFF;}
+.zjhz-div1>div>select {color: #FFFFFF; border: 1px solid #FFFFFF;}
+.zjhz-div1>div>select>option {background-color: #000033;}
+.zjhz-div2>span {color: #FFFFFF;}
+.zjhz-div2>select {color: #FFFFFF; border: 1px solid #FFFFFF;}
+.zjhz-div2>select>option{background-color: #000033;}
+.zjhz-div3 {color: #FFFFFF;}
+.zjhz-div4>input { color: #FFFFFF;  border: 1px solid #FFFFFF;}
+.zjhz-div5 {color: #FFFFFF;}
+.bi-content>a>div {color: #9ca9b5;}
+.zjhz-div1>a>span{color: #FFFFFF!important;}

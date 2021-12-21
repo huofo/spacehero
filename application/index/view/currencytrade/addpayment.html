@@ -1,0 +1,174 @@
+﻿<html style="font-size: 120px;">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+    <!-- 是否启用全屏模式 -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <!-- 全屏时状态颜色设置 -->
+    <meta name="apple-mobile-web-status-bar-style" content="white">
+    <!-- 禁用电话号码自动识别 -->
+    <meta name="format-detection" content="telephone=no">
+    <!--禁止读取本地缓存模板-->
+    <meta http-equiv="Pragma" contect="no-cache">
+    <script type="text/javascript">
+        window.onload=function(){
+//设置适配rem
+            var change_rem = ((window.screen.width > 450) ? 450 : window.screen.width)/375*100;
+            document.getElementsByTagName("html")[0].style.fontSize=change_rem+"px";
+            window.onresize = function(){
+                change_rem = ((window.screen.width > 450) ? 450 : window.screen.width)/375*100;
+                document.getElementsByTagName("html")[0].style.fontSize=change_rem+"px";
+            }
+        }
+    </script>
+    <title>
+    </title>
+    <link href="/static/index/css/pay1.css" rel="stylesheet" media="screen">
+    <link rel="stylesheet" href="/index/iconfont/font_fpk8hw6pfut/iconfont.css" >
+    <link rel="stylesheet" href="/index/iconfont/font_pcmjuj5uup/iconfont.css" >
+    <link rel="stylesheet" href="/index/css/optional.css" >
+
+    {include file="alyslt" /}
+    <!--        夜间白天切换的文件-->
+    {if $_SESSION["night"]=="yes"}<link href="/index/css/fbjy.css" rel="stylesheet" >{/if}
+    <script type="text/javascript" src="/static/index/js/jquery-3.2.1.min.js"></script>
+    <script type="text/javascript" src="/static/index/js/lk/user.js"></script>
+    <script type="text/javascript" src="/static/index/layui/lay/modules/layer.js"></script>
+
+</head>
+<body style="background: #fbfbfb">
+
+<div class="fabi-xzfb">
+    <div class="fabi-xzfb-hode">
+        <div><a class="fabi-fh"><i class="iconfont icon-31fanhui1"></i></a></div>
+        <div class="">{$Think.lang.fbjy_xzfb}</div>
+        <div class=""></div>
+    </div>
+    <div class="fabi-xzfb-div1">
+        <span><i class="iconfont icon-chaxun"></i></span>
+        <input placeholder="{$Think.lang.fbjy_xzfb}" id="search_curr" oninput="search_curr()">
+    </div>
+    <div class="fabi-xzfb-list">
+        {volist name="firstw" id="data"}
+
+
+        <div class="fabi-xzfb-list2 old_list">
+
+            <div class="fabi-xzfb-bt">{$data}</div>
+
+            <ul>
+                {volist name="tenderWord[$data]" id="item"}
+                <li data-name="{$item.name}" data-rate="{$item.exc_rate}" data-icon="{$item.symbol}"><span>{$item.symbol}</span><span>{$item.name}</span></li>
+                {/volist}
+            </ul>
+
+        </div>
+
+        {/volist}
+        <div class="fabi-xzfb-list2 new_list">
+
+
+
+        </div>
+    </div>
+</div>
+
+<script>
+
+
+
+
+
+
+    function gopage_addpayment() {
+
+    }
+
+
+
+    function search_curr(){
+        var keyword = $('#search_curr').val();
+
+        if(keyword !== ''){
+            $.ajax({
+                type:"post",
+                url:"{:url('Currencytrade/search_curr')}",
+                data:{
+                    keyword:keyword,
+
+                },
+                dataType:'JSON',
+                async:false,
+                success:function(msg){
+                    if(msg.code == 1){
+                        var html = '';
+                        html += ' <div class="fabi-xzfb-bt ">'+keyword+'</div>\n' ;
+
+                        html +=    '\n' +
+                            '            <ul>\n' ;
+
+                            $.each(msg.data,function (index,item) {
+                                html +=   ' <li data-name="'+item.name+'" data-rate="'+item.huilv+'" data-icon="'+item.symbol+'"><span>'+item.symbol+'</span><span>'+item.name+'</span></li>\n' ;
+                            })
+
+                        html +=    '            </ul>';
+
+                        $('.new_list').show();
+                        $('.old_list').hide();
+                        $('.new_list').html(html);
+
+                    }else{
+                        $('.new_list').hide();
+                        $('.old_list').show();
+                        layer.msg("没有该币种的相关搜索结果！",{time:2*1000});
+
+                    }
+                },
+                error:function(){
+                    $('.new_list').hide();
+                    $('.old_list').show();
+                    layer.msg("网络出错..",{time:2*1000});
+                }
+            });
+        }else{
+            $('.new_list').hide();
+            $('.old_list').show();
+        }
+    }
+
+
+
+
+
+
+    $(".fabi-fh").click(function () {
+       history.go(-1);
+    });
+    //选择 法币
+    $(".fabi-xzfb-list2>ul>li").click(function () {
+        //$(".icon-dagou").css("color","#ffffff");
+        //console.log('123');
+        // default_currency_price = $(this).data('rate');
+        var default_currency = $(this).data('name');
+        window.location.href = "/index/User/skfs?c="+default_currency;
+        // let icon = $(this).data('icon');
+        // currency_icon = icon;
+        // $('.currency_icon').html(icon);
+        // $('.cur_name').html(default_currency);
+        // get_sc_price();
+        // payment = 0;
+       // $(".fabi-xzfb").css('display','none');
+    });
+
+    $(document).on('click','.fabi-xzfb-list2>ul>li',function () {
+        var default_currency = $(this).data('name');
+        window.location.href = "/index/User/skfs?c="+default_currency;
+    })
+
+
+
+
+
+</script>
+</body>
+</html>

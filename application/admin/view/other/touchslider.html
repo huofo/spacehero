@@ -1,0 +1,262 @@
+{include file="head" /}
+<style type="text/css">
+  #mask{
+    position: fixed;
+    z-index: 100;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+    display: none;
+  }
+  .hidden{
+    display: none;
+  }
+  .form-group{
+    padding-bottom: 15px;
+    border-bottom: 2px solid #000;
+  }
+  .form-box{
+    width: 30%;
+    float: left;
+    border: 1px solid red;
+    margin-left:1%; 
+    margin-bottom: 10px;
+    position: relative;
+  }
+  .col-lg-8 .picture{
+    display: block;
+    width: 100%;
+    cursor: pointer;
+    padding: 5px;
+    height: 150px;
+  }
+  .form-box .deluploads{
+    position: absolute;
+    z-index: 90;
+    top: 0;
+    right: 0;
+    width: 20px;
+    height: 20px;
+    margin: auto;
+    cursor: pointer;
+    display: none;
+  }
+</style>
+{include file="menu" /}
+<div id="mask"></div>
+  <section id="main-content">
+    <section class="wrapper">
+      <div class="row">
+        <div class="col-sm-12">
+          <aside class="profile-info col-lg-10">
+            <section class="panel">
+              <div class="panel-body bio-graph-info">
+                <h1>添加广告</h1>
+                <form class="form-horizontal" role="form" id="formid" method="post"  enctype="multipart/form-data">
+                  <div class="form-group">
+                    <label class="col-lg-2 control-label">首页轮播广告</label>
+                    <div class="col-lg-8">
+                      {if !empty($autlist)}
+                      <!-- {volist name="autlist" id="vo"} -->
+                      <div class="form-box">
+                        <img src="/static/admin/img/error.png" onclick="deleteIMG($(this),{$vo.id?$vo.id:''})" class="deluploads" />
+                        <img src="{$vo.picture}" onclick="$(this).next().click()" class="picture" />
+                        <input class="hidden" type="file" ak="{$vo.id?$vo.id:''}" name="automatic">
+                      </div>
+                      <!-- {/volist} -->
+                      <div class="form-box">
+                        <img src="/static/admin/img/uploads.png" onclick="$(this).next().click()" class="picture" />
+                        <input class="hidden" type="file" ak="" name="automatic">
+                      </div>
+                      {else/}
+                      <div class="form-box">
+                        <img src="/static/admin/img/uploads.png" onclick="$(this).next().click()" class="picture" />
+                        <input class="hidden" type="file" ak="{$vo.id?$vo.id:''}" name="automatic">
+                      </div>
+                      {/if}
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label class="col-lg-2 control-label">优惠活动广告</label>
+                    <div class="col-lg-8">
+                      {if !empty($actlist)}
+                      <!-- {volist name="actlist" id="vo"} -->
+                      <div class="form-box">
+                        <img src="/static/admin/img/error.png" onclick="deleteIMG($(this),{$vo.id?$vo.id:''})" class="deluploads" />
+                        <img src="{$vo.picture}" onclick="$(this).next().click()" class="picture" />
+                        <input class="hidden" type="file" ak="{$vo.id?$vo.id:''}" name="activity">
+                      </div>
+                      <!-- {/volist} -->
+                      <div class="form-box">
+                        <img src="/static/admin/img/uploads.png" onclick="$(this).next().click()" class="picture" />
+                        <input class="hidden" type="file" ak="" name="activity">
+                      </div>
+                      {else/}
+                      <div class="form-box">
+                        <img src="/static/admin/img/uploads.png" onclick="$(this).next().click()" class="picture" />
+                        <input class="hidden" type="file" ak="{$vo.id?$vo.id:''}" name="activity">
+                      </div>
+                      {/if}
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label class="col-lg-2 control-label">固定动图广告</label>
+                    <div class="col-lg-8" style="width: 20%;border: 1px solid red;">
+                      <img src="{$fixinfo.picture?$fixinfo.picture:'/static/admin/img/uploads.png'}" onclick="$(this).next().click()" class="picture" />
+                      <input class="hidden" type="file" name="fixedpic" id="fixedpic">
+                    </div>
+                  </div>
+                </form>
+              </div>
+            </section>
+          </aside>
+        </div>
+      </div>
+    </section>
+  </section>
+</section>
+{include file="foot" /}
+<script type="text/javascript">
+  $(function(){
+    $(document).on('change',"#fixedpic",function(){
+      var file=this.files;
+      var windowURL = window.URL || window.webkitURL;
+      var dataURL;
+      if(file && file.length>0){
+        var obj = $(this);
+        var picname = obj.attr('name');
+        dataURL = windowURL.createObjectURL(file[0]);
+        var fd = new FormData();
+        fd.append(picname,obj.get(0).files[0]);
+        $.ajax({
+          url:"{:url('admin/other/pictureajax')}",
+          type:'post',
+          data: fd,
+          contentType: false,
+          processData: false,
+          beforeSend:function(){
+            layer.msg("请稍后...",{time:2*1000});
+            $('#mask').css({'display':'block'});
+          },
+          success:function(data){
+            data = eval("("+data+")");
+            if(data.state == 'error'){
+              layer.msg(data.tips,{time:2*1000});
+            }
+            if(data.state == 'success'){
+              obj.prev().attr('src',dataURL);
+              obj.next().val(data.pic);
+            }
+          },
+          complete:function(){
+              $('#mask').css({'display':'none'});
+          },
+          error:function(){
+              layer.msg("网络繁忙...",{time:2*1000});
+          }
+        });
+      }
+    });
+  });
+
+  $(function(){
+    $(document).on('change',".form-box input[type='file']",function(){
+      var file=this.files;
+      var windowURL = window.URL || window.webkitURL;
+      var dataURL;
+      if(file && file.length>0){
+        var obj = $(this);
+        dataURL = windowURL.createObjectURL(file[0]);
+        var fd = new FormData();
+          fd.append(obj.attr('name'),obj.get(0).files[0]);
+        if(obj.attr('ak') != undefined){
+          fd.append("id",obj.attr('ak'));
+        }
+        $.ajax({
+          url:"{:url('admin/other/pictureajax')}",
+          type:'post',
+          data: fd,
+          contentType: false,
+          processData: false,
+          beforeSend: function(){
+            layer.msg("请稍后...",{time:2*1000});
+            $('#mask').css({'display':'block'});
+          },
+          success:function(data){
+            data = eval("("+data+")");
+            if(data.state == 'error'){
+              layer.msg(data.tips,{time:2*1000});
+            }
+            if(data.state == 'success'){
+              obj.prev().attr('src',dataURL);
+              layer.msg(data.tips,{time:2*1000});
+              if(data.name == 'automatic' && data.con == 'in'){
+                obj.parent().append('<img src="/static/admin/img/error.png" onclick="deleteIMG($(this),'+data.id+')" class="deluploads" />');
+                obj.parent().parent().append(
+                                      '<div class="form-box">\
+                                        <img src="/static/admin/img/uploads.png" onclick="$(this).next().click()" class="picture" />\
+                                        <input class="hidden" type="file" ak="" name="automatic">\
+                                      </div>'
+                                      );
+              }
+              if(data.name == 'activity' && data.con == 'in'){
+                obj.parent().append('<img src="/static/admin/img/error.png" onclick="deleteIMG($(this),'+data.id+')" class="deluploads" />');
+                obj.parent().parent().append(
+                                      '<div class="form-box">\
+                                        <img src="/static/admin/img/uploads.png" onclick="$(this).next().click()" class="picture" />\
+                                        <input class="hidden" type="file" ak="" name="activity">\
+                                      </div>'
+                                      );
+              }
+            }
+          },
+          complete: function () {
+              $('#mask').css({'display':'none'});
+          },
+          error:function(){
+              layer.msg("网络繁忙...",{time:2*1000});
+          }
+        });
+      }
+    });
+
+    $(document).on('mouseover',".form-box",function(){
+      $(this).find('.deluploads').css({'display':'block'});
+    });
+    $(document).on('mouseout',".form-box",function(){
+      $(this).find('.deluploads').css({'display':'none'});
+    });
+  });
+function deleteIMG(obj,id){
+  if(id){
+    if(window.confirm("确定删除吗")){
+      $.ajax({
+        type:"post",
+        url:"{:url('admin/other/delpicture')}",
+        data:{
+          id:id
+        },
+        dataType:'JSON',
+        async:false,
+        success:function(data){
+          if(data.state == 'success'){
+            obj.parent().remove();
+            layer.msg(data.tips,{time:2*1000});
+          }else{
+            layer.msg(data.tips,{time:2*1000});
+          }
+        },
+        error:function(){
+            layer.msg("网络出错..",{time:2*1000});
+        }
+      });
+    }else{
+      return false;
+    }
+  }
+}
+</script>

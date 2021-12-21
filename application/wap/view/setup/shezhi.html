@@ -1,0 +1,672 @@
+<!DOCTYPE html>
+{include file="nodejs" /}
+
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<!-- <meta name="viewport" content="width=device-width, initial-scale=1.0,maximum-scale=1"> 下行代码解决导航栏没锁死会动问题-->
+		<meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+		<title>B.King</title>
+		<link rel="stylesheet" href="/mcss/setup.css" />
+		<link href="/index/css/mango.css" rel="stylesheet" media="screen">
+		<link rel="stylesheet" href="/application/wap/view/setup/font_iqznw9a7es9/iconfont.css" />
+		<!--        夜间白天切换的文件-->
+		{if $_SESSION["night"]=="yes"}<link rel="stylesheet" href="/index/css/wap_css/setup-shezhi.css" >{/if}
+		<script type="text/javascript" src="/static/index/js/jquery-3.2.1.min.js"></script>
+		<script type="text/javascript" src="/static/index/js/lk/user.js"></script>
+		<script type="text/javascript" src="/static/public/js/jquery.base64.js"></script>
+		<script type="text/javascript" src="/static/public/js/clipboard.min.js"></script>
+		<script src="/static/layer/layer.js"></script>
+		<script>
+			var cd_fzcg='{$Think.lang.cd_fzcg}';
+			var shez_fzsb='{$Think.lang.shez_fzsb}';
+		</script>
+	</head>
+	<style>
+		/* 此处CSS代码请不要删除或移动到别的页面 */
+		.zhsz-left>div:nth-child(1)>span:nth-child(1){color: #7a98f7;}
+		.zhsz-left>div:nth-child(1)>span>a{color: #7a98f7;}		
+	</style>
+	<body style="background-color: #e5ebf5;">
+
+
+	<style>
+
+		.mtop-zc>img{margin-top: 20px;}
+		.neirongji>a>img{margin-top: 20px!important;}
+		.logoxt img {
+			width: 40px;
+			height: 40px;
+			margin-top: 0px;
+		}
+		.layui-input-block{margin-left: 0px!important;margin-right: 10px}
+		.layui-form-onswitch em{margin-left: 2.98px}
+		.layui-form-switch em{top: -2px;}
+		.layui-form-item{margin-bottom: 0!important;}
+		.layui-form-label{float: unset!important;padding: 0;margin-bottom: 0px;margin-right: 10px}
+		.layui-input-block {min-height: 40px;}
+		.myjms{font-size: 12px;}
+		.myjms-form{margin-top: 7%;}
+	</style>
+
+	{include file="daohang" /}
+
+
+
+		<div class="zhsz-whole">
+			<div class="zhsz-left">
+				<div>
+				    <span class="iconfont">&#xe612;</span>
+					<span><a href="/wap/Setup/shezhi"style="font-size: 15px;">{$Think.lang.set_zhsz}</a></span>
+				</div>
+				<div>
+					<span class="iconfont">&#xe6db;</span>
+					<span><a href="/wap/Setup/rzhi">{$Think.lang.set_jyrz}</a></span>
+				</div>
+				<div>
+					<span class="iconfont">&#xe682;</span>
+					<span><a href="/wap/Setup/sfrz">{$Think.lang.ind_sfzr}</a></span>
+				</div>
+			</div>
+
+			<div class="zhsz-right">
+				<div class="zhsz-right-div0">
+					<div class="zhsz-right-div1">
+						<div><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFQAAABUCAMAAAArteDzAAABJlBMVEUAAABJWXEwP1IxQFI/TmU+TmQ5SF09TGI9TGIvPlE9TWMxQFMxQVRGVm01RFk1RVhJWnJJWXJDU2pKWnI7Sl9LXHVCUmg8TGEwP1I9TWJJWXFLW3RDU2o5SV1MXHUtPE5LW3RBUWdMXHVMXHX///82RVpKW3MwP1ItPE4/T2VIWHBCUWhFVWw7Sl88TGJHV29GV240Q1dlcYLk5un4+fqgqLJ8h5bw8vNDUWT7/PyIkZ+8wch0fozCx83q7O6nrrjd4ORteYqyucKZoa3Q1NlVYnVIVmhcaXw0Q1dAUGY8TGI/T2U0Q1c0Q1YzQ1YvPVA0Q1Y9TGI0Q1Y+TmRLW3QvPlBKW3NAT2Y/T2VLW3QuPVBAT2Y/T2RLW3RAUGYvPlBKW3NKW3PDzsOVAAAAOXRSTlMAzKm3GiIyEAPPKmpcanujtdijXcigUeOSCJF3tPbr4qj19/z///////////////////////////5HrZd9AAADn0lEQVRYw6zQXWviQBgF4DOQmCCk5KOxVEXaZchFIqyYD1DZrqYtZS+XBnYv/P+/o03TUpl5zUwSH+8O7zlkhJI5mYXM+1G9W3gsnE1MDGME4aKSLMLAQE+Ww6qzmGOhu3FYKYRjdDNyKw3uCPqMu0rTnQE99izqYGZDg8miTpgJpSDqLFA9fRr1MLXR4taNenFvcZbFop6YdXbTi3vzrHPfGQ9Af6vtxoO4NmTTeKApJEE8WACB+fMCTOEP9S4x6tk45axUDml6UB45OGEoz4uM82yrPDPwzVfcRr/5h7JSHPrfm6Nlu2LPP6WF4nSEL/O2s1XxxE88Fau26zk+jVuO1nnKBWm+bimM0fCXhOp5XTzuHjjp4ddjsX6uqJ6PD9ZSlmdcQ5YTVQs1J5FtuJaMqDqosSRZCr+EayKqDO+MRKY/SjDq1w8bpd8/v/ToHMD9pUfvAfMPhWsiyyYmeqObcrstN3qjE1z9o0ibhzo9SKtk+Qr+fwoX7Jp4J+Zk2cf1kcIFeRPnYk6Wr3HzSuGCsolLMSfLNzhqje6beK8zejziL4mLXur0RYrJ8qvuaF6nuTxKeiud7noTBaIwAL/hGyFwY1p70fSGWTZLzg2wkirabrSmMdnZ+00T//+/2KU2aWXOwKjPBGMm57weHDANrbrdyjh0z8kU5X5fZoo9C7fEyRRPRE+Zgjj3xqFboq1h6C2mhqENUWMYOkVKnFo9KaKK+SVOioQ4ldl/WhEnwQ2RUBatsp76G9EPZf4t23wDlzgbZlCin8orQRwXuBeMUnlMNbuMewCWEKSuda990ZUveptr4lotALHg9O+0XhTFou7fveDEAJzuC/UusauzUfVOdOj0Qzj4byo4m2zURnCm6ESCQ8/ZiGcSnAgdX7BemmxQ8yJYPt6lglU+ZgMeW8FKceS98n7VA4fUapo8fLA1BeU601iXmhYb6I2qKFYZa1W8jg0KpL915g1zRHNteYpPjtTarZQxd1LLwReR1Js3p2NKvQhfBaHUK5afmctC6oUBTkykzLVLtuuPQ2+7Xm3ZBD2x1JV219vyfcy3Y5FGDMUsH9RWVZsPmkEV2HkutetIDiw7AMMP8yuEPsCnXpvJp16Xybuz84vYdxgQzA4XmAUYFp+fGWPUJDwvMpzAQJD8OUMSwIxr/TVkuTDn2SaRtofzeOnolB7O50fhd60w8nEhJ7JyNTC3IgfXcePECh8OXdrhIbSS2MWYf0vhUEYK+1Z+AAAAAElFTkSuQmCC" /></div>
+						<div>
+							<div class="zhsz-right-div1-div2"><div></div></div>
+							<p>{$Think.lang.shezhi_djq}</p>
+						</div>
+					</div>
+					{if $user.otype == 101}
+					<div class="zhsz-right-div2">
+						<div class="zhsz-right-div2-div1" style="line-height: 15px; text-align: center;" >
+							<div><span>√</span></div>
+							<span>&emsp; {$Think.lang.shezhi_yqm}</span>
+						</div>
+						<div class="zhsz-right-div2-div2">{$user.uid}</div>
+						<div><a class="fz" href="#" id="copy_btn" onclick="copy_id()" data-clipboard-text="{$user.uid}">{$Think.lang.shezhi_fzyqm}</a></div>
+					</div>
+					{/if}
+	<!--				<div class="zhsz-right-div2">
+						<div class="zhsz-right-div2-div1" style="line-height: 15px; text-align: center;" >
+							<div><span>√</span></div>
+							<span>&emsp; 绑定手机</span>
+						</div>
+						<div class="zhsz-right-div2-div2">未绑定</div>
+						<div><a href="#"></a></div>
+					</div>-->
+					<div class="zhsz-right-div2">
+						<div class="zhsz-right-div2-div1" style="line-height: 15px; text-align: center;" >
+							<div><span>√</span></div>
+							<span>&emsp; {$Think.lang.shezhi_bdyx}</span>
+						</div>
+						<div class="zhsz-right-div2-div2">{$user.utel}</div>
+						<div><a href="#">{$Think.lang.shezhi_ybd}</a></div>
+					</div>
+					<div class="zhsz-right-div2">
+						<div class="zhsz-right-div2-div1" style="line-height: 15px; text-align: center;" >
+							<div><span>√</span></div>
+							<span>&emsp; {$Think.lang.dlmm}</span>
+						</div>
+						<div class="zhsz-right-div2-div2">{$Think.lang.shez_yfx}</div>
+						<div><a href="xgmm.html">{$Think.lang.su_xg}</a></div>
+					</div>
+					<div class="zhsz-right-div2">
+						<div class="zhsz-right-div2-div1" style="line-height: 15px; text-align: center;" >
+							<div><span>√</span></div>
+							<span>&emsp; {$Think.lang.su_jxmm}</span>
+						</div>
+						<div class="zhsz-right-div2-div2">{$Think.lang.rj_xgjjmm}</div>
+						<div><a href="qsz.html">{$Think.lang.su_xg}</a></div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<script>
+
+			var url = window.location.href;
+			//'element', var element = layui.element;
+			layui.use('form', function(){
+				var form = layui.form;
+				//监听提交
+				form.on('submit(formDemo)', function(data){
+					layer.msg(JSON.stringify(data.field));
+					return false;
+				});
+
+				//点击切换黑夜白天模式
+				$(".layui-form-switch").click(function () {
+					var vau=$(".layui-form-switch>em").text();
+					var yes="yes"
+					if (vau=="ON"){
+						$.post("/index/index/night",{yes:yes},function (re) {
+							if (re=="ok"){window.location.href=url}
+						});
+					}else if(vau=="OFF"){
+						$.post("/index/index/night",{yes:"on"},function (re) {
+							if (re=="on"){window.location.href=url;}
+						});
+					}
+				})
+			});
+
+			// $(".fz").click(function(){
+			// 	var a=$(".zhsz-right-div2-div3").eq(0).text();
+			// 	alert(a);
+			// });
+			function copy_id() {
+				//var btn = document.getElementById('copy_btn');
+				var cli = new ClipboardJS('#copy_btn');
+				cli.on('success',function (e) {
+					e.clearSelection();
+					layer.msg(cd_fzcg);
+					//cli.destroy();
+				})
+				cli.on('error', function(e) {
+					console.log(e);
+					layer.msg(shez_fzsb);
+					//cli.destroy();
+				});
+
+			}
+
+		</script>
+
+
+
+<!--	<script src="/index/js/jquery-2.1.4.min.js"></script>-->
+	<script>
+		$(function () {
+			$(".neirongji p").click(function () {
+				$(".neirongji p").removeClass('active');
+				$(this).addClass('active');
+			})
+		});
+	</script>
+	<script>
+		// 类名是需要隐藏的div
+		$(".huhuhus").show();
+		$(".gugugus").show();
+		// 点击的按钮
+		$(".kjkjkj>a").click(function(){
+			// 类名是需要隐藏的div
+			$(".huhuhus").show();
+			$(".gugugus").show();
+		});
+		$(".klklkl>a").click(function(){
+			// 类名是需要隐藏的div
+			$(".huhuhus").show();
+			$(".gugugus").hide();
+		});
+		$(".kukuku>a").click(function(){
+			// 类名是需要隐藏的div
+			$(".zhuliuugh").show();
+			$(".huhuhus").hide();
+			$(".gugugus").hide();
+		});
+	</script>
+	<script>
+		var cssdropdown={
+			disappeardelay: 250,
+			disablemenuclick: false,
+			enableswipe: 1,
+			enableiframeshim: 1,
+			dropmenuobj: null, ie: document.all, firefox: document.getElementById&&!document.all, swipetimer: undefined, bottomclip:0,
+
+			getposOffset:function(what, offsettype){
+				var totaloffset=(offsettype=="left")? what.offsetLeft : what.offsetTop;
+				var parentEl=what.offsetParent;
+				while (parentEl!=null){
+					totaloffset=(offsettype=="left")? totaloffset+parentEl.offsetLeft : totaloffset+parentEl.offsetTop;
+					parentEl=parentEl.offsetParent;
+				}
+				return totaloffset;
+			},
+
+			swipeeffect:function(){
+				if (this.bottomclip<parseInt(this.dropmenuobj.offsetHeight)){
+					this.bottomclip+=10+(this.bottomclip/10)
+					this.dropmenuobj.style.clip="rect(0 auto "+this.bottomclip+"px 0)"
+				}
+				else
+					return
+				this.swipetimer=setTimeout("cssdropdown.swipeeffect()", 10)
+			},
+
+			showhide:function(obj, e){
+				if (this.ie || this.firefox)
+					this.dropmenuobj.style.left=this.dropmenuobj.style.top="-500px"
+				if (e.type=="click" && obj.visibility==hidden || e.type=="mouseover"){
+					if (this.enableswipe==1){
+						if (typeof this.swipetimer!="undefined")
+							clearTimeout(this.swipetimer)
+						obj.clip="rect(0 auto 0 0)"
+						this.bottomclip=0
+						this.swipeeffect()
+					}
+					obj.visibility="visible"
+				}
+				else if (e.type=="click")
+					obj.visibility="hidden"
+			},
+
+			iecompattest:function(){
+				return (document.compatMode && document.compatMode!="BackCompat")? document.documentElement : document.body
+			},
+
+			clearbrowseredge:function(obj, whichedge){
+				var edgeoffset=0
+				if (whichedge=="rightedge"){
+					var windowedge=this.ie && !window.opera? this.iecompattest().scrollLeft+this.iecompattest().clientWidth-15 : window.pageXOffset+window.innerWidth-15
+					this.dropmenuobj.contentmeasure=this.dropmenuobj.offsetWidth
+					if (windowedge-this.dropmenuobj.x < this.dropmenuobj.contentmeasure)
+						edgeoffset=this.dropmenuobj.contentmeasure-obj.offsetWidth
+				}
+				else{
+					var topedge=this.ie && !window.opera? this.iecompattest().scrollTop : window.pageYOffset
+					var windowedge=this.ie && !window.opera? this.iecompattest().scrollTop+this.iecompattest().clientHeight-15 : window.pageYOffset+window.innerHeight-18
+					this.dropmenuobj.contentmeasure=this.dropmenuobj.offsetHeight
+					if (windowedge-this.dropmenuobj.y < this.dropmenuobj.contentmeasure){
+						edgeoffset=this.dropmenuobj.contentmeasure+obj.offsetHeight
+						if ((this.dropmenuobj.y-topedge)<this.dropmenuobj.contentmeasure)
+							edgeoffset=this.dropmenuobj.y+obj.offsetHeight-topedge
+					}
+				}
+				return edgeoffset
+			},
+
+			dropit:function(obj, e, dropmenuID){
+				if (this.dropmenuobj!=null)
+					this.dropmenuobj.style.visibility="hidden"
+				this.clearhidemenu()
+				if (this.ie||this.firefox){
+					obj.onmouseout=function(){cssdropdown.delayhidemenu()}
+					obj.onclick=function(){return !cssdropdown.disablemenuclick}
+					this.dropmenuobj=document.getElementById(dropmenuID)
+					if(!this.dropmenuobj) return;
+					this.dropmenuobj.onmouseover=function(){cssdropdown.clearhidemenu()}
+					this.dropmenuobj.onmouseout=function(e){cssdropdown.dynamichide(e)}
+					this.dropmenuobj.onclick=function(){cssdropdown.delayhidemenu()}
+					this.showhide(this.dropmenuobj.style, e)
+					this.dropmenuobj.x=this.getposOffset(obj, "left")
+					this.dropmenuobj.y=this.getposOffset(obj, "top")
+					this.dropmenuobj.style.left=this.dropmenuobj.x-this.clearbrowseredge(obj, "rightedge")+"px"
+					this.dropmenuobj.style.top=this.dropmenuobj.y-this.clearbrowseredge(obj, "bottomedge")+obj.offsetHeight+1+"px"
+					this.positionshim()
+				}
+			},
+
+			positionshim:function(){
+				if (this.enableiframeshim && typeof this.shimobject!="undefined"){
+					if (this.dropmenuobj.style.visibility=="visible"){
+						this.shimobject.style.width=this.dropmenuobj.offsetWidth+"px"
+						this.shimobject.style.height=this.dropmenuobj.offsetHeight+"px"
+						this.shimobject.style.left=this.dropmenuobj.style.left
+						this.shimobject.style.top=this.dropmenuobj.style.top
+					}
+					this.shimobject.style.display=(this.dropmenuobj.style.visibility=="visible")? "block" : "none"
+				}
+			},
+
+			hideshim:function(){
+				if (this.enableiframeshim && typeof this.shimobject!="undefined")
+					this.shimobject.style.display='none'
+			},
+
+			contains_firefox:function(a, b) {
+				while (b.parentNode)
+					if ((b = b.parentNode) == a)
+						return true;
+				return false;
+			},
+
+			dynamichide:function(e){
+				var evtobj=window.event? window.event : e
+				if (this.ie&&!this.dropmenuobj.contains(evtobj.toElement))
+					this.delayhidemenu()
+				else if (this.firefox&&e.currentTarget!= evtobj.relatedTarget&& !this.contains_firefox(evtobj.currentTarget, evtobj.relatedTarget))
+					this.delayhidemenu()
+			},
+
+			delayhidemenu:function(){
+				this.delayhide=setTimeout("cssdropdown.dropmenuobj.style.visibility='hidden'; cssdropdown.hideshim()",this.disappeardelay)
+			},
+
+			clearhidemenu:function(){
+				if (this.delayhide!="undefined")
+					clearTimeout(this.delayhide)
+			},
+
+			startchrome:function(){
+				for (var ids=0; ids<arguments.length; ids++){
+					var menuitems=document.getElementById(arguments[ids]).getElementsByTagName("a")
+					for (var i=0; i<menuitems.length; i++){
+						if (menuitems[i].getAttribute("rel")){
+							var relvalue=menuitems[i].getAttribute("rel")
+							menuitems[i].onmouseover=function(e){
+								var event=typeof e!="undefined"? e : window.event
+								cssdropdown.dropit(this,event,this.getAttribute("rel"))
+							}
+						}
+					}
+				}
+				if (window.createPopup && !window.XmlHttpRequest){
+					document.write('<IFRAME id="iframeshim"  src="" style="display: none; left: 0; top: 0; z-index: 90; position: absolute; filter: progid:DXImageTransform.Microsoft.Alpha(style=0,opacity=0)" frameBorder="0" scrolling="no"></IFRAME>')
+					this.shimobject=document.getElementById("iframeshim")
+				}
+			}
+
+		}
+	</script><script type="text/javascript">cssdropdown.startchrome("navMenu")</script>
+	<script>
+		var cssdropdowns={
+			disappeardelay: 250,
+			disablemenuclick: false,
+			enableswipe: 1,
+			enableiframeshim: 1,
+			dropmenuobj: null, ie: document.all, firefox: document.getElementById&&!document.all, swipetimer: undefined, bottomclip:0,
+
+			getposOffset:function(what, offsettype){
+				var totaloffset=(offsettype=="left")? what.offsetLeft : what.offsetTop;
+				var parentEl=what.offsetParent;
+				while (parentEl!=null){
+					totaloffset=(offsettype=="left")? totaloffset+parentEl.offsetLeft : totaloffset+parentEl.offsetTop;
+					parentEl=parentEl.offsetParent;
+				}
+				return totaloffset;
+			},
+
+			swipeeffect:function(){
+				if (this.bottomclip<parseInt(this.dropmenuobj.offsetHeight)){
+					this.bottomclip+=10+(this.bottomclip/10)
+					this.dropmenuobj.style.clip="rect(0 auto "+this.bottomclip+"px 0)"
+				}
+				else
+					return
+				this.swipetimer=setTimeout("cssdropdown.swipeeffect()", 10)
+			},
+
+			showhide:function(obj, e){
+				if (this.ie || this.firefox)
+					this.dropmenuobj.style.left=this.dropmenuobj.style.top="-500px"
+				if (e.type=="click" && obj.visibility==hidden || e.type=="mouseover"){
+					if (this.enableswipe==1){
+						if (typeof this.swipetimer!="undefined")
+							clearTimeout(this.swipetimer)
+						obj.clip="rect(0 auto 0 0)"
+						this.bottomclip=0
+						this.swipeeffect()
+					}
+					obj.visibility="visible"
+				}
+				else if (e.type=="click")
+					obj.visibility="hidden"
+			},
+
+			iecompattest:function(){
+				return (document.compatMode && document.compatMode!="BackCompat")? document.documentElement : document.body
+			},
+
+			clearbrowseredge:function(obj, whichedge){
+				var edgeoffset=0
+				if (whichedge=="rightedge"){
+					var windowedge=this.ie && !window.opera? this.iecompattest().scrollLeft+this.iecompattest().clientWidth-15 : window.pageXOffset+window.innerWidth-15
+					this.dropmenuobj.contentmeasure=this.dropmenuobj.offsetWidth
+					if (windowedge-this.dropmenuobj.x < this.dropmenuobj.contentmeasure)
+						edgeoffset=this.dropmenuobj.contentmeasure-obj.offsetWidth
+				}
+				else{
+					var topedge=this.ie && !window.opera? this.iecompattest().scrollTop : window.pageYOffset
+					var windowedge=this.ie && !window.opera? this.iecompattest().scrollTop+this.iecompattest().clientHeight-15 : window.pageYOffset+window.innerHeight-18
+					this.dropmenuobj.contentmeasure=this.dropmenuobj.offsetHeight
+					if (windowedge-this.dropmenuobj.y < this.dropmenuobj.contentmeasure){
+						edgeoffset=this.dropmenuobj.contentmeasure+obj.offsetHeight
+						if ((this.dropmenuobj.y-topedge)<this.dropmenuobj.contentmeasure)
+							edgeoffset=this.dropmenuobj.y+obj.offsetHeight-topedge
+					}
+				}
+				return edgeoffset
+			},
+
+			dropit:function(obj, e, dropmenuID){
+				if (this.dropmenuobj!=null)
+					this.dropmenuobj.style.visibility="hidden"
+				this.clearhidemenu()
+				if (this.ie||this.firefox){
+					obj.onmouseout=function(){cssdropdown.delayhidemenu()}
+					obj.onclick=function(){return !cssdropdown.disablemenuclick}
+					this.dropmenuobj=document.getElementById(dropmenuID)
+					if(!this.dropmenuobj) return;
+					this.dropmenuobj.onmouseover=function(){cssdropdown.clearhidemenu()}
+					this.dropmenuobj.onmouseout=function(e){cssdropdown.dynamichide(e)}
+					this.dropmenuobj.onclick=function(){cssdropdown.delayhidemenu()}
+					this.showhide(this.dropmenuobj.style, e)
+					this.dropmenuobj.x=this.getposOffset(obj, "left")
+					this.dropmenuobj.y=this.getposOffset(obj, "top")
+					this.dropmenuobj.style.left=this.dropmenuobj.x-this.clearbrowseredge(obj, "rightedge")+"px"
+					this.dropmenuobj.style.top=this.dropmenuobj.y-this.clearbrowseredge(obj, "bottomedge")+obj.offsetHeight+1+"px"
+					this.positionshim()
+				}
+			},
+
+			positionshim:function(){
+				if (this.enableiframeshim && typeof this.shimobject!="undefined"){
+					if (this.dropmenuobj.style.visibility=="visible"){
+						this.shimobject.style.width=this.dropmenuobj.offsetWidth+"px"
+						this.shimobject.style.height=this.dropmenuobj.offsetHeight+"px"
+						this.shimobject.style.left=this.dropmenuobj.style.left
+						this.shimobject.style.top=this.dropmenuobj.style.top
+					}
+					this.shimobject.style.display=(this.dropmenuobj.style.visibility=="visible")? "block" : "none"
+				}
+			},
+
+			hideshim:function(){
+				if (this.enableiframeshim && typeof this.shimobject!="undefined")
+					this.shimobject.style.display='none'
+			},
+
+			contains_firefox:function(a, b) {
+				while (b.parentNode)
+					if ((b = b.parentNode) == a)
+						return true;
+				return false;
+			},
+
+			dynamichide:function(e){
+				var evtobj=window.event? window.event : e
+				if (this.ie&&!this.dropmenuobj.contains(evtobj.toElement))
+					this.delayhidemenu()
+				else if (this.firefox&&e.currentTarget!= evtobj.relatedTarget&& !this.contains_firefox(evtobj.currentTarget, evtobj.relatedTarget))
+					this.delayhidemenu()
+			},
+
+			delayhidemenu:function(){
+				this.delayhide=setTimeout("cssdropdown.dropmenuobj.style.visibility='hidden'; cssdropdown.hideshim()",this.disappeardelay)
+			},
+
+			clearhidemenu:function(){
+				if (this.delayhide!="undefined")
+					clearTimeout(this.delayhide)
+			},
+
+			startchrome:function(){
+				for (var ids=0; ids<arguments.length; ids++){
+					var menuitems=document.getElementById(arguments[ids]).getElementsByTagName("a")
+					for (var i=0; i<menuitems.length; i++){
+						if (menuitems[i].getAttribute("rel")){
+							var relvalue=menuitems[i].getAttribute("rel")
+							menuitems[i].onmouseover=function(e){
+								var event=typeof e!="undefined"? e : window.event
+								cssdropdown.dropit(this,event,this.getAttribute("rel"))
+							}
+						}
+					}
+				}
+				if (window.createPopup && !window.XmlHttpRequest){
+					document.write('<IFRAME id="iframeshim"  src="" style="display: none; left: 0; top: 0; z-index: 90; position: absolute; filter: progid:DXImageTransform.Microsoft.Alpha(style=0,opacity=0)" frameBorder="0" scrolling="no"></IFRAME>')
+					this.shimobject=document.getElementById("iframeshim")
+				}
+			}
+
+		}
+	</script><script type="text/javascript">cssdropdown.startchrome("navMenus")</script>
+	<script>
+		var cssdropdownv={
+			disappeardelay: 250,
+			disablemenuclick: false,
+			enableswipe: 1,
+			enableiframeshim: 1,
+			dropmenuobj: null, ie: document.all, firefox: document.getElementById&&!document.all, swipetimer: undefined, bottomclip:0,
+
+			getposOffset:function(what, offsettype){
+				var totaloffset=(offsettype=="left")? what.offsetLeft : what.offsetTop;
+				var parentEl=what.offsetParent;
+				while (parentEl!=null){
+					totaloffset=(offsettype=="left")? totaloffset+parentEl.offsetLeft : totaloffset+parentEl.offsetTop;
+					parentEl=parentEl.offsetParent;
+				}
+				return totaloffset;
+			},
+
+			swipeeffect:function(){
+				if (this.bottomclip<parseInt(this.dropmenuobj.offsetHeight)){
+					this.bottomclip+=10+(this.bottomclip/10)
+					this.dropmenuobj.style.clip="rect(0 auto "+this.bottomclip+"px 0)"
+				}
+				else
+					return
+				this.swipetimer=setTimeout("cssdropdown.swipeeffect()", 10)
+			},
+
+			showhide:function(obj, e){
+				if (this.ie || this.firefox)
+					this.dropmenuobj.style.left=this.dropmenuobj.style.top="-500px"
+				if (e.type=="click" && obj.visibility==hidden || e.type=="mouseover"){
+					if (this.enableswipe==1){
+						if (typeof this.swipetimer!="undefined")
+							clearTimeout(this.swipetimer)
+						obj.clip="rect(0 auto 0 0)"
+						this.bottomclip=0
+						this.swipeeffect()
+					}
+					obj.visibility="visible"
+				}
+				else if (e.type=="click")
+					obj.visibility="hidden"
+			},
+
+			iecompattest:function(){
+				return (document.compatMode && document.compatMode!="BackCompat")? document.documentElement : document.body
+			},
+
+			clearbrowseredge:function(obj, whichedge){
+				var edgeoffset=0
+				if (whichedge=="rightedge"){
+					var windowedge=this.ie && !window.opera? this.iecompattest().scrollLeft+this.iecompattest().clientWidth-15 : window.pageXOffset+window.innerWidth-15
+					this.dropmenuobj.contentmeasure=this.dropmenuobj.offsetWidth
+					if (windowedge-this.dropmenuobj.x < this.dropmenuobj.contentmeasure)
+						edgeoffset=this.dropmenuobj.contentmeasure-obj.offsetWidth
+				}
+				else{
+					var topedge=this.ie && !window.opera? this.iecompattest().scrollTop : window.pageYOffset
+					var windowedge=this.ie && !window.opera? this.iecompattest().scrollTop+this.iecompattest().clientHeight-15 : window.pageYOffset+window.innerHeight-18
+					this.dropmenuobj.contentmeasure=this.dropmenuobj.offsetHeight
+					if (windowedge-this.dropmenuobj.y < this.dropmenuobj.contentmeasure){
+						edgeoffset=this.dropmenuobj.contentmeasure+obj.offsetHeight
+						if ((this.dropmenuobj.y-topedge)<this.dropmenuobj.contentmeasure)
+							edgeoffset=this.dropmenuobj.y+obj.offsetHeight-topedge
+					}
+				}
+				return edgeoffset
+			},
+
+			dropit:function(obj, e, dropmenuID){
+				if (this.dropmenuobj!=null)
+					this.dropmenuobj.style.visibility="hidden"
+				this.clearhidemenu()
+				if (this.ie||this.firefox){
+					obj.onmouseout=function(){cssdropdown.delayhidemenu()}
+					obj.onclick=function(){return !cssdropdown.disablemenuclick}
+					this.dropmenuobj=document.getElementById(dropmenuID)
+					if(!this.dropmenuobj) return;
+					this.dropmenuobj.onmouseover=function(){cssdropdown.clearhidemenu()}
+					this.dropmenuobj.onmouseout=function(e){cssdropdown.dynamichide(e)}
+					this.dropmenuobj.onclick=function(){cssdropdown.delayhidemenu()}
+					this.showhide(this.dropmenuobj.style, e)
+					this.dropmenuobj.x=this.getposOffset(obj, "left")
+					this.dropmenuobj.y=this.getposOffset(obj, "top")
+					this.dropmenuobj.style.left=this.dropmenuobj.x-this.clearbrowseredge(obj, "rightedge")+"px"
+					this.dropmenuobj.style.top=this.dropmenuobj.y-this.clearbrowseredge(obj, "bottomedge")+obj.offsetHeight+1+"px"
+					this.positionshim()
+				}
+			},
+
+			positionshim:function(){
+				if (this.enableiframeshim && typeof this.shimobject!="undefined"){
+					if (this.dropmenuobj.style.visibility=="visible"){
+						this.shimobject.style.width=this.dropmenuobj.offsetWidth+"px"
+						this.shimobject.style.height=this.dropmenuobj.offsetHeight+"px"
+						this.shimobject.style.left=this.dropmenuobj.style.left
+						this.shimobject.style.top=this.dropmenuobj.style.top
+					}
+					this.shimobject.style.display=(this.dropmenuobj.style.visibility=="visible")? "block" : "none"
+				}
+			},
+
+			hideshim:function(){
+				if (this.enableiframeshim && typeof this.shimobject!="undefined")
+					this.shimobject.style.display='none'
+			},
+
+			contains_firefox:function(a, b) {
+				while (b.parentNode)
+					if ((b = b.parentNode) == a)
+						return true;
+				return false;
+			},
+
+			dynamichide:function(e){
+				var evtobj=window.event? window.event : e
+				if (this.ie&&!this.dropmenuobj.contains(evtobj.toElement))
+					this.delayhidemenu()
+				else if (this.firefox&&e.currentTarget!= evtobj.relatedTarget&& !this.contains_firefox(evtobj.currentTarget, evtobj.relatedTarget))
+					this.delayhidemenu()
+			},
+
+			delayhidemenu:function(){
+				this.delayhide=setTimeout("cssdropdown.dropmenuobj.style.visibility='hidden'; cssdropdown.hideshim()",this.disappeardelay)
+			},
+
+			clearhidemenu:function(){
+				if (this.delayhide!="undefined")
+					clearTimeout(this.delayhide)
+			},
+
+			startchrome:function(){
+				for (var ids=0; ids<arguments.length; ids++){
+					var menuitems=document.getElementById(arguments[ids]).getElementsByTagName("a")
+					for (var i=0; i<menuitems.length; i++){
+						if (menuitems[i].getAttribute("rel")){
+							var relvalue=menuitems[i].getAttribute("rel")
+							menuitems[i].onmouseover=function(e){
+								var event=typeof e!="undefined"? e : window.event
+								cssdropdown.dropit(this,event,this.getAttribute("rel"))
+							}
+						}
+					}
+				}
+				if (window.createPopup && !window.XmlHttpRequest){
+					document.write('<IFRAME id="iframeshim"  src="" style="display: none; left: 0; top: 0; z-index: 90; position: absolute; filter: progid:DXImageTransform.Microsoft.Alpha(style=0,opacity=0)" frameBorder="0" scrolling="no"></IFRAME>')
+					this.shimobject=document.getElementById("iframeshim")
+				}
+			}
+
+		}
+	</script><script type="text/javascript">cssdropdown.startchrome("navMenuv")</script>
+
+
+	</body>
+</html>

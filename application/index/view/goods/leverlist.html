@@ -1,0 +1,425 @@
+{include file="head" /}
+<link href="/index/css/index_for.css" rel="stylesheet" type="text/css">
+<!--白天黑夜模式切换样式-->
+{if $_SESSION["night"]=="yes"}<link rel="stylesheet" href="/index/css/goods-leverlist.css" >{/if}
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+<script type="text/javascript">
+window.onload=function(){
+//设置适配rem
+var change_rem = ((window.screen.width > 450) ? 450 : window.screen.width)/375*100;
+document.getElementsByTagName("html")[0].style.fontSize=change_rem+"px";
+window.onresize = function(){
+change_rem = ((window.screen.width > 450) ? 450 : window.screen.width)/375*100;
+document.getElementsByTagName("html")[0].style.fontSize=change_rem+"px";
+    }
+}
+</script>
+<script type="text/javascript" src="__HOME__/js/lodash.min.js"></script>
+<style>
+    body{
+        background: #102030;
+    }
+    .nav-bar-block{
+        width: 100%;
+        height: 40px;
+        position: fixed;
+        top: 0;
+    }
+    .bar-header{
+        border-bottom: 1px solid #333333;
+    }
+    .bottom-nav ul li{
+        float: left;
+        text-align: center;
+        height: 0.5rem;
+        padding: 1% 0 0;
+    }
+    .bottom-nav ul li p{
+        height: 17px;
+        line-height: 17px!important;
+        margin-top: -8px!important;
+    }
+    .left-buttons, .left-buttons .back-button{
+        height: 40px!important;
+        line-height: 40px!important;
+    }
+    .left-buttons, .left-buttons .icon-caidan{
+        color: #000000;
+        font-size: 24px;
+    }
+    .nav-bar-container{
+        width: 100%;
+        height: 40px;
+        position: fixed;
+        top: 0;
+        left: 0;
+    }
+    .bar-header .close{
+        color: white!important;
+    }
+    .zuihoumianl{
+        border-bottom: none;
+    }
+    .wtall-nav2{
+        height: calc(100% - 40px);
+        overflow-y: scroll;
+    }
+    .bottom-nav {bottom: 0%;}
+    .bar-header .tab-list {
+        line-height: 18px;
+    }
+
+</style>
+
+<body ng-app="starter" ng-controller="AppCtrl" class="grade-a platform-browser platform-ios platform-ios9 platform-ios9_1 platform-ready">
+    <ion-nav-bar class="bar-stable headerbar nav-bar-container" nav-bar-transition="ios" nav-bar-direction="swap" nav-swipe="">
+        <div class="nav-bar-block" nav-bar="active">
+            <ion-header-bar class="bar-stable headerbar bar bar-header" align-title="center">
+                <a class="close" href="javascript:void(0)" onClick="javascript:history.back(-1);">
+                    <i class="icon ion-ios-arrow-left"></i>
+                </a>
+                <div class="clearfix tab-list between" style="width: 85%; font-size: 12px; margin-left: 13%;margin-right: 0%;">
+                    <div>
+                        <span class="active" data-type="0">{$Think.lang.ll_wtz}</span>
+                    </div>
+                    <div>
+                        <span data-type="1">{$Think.lang.ll_jyz}</span>
+                    </div>
+                    <div>
+                        <span  data-type="2">{$Think.lang.ll_ypc}</span>
+                    </div>
+                    <div>
+                        <span data-type="3">{$Think.lang.ll_ycd}</span>
+                    </div>
+                </div>
+            </ion-header-bar>
+        </div>
+    </ion-nav-bar>
+    <!--隔离层div-->
+    <div class="header-space"></div>
+
+    <!--选项卡内容-->
+    <div class="cc_content wtall-nav2">
+        <div class="wtall-nav-center">
+            {volist name="$order[2]" id="vo"}
+            <div class="wtall-box">
+                <div class="zuihoumianls wl_flex wl_align_center wl_justify_between">
+                    <div class="yuuuus green" style="width: 70%"><span {if $vo.ostyle eq 0} class="green" {else}  class="red"{/if}>{$vo.fangxiang}</span> <span style="color: #ffffff;font-size: 12px;"> {$vo.ptitle} &nbsp; x{$vo.onumber}{$Think.lang.gb_le_s}  </span></div>
+                    <div class="yuuuus green" style="font-size: 12px">{$vo.ploss}</div>
+                </div>
+                <div class="zuihoumianl wl_flex wl_align_center wl_justify_between">
+                    <div class="yuuuus" style="text-align: left"><span class="top">{$Think.lang.or_kcj}</span><br><span>{$vo.buyprice}</span></div>
+                    <div class="yuuuus" style="text-align: center"><span class="top">{$Think.lang.or_zyj}</span><br><span>{$vo.stopwin_price}</span></div>
+                    <div class="yuuuus" style="text-align: right"><span class="top">{$Think.lang.or_dqj}</span><br><span>{$vo.sellprice}</span></div>
+                </div>
+                <div class="zuihoumianl wl_flex wl_align_center wl_justify_between">
+                    <div class="yuuuus" style="text-align: left"><span class="top">{$Think.lang.or_zsj}</span><br><span>{$vo.stoploss_price}</span></div>
+                    <div class="yuuuus" style="text-align: center"><span class="top">{$Think.lang.or_bzj}</span><br><span>{$vo.fee}</span></div>
+                    <div class="yuuuus" style="text-align: right"><span class="top">{$Think.lang.or_jyl}</span><br><span>{$vo.chicang}</span></div>
+                </div>
+                <div class="zuihoumianl wl_flex wl_align_center wl_justify_between">
+                        <div class="yuuuus" style="text-align: left"><span class="top">{$Think.lang.or_sxf}</span><br><span>{$vo.sx_fee}</span></div>
+                        <div class="yuuuus" style="text-align: center"><span class="top">{$Think.lang.or_gg}</span><br><span>{$vo.code}x</span></div>
+                        <div class="yuuuus" style="text-align: right"><span class="top">{$Think.lang.ll_wtsj}</span><br><span>{$vo.kctime}</span></div>
+                    
+                    </div>
+                    
+               
+                <div class="zuihoumianl caozuo wl_flex wl_align_center wl_justify_between">
+                    <div class="yuuuus" style="text-align: left"><span class="top">{$Think.lang.bi_jye}</span><br><span>{$vo.jye}</span></div>
+                    <div class="yuuuus" style="text-align: right;width: 67%">
+                        <button type="button" onClick="bt_cd({$vo.oid})">{$Think.lang.ll_cd}</button>
+                    </div>
+                </div>
+            </div>
+            
+            {/volist}
+        </div>
+    </div>
+    <div class="cc_content wtall-nav2">
+        <div class="wtall-nav-center">
+            
+            {volist name="$order[0]" id="vo"}
+            <div class="wtall-box">
+                <div class="zuihoumianls wl_flex wl_align_center wl_justify_between">
+                    <div class="yuuuus green" style="width: 70%"><span {if $vo.ostyle eq 0} class="green" {else}  class="red"{/if}>{$vo.fangxiang}</span> <span style="color: #ffffff;font-size: 12px;"> {$vo.ptitle} &nbsp; x{$vo.onumber}{$Think.lang.gb_le_s}  </span></div>
+                    <div class="yuuuus green" style="font-size: 12px"   id="yingkui_{$vo.oid}">{$vo.ploss}</div>
+                </div>
+                <div class="zuihoumianl wl_flex wl_align_center wl_justify_between">
+                    <div class="yuuuus" style="text-align: left"><span class="top">{$Think.lang.or_kcj}</span><br><span>{$vo.buyprice}</span></div>
+                    <div class="yuuuus" style="text-align: center"><span class="top">{$Think.lang.or_zyj}</span><br><span>{$vo.stopwin_price}</span></div>
+                    <div class="yuuuus" style="text-align: right"><span class="top">{$Think.lang.or_dqj}</span><br><span id="nowprice_{$vo.oid}">{$vo.sellprice}</span></div>
+                </div>
+                <div class="zuihoumianl wl_flex wl_align_center wl_justify_between">
+                    <div class="yuuuus" style="text-align: left"><span class="top">{$Think.lang.or_zsj}</span><br><span>{$vo.stoploss_price}</span></div>
+                    <div class="yuuuus" style="text-align: center"><span class="top">{$Think.lang.or_bzj}</span><br><span>{$vo.fee}</span></div>
+                    <div class="yuuuus" style="text-align: right"><span class="top">{$Think.lang.or_jyl}</span><br><span>{$vo.chicang}</span></div>
+                </div>
+                <div class="zuihoumianl wl_flex wl_align_center wl_justify_between">
+                        <div class="yuuuus" style="text-align: left"><span class="top">{$Think.lang.or_sxf}</span><br><span>{$vo.sx_fee}</span></div>
+                        <div class="yuuuus" style="text-align: center"><span class="top">{$Think.lang.or_gg}</span><br><span>{$vo.code}x</span></div>
+                        <div class="yuuuus" style="text-align: right"><span class="top">{$Think.lang.or_kcsj}</span><br><span>{$vo.kctime}</span></div>
+                    
+                    </div>
+                    
+                    
+                <div class="zuihoumianl caozuo wl_flex wl_align_center wl_justify_between">
+                    <div class="yuuuus" style="text-align: left"><span class="top">{$Think.lang.bi_jye}</span><br><span>{$vo.jye}</span></div>
+                    <div class="yuuuus" style="text-align: right;width: 67%">
+                        <button type="button" onClick="bt_pc({$vo.oid})">{$Think.lang.le_pc}</button>
+                    </div>
+                </div>
+            </div>
+            
+             {/volist}
+        </div>
+    </div>
+    <div class="cc_content wtall-nav2">
+        <div class="wtall-nav-center">
+            
+            {volist name="$order[1]" id="vo"}
+            <div class="wtall-box">
+                <div class="zuihoumianls wl_flex wl_align_center wl_justify_between">
+                    <div class="yuuuus green" style="width: 70%"><span {if $vo.ostyle eq 0} class="green" {else}  class="red"{/if}>{$vo.fangxiang}</span> <span style="color: #ffffff;font-size: 12px;"> {$vo.ptitle} &nbsp; x{$vo.onumber}{$Think.lang.gb_le_s}  </span></div>
+                    <div class="yuuuus green m-yl" style="font-size: 12px">{$vo.ploss}</div>
+                </div>
+                <div class="zuihoumianl wl_flex wl_align_center wl_justify_between">
+                    <div class="yuuuus" style="text-align: left"><span class="top">{$Think.lang.or_kcj}</span><br><span>{$vo.buyprice}</span></div>
+                    <div class="yuuuus" style="text-align: center"><span class="top">{$Think.lang.or_zyj}</span><br><span>{$vo.stopwin_price}</span></div>
+                    <div class="yuuuus" style="text-align: right"><span class="top">{$Think.lang.ll_pcj}</span><br><span>{$vo.sellprice}</span></div>
+                </div>
+                <div class="zuihoumianl wl_flex wl_align_center wl_justify_between">
+                    <div class="yuuuus" style="text-align: left"><span class="top">{$Think.lang.or_zsj}</span><br><span>{$vo.stoploss_price}</span></div>
+                    <div class="yuuuus" style="text-align: center"><span class="top">{$Think.lang.or_bzj}</span><br><span>{$vo.fee}</span></div>
+                    <div class="yuuuus" style="text-align: right"><span class="top">{$Think.lang.or_jyl}</span><br><span>{$vo.chicang}</span></div>
+                </div>
+                
+                <div class="zuihoumianl wl_flex wl_align_center wl_justify_between">
+                        <div class="yuuuus" style="text-align: left"><span class="top">{$Think.lang.or_sxf}</span><br><span>{$vo.sx_fee}</span></div>
+                        <div class="yuuuus" style="text-align: center"><span class="top">{$Think.lang.or_gg}</span><br><span>{$vo.code}x</span></div>
+                        <div class="yuuuus" style="text-align: right"><span class="top">{$Think.lang.bi_jye}</span><br><span>{$vo.jye}</span></div>
+                    
+                    </div>
+                    
+                    
+                     <div class="zuihoumianl caozuo wl_flex wl_align_center wl_justify_between">
+                         
+                         
+                        <div class="yuuuus" style="text-align: left"><span class="top">{$Think.lang.or_kcsj}</span><br><span>{$vo.kctime}</span></div>
+                    
+                    
+                        <div class="yuuuus" style="text-align: center"></div>
+                     
+                     
+                        <div class="yuuuus" style="text-align: right"><span class="top">{$Think.lang.ll_pcsj}</span><br><span>{$vo.pctime}</span></div>
+                   
+                       
+                    </div>
+                
+                
+            </div>
+            
+             {/volist}
+        </div>
+    </div>
+    <div class="cc_content wtall-nav2">
+        <div class="wtall-nav-center">
+            
+             {volist name="$order[3]" id="vo"}
+            <div class="wtall-box">
+                <div class="zuihoumianls wl_flex wl_align_center wl_justify_between">
+                    <div class="yuuuus green" style="width: 70%"><span {if $vo.ostyle eq 0} class="green" {else}  class="red"{/if}>{$vo.fangxiang}</span> <span style="color: #ffffff;font-size: 12px;"> {$vo.ptitle} &nbsp; x{$vo.onumber}{$Think.lang.gb_le_s}  </span></div>
+                    <div class="yuuuus green" style="font-size: 12px"></div>
+                </div>
+                <div class="zuihoumianl wl_flex wl_align_center wl_justify_between">
+                    <div class="yuuuus" style="text-align: left"><span class="top">{$Think.lang.ll_wtj}</span><br><span>{$vo.buyprice}</span></div>
+                    <div class="yuuuus" style="text-align: center"><span class="top">{$Think.lang.or_zyj}</span><br><span>{$vo.stopwin_price}</span></div>
+                    <div class="yuuuus" style="text-align: right"><span class="top">{$Think.lang.bi_jye}</span><br><span>{$vo.jye}</span></div>
+                </div>
+                <div class="zuihoumianl wl_flex wl_align_center wl_justify_between">
+                    <div class="yuuuus" style="text-align: left"><span class="top">{$Think.lang.or_zsj}</span><br><span>{$vo.stoploss_price}</span></div>
+                    <div class="yuuuus" style="text-align: center"><span class="top">{$Think.lang.or_bzj}</span><br><span>{$vo.fee}</span></div>
+                    <div class="yuuuus" style="text-align: right"><span class="top">{$Think.lang.or_jyl}</span><br><span>{$vo.chicang}</span></div>
+                </div>
+                <div class="zuihoumianl wl_flex wl_align_center wl_justify_between">
+                        <div class="yuuuus" style="text-align: left"><span class="top">{$Think.lang.or_sxf}</span><br><span>{$vo.sx_fee}</span></div>
+                        <div class="yuuuus" style="text-align: center"><span class="top">{$Think.lang.or_gg}</span><br><span>{$vo.code}x</span></div>
+                        <div class="yuuuus" style="text-align: right"><span class="top">{$Think.lang.ll_wtsj}</span><br><span>{$vo.kctime}</span></div>
+                    
+                    </div>
+            </div>
+            
+             {/volist}
+        </div>
+    </div>
+<input type="hidden" value="{$daojishiid}" id="daojishiid"/>
+    <!--修改弹窗-->
+    <div id="cc_modals">
+        <div class="cc_modals" style="display: none;">
+            <div>
+                <span class="prices-modals">{$Think.lang.or_zyj}</span>
+                <p class="clearfix inputs">
+                    <span class="reduce fl tc"><i>-</i></span>
+                    <input type="number" class="prices fl">
+                    <span class="add fr">+</span>
+                </p>
+            </div>
+            <p class="yl tc">{$Think.lang.ll_yqyl}：<span style="color: rgb(88, 139, 247);">0.00</span></p>
+            <div>
+                <span class="prices-modals">{$Think.lang.or_zsj}</span>
+                <p class="clearfix inputs">
+                    <span class="reduce fl tc"><i>-</i></span>
+                    <input type="number" class="reduce-price fl">
+                    <span class="add fr">+</span>
+                </p>
+            </div>
+            <p class="ks tc">{$Think.lang.or_yqks}：<span style="color: rgb(88, 139, 247);">0.00</span></p>
+        </div>
+    </div>
+</body>
+<script>
+
+    var vau1=$(".m-yl>span").text();
+    if (vau1<0){$(".m-yl>span").css("color","#666")}
+
+
+    //新选项卡切换效果
+    $(function () {
+        // intervalData(true);
+        setInterval(function () {
+            // intervalData(false)
+        }, 6000)
+        $('.cc_content').hide().eq(0).show()
+        $(".tab-list div span").click(function () {
+            $('.cc_content').hide().eq($(this).data('type')).show()
+            $(".tab-list div span").removeClass('active');
+            $(this).addClass('active');
+            if ($(this).attr('data-type') == 2) {
+
+            } else if($(this).attr('data-type') == 1) {
+
+            }
+        })
+    })
+</script>
+<script>
+    layui.use('layer', function(){
+        var layer = layui.layer;
+    });
+
+    $('.show-content').on('click', function () {
+        $(this).next().toggleClass('show')
+    })
+
+
+    function bt_pc(id){
+
+        layer.confirm('{$Think.lang.le_qdypcm}', {
+            btn: ['{$Think.lang.bi_qd}','{$Think.lang.bi_qx}'] //按钮
+        }, function(){
+            $.ajax({
+                type:'POST',
+                url:'/index/api/free_order',
+                data:{id:id},
+                success: function(msg){
+                    var msg = eval("(" + msg + ")");
+                    if(msg.error){
+                        layer.msg(msg.error);
+                    }
+                    if(msg.success){
+                        layer.msg('{$Think.lang.le_pccg}', {icon: 1});
+
+                        setTimeout(function () {
+
+                            window.location.reload();
+
+                        }, 1000);
+
+                    }
+                }
+            })
+        }, function(){
+
+        });
+
+    }
+    
+    
+    function bt_cd(id){
+        layer.confirm('{$Think.lang.bi_qdycxm}', {
+            btn: ['{$Think.lang.bi_qd}','{$Think.lang.bi_qx}'] //按钮
+        }, function(){
+
+
+            $.ajax({
+                type:'POST',
+                url:'/index/goods/free_orderlever',
+                data:{id:id},
+                success: function(msg){
+                    var msg = eval("(" + msg + ")");
+                    if(msg.error){
+                        layer.msg(msg.error);
+                    }
+                    if(msg.success){
+                        layer.msg('{$Think.lang.bi_cxcg}', {icon: 1});
+
+                        setTimeout(function () {
+
+                            window.location.reload();
+
+                        }, 1000);
+
+                    }
+                }
+            })
+
+
+        }, function(){
+
+        });
+
+    }
+    
+
+</script>
+<script>
+    window.onload=function(){
+
+	daojishi()
+}
+    
+    
+function daojishi(){
+	var daojishiid = $("#daojishiid").val();
+	$.ajax({
+		type: 'post',
+		url: "/index/goods/daojishi",
+		data:{
+			daojishiid:daojishiid,	
+		},
+		success: function (msg) {
+			if(msg){
+				msg = eval("("+msg+")");
+				$.each(msg,function(key,val){
+				  
+                        $("#nowprice_"+val['oid']+"").html(val['sellprice']);
+                        $("#yingkui_"+val['oid']+"").html(val['ploss']);
+                       
+                    
+
+
+				});
+			
+			}
+		}
+	});
+	setTimeout("daojishi()",1000);	
+}
+
+
+    
+    
+</script>
+</html>

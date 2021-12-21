@@ -1,0 +1,162 @@
+{include file="head" /}
+<link href="/index/css/index_for.css" rel="stylesheet" type="text/css">
+<!--        夜间白天切换的文件-->
+{if $_SESSION["night"]=="yes"}<link rel="stylesheet" href="/index/css/goods-entrust.css" >{/if}
+<script type="text/javascript">
+window.onload=function(){
+//设置适配rem
+var change_rem = ((window.screen.width > 450) ? 450 : window.screen.width)/375*100;
+document.getElementsByTagName("html")[0].style.fontSize=change_rem+"px";
+window.onresize = function(){
+change_rem = ((window.screen.width > 450) ? 450 : window.screen.width)/375*100;
+document.getElementsByTagName("html")[0].style.fontSize=change_rem+"px";
+}
+}
+</script>
+<script type="text/javascript" src="__HOME__/js/lodash.min.js"></script>
+
+
+
+<style>
+    body{
+        background: #102030;
+    }
+    .nav-bar-block{
+        width: 100%;
+        height: 40px;
+        position: fixed;
+        top: 0;
+    }
+    .bar-header{
+    }
+    .bottom-nav ul li{
+        float: left;
+        text-align: center;
+        height: 0.5rem;
+        padding: 1% 0 0;
+    }
+    .bottom-nav ul li p{
+        height: 17px;
+        line-height: 17px!important;
+        margin-top: -8px!important;
+    }
+    .left-buttons, .left-buttons .back-button{
+        height: 40px!important;
+        line-height: 40px!important;
+    }
+    .left-buttons, .left-buttons .icon-caidan{
+        color: #000000;
+        font-size: 24px;
+    }
+    .nav-bar-container{
+        width: 100%;
+        height: 40px;
+        position: fixed;
+        top: 0;
+        left: 0;
+    }
+    .bar-header .close{
+        color: black!important;
+    }
+    .cc_content{
+        height: calc(100% - 40px);
+        overflow-y: scroll;
+    }
+    .zuihoumianl{
+        border-bottom: none;
+    }
+</style>
+
+<body ng-app="starter" ng-controller="AppCtrl" class="grade-a platform-browser platform-ios platform-ios9 platform-ios9_1 platform-ready">
+    <ion-nav-bar class="bar-stable headerbar nav-bar-container" nav-bar-transition="ios" nav-bar-direction="swap" nav-swipe="">
+        <div class="nav-bar-block" nav-bar="active">
+            <ion-header-bar class="bar-stable headerbar bar bar-header" align-title="center">
+                <a class="close" href="javascript:void(0)" onclick="javascript:history.back(-1);">
+                    <i class="icon ion-ios-arrow-left"></i>
+                </a>
+                <div class="clearfix tab-list between">
+
+                    <div>
+                        <span data-type="1">{$Think.lang.eu_qbdd}</span>
+                    </div>
+
+                </div>
+            </ion-header-bar>
+        </div>
+    </ion-nav-bar>
+    <!--隔离层div-->
+    <div class="header-space"></div>
+
+    <!--选项卡内容-->
+    <div class="cc_content">
+        
+         {volist name="$hold" id="vo"}
+        <div class="wtall-box">
+            <div class="zuihoumianls wl_flex wl_align_center wl_justify_between">
+                <div class="yuuuus green" style="width: 70%"><span {if $vo.ostyle eq 0} class="green" {else}  class="red"{/if}>{$vo.fangxiang}</span> <span style="color: #42526a;font-size: 14px;"> {$vo.ptitle} </span></div>
+               
+                
+                 {if $vo.ostaus neq 2}
+                  <div class="yuuuus"><span class="bibi-state" >{$vo.zt}</span></div>
+                  {else}
+                  <div class="yuuuus"><span class="bibi-state" onclick="bt_pc({$vo.oid})" >{$Think.lang.bi_cx}</span></div>
+                  {/if}
+            </div>
+            <div class="zuihoumianl wl_flex wl_align_center wl_justify_between">
+                <div class="yuuuus" style="text-align: left"><span class="top">{$Think.lang.bi_js}</span><br><span>{$vo.buyprice}</span></div>
+                <div class="yuuuus" style="text-align: center"><span class="top">{$Think.lang.bi_sl}</span><br><span>{$vo.chicang}</span></div>
+                <div class="yuuuus" style="text-align: right"><span class="top">{$Think.lang.le_sj}</span><br><span>{$vo.nyr}<br>{$vo.sfm}</span></div>
+            </div>
+        </div>
+         {/volist}
+        
+    </div>
+</body>
+
+<script>
+    layui.use('layer', function(){
+        var layer = layui.layer;
+    });
+    
+    
+    function bt_pc(id){
+
+        layer.confirm('{$Think.lang.bi_qdycxm}', {
+            btn: ['{$Think.lang.bi_qd}','{$Think.lang.bi_qx}'] //按钮
+        }, function(){
+
+
+            $.ajax({
+                type:'POST',
+                url:'/index/goods/free_orderbibi',
+                data:{id:id},
+                success: function(msg){
+                    var msg = eval("(" + msg + ")");
+                    if(msg.error){
+                        layer.msg(msg.error);
+                    }
+                    if(msg.success){
+                        layer.msg('{$Think.lang.bi_cxcg}', {icon: 1});
+
+                        setTimeout(function () {
+
+                            window.location.reload();
+
+                        }, 1000);
+
+                    }
+                }
+            })
+
+
+        }, function(){
+
+        });
+
+
+
+    }
+
+
+</script>
+</html>

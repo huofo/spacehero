@@ -1,0 +1,121 @@
+{include file="head" /}
+<style type="text/css">
+  .rulelist ol{
+    overflow: hidden;
+    margin-bottom: 20px;
+    border-bottom: solid 2px #ececec;
+  }
+  .rulelist ol li{
+    float: left;
+    width: 20%;
+    margin-bottom: 5px;
+  }
+  .rulelist ol li inpyt{
+    margin-left: 5px;
+  }
+</style>
+{include file="menu" /}
+<!--main content start-->
+      <section id="main-content">
+          <section class="wrapper">
+          <div class="row">
+                  <div class="col-sm-12">
+                      <aside class="profile-info col-lg-10">
+                      <section class="panel">
+                          <div class="panel-body bio-graph-info">
+                              <h1> {$result.id?'编辑分组':'添加分组'}</h1>
+                              <form class="form-horizontal" role="form" id="formid" method="post">
+                                  <div class="form-group">
+                                      <label class="col-lg-2 control-label">分组名称</label>
+                                      <div class="col-lg-8">
+                                          <input type="text" class="form-control" value="{$result.title?$result.title:''}" placeholder="请填写栏目名称" name="title">
+                                      </div>
+                                  </div>
+                                  <div class="form-group">
+                                      <label class="col-lg-2 control-label">设置权限</label>
+                                      <div class="col-lg-8">
+                                          <ul class="rulelist">
+                                            <!-- {volist name="rulelist" id="vo"} -->
+                                            <li><label><input type="checkbox" {if $result} {if in_array($vo.id,$result.rules)} checked="checked" {/if} {else} checked="checked" {/if} name="rules[]" onclick="check_partent($(this))" value="{$vo.id}" />{$vo.title}</label></li>
+                                            <!-- {if !empty($vo.list)} -->
+                                            <ol>
+                                              <!-- {volist name="$vo.list" id="v"} -->
+                                              <li>
+                                                <label><input type="checkbox" {if $result} {if in_array($v.id,$result.rules)} checked="checked" {/if} {else} checked="checked" {/if} name="rules[]" value="{$v.id}" />{$v.title}</label>
+                                              </li>
+                                              <!-- {/volist} -->
+                                            </ol>
+                                            <!-- {/if} -->
+                                            <!-- {/volist} -->
+                                          </ul>
+                                      </div>
+                                  </div>
+                                  <div class="form-group">
+                                      <label class="col-lg-2 control-label"></label>
+                                      <div class="col-lg-8">
+                                          <label><input type="checkbox" {if $all eq 1 || $act eq 'add'} checked="checked" {/if} onclick="all_choice($(this))" />全选</label>
+                                      </div>
+                                  </div>
+                                  <input type="hidden" name="id" value="{$result.id?$result.id:''}">
+                                  <input type="hidden" name="act" value="{$act?$act:''}">
+                                  <div class="form-group">
+                                      <div class="col-lg-offset-2 col-lg-10">
+                                          <input type="submit" class="btn btn-success" onclick="return confirmedit(this.form)" value="提交">
+                                      </div>
+                                  </div>
+                              </form>
+                          </div>
+                      </section>
+                  </aside>
+                  </div>
+          </div>
+          </section>
+      </section>
+      <!--main content end-->
+  </section>
+
+
+{include file="foot" /}
+<script>
+function confirmedit(form){
+  var title = form.title.value;
+  if(!title){
+    layer.msg('请输入栏目名称'); 
+    return false;
+  }
+  var formurl = "{:Url('admin/system/groupadd')}";
+  var data = $('#formid').serialize();
+  var locurl = "{:Url('admin/system/grouplist')}";
+  WPpost(formurl,data,locurl);
+  return false;
+}
+
+function all_choice(obj){
+  if(obj.is(':checked')){
+    $('.rulelist li input[type="checkbox"]').prop('checked',true);
+  }else{
+    $('.rulelist li input[type="checkbox"]').prop('checked',false);
+  }
+}
+
+function check_partent(obj){
+  var bool = obj.is(":checked");
+  obj.parents('li').next().find('input[type="checkbox"]').prop('checked',bool);
+}
+$('.rulelist ol li').find('input[type="checkbox"]').click(function(){
+  var bool = $(this).is(":checked");
+  var allinput = $('.rulelist ol li').find('input[type="checkbox"]');
+  var k=0;
+  allinput.each(function(){
+    var bool = $(this).is(":checked");
+    if(bool){
+      k++;
+    }
+  })
+  if(!bool && k){
+    return true;
+  }else{
+    $(this).parents('ol').prev().find('input[type="checkbox"]').prop('checked',bool);
+  }
+});
+</script>

@@ -1,0 +1,173 @@
+.xh_flex{
+    display:-webkit-box;/*Chrome4+,Safari3.1,iOSSafari3.2+*/
+    display:-moz-box;/*Firefox17-*/
+    display:-webkit-flex;/*Chrome21+,Safari6.1+,iOSSafari7+,Opera15/16*/
+    display:-moz-flex;/*Firefox18+*/
+    display:-ms-flexbox;/*IE10*/
+    display:flex;
+    /*//这个必须有用来创建盒子*/
+}
+.xh_align_center{
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+    align-items: center;
+}
+.xh_align-items-start{
+    -ms-flex-align: start;
+    align-items: flex-start;
+}
+.xh_justify_between{
+    -webkit-justify-content: space-between;
+    -moz-justify-content: space-between;
+    -ms-justify-content: space-between;
+    -webkit-box-pack: justify;
+    justify-content: space-between;
+    /*//左右分布排列*/
+}
+.xh_justify-content{
+    -webkit-justify-content: space-around;
+    justify-content: space-around;
+}
+.xh_justify-content-start{
+    -ms-flex-pack: start;
+    justify-content: flex-start;
+}
+*{box-sizing: border-box;outline: none;}
+.wodehezi{width: 100%;height: 100%;background: #e5ebf5}
+.hunvbk{width: 100%;height: 900px;padding: 20px 0;}
+.zuohung{width: 32%;background: #f5f5f5;margin-left: 1.5%;height: 97%}
+.youhjik{width: 66%;height: auto;background: #f5f5f5}
+.dazihh{width: 100%;height: 40px;background: #f5f5f5}
+.dazihh img{margin-left: 10px;margin-top: 10px;height: 20px;}
+.gfjha{width: 100%;height: 50px;}
+.hhhsha{height: 40px;width: 100%; line-height: 40px;background: white}
+.hhhsha .active{color: #8f98f7!important;}
+.jklhka{height: 25px;width: 100%;line-height: 15px;background: white}
+.hsjka{padding: 0 10px}
+.shakod{width: 98%;margin: 5px auto 0;height: 30px;line-height: 30px;font-size: 13px;background: white;}
+.shakod:hover{background: #f2f5fa!important;}
+.shabdhaj{width: 60%;
+    /*height: 800px;margin-top: -60px;*/
+}
+.nbfjhsb{width: 40%;height: auto;background: white}
+.hskasja{width: 100%;height: 80px;}
+.sgdvga{width: 100%;height: 500px;background: #1a243b}
+.ssxsz{height: 50px;width: 18%;background: white;text-align: center;margin: 14px 3px;font-size: 12px;}
+.shjaksba{width: 100%;height: 25px;line-height: 30px}
+.bhsgdav{width: 100%;height: auto;background: white;}
+/*.cghus{width: 100%;height: 44px;line-height: 44px;background: #f1f3f6}*/
+.okuhj{width: 100%;height: auto;}
+.zuoshng{width: 47%;height: auto;background: white;padding-bottom: 10px}
+.shadbuyt{width: 100%;height: 30px;line-height: 30px;font-size: 0.75rem;background: #f1f3f6}
+.shajshba{width: 100%;height: 25px;line-height: 25px;font-size: 0.7rem}
+.lixinli{width: 100%;height: 50px;background: #f1f3f6;}
+.lixinli span{width: 50%;height: 50px;line-height: 50px;text-align: center}
+.kubhgts{width: 100%;height: 50px;line-height: 50px;text-align: center}
+.kubhgts button{ width: 50%;height: 50px;border-bottom: 1px solid #0e2c5e;}
+.hhngys{width: 100%;height: 260px;}
+.juexink{width: 90%;height: 40px;margin-left: 5%;}
+.zuihoudajib{width: 100%;height: auto;background: white}
+.daohangkung{width: 100%;height: 40px;background: #f1f3f6}
+.jnuhh{width: 90%;height: 20px;line-height: 20px;font-size: 12px;margin: 6px auto}
+.daohangkung span{height: 40px;display: block;width: 45%;text-align: center;color: blueviolet;line-height: 40px;background: white;}
+.lixinli a{text-decoration: none;color: black;height: 100%;display: block}
+.lixinli .active{background: white;color: #2356ac!important;}
+/*.kubhgts a:hover{background: white}*/
+.kubhgts .active{color: #2356ac!important;border-bottom: 1px solid #2356ac;box-sizing: border-box!important;}
+/*.kyi .active{color: #2356ac!important;border-bottom: 1px solid #2356ac}*/
+/*.ker .active{color: #2356ac!important;border-bottom: 1px solid #2356ac}*/
+.xiaodaol{width: 100%;height: 40px;line-height: 40;background: #1a243b;font-size: 0.8rem}
+.xiaodianji span{padding: 7px 15px;text-align: center;color: #4e5b85;}
+.xiaodianji .active{color: white;background: #344568}
+.kongxiaohell{width: 100%;height: 10px;background: #e5ebf5}
+/*.jnuhh span{text-align: center}*/
+.bibi_hold{width: 90%;margin: 10px auto;color: #808080;height: 30px;line-height: 30px;font-size: 14px}
+.bibi_diyi{width: 45%;text-align: center}
+.bibi_dier{width: 30%;text-align: center}
+.bibi_disan{width: 25%;text-align: right}
+.bibi_mairu{width: 20%;color: #596a7a;font-size: 15px}
+.bibi_kai{width: 50%}
+.bibi_kai a{color: black;text-decoration: none;display: block;height: 45px;line-height: 45px}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

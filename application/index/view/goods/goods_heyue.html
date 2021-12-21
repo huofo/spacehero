@@ -1,0 +1,689 @@
+{include file="head" /}
+
+<script type="text/javascript">
+window.onload=function(){
+//设置适配rem
+var change_rem = ((window.screen.width > 450) ? 450 : window.screen.width)/375*100;
+document.getElementsByTagName("html")[0].style.fontSize=change_rem+"px";
+window.onresize = function(){
+change_rem = ((window.screen.width > 450) ? 450 : window.screen.width)/375*100;
+document.getElementsByTagName("html")[0].style.fontSize=change_rem+"px";
+}
+}
+</script>
+<script type="text/javascript" src="__HOME__/js/lodash.min.js"></script>
+
+
+<script>
+
+
+var order_type = 0;
+var order_pid = {$pro.pid};
+var order_price = {$pay_choose_arr[0]};
+var order_sen = {$protime[0]*60};
+var order_shouyi = {$proscale[0]};
+var newprice = {$pro.Price};  //实时价格
+var rawData_data = [];
+var my_money = {$userinfo.usermoney?$userinfo.usermoney:'0'};
+var order_min_price = {:getconf('order_min_price')};
+var order_max_price = {:getconf('order_max_price')};
+var numprice = {$pro.numprice};
+
+
+window.onload = function(){
+	//只有合约
+{if $jiying==1 and $jinjie ==1 }
+
+	 $('.second').css({'display':'none'});
+        $('.scroll-xxs').css({'width':'98%'});
+        $('.expect_profit').css({'display':'none'});
+        $('.stop-win').css({'display':'block'});
+        $('.stop-loss').css({'display':'block'});
+		 $('.jixings').css({'display':'none'});
+		 $('.jinjies').css({'display':'block'});
+        $('.onumber').css({'display':'block'});
+        $('.investment-amount').css({'display':'none'});
+        $('.ng-other').css({'display':'none'});
+		 $("#jinjie").addClass("active");
+
+
+{/if}
+
+	//都没有
+{if $jiying==1 and $jinjie ==0 }
+
+	 $('.second').css({'display':'none'});
+        $('.scroll-xxs').css({'width':'98%'});
+        $('.expect_profit').css({'display':'none'});
+        $('.stop-win').css({'display':'none'});
+        $('.stop-loss').css({'display':'none'});
+		 $('.jixings').css({'display':'none'});
+		 $('.jinjies').css({'display':'none'});
+        $('.onumber').css({'display':'none'});
+        $('.investment-amount').css({'display':'none'});
+        $('.ng-other').css({'display':'none'});
+	  $('.order-detail').css({'display':'none'});
+	  $('.my-money').css({'display':'none'});
+
+	  $('.end_time').html('暂无权限');
+
+
+
+{/if}
+
+
+}
+
+
+
+
+</script>
+
+<style>
+    .headerbar{
+        background-color: black !important;
+    }
+    .headerbar .header-item{
+        color: white !important;
+    }
+    .back-button{
+        color: white !important;
+    }
+    .content-background{
+        background-color: #1B1B1B!important;
+    }
+</style>
+
+<!--        夜间白天切换的文件-->
+{if $_SESSION["night"]=="yes"}<link rel="stylesheet" href="/index/css/goods.css" >{/if}
+<body ng-app="starter" ng-controller="AppCtrl" class="grade-a platform-browser platform-ios platform-ios9 platform-ios9_1 platform-ready">
+
+<ion-nav-bar class="bar-stable headerbar nav-bar-container" nav-bar-transition="ios" nav-bar-direction="exit" nav-swipe="">
+<div class="nav-bar-block" nav-bar="active"><ion-header-bar class="bar-stable headerbar bar bar-header" align-title="center"><div class="buttons buttons-left" style="transition-duration: 0ms;"><span class="left-buttons">
+        <a href="javascript:history.go(-1);" class="back-button" style="transition-duration: 0ms;    margin-top: 0.072rem;">
+            <i class="icon ion-ios-arrow-left"></i>
+        </a>
+    </span></div>
+    <div  id="nav-title"  class="title title-center header-item goodstitle" style="transition-duration: 0ms; transform: translate3d(0px, 0px, 0px); left: 48px; right: 48px;"> </div>
+
+    <div class="buttons buttons-left" style="transition-duration: 0ms;    top: 0px; ">
+                <span class="left-buttons">
+                    <a href="{:url('/index/user/index/token/'.$token)}" class="back-button" style="transition-duration: 0ms;text-decoration:none  ">
+                        <i class="icon--8 iconfont "></i>
+                    </a>
+                </span>
+            </div>
+
+
+    </ion-header-bar></div>
+
+
+
+
+    <style type="text/css" media="screen">
+				#nav-title{
+				}
+				#nav-title span{
+					position: relative;
+				}
+				#nav-title span::before{
+					height: 40px;
+					line-height: 40px;
+					padding-left: 1em;
+					position: absolute;
+				}
+				.nav-list{
+					/*width: 9em;*/
+					    z-index: 9999;
+					background: rgba(0,0,0,0.7);
+					margin: 0 auto;
+					padding: 10px 0;
+					position: absolute;
+					top: 40px;
+					left: 0;
+					right: 0;
+				}
+				.nav-list a{
+					color: #fff;
+					text-decoration: none;
+ 					padding: 5px 1em;
+				}
+				.nav-list li{
+					height: 2.5em;
+					text-align: center;
+					line-height: 2.5em;
+				}
+			</style>
+			<ul class="nav-list" style="display: none; overflow-y: scroll; height: 100%;">
+				<!--<li><a href="{:url('/index/goods/goods/pid/12/token/'.$token)}">BTC/USD</a></li>
+				<li><a href="{:url('/index/goods/goods/pid/26/token/'.$token)}">LTC/USD</a></li>
+				<li><a href="{:url('/index/goods/goods/pid/9/token/'.$token)}">EUR/GBP</a></li>
+				<li><a href="{:url('/index/goods/goods/pid/22/token/'.$token)}">USD/JPY</a></li>
+				<li><a href="{:url('/index/goods/goods/pid/11/token/'.$token)}">GBP/CAD</a></li>
+				<li><a href="{:url('/index/goods/goods/pid/10/token/'.$token)}">GBP/AUD</a></li>
+				<li><a href="{:url('/index/goods/goods/pid/6/token/'.$token)}">EUR/USD</a></li>
+				<li><a href="{:url('/index/goods/goods/pid/7/token/'.$token)}">GBP/USD</a></li>
+				<li><a href="{:url('/index/goods/goods/pid/8/token/'.$token)}">AUD/CAD</a></li>-->
+
+                <!-- {volist name="prolist" id="vo"} -->
+                <li>
+                    <a href="{:url('/index/goods/goods_heyue',array('pid'=>$vo['pid'],'token'=>$token))}">{$vo.ptitle}</a>
+                </li>
+                <!-- {/volist} -->
+			</ul>
+			<script>
+				(function(){
+					var title = document.querySelector("#nav-title");
+					var list = document.querySelector("ul.nav-list");
+					console.log(title);
+					title.addEventListener("click", function(){
+						q();
+					});
+					function q(){
+						list.style.display = list.style.display == 'block' ? 'none' : 'block';
+					}
+				})();
+			</script>
+
+
+
+    </ion-nav-bar>
+<ion-nav-view class="view-container"  nav-view-transition="ios" nav-view-direction="exit" nav-swipe="">
+<ion-view   class="trade-view pane"  hide-nav-bar="false" state="trade" nav-view="active" style="opacity: 1; transform: translate3d(0%, 0px, 0px);">
+
+    <ion-content  class="trade-content content-background scroll-content ionic-scroll  has-header" scroll="true"><div class="scroll" style="transform: translate3d(0px, 0px, 0px) scale(1);">
+
+
+		<header>
+			<section  class="ng-binding rise data-price" style="">{$pro.Price}</section>
+			<section style="display:none; padding:0 5px">
+				<p class="kaipan"></p>
+				<p  class="ng-binding rise data-open" style="">{$pro.Open}</p>
+			</section>
+			<section style=" padding:0 5px">
+                <div style="width: 100%;display: block;margin-top: 10px">
+                    <p class="zuidi" style="text-align:center"></p>
+                    <p  style="text-align:right" class="ng-binding rise data-low">{$pro.Low}</p>
+                </div>
+                <div style="width: 100%;display: block">
+                    <p  style="text-align:center" class="zuigao"></p>
+                    <p  style="text-align:right;font-size: 0.09rem;font-weight: 700;" class="ng-binding rise data-high">{$pro.High}</p>
+                </div>
+			</section>
+		</header>
+
+		<nav>
+             <article>
+                <span class="trade-chart-type stock active Kxian" onClick="change_chart_type('stock')"></span>
+                <span class="trade-chart-type line zoushi" onClick="change_chart_type('line')"></span>
+            </article>
+            <section class="trade-chart-period 1M active" onClick="change_chart_period('1M')">1M</section>
+            <section class="trade-chart-period 5M" onClick="change_chart_period('5M')">5M</section>
+            <section class="trade-chart-period 15M" onClick="change_chart_period('15M')">15M</section>
+            <section class="trade-chart-period 30M" onClick="change_chart_period('30M')">30M</section>
+            <section class="trade-chart-period 1H" onClick="change_chart_period('1H')">1H</section>
+            <section class="trade-chart-period 1D" onClick="change_chart_period('1D')">1D</section>
+        </nav>
+		<footer>
+             <div id="container">
+               <div id="ecKx"></div>
+               <div class="txt1"><span class="a"></span><span class="b"></span><span class="c"></span><span class="d"></span><span class="e"></span></div>
+               <div class="txt2"><span class="a DIFF"><i></i></span><span class="b DEA"><i></i></span><span class="c MACD"><i></i></span></div>
+             </div>
+        </footer>
+    </div><div class="scroll-bar scroll-bar-v"><div class="scroll-bar-indicator scroll-bar-fade-out" style="transform: translate3d(0px, 0px, 0px) scaleY(1); height: 0px;"></div></div></ion-content>
+	<div class="trade_bar">
+    {if $isopen == 1}
+		<section onClick="toggle_history_order_panel()" class="">
+			<i class="icon--14 iconfont"></i>
+            <p class="chicangs">{$Think.lang.gs_cc}</p>
+		</section>
+		<section onClick="parent.location='{:url('goods/heyuegoods',array('pid'=>$goods_id,'token'=>$token,'fangxiang'=>'0'))}';" class="">
+			<i class="iconfont icon--17" style="color: #FFFFFF;"></i>
+            <p class="" style="color: #FFFFFF;">{$Think.lang.gs_zd}</p>
+		</section>
+		<section onClick="parent.location='{:url('goods/heyuegoods',array('pid'=>$goods_id,'token'=>$token,'fangxiang'=>'1'))}';" class="">
+			<i class="iconfont icon--18"></i>
+            <p class="" style="color: #FFFFFF;">{$Think.lang.gs_zk}</p>
+		</section>
+    {else/}
+        <section  class="" style="flex-basis:100%">
+            <i class="icon--14 iconfont"></i>
+            <p class="xiushi"><span ng-show="order_list" class="ng-binding ng-hide" style="">(0)</span></p>
+        </section>
+
+    {/if}
+	</div>
+
+    <!-- ngInclude: 'templates/order-confirm-panel.html' --><div ng-include="'templates/order-confirm-panel.html'" class="">
+    <div class="pro_mengban "  >
+    <div class="order-confirm-panel" >
+        <div class="panel-header">
+            <div>
+                {$Think.lang.gs_ddqr}
+                <div class="close" onClick="toggle_order_close_panel()">
+                    <i class="icon ion-ios-close-empty close_tag"></i>
+                </div>
+            </div>
+        </div>
+        <div class="panel-body">
+            <div class="period" style="height: 80px;">
+                <p class="end_time">{$Think.lang.gs_xzwf}</p>
+                <ion-scroll direction="x" class="scroll-view ionic-scroll scroll-x"><div class="scroll" style="transform: translate3d(0px, 0px, 0px) scale (1);">
+                    <div class="period-widget-view close-position-view">
+                        <!-- ngRepeat: c in trade.cycle -->
+                        {if $jiying==0}
+                        <div class="close-position active" data-sen="1" id='jiying'>{$Think.lang.bii_mhy}</div>
+                         {/if}
+
+                        {if $jinjie}
+                        <div class="close-position" data-sen="2"  id='jinjie'>{$Think.lang.ind_hyjy}</div>
+                        {/if}
+                        <!-- end ngRepeat: c in trade.cycle -->
+                    </div>
+                </div>
+                <div class="scroll-bar scroll-bar-h">
+                    <div class="scroll-bar-indicator scroll-bar-fade-out" style="transform: translate3d(0px, 0px, 0px) scaleX(1); width: 289px;">
+                    </div>
+                </div>
+            </ion-scroll>
+            </div>
+            <div class="period second">
+                <p class="end_time">{$Think.lang.sl_dqsj}</p>
+                <ion-scroll direction="x" class="scroll-view ionic-scroll scroll-x"><div class="scroll" style="transform: translate3d(0px, 0px, 0px) scale(1);">
+                    <div class="period-widget-view">
+                        <!-- ngRepeat: c in trade.cycle -->
+                        {volist name="protime" id="vo" key='k'}
+                        <div class="period-widget {if $k==1} active {/if}"  data-sen="{$vo*60}" data-shouyi="{$proscale[$k-1]}">
+                            <div class="period-widget-header">
+                                {$Think.lang.gb_jssj}
+                            </div>
+                            <div class="period-widget-content" >
+                                <span  class="final_time ng-binding">{$vo*60}</span>
+                                <span  class="final_unit">{$Think.lang.gs_miao}</span>
+                            </div>
+                            <div class="period-widget-footer period_footer ng-binding">
+                                {$Think.lang.gs_sy}  {$proscale[$k-1]}%
+                            </div>
+                        </div>
+						{/volist}
+                        <!-- end ngRepeat: c in trade.cycle -->
+                    </div>
+                </div><div class="scroll-bar scroll-bar-h"><div class="scroll-bar-indicator scroll-bar-fade-out" style="transform: translate3d(0px, 0px, 0px) scaleX(1); width: 289px;"></div></div></ion-scroll>
+            </div>
+            <div class="amount investment-amount">
+                <p class="invest_account tousijine">
+
+                    <span  class="{if $userinfo['usermoney'] > $pay_choose_arr[0]} ng-hide {/if} no-money">{$Think.lang.gs_tzjebzqcz}</span>
+                    <span  class="ng-hide no-max">{$Think.lang.gs_dbtzjebcg}{:getconf('order_max_price')}</span>
+                    <span   class="ng-hide no-min">{$Think.lang.gs_dbtzjebsy}{:getconf('order_min_price')}</span>
+                </p>
+                <ion-scroll direction="x" class="scroll-view ionic-scroll scroll-x scroll-xxs" style="width: 75%;"><div class="scroll" style="transform: translate3d(0px, 0px, 0px) scale(1);">
+                    <div class="amount-view">
+                        {volist name="pay_choose_arr" id="vo" key='k'}
+                        <div class="amount-box ng-binding {if $k==1} active {/if}" data-price="{$vo}">
+                            ${$vo}
+                        </div>
+                        {/volist}
+
+                    </div>
+                </div><div class="scroll-bar scroll-bar-h"><div class="scroll-bar-indicator scroll-bar-fade-out" style="transform: translate3d(0px, 0px, 0px) scaleX(1); width: 192px;"></div></div></ion-scroll>
+                <label class="other-amount">
+                    <input type="number" placeholder="{$Think.lang.gs_qtje}" ng-init="onfocus=false" ng-focus="onfocus==true" ng-model="order_params.other_amount" ng-keydown="min_money()" class="ng-pristine ng-untouched ng-valid ng-empty ng-other">
+                </label>
+            </div>
+
+
+
+            <div class="amount onumber" style="height: 90px;">
+                <p class="invest_account">{$Think.lang.gs_mrss}</p>
+                <div class="move-share">
+                    <span class="red-share" onClick="redshare($(this))" >-</span>
+                    <input type="number" value="1" onMouseOut="changeshare($(this))" />
+                    <span class="add-share" onClick="addshare($(this))" >+</span>
+                </div>
+                <div class="amount-explain">{$Think.lang.gs_ms}<span>{$pro.numprice}</span>,{$Think.lang.gs_fd}<span>{$pro.code}</span>,{$Think.lang.gs_dc}<span id="getspread"></span></div>
+            </div>
+            <div class="amount stop-win">
+                <p class="invest_account">{$Think.lang.gs_zy}</p>
+                <ion-scroll direction="x" class="scroll-view ionic-scroll scroll-x" style="width: 75%;">
+                    <div class="scroll" style="transform: translate3d(0px, 0px, 0px) scale(1);">
+                    <div class="amount-view">
+                        <div class="never-win ng-binding" data-sen="20">20%</div>
+                        <div class="never-win ng-binding" data-sen="40">40%</div>
+                        <div class="never-win ng-binding" data-sen="60">60%</div>
+                        <div class="never-win ng-binding active" data-sen="80">80%</div>
+                        <div class="never-win ng-binding " data-sen="100">100%</div>
+                    </div>
+                    </div>
+                </ion-scroll>
+                <label class="other-amount ng-win">
+                    <input type="number" placeholder="{$Think.lang.gs_qtzy}" ng-init="onfocus=false" ng-focus="onfocus==true" ng-model="order_params.other_amount" ng-keydown="min_money()" class="ng-pristine ng-untouched ng-valid ng-empty">
+                </label>
+            </div>
+            <div class="amount stop-loss">
+                <p class="invest_account">{$Think.lang.gs_zs}</p>
+                <ion-scroll direction="x" class="scroll-view ionic-scroll scroll-x" style="width: 75%;">
+                    <div class="scroll" style="transform: translate3d(0px, 0px, 0px) scale(1);">
+                    <div class="amount-view">
+                        <div class="never-loss ng-binding " data-sen="50">50%</div>
+                        <div class="never-loss ng-binding" data-sen="60">60%</div>
+                        <div class="never-loss ng-binding " data-sen="70">70%</div>
+                        <div class="never-loss ng-binding" data-sen="80">80%</div>
+                        <div class="never-loss ng-binding active" data-sen="100">100%</div>
+                    </div>
+                    </div>
+                </ion-scroll>
+                <label class="other-amount ng-loss">
+                    <input type="number" placeholder="{$Think.lang.gs_qtzs}" ng-init="onfocus=false" ng-focus="onfocus==true" ng-model="order_params.other_amount" ng-keydown="min_money()" class="ng-pristine ng-untouched ng-valid ng-empty ">
+                </label>
+            </div>
+            <div class="info-view ">
+                <div class="ng-binding my-money">{$Think.lang.gs_ye}:  $ <span class="pay_mymoney">{$userinfo.usermoney}</span></div>
+                <div class="ng-binding jixings">{$Think.lang.or_sxf}：<span>{$web_poundage}</span>%</div>
+
+                <div class="ng-binding jinjies" style="display:none" >{$Think.lang.or_sxf}：<span>{$web_gratuity}</span>%</div>
+
+            </div>
+
+
+
+
+            <div class="order-detail-view">
+                <div class="order-detail">
+                    <div class="row fields">
+                        <div class="col">{$Think.lang.ind_mc}</div>
+                        <div class="col">{$Think.lang.gs_fx}</div>
+                        <div class="col">{$Think.lang.gs_xj}</div>
+                        <div class="col">{$Think.lang.gs_je}</div>
+                    </div>
+                    <div class="row">
+                        <div class="col qoute_name ng-binding goodstitles"> </div>
+                        <div class="col ng-binding order_type" >{$Think.lang.iin_md}</div>
+                        <div class="col ng-binding rise col-nowprice" >{$pro.Price}</div>
+                        <div class="col ng-binding" id="money"> ${$pay_choose_arr[0]}</div>
+                    </div>
+                    <div class="row btn_confirm">
+                        <div class="col">
+                            <button class="button" ak="1" onClick="judge($(this))" >
+                                {$Think.lang.gs_qrxd}
+                            </button>
+                        </div>
+                    </div>
+                    <p class="expect_profit">
+                        <span class="ng-binding">{$Think.lang.gs_yqsy} :  $ <span id="yuqi">180.00</span></span>
+                        &nbsp;&nbsp;
+                        <span class="ng-binding">{$Think.lang.gs_bdje} :  $ 0.00</span>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+    <!-- ngInclude: 'templates/order-state-panel.html' -->
+    <div class="order_mengban"  style="width:100%;height:100%;"><div>
+    <div >
+        <div class="order-state-panel"  >
+            <div class="panel-header">
+                <div class="ng-binding goodstitles">
+
+                    <div class="close" onClick="close_order()">
+                        <i class="icon ion-ios-close-empty"></i>
+                    </div>
+                </div>
+            </div>
+            <div class="panel-body">
+                <div class="paysuccess  ng-hide" ng-show="order_result.status == 'SUCCESS'">
+                    <div class="circle_wrapper" ng-show="order_params.cycle.time.indexOf('-') == -1">
+                        <div class="right_circle">
+                            <img class="img_circle_right" style="-webkit-animation: run 60s linear;" src="__HOME__/img/right_circle1.png">
+                        </div>
+                        <div class="left_circle">
+                            <img class="img_circle_lift" style="-webkit-animation: runaway 60s linear;" src="__HOME__/img/left_circle1.png">
+                        </div>
+                    </div>
+                    <div class="row remaining count_remaining" ng-show="order_params.cycle.time.indexOf('-') == -1">
+                        <div class="col">
+                            <div class="ng-binding pay_order_sen"></div>
+                            <div>{$Think.lang.gs_xj}</div>
+                            <div class="ng-binding newprice"></div>
+                        </div>
+                    </div>
+                    <div class="pupil_success ng-hide" ng-show="order_params.cycle.time.indexOf('-') >= 0">
+                        <p>{$Think.lang.gs_jycgddjs}</p>
+                        <p class="ng-binding">
+                            <span>{$Think.lang.gs_sysj}：</span>
+                            {$Think.lang.sw_t}Invalid Date
+                        </p>
+                    </div>
+                    <div class="row info_list">
+                        <div class="col col-15 first_info">
+                            <p>{$Think.lang.gs_fx}</p>
+                            <p  class="ng-binding pay_order_type"></p>
+                        </div>
+                        <div class="col col-30">
+                            <p>{$Think.lang.gs_je}</p>
+                            <p class="ng-binding">$<span class="pay_order_price"></span></p>
+                        </div>
+                        <div class="col col-30">
+                            <p>{$Think.lang.gs_zxj}</p>
+                            <p class="ng-binding pay_order_buypricee"></p>
+                        </div>
+                        <div class="col col-25 last_info">
+                            <p>{$Think.lang.gb_ycjg}</p>
+                            <p  class="ng-binding yuce">  $ </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="wait" ng-show="order_result.status == 'POST'">
+                    <div class="row">
+                        <div class="col ng-binding">
+                            <i class="ion-paper-airplane"></i>
+                            {$Think.lang.gs_qsh}……
+                        </div>
+                    </div>
+                </div>
+                <div class="fail ng-hide" ng-show="order_result.status == 'FAIL'">
+                    <div class="row">
+                        <div class="col ng-binding">
+                            <i class="ion-close-circled"></i>
+                            {$Think.lang.gs_zctjdd}
+                        </div>
+                    </div>
+                </div>
+
+                <div class="fail ng-hide order_fail" ng-show="order_result.status == 'FAIL'" style="">
+                    <div class="row">
+                        <div class="col ng-binding">
+                            <i class="ion-close-circled"></i>
+                            <span class="fail-info" style="    font-size: 18px;color: #fff;"></span>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="ordersuccess ng-hide" style="">
+                    <div class="row remaining finish_remaining">
+                        <div class="col">
+                            <div class="result_profit ng-binding "  style="">$180</div>
+                            <div class="expired_statements">{$Think.lang.gs_dqjswc}</div>
+                        </div>
+                    </div>
+                    <div class="row info_list">
+                        <div class="col col-15 first_info">
+                            <p>{$Think.lang.gs_fx}</p>
+                            <p  class="ng-binding pay_order_type"></p>
+                        </div>
+                        <div class="col col-30">
+                            <p>{$Think.lang.gs_je}</p>
+                            <p class="ng-binding">$<span class="pay_order_price"></span></p>
+                        </div>
+                        <div class="col col-30">
+                            <p>{$Think.lang.gs_zxj}</p>
+                            <p class="ng-binding pay_order_buypricee"></p>
+                        </div>
+
+                        <div class="col col-25 last_info">
+                            <p>{$Think.lang.gs_cjj}</p>
+                            <p class="ng-binding rise endprice" style=""></p>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="row button_row">
+                    <div class="col">
+                        <button class="button" onClick="continue_order()">{$Think.lang.gb_jxxd}</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+</div>
+<!-- ngInclude: 'templates/history-order-panel.html' -->
+<!-- <div  class=""><div class="history-panel" ng-include="1">
+        <div class="panel-header chicangmingxi" >
+            <div class="close" onClick="toggle_history_order_panel()">
+                <i class="icon ion-ios-close-empty"></i>
+            </div>
+        </div>
+        <div class="trade_history_list">
+        	<ion-scroll style="height: 100%" class="scroll-view ionic-scroll scroll-y"><div class="scroll" style="transform: translate3d(0px, 0px, 0px) scale(1);">
+            	<ul>
+                </ul>
+            </div><div class="scroll-bar scroll-bar-v"><div class="scroll-bar-indicator scroll-bar-fade-out" style="transform: translate3d(0px, 0px, 0px) scaleY(1); height: 0px;"></div></div></ion-scroll>
+        </div>
+    </div>
+</div> -->
+</ion-view></ion-nav-view>
+
+
+<div class="backdrop"></div><div class="ionic_toast"><div class="toast_section" ng-class="ionicToast.toastClass" ng-style="ionicToast.toastStyle" ng-click="hideToast()" style="display: none; opacity: 0;"><span class="ionic_toast_close"><i class="ion-android-close toast_close_icon"></i></span><span ng-bind-html="ionicToast.toastMessage" class="ng-binding"></span></div></div><div class="click-block click-block-hide"></div><div class="modal-backdrop hide"><div class="modal-backdrop-bg"></div><div class="modal-wrapper" ng-transclude=""><ion-modal-view class="order-modal modal slide-in-up ng-leave ng-leave-active">
+    <ion-header-bar class="order-modal-header bar bar-header">
+        <h1 class="title" style="left: 54px; right: 54px;">{$Think.lang.gs_zjls}</h1>
+        <div class="close" ng-click="capital_history_modal_hide()">
+            <i class="icon ion-ios-arrow-left"></i>
+        </div>
+    </ion-header-bar>
+    <ion-content class="person_money_list scroll-content ionic-scroll  has-header"><div class="scroll" style="transform: translate3d(0px, 0px, 0px) scale(1);">
+		<ion-scroll style="height:100%" class="scroll-view ionic-scroll scroll-y"><div class="scroll" style="transform: translate3d(0px, 0px, 0px) scale(1);">
+
+			<ul>
+                <!-- ngRepeat: c in moneyList -->
+
+			</ul>
+			<!-- ngIf: has_more_money_order.if_has_more_money_order -->
+		</div><div class="scroll-bar scroll-bar-v"><div class="scroll-bar-indicator scroll-bar-fade-out" style="height: 0px; transform: translate3d(0px, 0px, 0px) scaleY(1); transform-origin: center bottom 0px;"></div></div></ion-scroll>
+    </div><div class="scroll-bar scroll-bar-v"><div class="scroll-bar-indicator scroll-bar-fade-out" style="transform: translate3d(0px, 0px, 0px) scaleY(1); height: 0px;"></div></div></ion-content>
+    <div class="button-bar">
+        <a class="button button-dark" ng-click="capital_history_modal_hide()">{$Think.lang.gs_gb}</a>
+    </div>
+    <script src="__HOME__/js/lk/chardata.js"></script>
+    <script src="__HOME__/js/echarts.js"></script>
+    <script src="__HOME__/js/m.js"></script>
+    <script>
+
+
+
+   // setInterval('getdata({$pro.pid})', 1000);
+    //window.setInterval('getMaindata()',5000);
+   // setInterval("window.location.reload();",1000*60*5);
+
+    var titurl = '{:url("goodsinfo")}'
+    $.post(titurl, 'pid={$pro.pid}', function(_res){
+
+        var res = jQuery.parseJSON(Base64.decode(_res));
+
+        if(res.ptitle){
+            var span = '<span class="icon ion-ios-arrow-down"></span>';
+            $('.goodstitle').html(res.ptitle+span);
+			 $('.goodstitles').html(res.ptitle);
+        }else{
+           // history.go(-1);
+        }
+    })
+
+    var charturl = '{:url("getchart")}';
+    $.get(charturl,function(_res){
+
+
+        var res = jQuery.parseJSON(Base64.decode(_res));
+
+
+        $.each(res,function(k,v){
+            $('.'+k).html(v);
+        })
+    })
+
+    </script>
+
+    <script>
+    var flag = false;
+    var cur = {
+        x:0,
+        y:0
+    }
+    var nx,ny,dx,dy,x,y ;
+    function down(){
+        flag = true;
+        var touch ;
+        if(event.touches){
+            touch = event.touches[0];
+        }else {
+            touch = event;
+        }
+        cur.x = touch.clientX;
+        cur.y = touch.clientY;
+        dx = div2.offsetLeft;
+        dy = div2.offsetTop;
+    }
+    function move(){
+
+        if(flag){
+            var touch ;
+            if(event.touches){
+                touch = event.touches[0];
+            }else {
+                touch = event;
+            }
+            nx = touch.clientX - cur.x;
+            ny = touch.clientY - cur.y;
+            x = dx+nx;
+            y = dy+ny;
+            div2.style.left = x+"px";
+            div2.style.top = y +"px";
+            //阻止页面的滑动默认事件
+            document.addEventListener("touchmove",function(){
+                event.preventDefault();
+            },false);
+        }
+    }
+    //鼠标释放时候的函数
+    function end(){
+        flag = false;
+    }
+    var div2 = document.getElementById("div2");
+    div2.addEventListener("mousedown",function(){
+        down();
+    },false);
+    div2.addEventListener("touchstart",function(){
+        down();
+    },false)
+    div2.addEventListener("mousemove",function(){
+        move();
+    },false);
+    div2.addEventListener("touchmove",function(){
+        move();
+    },false)
+    document.body.addEventListener("mouseup",function(){
+        end();
+    },false);
+    div2.addEventListener("touchend",function(){
+        end();
+    },false);
+</script>
+</ion-modal-view></div></div></body></html>

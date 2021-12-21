@@ -1,0 +1,376 @@
+body{
+	/*background: linear-gradient(#333, #f44336);*/
+	/*background: url(../images/login/login.png);
+	background-position: left top,right top; 
+	background-size: cover;
+	background-position: center;
+	overflow: hidden;*/
+}
+
+.head-box .nav-box{
+	color: #333!important;
+}
+.head-box .nav-box .return{
+	color: #fff;
+}
+
+
+
+
+
+
+
+
+
+.main{
+	width: 100%;
+	height: 100%;
+	font-size: 18px;
+	overflow: hidden;
+}
+.main.register{
+	height: calc(100% - 40px);
+	padding-top: 10%;
+	box-sizing: border-box;
+}
+
+
+
+
+
+.main .img{
+	width: 80%;
+	height: 160px;
+	/*background: #ccc;*/
+	/*background: url(../images/login/top2.gif);*/  /*这里改了图片名*/
+	background-size: cover;
+	background-position: center;
+	margin: 15% auto 10%;
+	padding-top: 5%;
+	box-sizing: border-box;
+	/*animation: img-rotate 5s infinite;*/
+}
+.main .img img{
+	width: 40%;
+	margin: 0 auto 0;
+	display: block;
+}
+
+@keyframes img-rotate{
+	0%{
+		border-radius: 0px;
+		transform: rotate(0deg);
+	}
+	45%{
+		border-radius: 40px;
+		transform: rotate(180deg);
+	}
+	55%{
+		border-radius: 40px;
+		transform: rotate(180deg);
+	}
+	100%{
+		border-radius: 0px;
+		transform: rotate(360deg);
+	}
+}
+
+
+.login_bj
+{
+    position: absolute;
+    z-index:-1;
+    left: 0px;
+    top: 55%;
+   	background-size: 100% 100%;
+}
+.main .input-icon{
+	width: 70%;
+	height: 40px;
+	line-height: 40px;
+	color: #fff;
+	border-bottom: 1px solid #fff;
+	display: flex;
+	align-items: center;
+	margin: 20px auto 0;
+	padding: 0 10px;
+	box-sizing: border-box;
+
+}
+.main .input-icon input{
+	width: calc(100% - 2.2em);
+	height: 100%;
+	font-size: 16px;
+	color: #fff;
+	border: none;
+	background: none;
+	margin: 0 10px;
+	outline: none;
+
+}
+
+.main .input-icon input::-webkit-input-placeholder{
+	color: #fff;
+}
+.main .input-icon input::-moz-placeholder{
+	color: #fff;
+}
+.main .input-icon input::-ms-input-placeholder{
+	color: #fff;
+}
+
+
+.main .input-icon::before{
+	line-height: 36px;
+	font-size: 1.2em;
+	float: left;
+}
+
+
+
+
+.main #code_img{
+	height: 1.5em;
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* 忘记密码 */
+.main .forget-div{
+	width: 70%;
+	text-align: right;
+	margin: 0 auto;
+	padding: 0 10px;
+	box-sizing: border-box;
+}
+.main .forget{
+	line-height: 3em;
+	font-size: 14px;
+	color: #fff;
+}
+
+.main [type="submit"]{
+	width: 100%;
+	border-radius: 45px;
+	border: 1px solid #27b3d9;
+	background-color: rgba(0, 0, 0, 0);
+	padding: 10px 0;
+}
+
+/*.main [type="submit"]{*/
+/*	width: 60%;*/
+/*	height: 2.5em;*/
+/*	*/
+/*	font-size: 18px;*/
+/*	color: #fff;*/
+/*	border: 1px solid #fff;*/
+/*	border-radius: 5px;*/
+
+/*	background: rgba(255,255,255,0.1);*/
+
+/*	margin: 10% auto 0;*/
+/*	display: block;*/
+/*}*/
+
+
+
+
+.main.register .ewm{
+	width: 100px;
+	height: 100px;
+	background: #ddd;
+	margin: 10% auto 0;
+
+}
+.main.register .ewm-p{
+	text-align: center;
+	line-height: 2em;
+	color: #fff;
+}
+
+
+
+
+
+
+
+/*会员注册开始*/
+
+.huiyuan{
+	padding: 5%;
+	height: 65px;
+}
+.huiyuan ul li{
+	float: left;
+	width: 33%;
+	height: 65px;
+	line-height: 65px;
+	font-size: 20px;
+	color: #fff;
+	text-align: center;
+}
+.huiyuan ul li input{
+	padding: 5px 10px;
+	border: 0.5px solid #fff;
+	background: none;color: #fff;
+	font-size: 16px;
+	border-radius: 5px;
+}
+.huiyuan ul li .worldpay{
+	background: url(../images/login/worldpay.png);
+	width: 70px;
+	height: 75px;
+	background-size: cover;
+	display: inline-block;
+	right: 7%;
+	position: absolute;
+}
+.loginn{
+	background: url(../images/login/loginn.png);
+	background-position: left top,right top; 
+	background-size: cover;
+	overflow-x:hidden;
+	overflow-y:auto;
+}
+
+
+.main .one-box{
+	color: #c2303d;
+	background: #fff;
+	padding: 5% 5%;
+	margin: 0 1rem;
+	box-sizing: border-box;
+	border-radius: 10px;
+}
+
+.main .one-box .title{
+	text-align: center;
+}
+.main .one-box .title span{
+	font-size: 22px;
+	/*border-bottom: 1px solid #ddd;*/
+}
+
+.main .one-box .pay-box{
+	width: 100%;
+	margin: 5% 0;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+.main .one-box .pay-box input{
+	width: 100%;
+	height: 2em;
+	font-size: 16px;
+	color: #adadad;
+	border-radius: 15px;
+	border: 1px solid #82a0c6;
+	background: none;
+	padding: 0 0 0 10px;
+	margin-bottom: 10px;
+	box-sizing: border-box;
+}
+.main .one-box input::-webkit-input-placeholder{
+	color: #adadad;
+}
+.main .one-box input::-moz-placeholder{
+	color: #adadad;
+}
+.main .one-box input::-ms-input-placeholder{
+	color: #adadad;
+}
+
+.main .one-box .pay-box .icon{
+	width: 80px;
+	height: 80px;
+	text-align: center;
+	line-height: 80px;
+	font-size: 60px;
+	color: #adadad;
+	margin: 0 auto 5%;
+}
+.main .one-box .pay-box .arrow{
+	width: 50px;
+	height: 50px;
+	text-align: center;
+	line-height: 50px;
+	font-size: 40px;
+	color: #adadad;
+	margin: 0 5%;
+}
+.main .one-box .pay-box .left{
+	color: #8bc34a;
+}
+.main .one-box .pay-box .right{
+	color: #ff9800;
+}
+
+
+.main .one-box input.pass{
+	width: 60%;
+	height: 2em;
+	font-size: 16px;
+	color: #adadad;
+	border-radius: 15px;
+	border: 1px solid #82a0c6;
+	background: none;
+	/*margin: 50px auto;*/
+	padding: 0 0 0 10px;
+	box-sizing: border-box;
+	display: block;
+	float: left;
+}
+.main .one-box input.pass1{
+	width: 35%;
+	height: 2em;
+	font-size: 16px;
+	color: #fff;
+	float: right;
+	border-radius: 2px;
+	border: 1px solid #82a0c6;
+	background: #84b5ee;
+	/*margin: 50px auto;*/
+	padding: 0 10px;
+	box-sizing: border-box;
+	display: block;
+	margin-top: 0px;
+}
+.main .one-box input.pass2{
+	width: 30%;
+	height: 2em;
+	border-radius: 2px;
+	margin-top: 0px;
+	background: url(../images/login/tuxiang.png);
+	display: block;
+	background-size: cover;
+}
+.main .one-box [type="submit"]{
+	min-width: 4em;
+	width: 100%;
+/*	height: 2.5em;*/
+	font-size: 16px;
+	color: #fff;
+	border: none;
+	border-radius: 5px;
+	background: #1f3e8e;
+	margin: 5% auto 5%;
+	display: block;
+}
+
+.pay-box ul li b{
+	position: absolute;color: #000;
+	margin-left: 10px;
+	margin-top: 5px;
+}

@@ -1,0 +1,68 @@
+﻿<html style="font-size: 120px;">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+<!-- 是否启用全屏模式 -->
+<meta name="apple-mobile-web-app-capable" content="yes">
+<!-- 全屏时状态颜色设置 -->
+<meta name="apple-mobile-web-status-bar-style" content="white">
+<!-- 禁用电话号码自动识别 -->
+<meta name="format-detection" content="telephone=no">
+<!--禁止读取本地缓存模板-->
+<meta http-equiv="Pragma" contect="no-cache">
+<script type="text/javascript">
+window.onload=function(){
+//设置适配rem
+var change_rem = ((window.screen.width > 450) ? 450 : window.screen.width)/375*100;
+document.getElementsByTagName("html")[0].style.fontSize=change_rem+"px";
+window.onresize = function(){
+change_rem = ((window.screen.width > 450) ? 450 : window.screen.width)/375*100;
+document.getElementsByTagName("html")[0].style.fontSize=change_rem+"px";
+}
+}
+</script>
+<title>
+</title>
+    <link href="__HOME__/css/pay1.css" rel="stylesheet" media="screen">
+    <script type="text/javascript" src="__HOME__/js/jquery-3.2.1.min.js"></script>
+    <script type="text/javascript" src="__HOME__/js/lk/user.js"></script>
+</head>
+
+<body>
+
+<div class="body">
+    <div class="mod-ct">
+        <div class="order">
+        </div>
+        <div class="amount" id="money">&nbsp</div>
+        <div class="qrcode-img-wrapper" data-role="qrPayImgWrapper">
+            <div data-role="qrPayImg" class="qrcode-img-area">
+                <div class="ui-loading qrcode-loading" data-role="qrPayImgLoading" style="display: none;"></div>
+                <div style="position: relative;display: inline-block;">
+                    <img src="http://qr.liantu.com/api.php?text={$res}" width="165" height="165">
+                </div>
+            </div>
+
+
+        </div>
+        <div class="time-item">
+            <div class="time-item" id="msg"><h1>长按二维码识别</h1> </div>
+        </div>
+
+        <div class="tip">
+            <div class="ico-scan"></div>
+            <div class="tip-text">
+                <p id="showtext">打开 [扫一扫]</p>
+            </div>
+        </div>
+
+        
+
+        <div class="tip-text">
+        </div>
+
+
+    </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,210 @@
+{include file="head" /}
+{include file="menu" /}
+<style>
+	.message p{font-size: 10px;
+		word-wrap: break-word;
+		word-break: break-all;
+		overflow: hidden;
+
+
+	}
+</style>
+<link href="/new/css/consult_windows.css" rel="stylesheet">
+<link href="/new/css/album.css" rel="stylesheet">
+<link href="/new/layui/css/layui.css" rel="stylesheet">
+<script src="/new/layui/layui.js"></script>
+<section id="main-content">
+	<section class="wrapper" style="padding:15px  0px 15px 0px;margin-top: 45px;">
+<div class="headers">
+	<a class="back" href="javascript:history.back(-1);"></a>
+	<h5 class="tit">{$user.nickname}</h5>
+</div>
+<div class="message" id="message">
+	{volist name="send_list" id="sl"}
+	{if $sl.sender != 1}
+			<div class="send">
+				<div class="time">{$sl.add_time}</div>
+				<div class="msg"><img src="/new/images/touxiang.png"  style="width: 40px;height: 40px;">
+					{if $sl.is_img == 'img'}
+						<p><i class="msg_input"></i><img id="n_img_{$sl.msg_id}" onclick="showNotes({$sl.msg_id})" src="{$sl.msg}" ></p>
+					{else}
+						<p><i class="msg_input"></i>{$sl.msg}</p>
+					{/if}
+				</div>
+			</div>
+			{else}
+			<div class="show">
+				<div class="time">{$sl.add_time}</div>
+				<div class="msg">
+					<img src="/new/images/kefu.png">
+					{if $sl.is_img == 'img'}
+						<p><i class="msg_input"></i><img id="n_img_{$sl.msg_id}" onclick="showNotes({$sl.msg_id})" src="{$sl.msg}" ></p>
+					{else}
+						<p style="background:#66cd00;"><i class="msg_input"></i>{$sl.msg}</p>
+					{/if}
+				</div>
+			</div>
+		{/if}
+	{/volist}
+</div>
+
+
+<div class="footer">
+	<button type="button"  style="background: none; border: none;" id="upimg"  >
+		<img src="/new/images/sctp.png" style="width: 30px ">
+	</button>
+
+	<input type="text" id="input_msg">
+	<p onclick='sendMessage()'>发送</p>
+</div>
+
+
+<div class="am-pureview am-pureview-bar-active am-active" id="am-pureview-m54ek" style="display: none;">
+	<ul class="am-pureview-slider" style="touch-action: pan-y; user-select: none; -webkit-user-drag: none; -webkit-tap-highlight-color: rgba(0, 0, 0, 0);">
+		<li data-src="#"  class="am-active">
+			<div class="pinch-zoom-container" style="overflow: hidden; position: relative; height: 667px;">     <div class="am-pinch-zoom am-pureview-loaded" style="transform-origin: 0% 0% 0px; position: absolute; height: 667px; transform: scale3d(1, 1, 1) translate3d(0px, 0px, 0px); left: 0px; top: 0px;">
+				<img src=""  class="am-img-loaded" style="transform: scale(1, 1);">
+			</div>
+			</div>
+		</li>
+	</ul>
+
+	<div class="am-pureview-actions am-active">
+		<a href="javascript: void(0)" class="am-icon-chevron-lefts" data-am-close="pureview"><</a>
+	</div>
+</div>
+
+	</section>
+
+</section>
+{include file="foot" /}
+<script type="text/javascript" src="/new/js/jquery-3.3.1.min.js"></script>
+<script>
+	//发送方id
+
+	var send_id = 1;
+	//接收方id
+	var receiv_id ={$user.uid};
+
+	layui.use('layer', function(){
+		var layer = layui.layer;
+
+	});
+
+	layui.use('upload', function(){
+		var upload = layui.upload;
+		//执行实例
+		var uploadInst = upload.render({
+			elem:'#upimg' //绑定元素
+			,url:'{:url("User/up_imgurl")}' //上传接口
+			, exts:'jpg|png|gif|bmp|jpeg'         //可传输文件的后缀
+			, accept:'images'              //video audio images
+			, data: {receiv_id: receiv_id}
+			,done: function(res){
+				if(res.error==1){
+					layer.msg(res.content);
+				}else{
+
+					//拼接html
+					var msg_html = '<div class="show"><div class="time"></div><div class="msg"><img style="width: 40px;height: 40px;" src="/new/images/kefu.png" ><p><img src='+res.file_url+' onclick="showNotes('+res.msg_id+')" id = "n_img_'+res.msg_id+'"></p></div></div>';
+					$('#message').append(msg_html);
+					scrollBottom();
+					$('#input_msg').val('');
+				}
+				//上传完毕回调
+			}
+			,error: function(){
+				layer.msg('请求异常, 请重试');
+				//请求异常回调
+			}
+		});
+	});
+
+
+
+	$(function(){
+		getMessage();
+		scrollBottom();
+	});
+
+	$('#input_msg').keyup(function(e){
+		if(e.keyCode == 13)
+		{
+			sendMessage();
+		}
+	});
+
+	/* 发送信息 */
+	function sendMessage()
+	{
+		//发送的内容
+		var msg = $('#input_msg').val();
+		if(msg.length == 0)
+		{
+			return false;
+		}
+		//拼接html
+		$.ajax({
+			type:'post',
+			url:'{:url("User/send_message")}',
+			data:{
+				send_id:send_id,
+				receiv_id:receiv_id,
+				msg:msg,
+			},
+			success:function(result){
+				result = eval("("+result+")");
+				if(result.errCode == '101')
+				{
+					//拼接html
+					var msg_html = '<div class="show"><div class="time"></div><div class="msg"><img style="width: 40px;height: 40px;" src="/new/images/kefu.png" ><p style="background:#66cd00;"><i class="msg_input"></i>'+msg+'</p></div></div>';
+					$('#message').append(msg_html);
+					scrollBottom();
+					$('#input_msg').val('');
+				}else{
+					layer.msg('发送失败, 请重试');
+				}
+			}
+		});
+	}
+
+	/* 获取新消息 */
+	function getMessage()
+	{
+		//请求数据
+		$.ajax({
+			type:'post',
+			url:'{:url("User/get_message")}',
+			data:{
+				send_id:send_id,
+				receiv_id:receiv_id,
+			},
+			success:function(result){
+				result = eval("("+result+")");
+				$('#message').append(result.msg);
+				if(result.msg != '')
+				{
+					scrollBottom();
+				}
+				setTimeout(getMessage,"2500");
+			}
+		});
+
+	}
+	function showNotes(id)
+	{
+		var path = $('#n_img_'+id).attr('src');
+
+		$('.pinch-zoom-container img').attr('src', path);
+		$("#am-pureview-m54ek").css('display','block');
+	}
+	$('#am-pureview-m54ek').click(function(){
+		$("#am-pureview-m54ek").css('display','none');
+	});
+	function scrollBottom(){
+		var c = window.document.body.scrollHeight;
+		window.scroll(0,c);
+	}
+
+</script>
+

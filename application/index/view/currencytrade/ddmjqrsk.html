@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0, user-scalable=no">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+    <!-- 是否启用全屏模式 -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <!-- 全屏时状态颜色设置 -->
+    <meta name="apple-mobile-web-status-bar-style" content="white">
+    <!-- 禁用电话号码自动识别 -->
+    <meta name="format-detection" content="telephone=no">
+    <!--禁止读取本地缓存模板-->
+    <meta http-equiv="Pragma" contect="no-cache">
+    {include file="alyslt" /}
+    <link rel="stylesheet" href="/index/css/optional.css" >
+    <link rel="stylesheet" href="/static/bootstrap-4.6.1-dist/css/bootstrap.min.css" >
+    <link rel="stylesheet" href="/static/index/layui/css/modules/layer/default/layer.css?v=3.1.1" >
+    {include file="fbjy_js" /}
+    <script src="/index/js/jquery-2.1.4.min.js"></script>
+    <script src="/static/bootstrap-4.6.1-dist/js/bootstrap.bundle.js"></script>
+    <script src="/static/bootstrap-4.6.1-dist/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="/static/index/layui/lay/modules/layer.js"></script>
+</head>
+<style>
+    body {background-color: #f5f5f5;}
+    p{margin-bottom: 0px;}
+    .pay-qqrsk{position: inherit;}
+    .hawhle {height: auto;}
+    .cld-whole-jbjs {margin-top: 35%;}
+    .cld-whole2>p {font-size: 12px; line-height: 30px;}
+    .cld-wholes2-div1>p{font-size: 12px; line-height: 30px;}
+    .cld-wholes2-div1>p>span:nth-child(1){color: #999999;}
+    .cld-wholes2-div1>p>span:nth-child(1){color: #999999;}
+    .cld-wholes2-div1>p>span:nth-child(2){color: #000000;}
+    .cld-whole2>p>span:nth-child(2){font-size: 16px;}
+    .cld-wholes2>p:nth-child(1){font-size: 14px;}
+    .pay-qqrsk-zfbzh2>p>span:nth-child(2) {line-height: 20px;}
+    .pay-qqrsk-zfbzh>p:nth-child(1), .pay-qqrsk-zfbzh>p:nth-child(2) {font-weight: 500;}
+    .icon-xiangshang{font-size: 20px!important;}
+</style>
+<style>
+
+</style>
+<body>
+<div class="pay-qqrsk">
+    <div class="hawhle">
+        <div class="cld-hode">
+            <div><a href="javascript:window.history.go(-1);"><i class="iconfont icon-31fanhui1"></i></a></div>
+            <div></div>
+
+        </div>
+        <div class="cld-top">
+            <div class="cld-top-noe" style="width:100%; ">
+
+
+
+                {if $order.status eq 1}
+                <h5>{$Think.lang.fbjy_ddmjqrsk}</h5>
+                {elseif $order.status eq 2}
+                <h5>{$Think.lang.sl_ywc}</h5>
+
+                {else}
+
+                {/if}
+
+
+
+            </div>
+            <div class="">
+            </div>
+        </div>
+    </div>
+    <div class="cld-whole-jbjs">
+        <div class="cld-whole cld-whole2">
+            <div class="cld-whole2 cld-wholes2">
+                <p><span>{$Think.lang.sw_gm}</span>  {$order.symbol} <i class="iconfont icon-USDT"></i></p>
+                <p><span>{$Think.lang.fbjy_zj}</span><span class="cld-wholes2-sp2">{$currency.symbol}{$all_amount}</span></p>
+                <div class="cld-wholes2-div1">
+                    <p><span>{$Think.lang.bi_js}</span><span>{$currency.symbol}{$one_amount}</span></p>
+                    <p><span>{$Think.lang.bi_sl}</span><span>{$order.t_num}{$order.symbol}</span></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="pay-qqrsk-zfbzh">
+        <p><span>{$Think.lang.fbjy_mjxx}</span></p>
+    </div>
+    <div class="qxm-tow" style="display: block;">
+        <p>{$payment_type.name}：</p>
+        {if $shoukuan.account_name}
+        <p><span>{$Think.lang.sr_xm}</span><span>{$shoukuan.account_name}</span></p>
+        {/if}
+		 {if $shoukuan.account_num}
+        <p><span>{$Think.lang.fbjy_skzh}</span><span>{$shoukuan.account_num}</span></p>
+        {/if}	
+
+
+
+        {if $shoukuan.bank_name}
+        <p><span>{$Think.lang.fbjy_hykh}</span><span>{$shoukuan.bank_name}</span></p>
+        {/if}
+        {if $shoukuan.bank_num}
+        <p><span>{$Think.lang.sksz_yhkh}</span><span>{$shoukuan.bank_num}</span></p>
+        {/if}
+
+		{if $shoukuan.bank_branch}
+		<p><span>{$Think.lang.sksz_khzh}</span><span>{$shoukuan.bank_branch}</span></p>
+		{/if}
+		{if $shoukuan.note}
+		<p><span>{$Think.lang.fbjy_bz}</span></p>
+		<p><TEXTAREA NAME="" ROWS="4" COLS="60" readonly style="width:90%;padding:8px;">{$shoukuan.note}</TEXTAREA></p>
+		{/if}
+		   
+
+
+    </div>
+  
+
+</div>
+
+<script>
+
+
+   
+
+    $(".pay-qqrsk-zfbzh4-sp2>i").eq(1).hide();
+    $(".pay-div3").click(function () {
+        $(".pay-qqrsk-txxx").toggle();
+    });
+
+    //获去不想交易的原因
+    var texts
+    $(".form-check input").click(function () {
+        texts =$(".form-check input:checked").val();
+        alert(texts);
+        $(".ddm-qxdd-butt").addClass("ddm-qxdd-butts");
+    });
+
+    //取消订单界面的显示和隐藏
+    $(".ddm-qxdd").hide();
+    $(".pay-butt4>button").eq(0).click(function(){
+        $(".ddm-qxdd").show();
+    });
+    $(".ddm-qxdd-hode>p>a").click(function () {
+        $(".ddm-qxdd").hide();
+    });
+
+    //订单取消，提交按钮点击事件
+    $(".ddm-qxdd-butt").click(function () {
+        var clas =$(this).attr("class");
+        console.log(clas);
+        if (clas!="ddm-qxdd-butt ddm-qxdd-butts"){layer.msg(fbjy_qxzqxdd);return;}
+        window.location.href="/index/User/fbjy";
+
+    });
+
+    var timer = setInterval("select_order()",1000)
+    var id = {$id};
+    function select_order(){
+        $.ajax({
+            type:"post",
+            url:"{:url('index/Currencytrade/select_order')}",
+            data:{
+                id:id
+            },
+            dataType:'JSON',
+            async:false,
+            success:function(data){
+                if(data.code == 1){
+                        if(data.status == 2){
+                            window.location.href = "{$url}";
+                        }
+                }
+            },
+            error:function(){
+                layer.msg(fbjy_wlcc+"..",{time:2*1000});
+            }
+        });
+    }
+
+    //点击收款方式div的显示和隐藏
+
+    $(".pay-div3-sp2>i").eq(1).hide();
+    $(".pay-qqrsk-zfbzh4").click(function () {
+        $(".pay-qqrsk-zfbzh4-sp2>i").eq(1).toggle();
+        $(".pay-qqrsk-zfbzh4-sp2>i").eq(0).toggle();
+        $(".qxm-tow").slideToggle(1000);
+    });
+
+    //点击交易条款div的显示和隐藏
+    $(".pay-div4").click(function () {
+        $(".pay-div3-sp2>i").eq(0).toggle();
+        $(".pay-div3-sp2>i").eq(1).toggle();
+
+        $(".pay-tow-whloe").toggle();
+    });
+
+</script>
+</body>
+</html>

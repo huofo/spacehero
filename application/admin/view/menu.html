@@ -1,0 +1,147 @@
+<!--sidebar start-->
+      <aside>
+          <div id="sidebar"  class="nav-collapse ">
+          
+          {if $otype == 3}
+              <!-- sidebar menu start-->
+              <ul class="sidebar-menu">
+                  <li {if $actionname == 'index' && $contrname == 'Index' } class="active" {/if} >
+                      <a class="" href="{:Url('admin/index/index')}">
+                          <i class="icon-dashboard"></i>
+                          <span>后台首页</span>
+                      </a>
+                  </li>
+                  <!-- {volist name="menulist" id="vo"} -->
+                  <!-- {if $ruleslist eq 'all' || in_array($vo.id,$ruleslist)} -->
+                  <li 
+                  {if $vo.arr eq ""}
+                    {if $contrname eq $vo.con} class="active" {else} class="sub-menu " {/if}
+                  {else}
+                    {if $contrname eq $vo.con && (in_array($actionname,$vo.arr))}
+                    class="active"
+                    {else}
+                    class="sub-menu "
+                    {/if}
+                  {/if}
+                  >
+                      <a class="" {if $vo.url eq ""} href="javascript:;" {else} href="{$vo.url}" {/if}>
+                          <i class="{$vo.icon}"></i>
+                          <span>{$vo.name}</span>
+                          <!-- {if $vo.arrow neq ""} -->
+                          <span class="arrow"></span>
+                          <!-- {/if} -->
+                      </a>
+                      <ul class="sub">
+                        <!-- {volist name="$vo.list" id="v"} -->
+                        <!-- {if $ruleslist eq 'all' || in_array($v.id,$ruleslist)} -->
+                        <li 
+                        {if $v.arr eq ""}
+                          {if $contrname eq $v.con && $actionname eq $v.act} class="active" {/if}
+                        {else}
+                          {if in_array($actionname,$v.arr) && $contrname eq $v.con && $actionname eq $v.act}
+                          class="active"
+                          {/if}
+                        {/if}
+                        >
+                          <a  href="{$v.url}">{$v.name}</a>
+                        </li>
+                        <!-- {/if} -->
+                        <!-- {/volist} -->
+                      </ul>
+                  </li>
+                  <!-- {/if} -->
+                  <!-- {/volist} -->
+                  <li>
+                      <a class="" href="{:Url('admin/login/logout')}">
+                          <i class="icon-signout"></i>
+                          <span>安全退出</span>
+                      </a>
+                  </li>
+              </ul>
+              <!-- sidebar menu end-->
+          {else}
+           <ul class="sidebar-menu">
+                  <li {if $actionname == 'index' && $contrname == 'Index' } class="active" {/if} >
+                      <a class="" href="{:Url('admin/index/index')}">
+                          <i class="icon-dashboard"></i>
+                          <span>后台首页</span>
+                      </a>
+                  </li>
+               
+                
+                  <li {if $contrname == 'Order'} class="active" {else /} class="sub-menu " {/if}>
+                      <a href="javascript:;" class="">
+                          <i class="icon-paste"></i>
+                          <span>订单管理</span>
+                          <span class="arrow"></span>
+                      </a>
+                      <ul class="sub">
+                          <li {if $actionname == 'orderlist' } class="active" {/if}><a class="" href="{:Url('admin/order/orderlist')}">秒合约订单</a></li>
+                          <li {if $actionname == 'orderlist_bibi' } class="active" {/if}><a class="" href="{:Url('admin/order/orderlist_bibi')}">币币订单</a></li>
+                          <li {if $actionname == 'orderlist_lever' } class="active" {/if}><a class="" href="{:Url('admin/order/orderlist_lever')}">合约订单</a></li>
+                          
+                      </ul>
+                  </li>
+
+                  <li {if $contrname == 'User' && ( in_array($actionname,array('userlist','useradd','userprice','userinfo','cash','myteam')) )} class="active" {else /} class="sub-menu " {/if}>
+                      <a href="javascript:;" class="">
+                          <i class="icon-user"></i>
+                          <span>用户管理</span>
+                          <span class="arrow"></span>
+                      </a>
+                      <ul class="sub">
+                          <li {if in_array($actionname,array('userlist','useradd')) } class="active" {/if}>
+                          <a class="" href="{:Url('admin/user/userlist')}">客户列表</a></li>
+                          
+                          <li {if in_array($actionname,array('myteam')) } class="active" {/if}>
+                          <a class="" href="{:Url('admin/user/myteam')}">我的团队</a></li>
+
+                          <li {if $actionname == 'userprice' } class="active" {/if}>
+                          <a class="" href="{:Url('admin/user/userprice')}">充值列表</a></li>
+
+                          <li {if $actionname == 'cash' } class="active" {/if}>
+                          <a class="" href="{:Url('admin/user/cash')}">提现列表</a></li>
+ 
+                      </ul>
+                  </li>
+
+                  
+                  <!--<li {if $contrname == 'Price'} class="active" {else /} class="sub-menu " {/if}>
+                      <a href="javascript:;" class="">
+                          <i class="icon-yen"></i>
+                          <span>报表管理</span>
+                          <span class="arrow"></span>
+                      </a>
+                      <ul class="sub">
+                          
+                          
+                          <li {if $actionname == 'allot' } class="active" {/if}>
+                          <a class="" href="{:Url('admin/price/allot')}">红利报表</a></li>
+
+                          <li {if $actionname == 'yongjin' } class="active" {/if}>
+                          <a class="" href="{:Url('admin/price/yongjin')}">佣金报表</a></li>
+
+                          <li {if $actionname == 'pricelist' } class="active" {/if}>
+                          <a class="" href="{:Url('admin/price/pricelist')}">资金报表</a></li>
+
+                          <li {if $actionname == 'myprice' } class="active" {/if}>
+                          <a class="" href="{:Url('admin/price/myprice')}">个人报表</a></li>
+                          
+                      </ul>
+                  </li>
+                  -->
+                 
+
+                  <li>
+                      <a class="" href="{:Url('admin/login/logout')}">
+                          <i class="icon-signout"></i>
+                          <span>退出</span>
+                      </a>
+                  </li>
+              </ul>
+          
+          {/if}
+          </div>
+      </aside>
+      <!--sidebar end-->
+

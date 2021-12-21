@@ -1,0 +1,913 @@
+{include file="nodejs" /}
+<html style="font-size: 120px;">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+    <!-- 是否启用全屏模式 -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <!-- 全屏时状态颜色设置 -->
+    <meta name="apple-mobile-web-status-bar-style" content="white">
+    <!-- 禁用电话号码自动识别 -->
+    <meta name="format-detection" content="telephone=no">
+    <!--禁止读取本地缓存模板-->
+    <meta http-equiv="Pragma" contect="no-cache">
+    <script type="text/javascript">
+        window.onload=function(){
+//设置适配rem
+            var change_rem = ((window.screen.width > 450) ? 450 : window.screen.width)/375*100;
+            document.getElementsByTagName("html")[0].style.fontSize=change_rem+"px";
+            window.onresize = function(){
+                change_rem = ((window.screen.width > 450) ? 450 : window.screen.width)/375*100;
+                document.getElementsByTagName("html")[0].style.fontSize=change_rem+"px";
+            }
+        }
+    </script>
+    <title>
+    </title>
+
+    <link href="/index/css/mango.css" rel="stylesheet" media="screen">
+    <!--        夜间白天切换的文件-->
+    {if $_SESSION["night"]=="yes"}<link rel="stylesheet"  href="/index/css/wap_css/wap-index.css" >{/if}
+    <script type="text/javascript" src="/static/index/js/jquery-3.2.1.min.js"></script>
+    <script type="text/javascript" src="/static/index/js/lk/user.js"></script>
+    <script type="text/javascript" src="/static/public/js/jquery.base64.js"></script>
+
+</head>
+<body>
+{include file="daohang_index" /}
+<!--<div class="daohang">-->
+<!--    <div class="logoxt"><img src="/index/images/logoxty.png" alt=""></div>-->
+<!--    <div class="zhongbu wl_flex wl_justify_between wl_align_center">-->
+<!--        <div class="neirongji"><p><a href="/wap/index/hangqing/">行情</a></p></div>-->
+<!--        <div class="neirongji"><p><a href="/wap/index/bibijiaoyi/">币币交易</a></p></div>-->
+<!--        <div class="neirongji"><p><a href="/wap/index/heyuejiaoyi/">合约交易</a></p></div>-->
+<!--        <div class="neirongji"><p><a href="/wap/second/index">秒合约交易</a></p></div>-->
+<!--        <div class="neirongji"><p><a href="/wap/mining/index">锁仓挖矿</a></p></div>-->
+<!--        <div class="neirongji"><p><a href="/wap/zichan/bibi">我的资产</a></p></div>-->
+<!--        <div class="neirongji"><p><span>1919076544@qq.com</span></p></div>-->
+<!--        <div class="neirongji">-->
+<!--            <ul id="navMenuv" style="list-style: none;">-->
+<!--            <li><a href="#" rel='dropmenu1v'><img src="/index/images/dengluxiao.png" alt=""style="margin-top: 12px"></a></li>-->
+<!--        </ul>-->
+<!--            <ul id="dropmenu1v" class="dropMenuv"style="margin-left: -50px;margin-top: -2px;border-radius: 5px;">-->
+<!--                <li><a href="/wap/setup/shezhi"style="color: black">账户设置</a></li>-->
+<!--                <li><a href="/wap/setup/rzhi"style="color: black">交易日志</a></li>-->
+<!--                <li><a href="/wap/setup/sksz"style="color: black">收款设置</a></li>-->
+<!--                <li><a href="/wap/setup/sfrz"style="color: black">身份认证</a></li>-->
+<!--                <li><a href="#"style="color: black">退出登录</a></li>-->
+<!--            </ul>-->
+<!--        </div>-->
+<!--        <div class="neirongji wl_flex wl_align_center">-->
+<!--            <div><img src="/index/images/dengluxiao.png" alt="" style=";"></div>-->
+<!--            <div><a href="/wap/denglu/dl"style="color: white">登录</a></div>-->
+<!--            </div>-->
+<!--        <div class="neirongji wl_flex wl_align_center">-->
+<!--            <div><img src="/index/images/zhuchexiao.png" alt="" style=""></div>-->
+<!--            <div><a href="/wap/denglu/zc"style="color: white">注册</a></div>-->
+<!--        </div>-->
+<!--        <div class="neirongji"><a href=""><img src="/index/images/yangshengqi.png" alt=""/></a></div>-->
+
+<!--    </div>-->
+<!--    <div class="xiala wl_flex wl_justify_between">-->
+<!--        <div class="jianti wl_flex wl_align_center" style="width: 100%;font-size: 0.11rem">-->
+<!--            <div class="gvs"><img src="/index/images/wangluovsy.png" alt=""style="width: 25px"></div>-->
+<!--            <div class="gvs">-->
+<!--&lt;!&ndash;                <a href="">简体中文</a>&ndash;&gt;-->
+<!--                <ul id="navMenu" style="list-style: none;">-->
+<!--                    <li><a href="#" rel='dropmenu1'>简体中文</a></li>-->
+<!--                </ul>-->
+<!--                <ul id="dropmenu1" class="dropMenu"style="margin-left: -50px;border-radius: 5px;">-->
+<!--                    <li><a href="#"style="color: #596a7a">简体中文</a></li>-->
+<!--                    <li><a href="#"style="color: #596a7a">繁體中文</a></li>-->
+<!--                    <li><a href="#"style="color: #596a7a">日本語</a></li>-->
+<!--                    <li><a href="#"style="color: #596a7a">한국어</a></li>-->
+<!--                    <li><a href="#"style="color: #596a7a">English</a></li>-->
+<!--                </ul>-->
+<!--            </div>-->
+<!--        </div>-->
+
+<!--        <div class="jianti" style="width: 100%">-->
+<!--            <a href="">-->
+<!--                <ul id="navMenus" style="list-style: none;">-->
+<!--                    <li><a href="#" rel='dropmenu1s'>Android & IOS下载</a></li>-->
+<!--                </ul>-->
+<!--                <ul id="dropmenu1s" class="dropMenus">-->
+<!--                    <li><img src="/index/images/huangxinghua.png" alt=""style="width: 120px;height: 120px;border-radius: 5px;"></li>-->
+<!--                </ul>-->
+<!--            </a>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--</div>-->
+
+<div class="zhongjianbu">
+    <div class="jigezi"><span>{$Think.lang.ind_qqlxd}</span></div>
+<!--    <div class="shigeanniu"><span>{$Think.lang.ind_ks}</span></div>-->
+    <div class="sizhangtu wl_flex wl_align_center">
+        <!-- {volist name="autlist" id="vo"} -->
+        <div class="tutu"><img src="{$vo.picture}" alt=""></div>
+        <!-- {/volist} -->
+<!--        <div class="tutu"><img src="/index/images/shuzizichan.png" alt=""></div>-->
+<!--        <div class="tutu"><img src="/index/images/ghjskagv.png" alt=""></div>-->
+<!--        <div class="tutu"><img src="/index/images/fashjsbcnbxz.png" alt=""></div>-->
+<!--        <div class="tutu"><img src="/index/images/jkcbnxzbhj.png" alt=""></div>-->
+    </div>
+    <div class="gonggaolan wl_flex wl_align_center">
+        <div class="xiaoyangsheng"><img src="/index/images/xiaolabaxts.png" alt=""></div>
+        <div class="gundongzi">{$Think.lang.wap_ind_gongg}</div>
+<!--        {$gonggao}-->
+    </div>
+</div>
+<div class="daneir">
+    <div class="kongwu"></div>
+    <div class="zhongneir">
+        <div class="zhuliusvt wl_flex wl_align_center">
+
+            <div class="sanuq kjkjkj"  ><a href="javascript:void(0)"  data-id="0" style="text-decoration: none;display: block;" class="active">{$Think.lang.ti_qb}</a></div>
+            <!-- {volist name="proclass" id="vo"} -->
+            <div class="sanuq kjkjkj" ><a href="javascript:void(0)"  data-id="{$vo.pcid}" style="text-decoration: none;display: block;">{$vo.pcname}</a></div>
+            <!-- {/volist} -->
+<!--            <div class="sanuq kjkjkj"><a href="javascript:void(0)"style="text-decoration: none;display: block;">主流区</a></div>-->
+<!--            <div class="sanuq klklkl"><a href="javascript:void(0)"style="text-decoration: none;display: block;">创新区</a></div>-->
+<!--            <div class="sanuq kukuku"><a href="javascript:void(0)"style="text-decoration: none;display: block;">DeFi区</a></div>-->
+        </div>
+        <div class="zhuliuugh wl_flex wl_align_center" style="font-weight: 600">
+            <div class="xijienei wl_justify_between" style="width: 30%">
+                <div class="kus">{$Think.lang.wap_ind_sc}</div>
+                <div class="kus">{$Think.lang.sl_bz}</div>
+            </div>
+            <div class="xijienei wl_justify_between" style="width: 20%">
+                <div class="ksu">{$Think.lang.wap_bibi_zhc}</div>
+                <div class="ksu">{$Think.lang.wap_ind_rbhl}</div>
+            </div>
+            <div class="xijienei wl_justify_between" style="width: 50%">
+                <div class="sku">{$Think.lang.wap_ind_zgj}</div>
+                <div class="sku">{$Think.lang.wap_ind_zdj}</div>
+                <div class="sku">{$Think.lang.wap_ind_cjj}</div>
+            </div>
+        </div>
+<!--        shuju-->
+        <div id="shuju">
+        <!-- {volist name="pro" id="vo"} -->
+            <div class="dashuju wl_flex wl_align_center gugugus" style="background: #f0f8ff" id="pid{$vo.pid}">
+                <div class="jutishuju wl_justify_between" style="width: 30%">
+                    <div class="kus prtitle"></div>
+                    <div class="kus prbase "></div>
+                </div>
+                <div class="jutishuju wl_justify_between" style="width: 20%">
+                    <div class="ksu now-value"></div>
+                    <div class="ksu updown-rate" ></div>
+                </div>
+                <div class="jutishuju wl_justify_between" style="width: 50%">
+                    <div class="sku price-max"></div>
+                    <div class="sku price-min"></div>
+                    <div class="sku exchange-amount"></div>
+                </div>
+            </div>
+
+        <!-- {/volist} -->
+        </div>
+<!--        <div class="dashuju wl_flex wl_align_center huhuhus">-->
+<!--            <div class="jutishuju wl_justify_between" style="width: 30%">-->
+<!--                <div class="kus">QTUM/USDT</div>-->
+<!--                <div class="kus">QTUM</div>-->
+<!--            </div>-->
+<!--            <div class="jutishuju wl_justify_between" style="width: 20%">-->
+<!--                <div class="ksu">10.6636</div>-->
+<!--                <div class="ksu"style="color: #f74d49">-3.69%</div>-->
+<!--            </div>-->
+<!--            <div class="jutishuju wl_justify_between" style="width: 50%">-->
+<!--                <div class="sku">45750.0000</div>-->
+<!--                <div class="sku">43776.3400</div>-->
+<!--                <div class="sku">10924.0375</div>-->
+<!--            </div>-->
+<!--        </div>-->
+
+
+    </div>
+<!--    <div class="huodezhe wl_flex wl_justify_between">-->
+<!--    <div class="huodezhe" style="float: left">-->
+<!--        <div class="hhxiaosi">-->
+<!--            <div class="shangm">买入</div>-->
+<!--            <div class="gud wl_flex wl_align_center" style="font-size: 0.12rem;height: 40px;background: white;font-weight: 600;">-->
+<!--                <div class="uhg" style="width: 35%"><span style="margin-left: 10px">委托时间</span></div>-->
+<!--                <div class="uhg wl_flex wl_justify_between" style="width: 60%">-->
+<!--                    <div>总额</div>-->
+<!--                    <div>价格</div>-->
+<!--                    <div style="margin-right: 50px">币种</div>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--            <div class="gud wl_flex wl_align_center" style="font-size: 0.12rem;height: 40px;background: #f0f8ff">-->
+<!--                <div class="uhg" style="width: 30%"><span style="margin-left: 10px">2021/08/13</span></div>-->
+<!--                <div class="uhg wl_flex wl_justify_between" style="width: 70%">-->
+<!--                    <div>4321.1234</div>-->
+<!--                    <div style="color: #3ec742">1234.4321</div>-->
+<!--                    <div style="margin-right: 50px">BTC/USDT</div>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--            <div class="gud wl_flex wl_align_center" style="font-size: 0.12rem;height: 40px;background: white">-->
+<!--                <div class="uhg" style="width: 30%"><span style="margin-left: 10px">2021/08/13</span></div>-->
+<!--                <div class="uhg wl_flex wl_justify_between" style="width: 70%">-->
+<!--                    <div>4321.1234</div>-->
+<!--                    <div style="color: #3ec742">1234.4321</div>-->
+<!--                    <div style="margin-right: 50px">BTC/USDT</div>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--        <div class="hhxiaosi" style="float: right;margin-left: 5%">-->
+<!--            <div class="shangm">顶尖的获得者</div>-->
+<!--            <div class="gud wl_flex wl_align_center" style="font-size: 0.12rem;height: 40px;font-weight: 600;">-->
+<!--                <div class="uhg" style="width: 25%"><span style="margin-left: 10px">用户身份证件</span></div>-->
+<!--                <div class="uhg wl_flex wl_justify_between" style="width: 80%">-->
+<!--                    <div>Invest</div>-->
+<!--                    <div>返回</div>-->
+<!--                    <div>ROI(%)</div>-->
+<!--                    <div style="margin-right: 50px">币种</div>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--            <div class="gud wl_flex wl_align_center" style="font-size: 0.11rem;height: 40px;background: #f0f8ff">-->
+<!--                <div class="uhg" style="width: 25%"><span style="margin-left: 10px">E335917526</span></div>-->
+<!--                <div class="uhg wl_flex wl_justify_between" style="width: 95%">-->
+<!--                    <div>$12.0700</div>-->
+<!--                    <div style="color: #3ec742">$8.3800</div>-->
+<!--                    <div style="color: #3ec742">69.4100</div>-->
+<!--                    <div style="margin-right: 50px">NPXS/BTC</div>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--            <div class="gud wl_flex wl_align_center" style="font-size: 0.11rem;height: 40px;background: white">-->
+<!--                <div class="uhg" style="width: 25%"><span style="margin-left: 10px">E335917526</span></div>-->
+<!--                <div class="uhg wl_flex wl_justify_between" style="width: 95%">-->
+<!--                    <div>$12.0700</div>-->
+<!--                    <div style="color: #3ec742">$8.3800</div>-->
+<!--                    <div style="color: #3ec742">69.4100</div>-->
+<!--                    <div style="margin-right: 50px">NPXS/BTC</div>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--        </div>-->
+
+<!--</div>-->
+<!--    <div class="huodezhes wl_flex wl_justify_between">-->
+<!--        <div class="hhxiaosis">-->
+<!--            <div class="shangm">卖出</div>-->
+<!--            <div class="gud wl_flex wl_align_center" style="font-size: 0.12rem;height: 40px;font-weight: 600;">-->
+<!--                <div class="uhg" style="width: 40%"><span style="margin-left: 10px">委托时间</span></div>-->
+<!--                <div class="uhg wl_flex wl_justify_between" style="width: 60%">-->
+<!--                    <div>总额</div>-->
+<!--                    <div>价格</div>-->
+<!--                    <div style="margin-right: 50px">币种</div>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--            <div class="gud wl_flex wl_align_center" style="font-size: 0.12rem;height: 40px;background: #f0f8ff">-->
+<!--                <div class="uhg" style="width: 40%"><span style="margin-left: 10px">2021/08/13</span></div>-->
+<!--                <div class="uhg wl_flex wl_justify_between" style="width: 70%">-->
+<!--                    <div>4321.1234</div>-->
+<!--                    <div style="color: #f74d49">1234.4321</div>-->
+<!--                    <div style="margin-right: 50px">BTC/USDT</div>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--            <div class="gud wl_flex wl_align_center" style="font-size: 0.12rem;height: 40px;background: white">-->
+<!--                <div class="uhg" style="width: 40%"><span style="margin-left: 10px">2021/08/13</span></div>-->
+<!--                <div class="uhg wl_flex wl_justify_between" style="width: 70%">-->
+<!--                    <div>4321.1234</div>-->
+<!--                    <div style="color: #f74d49">1234.4321</div>-->
+<!--                    <div style="margin-right: 50px">BTC/USDT</div>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--        <div class="hhxiaosis">-->
+<!--            <div class="shangm"style="color: #a52a2a">趋势+-</div>-->
+<!--            <div class="gud wl_flex wl_align_center" style="font-size: 0.12rem;height: 40px;font-weight: 600;">-->
+<!--                <div class="uhg" style="width: 40%"><span style="margin-left: 10px">币种</span></div>-->
+<!--                <div class="uhg wl_flex wl_align_center" style="width: 50%;">-->
+<!--                    <div>变换百分比</div>-->
+<!--                    <div style="padding-left: 70px">最后成交价</div>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--            <div class="gud wl_flex wl_align_center" style="font-size: 0.12rem;height: 40px;background: #f0f8ff">-->
+<!--                <div class="uhg" style="width: 40%"><span style="margin-left: 10px">BTC/USDT</span></div>-->
+<!--                <div class="uhg wl_flex wl" style="width: 50%">-->
+<!--                    <div>+1.41%</div>-->
+<!--                    <div style="padding-left: 33%">34556.0000</div>-->
+
+<!--                </div>-->
+<!--            </div>-->
+<!--            <div class="gud wl_flex wl_align_center" style="font-size: 0.12rem;height: 40px;background: white">-->
+<!--                <div class="uhg" style="width: 40%"><span style="margin-left: 10px">BTC/USDT</span></div>-->
+<!--                <div class="uhg wl_flex wl" style="width: 50%">-->
+<!--                    <div style="color: #f74d49">+1.41%</div>-->
+<!--                    <div style="padding-left: 33%">34556.0000</div>-->
+
+<!--                </div>-->
+<!--            </div>-->
+<!--        </div>-->
+
+<!--    </div>-->
+
+</div>
+{include file="foot" /}
+<!--<div class="disanzhu">-->
+<!--    <div class="hanzijige"><span>今天就开启您在MANGO的交易</span></div>-->
+<!--    <div class="liangganniu wl_flex wl_justify_between">-->
+<!--        <div class="syuk"><a href="/wap/denglu/dl">登录</a></div>-->
+<!--        <div class="syuk"><a href="/wap/denglu/zc">注册</a></div>-->
+<!--    </div>-->
+<!--</div>-->
+<!--<div class="disizhu">-->
+<!--    <div class="xiadahezi wl_flex wl_align_center">-->
+<!--        <div class="sigeneir">-->
+<!--            <div class="tuhezi wl_flex wl_align_center" style="height: 25%">-->
+<!--                <div class="zheshitu" style="width: 60%"><img src="/index/images/xiaologot.png" alt=""style="width: 90%;height: 40px"></div>-->
+<!--                <div class="zheshizi" style="width: 40%;"><a href=""style="text-decoration: none;color: #3d5c7b"> |交易平台</a></div>-->
+<!--            </div>-->
+<!--            <div class="tongyizichan" style="height: 15%;font-size: 0.13rem;color: silver!important;">全球统一货币，地球人的资产-->
+<!--            </div>-->
+<!--            <div class="zheshishuaiti" style="height: 40%"><img src="/index/images/shuaiqid.png" alt=""style="width: 80%"></div>-->
+<!--        </div>-->
+<!--        <div class="sigeneir">-->
+<!--            <div class="guanyuniw" style="padding-top: 15px;padding-left: 90px">关于我们</div>-->
+<!--            <div class="guanyuniw" style="font-size: 0.12rem;padding-left: 90px;padding-top: 8px;">-->
+<!--                <a href="http://208.109.36.146/wap/index/falv/"style="text-decoration: none;color: silver!important">法律声明</a></div>-->
+<!--            <div class="guanyuniw" style="font-size: 0.12rem;padding-left: 90px;color: silver!important;padding-top: 8px;">隐私条款</div>-->
+<!--            <div class="guanyuniw" style="font-size: 0.12rem;padding-left: 90px;color: silver!important;padding-top: 8px;">用户协议</div>-->
+<!--        </div>-->
+<!--        <div class="sigeneir">-->
+<!--            <div class="guanyuniw" style="padding-top: 15px;padding-left: 50px">客户服务</div>-->
+<!--            <div class="guanyuniw" style="font-size: 0.12rem;padding-left: 50px;color: silver!important;padding-top: 8px">关于反洗钱</div>-->
+<!--            <div class="guanyuniw" style="font-size: 0.12rem;padding-left: 50px;color: silver!important;padding-top: 8px">永续合约交易规则</div>-->
+<!--        </div>-->
+<!--        <div class="sigeneir">-->
+<!--        <div class="diyihangzi"><a href="" style="text-decoration: none;padding-top: 15px;font-size: 0.15rem;color: #3d5c7b;padding-left: 55px;">客户服务</a></div>-->
+<!--        <div class="youxiangsm"><a href="" style="text-decoration: none;font-size: 0.15rem;color: #3d5c7b;padding-left: 55px;line-height: 60px">社交媒体</a></div>-->
+<!--        <div class="tupkuvx"><img src="/index/images/hjcxnme.png" alt=""style="width: 70%;height: 38%;padding-left: 50px;margin-top: 16px"></div>-->
+<!--    </div>-->
+<!--    </div>-->
+<!--    <div class="zuihoukuang">Copyright © 2020 MANGO. All rights reserved. MANGO Limited registered with the registration number 14556327, under the Laws of the Republic of Estonia. Licensed and regulated by the Financial Intelligence Unit under license number FVR000604 for providing services of exchanging a virtual currency against a fiat currency and FRK000513 for providing a virtual currency wallet service.<br>-->
+<!--        Disclaimer: Bitcoin and digital asset prices are volatile and fluctuate day-to-day. Trading digital assets may be considered a high-risk activity. Proper diligence and sound judgement should be used in evaluating the risks associated with these activities. We do not solicit nor make any representation that digital assets are an investment vehicle. The decision to trade digital assets rests entirely on the users own independent judgement.</div>-->
+<!--</div>-->
+<!--<script src="/index/js/jquery-2.1.4.min.js"></script>-->
+<script>
+    $(function () {
+        $(".neirongji p").click(function () {
+            $(".neirongji p").removeClass('active');
+            $(this).addClass('active');
+        })
+    });
+</script>
+<script>
+    $(function () {
+        $(".sanuq a").click(function () {
+            $(".sanuq a").removeClass('active');
+            $(this).addClass('active');
+        })
+    });
+</script>
+<!--<script src="/static/index/js/lk/index.js">ajaxpro()</script>-->
+<script>
+    //动态 行情
+   window.onload = function(){
+       setInterval("ajaxpro()",5000);
+   }
+    function ajaxpro(){
+        var geturl = "/wap/index/ajaxindexpro";
+        var type = '';
+        $.get(geturl,function(data){
+            if (data) {
+                data = jQuery.parseJSON($.base64.decode(data));
+                $.each(data,function(k,v){
+
+                    $('#pid'+v.pid+' .prtitle').html(v.ptitle);
+                    $('#pid'+v.pid+' .prbase').html(v.prbase);
+                    $('#pid'+v.pid+' .now-value').html(v.Price);
+                    $('#pid'+v.pid+' .updown-rate').html(v.DiffRate+'%');
+
+                    $('#pid'+v.pid+' .price-min').html(v.Low);
+                    $('#pid'+v.pid+' .price-max').html(v.High);
+                    $('#pid'+v.pid+' .exchange-amount').html(v.vol);
+
+                    if(v.DiffRate >0){
+
+                        $('#pid'+v.pid+' .updown-rate').addClass('rise');
+                        $('#pid'+v.pid+' .updown-rate').removeClass('down');
+
+                    }else if(v.isup == 0){
+                        $('#pid'+v.pid+' .updown-rate').removeClass('rise');
+                        $('#pid'+v.pid+' .updown-rate').addClass('down');
+
+                    }
+
+
+                });
+            }
+
+        });
+    }
+</script>
+<script>
+    // 类名是需要隐藏的div
+    $(".huhuhus").show();
+    $(".gugugus").show();
+    // 点击的按钮
+    $(".kjkjkj>a").click(function(){
+        // 类名是需要隐藏的div
+        $(".huhuhus").show();
+        $(".gugugus").show();
+
+        var obj = $(this);
+        var int = obj.data('id');
+        $.ajax({
+            type:"post",
+            url:"{:url('/wap/index/ajaxclass')}",
+            data:{
+                int:int
+            },
+            dataType:'JSON',
+            async:false,
+            beforeSend: function(){
+                // $('#mask').css({'display':'block'});
+            },
+            success:function(msg){
+                $('#shuju').html(msg);
+                // $('.scroll-view.ionic-scroll.scroll-y').html(msg);
+                // $('.product-classification div').removeClass('current');
+                // obj.addClass('current');
+            },
+            complete: function () {
+                // $('#mask').css({'display':'none'});
+            },
+            error:function(){
+                alert('{$Think.lang.ti_wlfm}');
+            }
+        });
+    });
+    $(".klklkl>a").click(function(){
+        // 类名是需要隐藏的div
+        $(".huhuhus").show();
+        $(".gugugus").hide();
+    });
+    $(".kukuku>a").click(function(){
+        // 类名是需要隐藏的div
+        $(".zhuliuugh").show();
+        $(".huhuhus").hide();
+        $(".gugugus").hide();
+    });
+</script>
+<script>
+    var cssdropdown={
+        disappeardelay: 250,
+        disablemenuclick: false,
+        enableswipe: 1,
+        enableiframeshim: 1,
+        dropmenuobj: null, ie: document.all, firefox: document.getElementById&&!document.all, swipetimer: undefined, bottomclip:0,
+
+        getposOffset:function(what, offsettype){
+            var totaloffset=(offsettype=="left")? what.offsetLeft : what.offsetTop;
+            var parentEl=what.offsetParent;
+            while (parentEl!=null){
+                totaloffset=(offsettype=="left")? totaloffset+parentEl.offsetLeft : totaloffset+parentEl.offsetTop;
+                parentEl=parentEl.offsetParent;
+            }
+            return totaloffset;
+        },
+
+        swipeeffect:function(){
+            if (this.bottomclip<parseInt(this.dropmenuobj.offsetHeight)){
+                this.bottomclip+=10+(this.bottomclip/10)
+                this.dropmenuobj.style.clip="rect(0 auto "+this.bottomclip+"px 0)"
+            }
+            else
+                return
+            this.swipetimer=setTimeout("cssdropdown.swipeeffect()", 10)
+        },
+
+        showhide:function(obj, e){
+            if (this.ie || this.firefox)
+                this.dropmenuobj.style.left=this.dropmenuobj.style.top="-500px"
+            if (e.type=="click" && obj.visibility==hidden || e.type=="mouseover"){
+                if (this.enableswipe==1){
+                    if (typeof this.swipetimer!="undefined")
+                        clearTimeout(this.swipetimer)
+                    obj.clip="rect(0 auto 0 0)"
+                    this.bottomclip=0
+                    this.swipeeffect()
+                }
+                obj.visibility="visible"
+            }
+            else if (e.type=="click")
+                obj.visibility="hidden"
+        },
+
+        iecompattest:function(){
+            return (document.compatMode && document.compatMode!="BackCompat")? document.documentElement : document.body
+        },
+
+        clearbrowseredge:function(obj, whichedge){
+            var edgeoffset=0
+            if (whichedge=="rightedge"){
+                var windowedge=this.ie && !window.opera? this.iecompattest().scrollLeft+this.iecompattest().clientWidth-15 : window.pageXOffset+window.innerWidth-15
+                this.dropmenuobj.contentmeasure=this.dropmenuobj.offsetWidth
+                if (windowedge-this.dropmenuobj.x < this.dropmenuobj.contentmeasure)
+                    edgeoffset=this.dropmenuobj.contentmeasure-obj.offsetWidth
+            }
+            else{
+                var topedge=this.ie && !window.opera? this.iecompattest().scrollTop : window.pageYOffset
+                var windowedge=this.ie && !window.opera? this.iecompattest().scrollTop+this.iecompattest().clientHeight-15 : window.pageYOffset+window.innerHeight-18
+                this.dropmenuobj.contentmeasure=this.dropmenuobj.offsetHeight
+                if (windowedge-this.dropmenuobj.y < this.dropmenuobj.contentmeasure){
+                    edgeoffset=this.dropmenuobj.contentmeasure+obj.offsetHeight
+                    if ((this.dropmenuobj.y-topedge)<this.dropmenuobj.contentmeasure)
+                        edgeoffset=this.dropmenuobj.y+obj.offsetHeight-topedge
+                }
+            }
+            return edgeoffset
+        },
+
+        dropit:function(obj, e, dropmenuID){
+            if (this.dropmenuobj!=null)
+                this.dropmenuobj.style.visibility="hidden"
+            this.clearhidemenu()
+            if (this.ie||this.firefox){
+                obj.onmouseout=function(){cssdropdown.delayhidemenu()}
+                obj.onclick=function(){return !cssdropdown.disablemenuclick}
+                this.dropmenuobj=document.getElementById(dropmenuID)
+                if(!this.dropmenuobj) return;
+                this.dropmenuobj.onmouseover=function(){cssdropdown.clearhidemenu()}
+                this.dropmenuobj.onmouseout=function(e){cssdropdown.dynamichide(e)}
+                this.dropmenuobj.onclick=function(){cssdropdown.delayhidemenu()}
+                this.showhide(this.dropmenuobj.style, e)
+                this.dropmenuobj.x=this.getposOffset(obj, "left")
+                this.dropmenuobj.y=this.getposOffset(obj, "top")
+                this.dropmenuobj.style.left=this.dropmenuobj.x-this.clearbrowseredge(obj, "rightedge")+"px"
+                this.dropmenuobj.style.top=this.dropmenuobj.y-this.clearbrowseredge(obj, "bottomedge")+obj.offsetHeight+1+"px"
+                this.positionshim()
+            }
+        },
+
+        positionshim:function(){
+            if (this.enableiframeshim && typeof this.shimobject!="undefined"){
+                if (this.dropmenuobj.style.visibility=="visible"){
+                    this.shimobject.style.width=this.dropmenuobj.offsetWidth+"px"
+                    this.shimobject.style.height=this.dropmenuobj.offsetHeight+"px"
+                    this.shimobject.style.left=this.dropmenuobj.style.left
+                    this.shimobject.style.top=this.dropmenuobj.style.top
+                }
+                this.shimobject.style.display=(this.dropmenuobj.style.visibility=="visible")? "block" : "none"
+            }
+        },
+
+        hideshim:function(){
+            if (this.enableiframeshim && typeof this.shimobject!="undefined")
+                this.shimobject.style.display='none'
+        },
+
+        contains_firefox:function(a, b) {
+            while (b.parentNode)
+                if ((b = b.parentNode) == a)
+                    return true;
+            return false;
+        },
+
+        dynamichide:function(e){
+            var evtobj=window.event? window.event : e
+            if (this.ie&&!this.dropmenuobj.contains(evtobj.toElement))
+                this.delayhidemenu()
+            else if (this.firefox&&e.currentTarget!= evtobj.relatedTarget&& !this.contains_firefox(evtobj.currentTarget, evtobj.relatedTarget))
+                this.delayhidemenu()
+        },
+
+        delayhidemenu:function(){
+            this.delayhide=setTimeout("cssdropdown.dropmenuobj.style.visibility='hidden'; cssdropdown.hideshim()",this.disappeardelay)
+        },
+
+        clearhidemenu:function(){
+            if (this.delayhide!="undefined")
+                clearTimeout(this.delayhide)
+        },
+
+        startchrome:function(){
+            for (var ids=0; ids<arguments.length; ids++){
+                var menuitems=document.getElementById(arguments[ids]).getElementsByTagName("a")
+                for (var i=0; i<menuitems.length; i++){
+                    if (menuitems[i].getAttribute("rel")){
+                        var relvalue=menuitems[i].getAttribute("rel")
+                        menuitems[i].onmouseover=function(e){
+                            var event=typeof e!="undefined"? e : window.event
+                            cssdropdown.dropit(this,event,this.getAttribute("rel"))
+                        }
+                    }
+                }
+            }
+            if (window.createPopup && !window.XmlHttpRequest){
+                document.write('<IFRAME id="iframeshim"  src="" style="display: none; left: 0; top: 0; z-index: 90; position: absolute; filter: progid:DXImageTransform.Microsoft.Alpha(style=0,opacity=0)" frameBorder="0" scrolling="no"></IFRAME>')
+                this.shimobject=document.getElementById("iframeshim")
+            }
+        }
+
+    }
+</script><script type="text/javascript">cssdropdown.startchrome("navMenu")</script>
+<script>
+    var cssdropdowns={
+        disappeardelay: 250,
+        disablemenuclick: false,
+        enableswipe: 1,
+        enableiframeshim: 1,
+        dropmenuobj: null, ie: document.all, firefox: document.getElementById&&!document.all, swipetimer: undefined, bottomclip:0,
+
+        getposOffset:function(what, offsettype){
+            var totaloffset=(offsettype=="left")? what.offsetLeft : what.offsetTop;
+            var parentEl=what.offsetParent;
+            while (parentEl!=null){
+                totaloffset=(offsettype=="left")? totaloffset+parentEl.offsetLeft : totaloffset+parentEl.offsetTop;
+                parentEl=parentEl.offsetParent;
+            }
+            return totaloffset;
+        },
+
+        swipeeffect:function(){
+            if (this.bottomclip<parseInt(this.dropmenuobj.offsetHeight)){
+                this.bottomclip+=10+(this.bottomclip/10)
+                this.dropmenuobj.style.clip="rect(0 auto "+this.bottomclip+"px 0)"
+            }
+            else
+                return
+            this.swipetimer=setTimeout("cssdropdown.swipeeffect()", 10)
+        },
+
+        showhide:function(obj, e){
+            if (this.ie || this.firefox)
+                this.dropmenuobj.style.left=this.dropmenuobj.style.top="-500px"
+            if (e.type=="click" && obj.visibility==hidden || e.type=="mouseover"){
+                if (this.enableswipe==1){
+                    if (typeof this.swipetimer!="undefined")
+                        clearTimeout(this.swipetimer)
+                    obj.clip="rect(0 auto 0 0)"
+                    this.bottomclip=0
+                    this.swipeeffect()
+                }
+                obj.visibility="visible"
+            }
+            else if (e.type=="click")
+                obj.visibility="hidden"
+        },
+
+        iecompattest:function(){
+            return (document.compatMode && document.compatMode!="BackCompat")? document.documentElement : document.body
+        },
+
+        clearbrowseredge:function(obj, whichedge){
+            var edgeoffset=0
+            if (whichedge=="rightedge"){
+                var windowedge=this.ie && !window.opera? this.iecompattest().scrollLeft+this.iecompattest().clientWidth-15 : window.pageXOffset+window.innerWidth-15
+                this.dropmenuobj.contentmeasure=this.dropmenuobj.offsetWidth
+                if (windowedge-this.dropmenuobj.x < this.dropmenuobj.contentmeasure)
+                    edgeoffset=this.dropmenuobj.contentmeasure-obj.offsetWidth
+            }
+            else{
+                var topedge=this.ie && !window.opera? this.iecompattest().scrollTop : window.pageYOffset
+                var windowedge=this.ie && !window.opera? this.iecompattest().scrollTop+this.iecompattest().clientHeight-15 : window.pageYOffset+window.innerHeight-18
+                this.dropmenuobj.contentmeasure=this.dropmenuobj.offsetHeight
+                if (windowedge-this.dropmenuobj.y < this.dropmenuobj.contentmeasure){
+                    edgeoffset=this.dropmenuobj.contentmeasure+obj.offsetHeight
+                    if ((this.dropmenuobj.y-topedge)<this.dropmenuobj.contentmeasure)
+                        edgeoffset=this.dropmenuobj.y+obj.offsetHeight-topedge
+                }
+            }
+            return edgeoffset
+        },
+
+        dropit:function(obj, e, dropmenuID){
+            if (this.dropmenuobj!=null)
+                this.dropmenuobj.style.visibility="hidden"
+            this.clearhidemenu()
+            if (this.ie||this.firefox){
+                obj.onmouseout=function(){cssdropdown.delayhidemenu()}
+                obj.onclick=function(){return !cssdropdown.disablemenuclick}
+                this.dropmenuobj=document.getElementById(dropmenuID)
+                if(!this.dropmenuobj) return;
+                this.dropmenuobj.onmouseover=function(){cssdropdown.clearhidemenu()}
+                this.dropmenuobj.onmouseout=function(e){cssdropdown.dynamichide(e)}
+                this.dropmenuobj.onclick=function(){cssdropdown.delayhidemenu()}
+                this.showhide(this.dropmenuobj.style, e)
+                this.dropmenuobj.x=this.getposOffset(obj, "left")
+                this.dropmenuobj.y=this.getposOffset(obj, "top")
+                this.dropmenuobj.style.left=this.dropmenuobj.x-this.clearbrowseredge(obj, "rightedge")+"px"
+                this.dropmenuobj.style.top=this.dropmenuobj.y-this.clearbrowseredge(obj, "bottomedge")+obj.offsetHeight+1+"px"
+                this.positionshim()
+            }
+        },
+
+        positionshim:function(){
+            if (this.enableiframeshim && typeof this.shimobject!="undefined"){
+                if (this.dropmenuobj.style.visibility=="visible"){
+                    this.shimobject.style.width=this.dropmenuobj.offsetWidth+"px"
+                    this.shimobject.style.height=this.dropmenuobj.offsetHeight+"px"
+                    this.shimobject.style.left=this.dropmenuobj.style.left
+                    this.shimobject.style.top=this.dropmenuobj.style.top
+                }
+                this.shimobject.style.display=(this.dropmenuobj.style.visibility=="visible")? "block" : "none"
+            }
+        },
+
+        hideshim:function(){
+            if (this.enableiframeshim && typeof this.shimobject!="undefined")
+                this.shimobject.style.display='none'
+        },
+
+        contains_firefox:function(a, b) {
+            while (b.parentNode)
+                if ((b = b.parentNode) == a)
+                    return true;
+            return false;
+        },
+
+        dynamichide:function(e){
+            var evtobj=window.event? window.event : e
+            if (this.ie&&!this.dropmenuobj.contains(evtobj.toElement))
+                this.delayhidemenu()
+            else if (this.firefox&&e.currentTarget!= evtobj.relatedTarget&& !this.contains_firefox(evtobj.currentTarget, evtobj.relatedTarget))
+                this.delayhidemenu()
+        },
+
+        delayhidemenu:function(){
+            this.delayhide=setTimeout("cssdropdown.dropmenuobj.style.visibility='hidden'; cssdropdown.hideshim()",this.disappeardelay)
+        },
+
+        clearhidemenu:function(){
+            if (this.delayhide!="undefined")
+                clearTimeout(this.delayhide)
+        },
+
+        startchrome:function(){
+            for (var ids=0; ids<arguments.length; ids++){
+                var menuitems=document.getElementById(arguments[ids]).getElementsByTagName("a")
+                for (var i=0; i<menuitems.length; i++){
+                    if (menuitems[i].getAttribute("rel")){
+                        var relvalue=menuitems[i].getAttribute("rel")
+                        menuitems[i].onmouseover=function(e){
+                            var event=typeof e!="undefined"? e : window.event
+                            cssdropdown.dropit(this,event,this.getAttribute("rel"))
+                        }
+                    }
+                }
+            }
+            if (window.createPopup && !window.XmlHttpRequest){
+                document.write('<IFRAME id="iframeshim"  src="" style="display: none; left: 0; top: 0; z-index: 90; position: absolute; filter: progid:DXImageTransform.Microsoft.Alpha(style=0,opacity=0)" frameBorder="0" scrolling="no"></IFRAME>')
+                this.shimobject=document.getElementById("iframeshim")
+            }
+        }
+
+    }
+</script><script type="text/javascript">cssdropdown.startchrome("navMenus")</script>
+<script>
+    var cssdropdownv={
+        disappeardelay: 250,
+        disablemenuclick: false,
+        enableswipe: 1,
+        enableiframeshim: 1,
+        dropmenuobj: null, ie: document.all, firefox: document.getElementById&&!document.all, swipetimer: undefined, bottomclip:0,
+
+        getposOffset:function(what, offsettype){
+            var totaloffset=(offsettype=="left")? what.offsetLeft : what.offsetTop;
+            var parentEl=what.offsetParent;
+            while (parentEl!=null){
+                totaloffset=(offsettype=="left")? totaloffset+parentEl.offsetLeft : totaloffset+parentEl.offsetTop;
+                parentEl=parentEl.offsetParent;
+            }
+            return totaloffset;
+        },
+
+        swipeeffect:function(){
+            if (this.bottomclip<parseInt(this.dropmenuobj.offsetHeight)){
+                this.bottomclip+=10+(this.bottomclip/10)
+                this.dropmenuobj.style.clip="rect(0 auto "+this.bottomclip+"px 0)"
+            }
+            else
+                return
+            this.swipetimer=setTimeout("cssdropdown.swipeeffect()", 10)
+        },
+
+        showhide:function(obj, e){
+            if (this.ie || this.firefox)
+                this.dropmenuobj.style.left=this.dropmenuobj.style.top="-500px"
+            if (e.type=="click" && obj.visibility==hidden || e.type=="mouseover"){
+                if (this.enableswipe==1){
+                    if (typeof this.swipetimer!="undefined")
+                        clearTimeout(this.swipetimer)
+                    obj.clip="rect(0 auto 0 0)"
+                    this.bottomclip=0
+                    this.swipeeffect()
+                }
+                obj.visibility="visible"
+            }
+            else if (e.type=="click")
+                obj.visibility="hidden"
+        },
+
+        iecompattest:function(){
+            return (document.compatMode && document.compatMode!="BackCompat")? document.documentElement : document.body
+        },
+
+        clearbrowseredge:function(obj, whichedge){
+            var edgeoffset=0
+            if (whichedge=="rightedge"){
+                var windowedge=this.ie && !window.opera? this.iecompattest().scrollLeft+this.iecompattest().clientWidth-15 : window.pageXOffset+window.innerWidth-15
+                this.dropmenuobj.contentmeasure=this.dropmenuobj.offsetWidth
+                if (windowedge-this.dropmenuobj.x < this.dropmenuobj.contentmeasure)
+                    edgeoffset=this.dropmenuobj.contentmeasure-obj.offsetWidth
+            }
+            else{
+                var topedge=this.ie && !window.opera? this.iecompattest().scrollTop : window.pageYOffset
+                var windowedge=this.ie && !window.opera? this.iecompattest().scrollTop+this.iecompattest().clientHeight-15 : window.pageYOffset+window.innerHeight-18
+                this.dropmenuobj.contentmeasure=this.dropmenuobj.offsetHeight
+                if (windowedge-this.dropmenuobj.y < this.dropmenuobj.contentmeasure){
+                    edgeoffset=this.dropmenuobj.contentmeasure+obj.offsetHeight
+                    if ((this.dropmenuobj.y-topedge)<this.dropmenuobj.contentmeasure)
+                        edgeoffset=this.dropmenuobj.y+obj.offsetHeight-topedge
+                }
+            }
+            return edgeoffset
+        },
+
+        dropit:function(obj, e, dropmenuID){
+            if (this.dropmenuobj!=null)
+                this.dropmenuobj.style.visibility="hidden"
+            this.clearhidemenu()
+            if (this.ie||this.firefox){
+                obj.onmouseout=function(){cssdropdown.delayhidemenu()}
+                obj.onclick=function(){return !cssdropdown.disablemenuclick}
+                this.dropmenuobj=document.getElementById(dropmenuID)
+                if(!this.dropmenuobj) return;
+                this.dropmenuobj.onmouseover=function(){cssdropdown.clearhidemenu()}
+                this.dropmenuobj.onmouseout=function(e){cssdropdown.dynamichide(e)}
+                this.dropmenuobj.onclick=function(){cssdropdown.delayhidemenu()}
+                this.showhide(this.dropmenuobj.style, e)
+                this.dropmenuobj.x=this.getposOffset(obj, "left")
+                this.dropmenuobj.y=this.getposOffset(obj, "top")
+                this.dropmenuobj.style.left=this.dropmenuobj.x-this.clearbrowseredge(obj, "rightedge")+"px"
+                this.dropmenuobj.style.top=this.dropmenuobj.y-this.clearbrowseredge(obj, "bottomedge")+obj.offsetHeight+1+"px"
+                this.positionshim()
+            }
+        },
+
+        positionshim:function(){
+            if (this.enableiframeshim && typeof this.shimobject!="undefined"){
+                if (this.dropmenuobj.style.visibility=="visible"){
+                    this.shimobject.style.width=this.dropmenuobj.offsetWidth+"px"
+                    this.shimobject.style.height=this.dropmenuobj.offsetHeight+"px"
+                    this.shimobject.style.left=this.dropmenuobj.style.left
+                    this.shimobject.style.top=this.dropmenuobj.style.top
+                }
+                this.shimobject.style.display=(this.dropmenuobj.style.visibility=="visible")? "block" : "none"
+            }
+        },
+
+        hideshim:function(){
+            if (this.enableiframeshim && typeof this.shimobject!="undefined")
+                this.shimobject.style.display='none'
+        },
+
+        contains_firefox:function(a, b) {
+            while (b.parentNode)
+                if ((b = b.parentNode) == a)
+                    return true;
+            return false;
+        },
+
+        dynamichide:function(e){
+            var evtobj=window.event? window.event : e
+            if (this.ie&&!this.dropmenuobj.contains(evtobj.toElement))
+                this.delayhidemenu()
+            else if (this.firefox&&e.currentTarget!= evtobj.relatedTarget&& !this.contains_firefox(evtobj.currentTarget, evtobj.relatedTarget))
+                this.delayhidemenu()
+        },
+
+        delayhidemenu:function(){
+            this.delayhide=setTimeout("cssdropdown.dropmenuobj.style.visibility='hidden'; cssdropdown.hideshim()",this.disappeardelay)
+        },
+
+        clearhidemenu:function(){
+            if (this.delayhide!="undefined")
+                clearTimeout(this.delayhide)
+        },
+
+        startchrome:function(){
+            for (var ids=0; ids<arguments.length; ids++){
+                var menuitems=document.getElementById(arguments[ids]).getElementsByTagName("a")
+                for (var i=0; i<menuitems.length; i++){
+                    if (menuitems[i].getAttribute("rel")){
+                        var relvalue=menuitems[i].getAttribute("rel")
+                        menuitems[i].onmouseover=function(e){
+                            var event=typeof e!="undefined"? e : window.event
+                            cssdropdown.dropit(this,event,this.getAttribute("rel"))
+                        }
+                    }
+                }
+            }
+            if (window.createPopup && !window.XmlHttpRequest){
+                document.write('<IFRAME id="iframeshim"  src="" style="display: none; left: 0; top: 0; z-index: 90; position: absolute; filter: progid:DXImageTransform.Microsoft.Alpha(style=0,opacity=0)" frameBorder="0" scrolling="no"></IFRAME>')
+                this.shimobject=document.getElementById("iframeshim")
+            }
+        }
+
+    }
+</script><script type="text/javascript">cssdropdown.startchrome("navMenuv")</script>
+</body>
+</html>

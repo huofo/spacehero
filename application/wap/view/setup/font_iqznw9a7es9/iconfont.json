@@ -1,0 +1,30 @@
+{
+  "id": "",
+  "name": "",
+  "font_family": "iconfont",
+  "css_prefix_text": "icon-",
+  "description": "",
+  "glyphs": [
+    {
+      "icon_id": "1048865",
+      "name": "设置",
+      "font_class": "icon_set_up",
+      "unicode": "e612",
+      "unicode_decimal": 58898
+    },
+    {
+      "icon_id": "8361898",
+      "name": "聊天3",
+      "font_class": "liaotian",
+      "unicode": "e6db",
+      "unicode_decimal": 59099
+    },
+    {
+      "icon_id": "10268585",
+      "name": "身份认证",
+      "font_class": "shenfenrenzheng",
+      "unicode": "e682",
+      "unicode_decimal": 59010
+    }
+  ]
+}

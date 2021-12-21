@@ -1,0 +1,9 @@
+body{background-color: rgb(22,31,62);}
+.ods-hode>div:nth-child(2) {color: #ffffff;}
+.ods-list-one>span {color: #ffffff;}
+.ods-list-two>p:nth-child(2)>span:nth-child(2) {color: #ffffff;}
+.ods-list>ul>li {border-bottom: 1px solid #333333;}
+.icon-31fanhui1 {color: #fffdee;}
+.ods-list-one a {color: #eeeeee;}
+.ods-list-two>p {color: #eeeeee;}
+.ods-list-two>p:nth-child(2)>span:nth-child(2) {color: #eeeeee!important;}

@@ -1,0 +1,810 @@
+﻿<html style="font-size: 120px;">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+    <!-- 是否启用全屏模式 -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <!-- 全屏时状态颜色设置 -->
+    <meta name="apple-mobile-web-status-bar-style" content="white">
+    <!-- 禁用电话号码自动识别 -->
+    <meta name="format-detection" content="telephone=no">
+    <!--禁止读取本地缓存模板-->
+    <meta http-equiv="Pragma" contect="no-cache">
+    <script type="text/javascript">
+        window.onload=function(){
+//设置适配rem
+            var change_rem = ((window.screen.width > 450) ? 450 : window.screen.width)/375*100;
+            document.getElementsByTagName("html")[0].style.fontSize=change_rem+"px";
+            window.onresize = function(){
+                change_rem = ((window.screen.width > 450) ? 450 : window.screen.width)/375*100;
+                document.getElementsByTagName("html")[0].style.fontSize=change_rem+"px";
+            }
+        }
+    </script>
+    <title>
+    </title>
+    <link href="__HOME__/css/pay1.css" rel="stylesheet" media="screen">
+    <link rel="stylesheet" href="/index/iconfont/font_fpk8hw6pfut/iconfont.css" >
+    <link rel="stylesheet" href="/index/iconfont/font_pcmjuj5uup/iconfont.css" >
+    <link rel="stylesheet" href="/index/css/optional.css" >
+    <link rel="stylesheet" href="/static/index/layui/css/modules/layer/default/layer.css?v=3.1.1" >
+    {include file="alyslt" /}
+    <!--        夜间白天切换的文件-->
+    {if $_SESSION["night"]=="yes"}<link href="/index/css/fbjy.css" rel="stylesheet" >{else}<link class="fbjyfh-btms2s" rel="stylesheet" href="/index/css/user-fbjy-htms.css"> {/if}
+
+<!--    黑夜模式-->
+<!--    <link class="fbjyfh-btms2s" rel="stylesheet" href="/index/css/user-fbjy-htms.css">-->
+  <!--  {include file="fbjy_js" /}-->
+    <script type="text/javascript" src="__HOME__/js/jquery-3.2.1.min.js"></script>
+    <script type="text/javascript" src="__HOME__/js/lk/user.js"></script>
+    <script type="text/javascript" src="/static/index/layui/lay/modules/layer.js"></script>
+
+        <script>
+        var fbjy_qsrgmje='{$Think.lang.fbjy_qsrgmje}';
+
+       var fbjy_qsrgmdjebnxy="{$Think.lang.fbjy_qsrgmdjebnxy}";
+        var fbjy_qsrgmsl='{$Think.lang.fbjy_qsrgmsl}';
+        var fbjy_qsrgmdbnxy="{$Think.lang.fbjy_qsrgmdbnxy}";
+        var fbjy_ckdj='{$Think.lang.fbjy_ckdj}';
+        var rt_qrtj='{$Think.lang.rt_qrtj}';
+        var jse_qxzzffs='{$Think.lang.jse_qxzzffs}';
+
+        var fbjy_qsrgmslje='{$Think.lang.fbjy_qsrgmslje}';
+         var fbjy_qsrcsslhje='{$Think.lang.fbjy_qsrcsslhje}';
+         var fbjy_srcsdslhjebnxyl="{$Think.lang.fbjy_srcsdslhjebnxyl}";
+         var fbjy_qsrgmslhje='{$Think.lang.fbjy_qsrgmslhje}';
+         var fbjy_qsrgmdslhjebn="{$Think.lang.fbjy_qsrgmdslhjebn}";
+         var fbjy_djzy='{$Think.lang.fbjy_djzy}';
+         var fbjy_zwzffs='{$Think.lang.fbjy_zwzffs}';
+
+
+         var fbjy_qxzskfs='{$Think.lang.fbjy_qxzskfs}';
+         var fbjy_qsrcssl='{$Think.lang.fbjy_qsrcssl}';
+         var fbjy_srcsdslbnxyh="{$Think.lang.fbjy_srcsdslbnxyh}";
+         var fbjy_qsrcsjesl='{$Think.lang.fbjy_qsrcsjesl}';
+         var fbjy_sqcsdjebnxy="{$Think.lang.fbjy_sqcsdjebnxy}";
+         var fbjy_zdksw='{$Think.lang.fbjy_zdksw}';
+         var fbjy_qtxyzm='{$Think.lang.fbjy_jfsyzmdnn}';
+
+         var fbjy_dj= '{$Think.lang.fbjy_dj}';
+         var bi_sl= '{$Think.lang.bi_sl}';
+         var fbjy_qxzqxdd= "{$Think.lang.fbjy_qxzqxdd}";
+         var fbjy_wlcc= "{$Think.lang.fbjy_wlcc}";
+         var fbjy_qqycqcs='{$Think.lang.fbjy_qqycqcs}';
+        var  ue_sccg='{$Think.lang.ue_sccg}';
+    </script>
+
+
+
+</head>
+<body style="background: #fbfbfb">
+<div class="daohang">
+    <div class="daohang-zuo">
+        <a href="javascript:void(0)" onclick="javascript:history.back(-1);">
+            <i class="iconfont icon-31fanhui1"></i>
+        </a>
+        <div class="fajy-kzq">
+
+            <span>{$Think.lang.fbjy_kjq}</span><span style="color: #d1a954;">{$Think.lang.fbjy_kjq}</span><i class="iconfont icon-xiangxia1"></i><i class="iconfont icon-xiangshang1" style="color: #d1a954;"></i>
+
+        </div>
+    </div>
+    <div class="daohang-zhong"><span><span class="cur_name">{$default_currency}</span>&#8194;</span><i class="iconfont icon-huazhuan"></i></div>
+</div>
+<div class="fbjy-whole">
+    <div class="fbjy-div1">
+
+        <div style="width: 80%;float: left;">
+            <span class="fbjy-wym">{$Think.lang.fb_wym}&#8195;</span>
+            <span class="fbjy-wym2">&#8195;{$Think.lang.fb_wym2}</span>
+        </div>
+        <div  style="width: 20%;float: right;text-align: right;"><a href="/index/User/curordes"><i class="iconfont icon-icon2"></i></a></div>
+        <!--<div></div>-->
+
+    </div>
+    <div class="fbjy-xzbz">
+        <ul>
+            {volist name="currencys" id="data"}
+            <li id="{$data.pid}" data-price="{$data.price}" data-name="{$data.Name}" data-money="{$data.sl}">
+                <p>{$data.Name}</p>
+            </li>
+            {/volist}
+        </ul>
+    </div>
+    <div class="fbjy-gmje">
+        <div class="fbjy-gmje2">
+
+            <p class="fbjy-gmje2-p1">{$Think.lang.fbjy_gmsl}</p>
+            <div class="fbjy-gmje2-div fbjy-gmsl">
+                <input id="buy_num" placeholder="{$Think.lang.fbjy_esq}">
+
+                <span class="symbol_name">USDT</span>
+            </div>
+<!--            <div class="fbjy-gmje2-div fbjy-gmje5">-->
+<!--                <span class="currency_icon">{$default_currency_icon}</span>-->
+
+<!--                <input id="buy_amount" placeholder="{$Think.lang.fbjy_ybq}">-->
+<!--            </div>-->
+            <div class="fbjy-gmje2-div2">
+                <div>{$Think.lang.fbjy_ckdj} <span class="sc_price">0.00</span> <span class="cur_name">{$default_currency}</span></div>
+<!--                <div class="fbjy-slgm" onclick="buyonbase('num')">{$Think.lang.fbjy_aslgm} <i class="iconfont icon-huazhuan"></i></div>-->
+<!--                <div class="fbjy-jbgb" onclick="buyonbase('amount')">{$Think.lang.fbjy_ajegm} <i class="iconfont icon-huazhuan"></i></div>-->
+            </div>
+            <button class="fbjy-gmje2-boutt fbjy-gmje2-boutt1" >{$Think.lang.fbjy_lsxfgm}</button>
+        </div>
+        <div class="fbjy-gmje2">
+          <p class="fbjy-gmje2-p1"><span class="fbjy-sp1">{$Think.lang.fbjy_cssl}</span> <span class="fbjy-gmje2-hz"><a href=""><!--  划转--></a></span></p>
+            <div class="fbjy-gmje2-div fbjy-cssl">
+                <input id="can_sell_num" style="width: 68%; padding-left: 2%; " placeholder="{$Think.lang.fbjy_zdksw}{$default_symbol['sl']}">
+                <div class="fbjy-mcxz"><span class="fbjy-mcbz"> <span class="symbol_name"> USDT</span> <span class="fbjy-mcxzqb" onclick="get_all()">{$Think.lang.ti_qb}</span></span></div>
+            </div>
+<!--            <div class="fbjy-gmje2-div fbjy-csje">-->
+<!--                <input  id="can_sell_amount" style="width: 100%; padding-left: 2%; " placeholder="{$Think.lang.fbjy_zdksw}{$default_symbol['sl']}">-->
+<!--            </div>-->
+            <div class="fbjy-gmje2-div2">
+                <div>{$Think.lang.fbjy_ckdj} <span class="sc_price">0.00</span> <span class="cur_name">{$default_currency}</span></div>
+<!--                <div class="fbjy-jecs" onclick="sellonbase('num')">{$Think.lang.fbjy_aslcs} <i class="iconfont icon-huazhuan"></i></div>-->
+<!--                <div class="fbjy-slcs" onclick="sellonbase('amount')">{$Think.lang.fbjy_ajecs} <i class="iconfont icon-huazhuan"></i></div>-->
+            </div>
+            <button class="fbjy-gmje2-boutt fbjy-gmje2-boutt2" onclick="addorder(1)">{$Think.lang.fbjy_lsxfcs}</button>
+
+        </div>
+    </div>
+</div>
+<div class="fbjy-xzquu">
+    <div class="fbjy-xzquu-div1">
+        <div>
+            <div class="fbjy-xzquu-div2">
+                <a href="/index/user/fbjy">
+
+                    <p class="fbjy-xzquu-p1">{$Think.lang.fbjy_kjq}</p>
+                    <p>{$Think.lang.fbjy_yjmmksjy}</p>
+
+                </a>
+            </div>
+            <div class="fbjy-xzquu-div3"><i class="iconfont icon-dagou"></i></div>
+        </div>
+        <div>
+            <div class="fbjy-xzquu-div2">
+                <a href="/index/User/optional">
+
+                    <p class="fbjy-xzquu-p1">{$Think.lang.fbjy_zxq}</p>
+                    <p>{$Think.lang.fbjy_gdxzzyjy}</p>
+
+                </a>
+            </div>
+            <div class="fbjy-xzquu-div3"></div>
+        </div>
+    </div>
+    <div></div>
+</div>
+<div class="fabi-xzfb" style="display: none;">
+    <div class="fabi-xzfb-hode">
+        <div><a class="fabi-fh"><i class="iconfont icon-31fanhui1"></i></a></div>
+
+        <div class="">{$Think.lang.fbjy_xzfb}</div>
+
+        <div class=""></div>
+    </div>
+    <div class="fabi-xzfb-div1">
+        <span><i class="iconfont icon-chaxun"></i></span>
+
+        <input placeholder="{$Think.lang.fbjy_qsrfb}" id="search_curr" oninput="search_curr()">
+
+    </div>
+    <div class="fabi-xzfb-list">
+        {volist name="firstw" id="data"}
+
+
+        <div class="fabi-xzfb-list2 old_list">
+
+            <div class="fabi-xzfb-bt">{$data}</div>
+
+            <ul>
+                {volist name="tenderWord[$data]" id="item"}
+
+                    <li data-name="{$item.name}" data-rate="{$item.exc_rate}" data-icon="{$item.symbol}"><span>{$item.symbol}</span><span>{$item.name}</span></li>
+
+                {/volist}
+            </ul>
+
+        </div>
+
+        {/volist}
+
+        <div class="fabi-xzfb-list2 new_list">
+
+
+
+        </div>
+    </div>
+</div>
+<style>
+
+
+
+</style>
+<div class="fabi-qrcs">
+    <div class="fabi-qrcs-whole">
+        <div class="fabi-qrcs-whole-noe">
+
+            <div><span>{$Think.lang.fbjy_qrcs}</span><i class="iconfont icon-cha"></i></div>
+            <p class="fabi-qrcs-whole-p1">{$Think.lang.sksz_skfs}</p>
+            <div id="payment_method">
+                <div class="fabi-qrcs-whole-tow">
+                    <div>
+                        <p class="fabi-qrcs-whole-tow-p1"><span>{$Think.lang.fbjy_zfb}</span><span>￥6.20</span></p>
+                        <p class="fabi-qrcs-whole-tow-p2"><span>{$Think.lang.fbjy_djzy}</span></p>
+
+                    </div>
+                    <div class="fabi-qrcs-whole-tow-div2">
+                        {$Think.lang.fbjy_zwzffs}
+                    </div>
+                </div>
+                <div class="fabi-qrcs-whole-tow" id="2">
+                    <div>
+                        <p class="fabi-qrcs-whole-tow-p1"><span>{$Think.lang.fbjy_zfb}</span><span>￥6.20</span></p>
+                        <p class="fabi-qrcs-whole-tow-p2"><span>{$Think.lang.fbjy_djzy}</span></p>
+                    </div>
+                    <div class="fabi-qrcs-whole-tow-div2">
+
+                       <div></div><span>975****.com</span>
+
+                    </div>
+                </div>
+                <div class="fabi-qrcs-whole-tow">
+                    <div>
+                        <p class="fabi-qrcs-whole-tow-p1"><span>{$Think.lang.fbjy_wx}</span><span>￥6.20</span></p>
+                        <p class="fabi-qrcs-whole-tow-p2"><span>{$Think.lang.fbjy_djzy}</span></p>
+                    </div>
+                    <div class="fabi-qrcs-whole-tow-div2">
+                        {$Think.lang.fbjy_zwzffs}
+                    </div>
+                </div>
+                <div class="fabi-qrcs-whole-tow">
+                    <div>
+                        <p class="fabi-qrcs-whole-tow-p1"><span>{$Think.lang.fbjy_yhk}</span><span>￥6.20</span></p>
+
+                    </div>
+                    <div class="fabi-qrcs-whole-tow-div2">
+                        {$Think.lang.fbjy_zwzffs}
+                    </div>
+                </div>
+            </div>
+            <div class="fabi-qrcs-whole-tow-div3">
+                <p><a href="javascript:void (0)" onclick="gopage_addpayment()">+ {$Think.lang.fbjy_tjskfs}</a></p>
+                <button onclick="confirm_sell()">{$Think.lang.fbjy_qrcs}</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="fbjy-qrgm">
+    <div class="fbjy-qrgm-div0">
+        <div class="fbjy-qrgm-whole">
+            <p class="fbjy-qrgm-whole-p1">{$Think.lang.fbjy_qrgm} <i class="iconfont icon-cha"></i></p>
+            <p><span class="currency_icon">{$default_currency_icon}</span> <span class="buy_case"> </span></p>
+            <p>{$Think.lang.fbjy_wjsd} <span class="will_get_num"></span> <span class="symbol_name">USDT</span></p>
+            <p class="fbjy-qrgm-whole-p4">{$Think.lang.fbjy_xzzffs}</p>
+            <div class="fbjy-qrgm-whole-noe">
+
+
+                    <div class="wx">
+                        <p>
+                            <span>{$Think.lang.fbjy_wx}</span>
+                            <span>￥ 6.30</span>
+                        </p>
+                        <p>
+                            <span></span>
+                            <span>{$Think.lang.fbjy_djzy}</span>
+                        </p>
+                    </div>
+                    <div class="yhk">
+
+                        <p>
+                            <span>{$Think.lang.fbjy_yhk}</span>
+                            <span>￥ 6.30</span>
+                        </p>
+
+                    </div>
+                    <div class="zfb">
+
+                        <p>
+                            <span>{$Think.lang.fbjy_zfb}</span>
+                            <span>￥ 6.30</span>
+                        </p>
+
+                    </div>
+
+
+                <button class="fbjy-qrgm-butt">{$Think.lang.rt_qrtj}</button>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="/index/js/m-fbjy.js"></script>
+<script>
+    //点击我要买的购买按钮
+    $(".fbjy-qrgm").hide();
+    $(".fbjy-gmje2-boutt1").click(function () {
+
+        if(buy_base == 'amount'){
+            var inpt =$("#buy_amount").val();
+            if (!inpt){layer.msg(fbjy_qsrgmje); return;}else if (inpt<=0){layer.msg(fbjy_qsrgmdjebnxy); return;}
+        }else{
+            var num = $("#buy_num").val();
+            if (!num){layer.msg(fbjy_qsrgmsl); return;}else if (num<=0){layer.msg(fbjy_qsrgmdbnxy); return;}
+        }
+
+
+
+
+        get_buy_num();
+        //获取支付方式
+        $.ajax({
+            url: '/index/Currencytrade/get_paymethod',
+            type: 'post',
+            dataType: 'json',
+            data: {
+                'currency': default_currency,
+            },
+            success: function (res) {
+                var html = '';
+                $.each(res.list,function (index,item) {
+
+
+
+                    html += '  <div class="zfb" data-id="'+item.id+'">\n' +
+                        '                    <p>\n' +
+                        '                        <span>'+item.name+'</span>\n' +
+                        '                        <span>'+currency_icon+sc_price+'</span>\n' +
+                        '                    </p>\n' +
+
+                        '                    <p>\n' +
+
+                        '                        <span></span>\n' +
+                        '                        <span>'+fbjy_ckdj+'</span>\n' +
+                        '                    </p>'+
+                        '                </div>';
+                })
+                html += ' <button class="fbjy-qrgm-butt" onclick="confirm_buy()">'+rt_qrtj+'</button>';
+                $('.fbjy-qrgm-whole-noe').html(html);
+            }
+        });
+
+        $(".fbjy-qrgm").show();
+    });
+    $(".fbjy-qrgm-whole-p1>i").click(function () {
+        $(".fbjy-qrgm").hide();
+    });
+
+    //我要买，选择支付方式
+    var zffs=0;
+    // $(".fbjy-qrgm-whole-noe>div").click(function () {
+    //     $(".fbjy-qrgm-whole-noe>div").css("border-color","#eee");
+    //    $(this).css("border-color","#d1a954");
+    //    zffs=$(this).attr("data");
+    // });
+    $(document).on("click",".fbjy-qrgm-whole-noe>div",function(){
+        $(".fbjy-qrgm-whole-noe>div").css("border-color","#eee");
+        $(this).css("border-color","#d1a954");
+        zffs=$(this).attr("data-id");
+    });
+
+    //我要买，选择支付方式，后点击确认购买按钮
+    $(".fbjy-qrgm-butt").click(function () {
+        if(!zffs){layer.msg(jse_qxzzffs); return;}
+        // if(zffs!="wx"||zffs!="yhk"||zffs!="zfb"){ layer.msg("程序出现错误"); }
+    });
+    //确认购买
+    function confirm_buy(){
+        if(!zffs){layer.msg(jse_qxzzffs); return;}
+        if(buy_base == 'num'){
+            var num = $("#buy_num").val();
+            var amount = 0;
+            if(!num ){layer.msg(fbjy_qsrgmsl); return;}
+            if(num<=0){layer.msg(fbjy_qsrgmdbnxy); return;}
+        }else{
+            var num = 0;
+            var amount =$('#buy_amount').val();
+            if( !amount){layer.msg(fbjy_qsrgmslje); return;}
+            if( amount<=0){layer.msg(fbjy_qsrgmdjebnxy); return;}
+        }
+        //
+        // if(!num && !amount){layer.msg("请输入出售数量或者金额"); return;}
+        // if(num<=0 && amount<=0){layer.msg("输入出售的数量或金额不能小于或等于0"); return;}
+        $.ajax({
+            url: '/index/Currencytrade/addorder',
+            type: 'post',
+            dataType: 'json',
+            data: {
+                'payment': zffs,
+                'num': num,
+                'amount':amount,
+                'currency':default_currency,
+                'symbol':default_symbol_name,
+                'trade_type':0
+            },
+            success: function (res) {
+                if(res.code == 1){
+                    layer.msg(res.msg);
+
+                    if(res.match == 1){
+                        window.location.href = '/index/user/qfk?id='+res.id;
+
+                    }else{
+                        window.location.href = '/index/User/optional';
+
+                    }
+
+                }else{
+                    layer.msg(res.msg);
+                    if(res.code == -1){
+                        setTimeout("gopage_addpayment()",1000);
+                    }
+                }
+            }
+        });
+    }
+
+
+
+    //我要买出售时选择收款方式
+    $(".fabi-qrcs").hide();
+    $(".icon-cha").click(function () {
+
+         $(".fabi-qrcs").hide();
+
+    });
+    // $(".fbjy-gmje2-boutt").eq(1).click(function () {
+    //     var tex =$("#can_sell_num").val();
+    //     if(!tex){alert("请输入出售数量"); return;}
+    //     if(tex<=0){alert("输入出售的数量不能小于或等于0"); return;}
+    //     $(".fabi-qrcs").show();
+    // });
+
+    var buy_base = 'num';//购买数额依据
+    var sell_base = 'num';//出售数额依据
+    function sellonbase(base) {
+        sell_base = base;
+    }
+    function buyonbase(base) {
+        buy_base = base;
+    }
+
+    function gopage_addpayment() {
+        window.location.href = "/index/User/skfs?c="+default_currency;
+    }
+    //获取收款方式
+    function addorder(trade_type){
+
+        if(trade_type === 1){
+            var num =$("#can_sell_num").val();
+            var amount =$('#can_sell_amount').val();
+            if(!num && !amount){layer.msg(fbjy_qsrcsslhje); return;}
+            if(num<=0 && amount<=0){layer.msg(fbjy_srcsdslhjebnxyl); return;}
+        }else{
+            var num =$("#buy_num").val();
+            var amount =$('#buy_amount').val();
+            if(!num && !amount){layer.msg(fbjy_qsrgmslhje); return;}
+            if(num<=0 && amount<=0){layer.msg(fbjy_qsrgmdslhjebn); return;}
+        }
+
+        $.ajax({
+            url:'/index/Currencytrade/get_payment',
+            type:'post',
+            dataType:'json',
+            data:{
+                'currency':default_currency,
+                'symbol':default_symbol_name,
+            },
+            success:function (res) {
+                console.log(res);
+                var html = '';
+                if(res.code === 0 ){
+
+                    if(res.list){
+                        $.each(res.list ,function (index,item) {
+                            html +=  '<div class="fabi-qrcs-whole-tow">\n' +
+                                '                    <div>\n' +
+                                '                        <p class="fabi-qrcs-whole-tow-p1"><span>'+item.name+'</span><span>'+currency_icon+sc_price+'</span></p>\n' +
+                                '                        <p class="fabi-qrcs-whole-tow-p2"><span>'+fbjy_djzy+'</span></p>\n' +
+                                '                    </div>\n' +
+                                '                    <div class="fabi-qrcs-whole-tow-div2">\n' +
+                                '                        '+fbjy_zwzffs+'\n' +
+                                '                    </div>\n' +
+                                '                </div>\n' ;
+                        })
+
+                    }
+
+                    // html += '<div class="fabi-qrcs-whole-tow">\n' +
+                    //     '                    <div>\n' +
+                    //     '                        <p class="fabi-qrcs-whole-tow-p1"><span>支付宝</span><span>'+currency_icon+sc_price+'</span></p>\n' +
+                    //     '                        <p class="fabi-qrcs-whole-tow-p2"><span>单价最优</span></p>\n' +
+                    //     '                    </div>\n' +
+                    //     '                    <div class="fabi-qrcs-whole-tow-div2">\n' +
+                    //     '                        暂无支付方式\n' +
+                    //     '                    </div>\n' +
+                    //     '                </div>\n' +
+                    //     '                <div class="fabi-qrcs-whole-tow">\n' +
+                    //     '                    <div>\n' +
+                    //     '                        <p class="fabi-qrcs-whole-tow-p1"><span>微信</span><span>'+currency_icon+sc_price+'</span></p>\n' +
+                    //     '                        <p class="fabi-qrcs-whole-tow-p2"><span>单价最优</span></p>\n' +
+                    //     '                    </div>\n' +
+                    //     '                    <div class="fabi-qrcs-whole-tow-div2">\n' +
+                    //     '                        暂无支付方式\n' +
+                    //     '                    </div>\n' +
+                    //     '                </div>\n' +
+                    //     '                <div class="fabi-qrcs-whole-tow">\n' +
+                    //     '                    <div>\n' +
+                    //     '                        <p class="fabi-qrcs-whole-tow-p1"><span>银行卡</span><span>'+currency_icon+sc_price+'</span></p>\n' +
+                    //     '    <!--                    <p class="fabi-qrcs-whole-tow-p2"><span>单价最优</span></p>-->\n' +
+                    //     '                    </div>\n' +
+                    //     '                    <div class="fabi-qrcs-whole-tow-div2">\n' +
+                    //     '                        暂无支付方式\n' +
+                    //     '                    </div>\n' +
+                    //     '                </div>';
+                }
+                else{
+
+                    $.each(res.data,function (index,item) {
+
+                        html += '   <div class="fabi-qrcs-whole-tow" id="'+item.id+'" onclick="check_payment('+item.id+')">\n' +
+                            '                    <div>\n' +
+                            '                        <p class="fabi-qrcs-whole-tow-p1"><span>'+item.type_name+'</span><span>'+currency_icon+sc_price+'</span></p>\n' +
+                            '                        <p class="fabi-qrcs-whole-tow-p2"><span>'+fbjy_djzy+'</span></p>\n' +
+                            '                    </div>\n' +
+                            '                    <div class="fabi-qrcs-whole-tow-div2">\n' +
+                            '                       <div></div><span>'+item.account_num+'</span>\n' +
+                            '                    </div>\n' +
+                            '                </div>';
+                    })
+                }
+                $('#payment_method').html(html);
+                $(".fabi-qrcs").show();
+            }
+        })
+
+
+
+    }
+    //出售
+    function confirm_sell() {
+        if(payment == 0){
+            layer.msg(fbjy_qxzskfs);return;
+        }
+        if(sell_base == 'num'){
+            var num = $("#can_sell_num").val();
+            var amount = 0;
+            if(!num ){layer.msg(fbjy_qsrcssl); return;}
+            if(num<=0){layer.msg(fbjy_srcsdslbnxyh); return;}
+        }else{
+            var num = 0;
+            var amount =$('#can_sell_amount').val();
+            if( !amount){layer.msg(fbjy_qsrcsjesl); return;}
+            if( amount<=0){layer.msg(fbjy_sqcsdjebnxy); return;}
+        }
+        //
+        // if(!num && !amount){layer.msg("请输入出售数量或者金额"); return;}
+        // if(num<=0 && amount<=0){layer.msg("输入出售的数量或金额不能小于或等于0"); return;}
+        $.ajax({
+            url: '/index/Currencytrade/addorder',
+            type: 'post',
+            dataType: 'json',
+            data: {
+                'payment': payment,
+                'num': num,
+                'amount':amount,
+                'currency':default_currency,
+                'symbol':default_symbol_name,
+                'trade_type':1
+            },
+            success: function (res) {
+                if(res.code == 1){
+                    layer.msg(res.msg);
+
+                    if(res.match == 1){
+                        window.location.href = '/index/user/payment?id='+res.id;
+
+                    }else{
+                        window.location.href = '/index/User/optional';
+
+                    }
+
+                }else{
+                    layer.msg(res.msg);
+                }
+            }
+        });
+    }
+
+
+    function check_payment(id){
+        payment = id;
+        var clas =$("#"+id+">.fabi-qrcs-whole-tow-div2").attr("class");
+        if(clas=="fabi-qrcs-whole-tow-div2"){
+            var a = $("#"+id+">.fabi-qrcs-whole-tow-div2").html();
+            var a2 =a.indexOf('<i class="iconfont icon-dagou"></i>');
+            if (a2==-1){
+                $("#"+id+">.fabi-qrcs-whole-tow-div2").html(a+'<i class="iconfont icon-dagou"></i>');
+            }
+        }
+        $(".fabi-qrcs-whole-tow-div2").attr("class","fabi-qrcs-whole-tow-div2");
+        $("#"+id+">.fabi-qrcs-whole-tow-div2").addClass("m-xzskfs");
+
+    }
+
+    // $(".fabi-qrcs-whole-tow").on('click',function () {
+    //     var id =$(this).attr("id");
+    //     console.log(id);
+    //     var clas =$("#"+id+">.fabi-qrcs-whole-tow-div2").attr("class");
+    //     if(clas=="fabi-qrcs-whole-tow-div2"){
+    //         var a = $("#"+id+">.fabi-qrcs-whole-tow-div2").html();
+    //         $("#"+id+">.fabi-qrcs-whole-tow-div2").html(a+'<i class="iconfont icon-dagou"></i>')
+    //     }
+    //
+    //
+    //     $("#"+id+">.fabi-qrcs-whole-tow-div2").addClass("m-xzskfs");
+    //
+    // })
+
+
+    var default_currency = "{$default_currency}";//默认币种
+    var default_currency_price = "{$default_currency_price}";//默认币种对美元汇率
+    var default_symbol_name = "{$default_symbol['Name']}";//默认交易对名称
+    var default_symbol_price = "{$default_symbol['price']}";//默认交易对价格
+    var default_symbol_pid = "{$default_symbol['pid']}";
+    var symbol_money = "{$default_symbol['sl']}";
+    var currency_icon = '{$default_currency_icon}';//法币图标
+
+
+
+    var payment = 0;
+    var sc_price = 0;
+    //计算单价
+    function get_sc_price(){
+        sc_price = parseFloat(default_symbol_price) * parseFloat(default_currency_price);
+        sc_price = sc_price.toFixed(2);
+        $('.sc_price').html(sc_price);
+
+        let can_sell_amount =  parseFloat(symbol_money) * parseFloat(default_symbol_price) * parseFloat(default_currency_price);
+        can_sell_amount = can_sell_amount.toFixed(2);
+        $('#can_sell_amount').attr('placeholder',fbjy_zdksw+can_sell_amount);
+
+
+
+        $('.symbol_name').html(default_symbol_name);
+    }
+
+    //计算购买的数量与金额
+    function  get_buy_num() {
+        if(buy_base == 'num'){
+
+            let num = $('#buy_num').val();
+            $('.will_get_num').html(num);
+
+            let amount = num * sc_price;
+            $('.buy_case').html(amount);
+
+        }else{
+
+            let amount = $('#buy_amount').val();
+            $('.buy_case').html(amount);
+
+            let num = amount/sc_price;
+            $('.will_get_num').html(num.toFixed(6));
+        }
+    }
+
+    //搜索法币币种
+    function search_curr(){
+        var keyword = $('#search_curr').val();
+
+        if(keyword !== ''){
+            $.ajax({
+                type:"post",
+                url:"{:url('Currencytrade/search_curr')}",
+                data:{
+                    keyword:keyword,
+
+                },
+                dataType:'JSON',
+                async:false,
+                success:function(msg){
+                    if(msg.code == 1){
+                        var html = '';
+                        html += ' <div class="fabi-xzfb-bt ">'+keyword+'</div>\n' ;
+
+                        html +=    '\n' +
+                            '            <ul>\n' ;
+
+                        $.each(msg.data,function (index,item) {
+                            html +=   ' <li data-name="'+item.name+'" data-rate="'+item.huilv+'" data-icon="'+item.symbol+'"><span>'+item.symbol+'</span><span>'+item.name+'</span></li>\n' ;
+                        })
+
+                        html +=    '            </ul>';
+
+                        $('.new_list').show();
+                        $('.old_list').hide();
+                        $('.new_list').html(html);
+
+                    }else{
+                        $('.new_list').hide();
+                        $('.old_list').show();
+                        layer.msg("没有该币种的相关搜索结果！",{time:2*1000});
+
+                    }
+                },
+                error:function(){
+                    $('.new_list').hide();
+                    $('.old_list').show();
+                    layer.msg("网络出错..",{time:2*1000});
+                }
+            });
+        }else{
+            $('.new_list').hide();
+            $('.old_list').show();
+        }
+    }
+
+    $(function(){
+        get_sc_price();
+    });
+
+    $(".fabi-xzfb").hide();
+    $(".daohang-zhong>span").click(function () {
+        $(".fabi-xzfb").show();
+    })
+    $(".daohang-zhong>i").click(function () {
+        $(".fabi-xzfb").show();
+    })
+    $(".fabi-fh").click(function () {
+        $(".fabi-xzfb").hide();
+    });
+    //选择 法币
+    $(".fabi-xzfb-list2>ul>li").click(function () {
+        $(".icon-dagou").css("color","#ffffff");
+        //console.log('123');
+        default_currency_price = $(this).data('rate');
+        default_currency = $(this).data('name');
+        let icon = $(this).data('icon');
+        currency_icon = icon;
+        $('.currency_icon').html(icon);
+        $('.cur_name').html(default_currency);
+        get_sc_price();
+        payment = 0;
+        $(".fabi-xzfb").css('display','none');
+    });
+
+    $(document).on('click','.fabi-xzfb-list2>ul>li',function () {
+        $(".icon-dagou").css("color","#ffffff");
+        //console.log('123');
+        default_currency_price = $(this).data('rate');
+        default_currency = $(this).data('name');
+        let icon = $(this).data('icon');
+        currency_icon = icon;
+        $('.currency_icon').html(icon);
+        $('.cur_name').html(default_currency);
+        get_sc_price();
+        payment = 0;
+        $(".fabi-xzfb").css('display','none');
+    })
+
+
+    //选择 交易对
+    $(".fbjy-xzbz>ul>li").click(function () {
+        var a =$(this).attr("id");
+        default_symbol_price = $(this).data('price');
+        default_symbol_name = $(this).data('name');
+        symbol_money = $(this).data('money');
+        $('#can_sell_num').attr('placeholder',fbjy_zdksw+symbol_money);
+        get_sc_price();
+    });
+
+    function get_all() {
+        $('#can_sell_num').val(symbol_money);
+    }
+
+</script>
+</body>
+</html>

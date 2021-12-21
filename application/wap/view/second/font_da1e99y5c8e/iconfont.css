@@ -1,0 +1,22 @@
+@font-face {
+  font-family: "iconfont"; /* Project id  */
+  src: url('iconfont.ttf?t=1628648195998') format('truetype');
+}
+
+
+.icon-gupiao-copy:before {
+  content: "\e63d";
+}
+
+.icon-sousuo:before {
+  content: "\e646";
+}
+
+.icon-shezhi:before {
+  content: "\e611";
+}
+
+.icon-fullScreen:before {
+  content: "\e627";
+}
+

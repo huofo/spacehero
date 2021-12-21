@@ -1,0 +1,44 @@
+*{
+    box-sizing: border-box;
+}
+.xh_flex{
+    display:-webkit-box;/*Chrome4+,Safari3.1,iOSSafari3.2+*/
+    display:-moz-box;/*Firefox17-*/
+    display:-webkit-flex;/*Chrome21+,Safari6.1+,iOSSafari7+,Opera15/16*/
+    display:-moz-flex;/*Firefox18+*/
+    display:-ms-flexbox;/*IE10*/
+    display:flex;
+    /*//这个必须有用来创建盒子*/
+}
+.xh_align_center{
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+    align-items: center;
+}
+.xh_align-items-start{
+    -ms-flex-align: start;
+    align-items: flex-start;
+}
+.xh_justify_between{
+    -webkit-justify-content: space-between;
+    -moz-justify-content: space-between;
+    -ms-justify-content: space-between;
+    -webkit-box-pack: justify;
+    justify-content: space-between;
+    /*//左右分布排列*/
+}
+.zui-da{width: 100%;height: 800px;background: white}
+.zui-xiahezi{width: 94%;height: 60px;margin-left: 2%;margin-top: 46px;line-height: 60px;padding-right: 20px}
+.zui-xiahezi p{width:auto;margin: 0 20px; height: 60px; line-height: 60px; color: #c7cce6; text-align: center; position: relative}
+.zui-xiahezi p.active{color: #87a0f7;border-bottom: 1px solid #87a0f7;}
+.zui-xiahezi span{width: 80%;height: 2px;border-radius: 2px;bottom: 0;left: 10%}
+.zui-xiahezi .active span{background: #87a0f7}
+.hutujis{width: 100%;height: 50px;margin: 20px 0 0 0;color: #666666;text-align: center;border-bottom: 1px solid #cdd9e2}
+.hutujis span{width: 7%;font-size: 15px;}
+.jionmr{width: 100%;height: 30px;margin: 20px 0 0 0;color: #666666;text-align: center;border-bottom: 1px solid #cdd9e2}
+.jionmr span{width: 7%;font-size: 15px;}
+.pkjiaoyiz{width: 100%;height: 30px;margin: 20px 0 0 0;color: #666666;text-align: center;border-bottom: 1px solid #cdd9e2}
+.pkjiaoyiz span{width: 7%;font-size: 15px;}
+.pkolesca{width: 100%;height: 50px;margin: 20px 0 0 0;color: #666666;text-align: center;border-bottom: 1px solid #cdd9e2}
+.pkolesca span{width: 7%;font-size: 15px;}
+.opyugo{width: 6%!important;height: 35px;background: #00a0e9;line-height: 35px;border-radius: 5px;margin-right: 5px;color: #eeeeee}

@@ -1,0 +1,16 @@
+{
+  "id": "",
+  "name": "",
+  "font_family": "iconfont",
+  "css_prefix_text": "icon-",
+  "description": "",
+  "glyphs": [
+    {
+      "icon_id": "12683554",
+      "name": "查找",
+      "font_class": "icon_chazhao",
+      "unicode": "e616",
+      "unicode_decimal": 58902
+    }
+  ]
+}

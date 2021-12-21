@@ -1,0 +1,251 @@
+{include file="head" /}
+<style type="text/css">
+  .form-group{
+    overflow: hidden;
+  }
+  .form-group span{
+    float: left;
+    height: 34px;
+    line-height: 26px;
+    font-size: 24px;
+    width: 54px;
+    cursor: pointer;
+    text-align: center;
+    background: #ccc;
+    border-radius: 3px;
+  }
+  .form-group .addstep{
+    color: red;
+    margin-right: 10px;
+  }
+  .form-group .redstep{
+    color: green;
+  }
+  .col-lg-8 .uploads{
+    width: 200px;
+    height: 140px;
+    border: 1px solid #999;
+    padding: 5px;
+    border-radius: 20px;
+    cursor: pointer;
+  }
+  .imgbox{
+    position: relative;
+    width: 220px;
+    height: 150px;
+    float: left;
+  }
+  .addstephidden{
+    display: none;
+  }
+  .addstephidden:last-child{
+    display: block !important;
+  }
+</style>
+
+{include file="menu" /}
+<!--main content start-->
+      <section id="main-content">
+          <section class="wrapper">
+          <div class="row">
+                  <div class="col-sm-12">
+                      <aside class="profile-info col-lg-10">
+                      <section class="panel">
+                          <div class="panel-body bio-graph-info">
+                              <h1> {$result.oid?'编辑指导栏目':'添加指导栏目'}</h1>
+                              <form class="form-horizontal" role="form" id="formid" method="post"  enctype="multipart/form-data">
+                                  <div class="form-group">
+                                      <label class="col-lg-2 control-label">指导栏目名称</label>
+                                      <div class="col-lg-8">
+                                          <input type="text" class="form-control" value="{$result.oname?$result.oname:''}" placeholder="请填写指导栏目名称" name="oname">
+                                      </div>
+                                  </div>
+                                  {if $act eq 'add'}
+                                  <div class="form-group parentstep">
+                                      <label class="col-lg-2 control-label">步骤1</label>
+                                      <div class="col-lg-8"><input type="text" class="form-control" value="" name="step[]"></div>
+                                      <span class="addstep" onclick="addstep($(this))">+</span>
+                                  </div>
+                                  <div class="form-group">
+                                      <label class="col-lg-2 control-label">排序</label>
+                                      <div class="col-lg-8">
+                                          <input type="text" class="form-control" name="osort">
+                                      </div>
+                                  </div>
+                                  <div class="form-group">
+                                        <label class="col-lg-2 control-label">显示</label>
+                                        <div class="col-lg-8">
+                                            <label><input type="radio" checked="checked" value="1" name="oshow">是&nbsp;&nbsp;&nbsp;<input type="radio" value="0" name="oshow">否</label>
+                                        </div>
+                                    </div>
+                                    <div class="form-group addimgbox">
+                                        <label class="col-lg-2 control-label">指导图片</label>
+                                        <div class="col-lg-8">
+                                          <div class="imgbox">
+                                            <img src="/static/admin/img/uploads.png" onclick="$(this).next().click()" class="uploads" />
+                                            <input style="display: none;" type="file" id="adduploads" name="picture[]">
+                                          </div>
+                                        </div>
+                                    </div>
+                                  {else}
+                                  <!-- {volist name="infolist" id="vo" key="ko" } -->
+                                  <div class="form-group parentstep">
+                                      <label class="col-lg-2 control-label">步骤{$ko}</label>
+                                      <div class="col-lg-8"><input type="text" class="form-control" value="{$vo.step?$vo.step:''}" name="step[]"></div>
+                                      <span class="addstep addstephidden" onclick="editstep($(this))">+</span>
+                                      <span class="redstep" onclick="redstep($(this),{$vo.id})">-</span>
+                                      <input type="hidden" name="stepid[]" value="{$vo.id?$vo.id:''}">
+                                  </div>
+                                  <!-- {/volist} -->
+                                  <div class="form-group">
+                                      <label class="col-lg-2 control-label">排序</label>
+                                      <div class="col-lg-8">
+                                          <input type="text" class="form-control" value="{$result.osort?$result.osort:''}" name="osort">
+                                      </div>
+                                  </div>
+                                  <div class="form-group">
+                                      <label class="col-lg-2 control-label">显示</label>
+                                      <div class="col-lg-8">
+                                          <label><input type="radio" {if $result.oshow eq 1} checked="checked" {/if} value="1" name="oshow">是&nbsp;&nbsp;&nbsp;<input type="radio" {if $result.oshow eq 0} checked="checked" {/if} value="0" name="oshow">否</label>
+                                      </div>
+                                  </div>
+                                  <div class="form-group addimgbox">
+                                        <label class="col-lg-2 control-label">指导图片</label>
+                                        <div class="col-lg-8">
+                                          <!-- {volist name="infolist" id="vo" key="ko" } -->
+                                          <div class="imgbox" id="imgbox-{$vo.id}">
+                                            <img src="{$vo.picture?$vo.picture:'/static/admin/img/uploads.png'}" onclick="$(this).next().click()" class="uploads" />
+                                            <input style="display: none;" type="file" name="picture[]" ak="{$vo.id?$vo.id:''}"  id="edituploads" value="{$vo.picture?$vo.picture:'/static/admin/img/uploads.png'}">
+                                            <input type="hidden" name="pic[]" value="{$vo.pic?$vo.pic:''}">
+                                          </div>
+                                          <!-- {/volist} -->
+                                        </div>
+                                    </div>
+                                  <input type="hidden" name="id" value="{$result.oid?$result.oid:''}">
+                                  {/if}
+                                  <input type="hidden" name="act" value="{$act?$act:''}">
+                                  <div class="form-group">
+                                      <div class="col-lg-offset-2 col-lg-10">
+                                          <input type="submit" class="btn btn-success" value="提交">
+                                      </div>
+                                  </div>
+                              </form>
+                          </div>
+                      </section>
+                  </aside>
+                  </div>
+          </div>
+          </section>
+      </section>
+      <!--main content end-->
+  </section>
+{include file="foot" /}
+<script>
+var act = '{$act}'; 
+function addstep(obj){
+  var step = $('.parentstep .form-control').length;
+  var num  = step+1;
+  obj.parent().append('<label style="margin-top:15px;" class="col-lg-2 control-label">步骤'+num+'</label><div style="margin-top:15px;" class="col-lg-8"><input type="text" class="form-control" value="" name="step[]"></div><span style="margin-top:15px;" class="redstep" onclick="redstep($(this))">-</span><input type="hidden" name="stepid[]" value="">');
+
+  $('.addimgbox .col-lg-8').append('<div class="imgbox"><img src="/static/admin/img/uploads.png" onclick="$(this).next().click()" class="uploads" /><input style="display: none;" type="file" name="picture[]" id="adduploads"></div>');
+}
+
+function editstep(obj){
+  var step = $('.parentstep .form-control').length;
+  var num  = step+1;
+  obj.parent().append('<label style="margin-top:15px;" class="col-lg-2 control-label">步骤'+num+'</label><div style="margin-top:15px;" class="col-lg-8"><input type="text" class="form-control" value="" name="step[]"></div><span style="margin-top:15px;" class="redstep" onclick="redstep($(this))">-</span><input type="hidden" name="stepid[]" value="">');
+
+  $('.addimgbox .col-lg-8').append('<div class="imgbox"><img src="/static/admin/img/uploads.png" onclick="$(this).next().click()" class="uploads" /><input style="display: none;" type="file" name="picture[]" id="edituploads"><input type="hidden" name="pic[]" value=""></div>');
+}
+
+$(function(){
+  $(document).on('change',"#adduploads",function(){
+      //上传控件的文件改变 事件
+      var file=this.files;
+      var windowURL = window.URL || window.webkitURL;
+      var dataURL;
+      if(file && file.length>0){
+        dataURL = windowURL.createObjectURL(file[0]);
+        $(this).prev().attr('src',dataURL);
+      }     
+  });
+
+  $(document).on('change',"#edituploads",function(){
+    var file=this.files;
+    var windowURL = window.URL || window.webkitURL;
+    var dataURL;
+    if(file && file.length>0){
+      var obj = $(this);
+      dataURL = windowURL.createObjectURL(file[0]);
+      var fd = new FormData();
+        fd.append("picture",obj.get(0).files[0]);
+      if(obj.attr('ak') != undefined){
+        fd.append("id",obj.attr('ak'));
+      }
+      $.ajax({
+        url:"{:url('admin/operation/uploadsajax')}",
+        type:'post',
+        data: fd,
+        contentType: false,
+        processData: false,
+        beforeSend: function(){
+          layer.msg("请稍后..",{time:2*1000});
+        },
+        success:function(data){
+          data = eval("("+data+")");
+          if(data.state == 'error'){
+            layer.msg(data.data,{time:2*1000});
+          }
+          if(data.state == 'success'){
+            obj.prev().attr('src',dataURL);
+            obj.next().val(data.data);
+          }
+        },
+        error:function(){
+            layer.msg("网络繁忙..",{time:2*1000});
+        }
+      });
+    }
+  });
+  $('.parentstep .addstephidden').last().css({'display':'block'});
+});
+
+function redstep(obj,id){
+  if(id){
+    if(window.confirm("确定删除吗")){
+      $.ajax({
+        type:"post",
+        url:"{:url('operation/operationajax')}",
+        data:{
+          id:id
+        },
+        dataType:'JSON',
+        async:false,
+        success:function(msg){
+          if(msg == 'success'){
+            obj.parent('.parentstep').remove();
+            $('#imgbox-'+id).remove();
+            $('.parentstep .addstephidden').last().css({'display':'block'});
+          }else{
+            layer.msg("删除失败...",{time:2*1000});
+          }
+        },
+        error:function(){
+            layer.msg("网络出错..",{time:2*1000});
+        }
+      });
+    }else{
+      return false;
+    }
+  }else{
+      if(act != 'add'){
+        obj.next().remove();
+      }
+      obj.prev().prev('label').remove();
+      obj.prev('.col-lg-8').remove();
+      obj.remove();
+      $('.imgbox').last().remove();
+      $('.parentstep .addstephidden').last().css({'display':'block'});
+  }
+}
+</script>

@@ -1,0 +1,605 @@
+{include file="head" /}
+
+{include file="menu" /}
+
+<!--main content start-->
+      <section id="main-content">
+          <section class="wrapper">
+              <!--state overview start-->
+              
+              <div class="row state-overview">
+				<form action="" method="get">
+                <div class="container">
+                <div class="row">
+                 
+                      <div class="col-lg-3 mar-10">
+                        <div class="input-group">
+                            <span class="input-group-addon" id="basic-addon1">订单编号</span>
+                            <input type="text"  name="orderid"  class="form-control" value="{$getdata.oid?$getdata.oid:''}" placeholder="输入订单编号/订单id"/>
+                        </div>
+                      </div>
+
+                      <div class="col-lg-3 mar-10">
+                        <div class="input-group">
+                            <span class="input-group-addon" id="basic-addon1">
+                              <select name="stype" id="">
+                                <option {if isset($getdata.stype) && $getdata.stype == 1} selected="selected" {/if} value="1">客户</option>
+                                <option {if isset($getdata.stype) && $getdata.stype == 2} selected="selected" {/if}  value="2">代理商</option>
+                              </select>
+                            </span>
+                            <input type="text"   class="form-control" value="{$getdata.username?$getdata.username:''}"  name="username" placeholder="昵称/姓名/邮箱/编号"/>
+                        </div>
+                      </div>
+
+                      <div class="col-lg-6 mar-10">
+                        <div class="input-group">
+                            <span class="input-group-addon" id="basic-addon1"><select name="ttype" id="">
+                                <option {if isset($getdata.ttype) && $getdata.ttype == 1} selected="selected" {/if} value="1">订单时间</option>
+                                <option {if isset($getdata.ttype) && $getdata.ttype == 2} selected="selected" {/if}  value="2">平仓时间</option>
+                              </select></span>
+                            <input type="text"  id="datetimepicker" class="form-control" placeholder="点击选择时间" name="starttime" value="{$getdata.starttime?$getdata.starttime:''}"/>
+                            <span class="input-group-addon" id="basic-addon1">至</span>
+                            <input type="text"  id="datetimepicker_end" class="form-control" placeholder="点击选择时间" name="endtime" value="{$getdata.endtime?$getdata.endtime:''}" />
+                        </div>
+                      </div>
+               </div>
+               <div class="row">
+                      <div class="col-lg-3 mar-10">
+                        <div class="input-group">
+                            <span class="input-group-addon">涨跌</span>
+                            <select name="ostyle" id="" class="selectpicker show-tick form-control">
+                                <option value="">默认不选</option>
+                                <option {if isset($getdata['ostyle']) && $getdata['ostyle'] == 1} selected="selected" {/if} value="1">买涨</option>
+                                <option {if isset($getdata['ostyle']) && $getdata['ostyle'] == 2} selected="selected" {/if} value="2">买跌</option>
+                            </select>
+                        </div>
+                      </div>
+
+                      <div class="col-lg-3 mar-10">
+                        <div class="input-group">
+                            <span class="input-group-addon">盈亏</span>
+                            <select name="ploss" id="" class="selectpicker show-tick form-control">
+                                <option value="">默认不选</option>
+                                <option {if isset($getdata['ploss']) && $getdata['ploss'] == 1} selected="selected" {/if} value="1">赢利</option>
+                                <option {if isset($getdata['ploss']) && $getdata['ploss'] == 2} selected="selected" {/if} value="2">亏损</option>
+                                <option {if isset($getdata['ploss']) && $getdata['ploss'] == 3} selected="selected" {/if} value="3">无效</option>
+                            </select>
+                        </div>
+                      </div>
+                      
+                      <div class="col-lg-3 mar-10">
+                        <div class="input-group">
+                            <span class="input-group-addon">产品</span>
+                            <select name="pid" id="" class="selectpicker show-tick form-control">
+                                <option value="">默认不选</option>
+                                <!-- {volist name="pro" id="vo"} -->
+                                <option {if isset($getdata['pid']) && $getdata['pid'] == $vo['pid']} selected="selected" {/if} value="{$vo.pid}">{$vo.ptitle}</option>
+                                <!-- {/volist} -->
+                                
+                            </select>
+                        </div>
+                      </div>
+
+                      <div class="col-lg-3 mar-10">
+                        <div class="input-group">
+                            <span class="input-group-addon">状态</span>
+                            <select name="ostaus" id="" class="selectpicker show-tick form-control">
+                                <option value="">默认不选</option>
+                                <option {if isset($getdata['ostaus']) && $getdata['ostaus'] == 1} selected="selected" {/if}  value="1">建仓</option>
+                                <option {if isset($getdata['ostaus']) && $getdata['ostaus'] == 2} selected="selected" {/if}  value="2">平仓</option>
+                            </select>
+                        </div>
+                      </div>
+                  </div>
+                  <div class="mar-10">
+                   <input type="submit" class="btn btn-success" value="搜索">
+                  </div>
+                </div>
+                </form>
+              </div>
+              
+              <!--state overview end-->
+            
+            <a href="{:url('order/orderlist')}"><button type="submit" class="btn btn-danger">搜索全部</button></a>&nbsp;&nbsp;&nbsp;&nbsp; <span class="color_red">&nbsp;&nbsp;<strong>默认为7天内订单</strong></span>
+            <br><br>
+             <div class="row">
+                  <div class="col-lg-12">
+                      <section class="panel">
+                          <header class="panel-heading">
+                              交易记录
+                          </header>
+                          <table class="table table-striped table-advance table-hover">
+                            <thead class="ordertable">
+                              <tr>
+                                <th>订单编号</th>
+                                
+                                <th>用户姓名</th>
+                                <th>订单时间</th>
+                                 <th>平仓时间</th>
+                                <th>产品信息</th>
+                                <th>倒计时</th>
+                                
+                                <th>状态</th>
+                                <th>方向</th>
+                                <th>交易类型</th>
+                               
+                             
+                                <th>时间点数</th>
+                                <th>建仓点位</th>
+                                <th>平仓点位</th>
+                               
+                                <th>保证金</th>
+                                <th>手续费</th>      
+                                <th>实际盈亏</th>
+                             
+                                <th>归属代理商</th>
+                                {if $otype == 3}
+                                <th>单控操作</th>
+                                 {else/}
+                                  
+                                      {if $channelfk==1}
+                                     
+                                       <th>单控操作</th>
+                                      {else}
+                                   
+                                      <td></td>
+                                      {/if}
+                                  
+                                 
+                                {/if}
+                           
+                            </tr>
+                          </thead>
+                          <tbody>
+                          <!-- {volist name="orderlist" id="vo"} -->
+                              <tr>
+                                  <td>{$vo.oid}</td>
+                                  
+                                   {if $otype == 3}	
+                                  
+                                  <td><a style="color:#03a9f9" onclick="fenkong({$vo.uid})">{$vo.nickname}</a></td>
+                                  {else/}
+                                  
+                                      {if $channelfk==1}
+                                     
+                                      <td><a  style="color:#03a9f9" onclick="fenkong({$vo.uid})" >{$vo.nickname}</a></td>
+                                      {else}
+                                   
+                                      <td>{$vo.nickname}</td>
+                                      {/if}
+                                  
+                                  {/if}
+                                  
+                                  <td>{$vo.buytime|date="Y-m-d H:i:s",###}</td>
+                                  
+                                  
+                                  
+                                   {if !empty($vo.selltime) || !empty($vo.selltime)}
+                                  <td>{$vo.selltime|date="Y-m-d H:i:s",###}</td>
+                                  {else/}
+                                  <td></td>
+                                  {/if}
+                                  
+                                  
+                                  <td>{$vo.ptitle}</td>
+                                  
+                                  
+                                  <TD id="daojishi_{$vo.oid}">{if $vo.ostaus==1}<span style="color:red">结束</span> {else/}<span style="color:green">进行中</span>{/if}</TD>
+                                  
+                                  <td>{if $vo.ostaus==1}平仓{else/}建仓{/if}</td>
+                                  
+                                  
+                                  
+                                  {if $vo.ostyle == 0}
+                                  <td class="color_red">买涨</td>
+                                  {elseif $vo.ostyle == 1/}
+                                  <td class="color_green">买跌</td>
+                                  {/if}
+                                  {if $vo.is_timing eq 1}
+                                  <td class="color_red">合约交易</td>
+                                  {else/}
+                                  <td class="color_green">秒合约</td>
+                                  {/if}
+                                  
+
+                                 
+                                  
+                                  <td>{$vo.endprofit}{if $vo.eid==1}点{else/}秒{/if}</td>
+                                  <td>{$vo.buyprice}</td>
+                                  <td>
+                                    {if $vo.ostaus == 1}
+                                      {if $vo["buyprice"] > $vo["sellprice"]}
+                                        <font color="#2fb44e" size="3">{$vo.sellprice}</font>
+                                      {else/}
+                                        <font color="#ed0000" size="3">{$vo.sellprice}</font>
+                                      {/if}
+                                    {else/}
+                                        <span id="nowprice_{$vo.oid}"></span>
+                                    {/if}
+                                  </td>
+                                  
+                                
+                                  <td class="color_red">{$vo.fee}</td>
+                                  
+                                  <td class="color_red">{$vo.sx_fee}</td>
+                                  
+                                  
+                                
+
+                                  {if $vo.ostaus == 1}
+                                  <td {if $vo.ploss > 0} class="color_red" {else /} class="color_green" {/if}>{$vo.ploss}</td>
+                                  {else/}
+                                  <td id="yingkui_{$vo.oid}" ></td>
+                                  {/if}
+
+
+                                 
+
+                                  <td>{$vo.managername}</td>
+                                  
+					              
+								    {if $otype == 3 && $vo.is_timing neq 1}
+                                          {if $vo.ostaus!=1}
+                                          
+                                            {if $channelfk==1}
+                                              <td  id="pingcang_{$vo.oid}" style="    width: 100px;">
+            
+            
+                                                  <select name="ostyle" id="" class="selectpicker select_change show-tick form-control">
+                                                    <option {if $vo.kong_type == 0 } selected="selected" {/if} value="{$vo.oid}_0">默认</option>
+                                                   <option {if $vo.kong_type == 1 } selected="selected" {/if}  value="{$vo.oid}_1">盈利 </option>
+                                                    <option {if $vo.kong_type == 2 } selected="selected" {/if}  value="{$vo.oid}_2">亏损 </option>
+                                                  </select>
+                                              </td>
+                                              {else}
+                                              
+                                               <td>未平仓</td>
+                                              {/if}
+        
+                                            {else/}
+        
+                                            <td>已平仓</td>
+        
+                                            {/if}
+
+                                    {elseif $otype == 3 && $vo.is_timing eq 1}
+                                          {if $vo.ostaus!=1}
+                                            <td  id="pingcang_{$vo.oid}" >未平仓</td>
+                                          {else}
+                                            <td >{if $vo.system eq 1}系统平仓{else/}自由平仓{/if}</td>
+                                          {/if}
+                                          
+                                    {elseif $otype == 101 && $vo.is_timing eq 0}
+                                    
+                                        {if $vo.ostaus!=1}
+                                          <td  id="pingcang_{$vo.oid}" style="    width: 100px;">
+        
+        
+                                              <select name="ostyle" id="" class="selectpicker select_change show-tick form-control">
+                                                <option {if $vo.kong_type == 0 } selected="selected" {/if} value="{$vo.oid}_0">默认</option>
+                                               <option {if $vo.kong_type == 1 } selected="selected" {/if}  value="{$vo.oid}_1">盈利 </option>
+                                                <option {if $vo.kong_type == 2 } selected="selected" {/if}  value="{$vo.oid}_2">亏损 </option>
+                                              </select>
+                                          </td>
+        
+                                            {else/}
+        
+                                            <td>已平仓</td>
+        
+                                            {/if}
+                                    {/if}
+
+
+                              </tr>
+							<!-- {/volist} -->
+                              </tbody>
+                          </table>
+               {if isset($noorder) && $noorder == 1} 
+                          <div class="row">
+                            <div class="col-lg-12">
+                              <div class="noorder">
+                                暂无数据
+                              </div>
+                            </div>
+                          </div>
+               {/if} 
+                      </section>
+                    
+                  </div>
+              </div>
+              {$order->render()}
+             
+
+          </section>
+      </section>
+      <!--main content end-->
+  </section>
+  
+<input type="hidden" value="{$daojishiid}" id="daojishiid"/>
+
+<div class="modal-dialog" id="fenkong" style="display:none">
+	<div class="modal-content">
+		<div class="modal-header">
+			<button type="button" class="close" onclick="guanbi()" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
+			<h4 class="modal-title" id="modal-title"></h4>
+		</div>
+		<div class="modal-body">
+        
+        	{if $otype == 3}
+			<div class="form-group">
+					<label for="money">秒合约胜率(%),  0表示不受风控</label>
+						<input onkeyup="this.value=this.value.replace(/[^0-9]/g,'')" onafterpaste="this.value=this.value.replace(/[^0-9]/g,'')"  type="text" id="lv" required="required" class="form-control">
+						<span class="help-block"></span>
+				</div>
+              
+                
+                <div class="form-group"  style="display:none">
+					<label for="money">合约入单点差，格式为 涨点差,跌点差，例：5,5，(前一个数是涨点差,后一个数为跌点差)为零时不计算点差，只能是两个，不能为负数，且必须用英文逗号字符</label>
+						<input  type="text" id="income_range" required="required" class="form-control">
+						<span class="help-block"></span>
+				</div>
+                
+                {/if}
+                
+                {if $otype == 101}
+                	
+                    {if $channelfk ==1}
+                    
+                    
+                    <div class="form-group">
+					<label for="money">秒合约胜率(%),  0表示不受风控</label>
+						<input onkeyup="this.value=this.value.replace(/[^0-9]/g,'')" onafterpaste="this.value=this.value.replace(/[^0-9]/g,'')"  type="text" id="lv" required="required" class="form-control">
+						<span class="help-block"></span>
+				</div>
+                    
+                    
+                    	
+                        <div class="form-group" style="display:none">
+					<label for="money">合约入单点差，格式为 涨点差,跌点差，例：5,5，(前一个数是涨点差,后一个数为跌点差)为零时不计算点差，只能是两个，不能为负数，且必须用英文逗号字符</label>
+						<input  type="text" id="income_range" required="required" class="form-control">
+						<span class="help-block"></span>
+				</div>
+                        
+                        
+                    {/if}
+                    
+                {/if}
+				<button type="button" id="button2" class="btn btn-primary">确定</button>
+			</div>
+		</div>
+</div>
+<div id="fenkong2" onclick="guanbi()" style="background:#000;width:100%;height:100%;z-index:800;opacity:0.5;position:absolute;top:0;display:none"></div>
+
+
+
+
+
+<div class="modal-dialog" id="lapan" style="display:none">
+	<div class="modal-content">
+		<div class="modal-header">
+			<button type="button" class="close" onclick="guanbi2()" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
+			<h4 class="modal-title" id="modal-title2"></h4>
+		</div>
+		<div class="modal-body">
+        
+        	{if $otype == 3}
+			<div class="form-group">
+				<label for="money">请输入数字，只能是正数、负数或者零。请谨慎操作！</label>
+					<input  onkeyup="this.value=this.value.replace(/[^\-?\d.]/g,'')"  type="text" id="dianshu" required="required" class="form-control">
+				<span class="help-block"></span>
+			</div>
+
+            {/if}
+                
+				<button type="button" id="button3" class="btn btn-primary">确定</button>
+			</div>
+		</div>
+</div>
+<div id="lapan2" onclick="guanbi2()" style="background:#000;width:100%;height:100%;z-index:800;opacity:0.5;position:absolute;top:0;display:none"></div>
+
+
+<style>
+.modal-dialog {
+    z-index: 9999;
+    position: absolute;
+    top: 400px;
+    left: 30%;
+}
+</style>
+{include file="foot" /}
+<script>
+ordersta();
+
+
+window.onload=function(){
+
+	daojishi()
+}
+
+//底部统计
+function ordersta(){
+  var formurl = "{:url('/admin/order/ordersta')}";
+  var data  = '{$jsongetdata}';
+  
+console.log(data);
+  
+  $.post(formurl,data,function(data){
+      if (data) {
+        $('#profit').html('$'+data.profit);
+        $('#count').html(data.count+'笔');
+        $('#fee').html('$'+data.fee);
+        $('#invalid_fee').html('$'+data.invalid_fee);
+        $('#valid_fee').html('$'+data.valid_fee);
+        $('#now_fee').html('$'+data.now_fee);
+        $('#valid_shouxu').html('$'+data.valid_shouxu);
+      }
+
+
+    });
+    
+}
+
+
+
+function lapan(id){
+	
+	$("#lapan").toggle();
+	$("#lapan2").toggle();
+	$.ajax({
+		type:'post',
+		url:'/admin/order/lapan',
+		data:{id:id,},
+		success:function(msg){
+			
+			msg = eval("("+msg+")");
+			$("#modal-title2").text(msg.ptitle);
+			$("#dianshu").val(msg.fengkong);
+			
+			
+			$("#button3").attr("onclick","edit_lapan("+msg.pid+")");
+		}
+	});
+}
+
+
+function edit_lapan(pid){
+	var dianshu = $("#dianshu").val();	
+	$.ajax({
+		type:'post',
+		url:'/admin/order/edit_lapan',
+		data:{
+			pid:pid,
+			dianshu:dianshu,
+			},
+		success:function(msg){
+			msg = eval("("+msg+")");
+			if(msg.stute==1)
+			{
+				 guanbi2();
+			}else
+			{
+				alert(msg.msg);
+			}
+			
+		}
+	});
+}
+
+function guanbi2(){
+	$("#lapan").toggle();
+	$("#lapan2").toggle();
+}
+
+
+
+
+//时间选择器
+$('#datetimepicker').datetimepicker();
+$('#datetimepicker_end').datetimepicker();
+
+function fenkong(id){
+	$("#fenkong").toggle();
+	$("#fenkong2").toggle();
+	$.ajax({
+		type:'post',
+		url:'/admin/order/getchance',
+		data:{id:id,},
+		success:function(msg){
+			msg = eval("("+msg+")");
+			$("#modal-title").text(msg.nickname+"（"+msg.username+"）");
+			$("#lv").val(msg.chance);
+			$("#income_range").val(msg.income_range);
+			
+			$("#button2").attr("onclick","edit_lv("+msg.uid+")");
+		}
+	});
+	
+	
+	
+}
+function edit_lv(id){
+	var lv = $("#lv").val();
+	var income_range = $("#income_range").val();
+	
+	$.ajax({
+		type:'post',
+		url:'/admin/order/editchance',
+		data:{
+			id:id,
+			lv:lv,
+			income_range:income_range
+			},
+		success:function(msg){
+			msg = eval("("+msg+")");
+			if(msg.stute==1)
+			{
+				 guanbi();
+			}else
+			{
+				alert(msg.msg);
+			}
+			
+		}
+	});
+}
+
+function guanbi(){
+	$("#fenkong").toggle();
+	$("#fenkong2").toggle();
+}
+
+
+
+function daojishi(){
+	var daojishiid = $("#daojishiid").val();
+	$.ajax({
+		type: 'post',
+		url: "/admin/order/daojishi",
+		data:{
+			daojishiid:daojishiid,	
+		},
+		success: function (msg) {
+			if(msg){
+				msg = eval("("+msg+")");
+				$.each(msg,function(key,val){
+				   // alert(val['sellprice']);
+                    if(val['ostaus']==1){
+                        $("#daojishi_"+val['oid']+"").html(val['endtime']);
+                        $("#nowprice_"+val['oid']+"").html(val['sellprice']);
+                        $("#yingkui_"+val['oid']+"").html(val['ploss']);
+                        $("#pingcang_"+val['oid']+"").html(val['pingcang']);
+                    }else{
+                        $("#daojishi_"+val['oid']+"").html(val['endtime']);
+                        $("#nowprice_"+val['oid']+"").html(val['sellprice']);
+                        $("#yingkui_"+val['oid']+"").html(val['ploss']);
+                        $("#pingcang_"+val['oid']+"").html(val['pingcang']);
+                    }
+
+
+				});
+			
+			}
+		}
+	});
+	setTimeout("daojishi()",1000);	
+}
+
+
+
+
+
+$(".select_change").change(function(){
+  var kong_id = $(this).val();
+  if(kong_id){
+    var kong_arr = kong_id.split('_');
+  }
+  var oid = kong_arr[0];
+  var kong_type = kong_arr[1];
+  var postdata = 'oid='+oid+"&kong_type="+kong_type;
+  var posturl = "{:url('dankong')}";
+  $.post(posturl,postdata,function(res){
+    layer.msg(res.data);
+  })
+  
+})
+</script>

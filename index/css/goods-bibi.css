@@ -1,0 +1,21 @@
+*, *:before, *:after {color: #333333;}
+ion-header-bar.bar-stable.headerbar.bar.bar-header.wl_flex.wl_justify_between {background-color: #fff;}
+#place .bgColor {background-color: #f7f7fb;}
+.pull-left.active {background-color: #f7f7fb;}
+.pull-right.active1 {background-color: #f7f7fb;}
+div#data div.active div.deal span {background-color: #e3046f;}
+div#data div.active div.deal span a {color: #333333;}
+.bibi-text2 {color: #333333!important; background-color: #FFFFFF; border-color: #666666!important; }
+.bibi-sl>input{ color: #333333!important;  background-color: #FFFFFF;}
+input[disabled], select[disabled], textarea[disabled], input[readonly]:not(.cloned-text-input), textarea[readonly]:not(.cloned-text-input), select[readonly] {background-color: #FFFFFF;}
+.bibi-state {background-color: #FFFFFF;}
+body {background-color: #f7f7fb!important;}
+.flex2.tc.gray.ft12.shuliang {color: #333333;}
+.bottom-nav {background-color: #FFFFFF!important;}
+.nav-box{background-color: #FFFFFF!important;}
+.nav-box-header{color: #333333!important;}
+.dropdown-contentvu {background-color: #FFFFFF!important;}
+.bibi-order {border-bottom: 1px solid rgba(102,102,102,0.1)!important;}
+.buy_sell>span{color: #FFFFFF!important;}
+div#left-hidden-box ul li {border-bottom: 1px solid rgba(102,102,102,0.1);}
+.dropdown-content {background-color: #eee;}

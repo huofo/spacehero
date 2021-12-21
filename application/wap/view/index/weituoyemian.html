@@ -1,0 +1,649 @@
+<!DOCTYPE html>
+{include file="nodejs" /}
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link href="/index/css/weituokongs.css" rel="stylesheet" media="screen">
+    <link href="/index/css/mango.css" rel="stylesheet" media="screen">
+</head>
+<body>
+
+<div class="daohang">
+    <div class="logoxt"><img src="/index/images/logoxty.png" alt=""></div>
+    <div class="zhongbu wl_flex wl_justify_between wl_align_center">
+        <div class="neirongji"><p><a href="/wap/index/hangqing/"style="font-size: 0.8rem;">行情</a></p></div>
+        <div class="neirongji"><p><a href="/wap/index/bibijiaoyi/"style="font-size: 0.8rem;">币币交易</a></p></div>
+        <div class="neirongji"><p><a href="/wap/index/heyuejiaoyi/"style="font-size: 0.8rem;">合约交易</a></p></div>
+        <div class="neirongji"><p><a href="/wap/second/index"style="font-size: 0.8rem;">秒合约交易</a></p></div>
+        <div class="neirongji"><p><a href="/wap/mining/index"style="font-size: 0.8rem;">锁仓挖矿</a></p></div>
+        <div class="neirongji"><p><a href="/wap/zichan/bibi"style="font-size: 0.8rem;">我的资产</a></p></div>
+        <div class="neirongji"><p><span style="font-size: 0.8rem;">1919076544@qq.com</span></p></div>
+        <div class="neirongji">
+            <ul id="navMenuv" style="list-style: none;">
+                <li><a href="#" rel='dropmenu1v'><img src="/index/images/dengluxiao.png" alt="" style="margin-top: 10px;"></a></li>
+            </ul>
+            <ul id="dropmenu1v" class="dropMenuv"style="margin-left: -50px;border-radius: 5px;">
+                <li><a href="/wap/setup/shezhi"style="color: black;font-size: 0.8rem">账户设置</a></li>
+                <li><a href="/wap/setup/rzhi"style="color: black;font-size: 0.8rem">交易日志</a></li>
+                <li><a href="/wap/setup/sksz"style="color: black;font-size: 0.8rem">收款设置</a></li>
+                <li><a href="/wap/setup/sfrz"style="color: black;font-size: 0.8rem">身份认证</a></li>
+                <li><a href="#"style="color: black;font-size: 0.8rem">退出登录</a></li>
+            </ul>
+
+        </div>
+        <div class="neirongji wl_flex wl_align_center">
+            <div><img src="/index/images/dengluxiao.png" alt="" style="margin-top: 25px;"></div>
+            <div><a href="/wap/denglu/dl"style="color: white;font-size: 0.8rem;">登录</a></div>
+        </div>
+        <div class="neirongji wl_flex wl_align_center">
+            <div><img src="/index/images/zhuchexiao.png" alt="" style="margin-top: 25px"></div>
+            <div><a href="/wap/denglu/zc"style="color: white;font-size: 0.8rem;">注册</a></div>
+        </div>
+        <div class="neirongji"><a href=""><img src="/index/images/yangshengqi.png" alt=""style="margin-top: 25px;"/></a></div>
+
+    </div>
+    <div class="xiala wl_flex wl_justify_between">
+        <div class="jianti wl_flex wl_align_center" style="width: 100%;font-size: 0.11rem">
+            <div class="gvs"><img src="/index/images/wangluovsy.png" alt=""style="width: 25px;margin-top: 25px;"></div>
+            <div class="gvs">
+                <!--                <a href="">简体中文</a>-->
+                <ul id="navMenu" style="list-style: none;">
+                    <li><a href="#" rel='dropmenu1'>简体中文</a></li>
+                </ul>
+                <ul id="dropmenu1" class="dropMenu"style="margin-left: -50px;border-radius: 5px;">
+                    <li><a href="#"style="color: #596a7a;font-size: 0.8rem">简体中文</a></li>
+                    <li><a href="#"style="color: #596a7a;font-size: 0.8rem">繁體中文</a></li>
+                    <li><a href="#"style="color: #596a7a;font-size: 0.8rem">日本語</a></li>
+                    <li><a href="#"style="color: #596a7a;font-size: 0.8rem">한국어</a></li>
+                    <li><a href="#"style="color: #596a7a;font-size: 0.8rem">English</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="jianti" style="width: 100%">
+            <a href="">
+                <ul id="navMenus" style="list-style: none;">
+                    <li><a href="#" rel='dropmenu1s'>Android & IOS下载</a></li>
+                </ul>
+                <ul id="dropmenu1s" class="dropMenus">
+                    <li><img src="/index/images/huangxinghua.png" alt=""style="width: 120px;height: 120px;border-radius: 5px;"></li>
+                </ul>
+            </a>
+        </div>
+    </div>
+</div>
+<div class="weituo">
+    <div class="weituoxia">
+        <div class="daohangxian xh_flex">
+            <div class="kkkkks"><a href="javascript:void(0)" style="padding: 0 7px;text-decoration: none">{$Think.lang.wap_hyjy_dqwt}</a></div>
+            <div class="ttttts"><a href="javascript:void(0)" style="text-decoration: none">{$Think.lang.wap_wtym_ls}</a></div>
+        </div>
+        <div class="sangexuanze xh_flex dier">
+            <div class="yanqin"><a href="javascript:void(0)">{$Think.lang.ti_qb}</a></div>
+            <div class="yanqin"><a href="javascript:void(0)">{$Think.lang.bi_mc}</a></div>
+            <div class="yanqin"><a href="javascript:void(0)">{$Think.lang.bi_mc2}</a></div>
+        </div>
+        <div class="shijiannage xh_flex xh_justify_between dier">
+            <span style="margin-left: 150px;">{$Think.lang.le_sj}</span>
+            <span>{$Think.lang.bi_jyd}</span>
+            <span style="margin-left: -70px;">{$Think.lang.gs_fx}</span>
+            <span style="margin-left: -70px;">{$Think.lang.bi_sl}</span>
+            <span>{$Think.lang.bi_js}</span>
+            <span style="margin-right: 50px;">{$Think.lang.le_cz}</span>
+        </div>
+        <div class="dier kongtubiao">
+            <div class="huhhukk"></div>
+            <div class="zheshitu"><img src="/index/images/zanwu.png" alt=""></div>
+            <div class="zanzanwu">{$Think.lang.wap_hyjy_zwsj}</div>
+        </div>
+        <div class="lishiweituo xh_flex xh_justify_between disanhang">
+            <span>{$Think.lang.le_sj}</span>
+            <span>{$Think.lang.bi_jyd}</span>
+            <span>{$Think.lang.bi_sl}</span>
+            <span>{$Think.lang.bi_js}</span>
+            <span>{$Think.lang.wap_wtym_wtze}</span>
+            <span>{$Think.lang.wap_wtym_cjjj}</span>
+            <span>{$Think.lang.sl_zt}</span>
+            <span>{$Think.lang.gs_fx}</span>
+        </div>
+        <div class="disanhang kongtubiao">
+            <div class="huhhukk"></div>
+            <div class="zheshitu"><img src="/index/images/zanwu.png" alt=""></div>
+            <div class="zanzanwu">{$Think.lang.wap_hyjy_zwsj}</div>
+        </div>
+    </div>
+</div>
+<script src="/index/js/jquery-2.1.4.min.js"></script>
+<script>
+    $(function () {
+        $(".neirongji p").click(function () {
+            $(".neirongji p").removeClass('active');
+            $(this).addClass('active');
+        })
+    });
+</script>
+<script>
+    $(function () {
+        $(".sangexuanze a").click(function () {
+            $(".sangexuanze a").removeClass('active');
+            $(this).addClass('active');
+        })
+    });
+</script>
+<script>
+    $(function () {
+        $(".daohangxian a").click(function () {
+            $(".daohangxian a").removeClass('active');
+            $(this).addClass('active');
+        })
+    });
+</script>
+<script>
+    // 类名是需要隐藏的div
+    $(".dier").show();
+        // 点击的按钮
+    $(".kkkkks>a").click(function(){
+        // 类名是需要隐藏的div
+        $(".dier").show();
+        $(".disanhang").hide();
+    });
+</script>
+<script>
+    // 类名是需要隐藏的div
+    $(".disanhang").hide();
+    $(".dier").show();
+    // 点击的按钮
+    $(".ttttts>a").click(function(){
+        // 类名是需要隐藏的div
+        $(".disanhang").show();
+        $(".dier").hide();
+    });
+</script>
+<!--后面加的-->
+<script>
+    // 类名是需要隐藏的div
+    $(".huhuhus").show();
+    $(".gugugus").show();
+    // 点击的按钮
+    $(".kjkjkj>a").click(function(){
+        // 类名是需要隐藏的div
+        $(".huhuhus").show();
+        $(".gugugus").show();
+    });
+    $(".klklkl>a").click(function(){
+        // 类名是需要隐藏的div
+        $(".huhuhus").show();
+        $(".gugugus").hide();
+    });
+    $(".kukuku>a").click(function(){
+        // 类名是需要隐藏的div
+        $(".zhuliuugh").show();
+        $(".huhuhus").hide();
+        $(".gugugus").hide();
+    });
+</script>
+<script>
+    var cssdropdown={
+        disappeardelay: 250,
+        disablemenuclick: false,
+        enableswipe: 1,
+        enableiframeshim: 1,
+        dropmenuobj: null, ie: document.all, firefox: document.getElementById&&!document.all, swipetimer: undefined, bottomclip:0,
+
+        getposOffset:function(what, offsettype){
+            var totaloffset=(offsettype=="left")? what.offsetLeft : what.offsetTop;
+            var parentEl=what.offsetParent;
+            while (parentEl!=null){
+                totaloffset=(offsettype=="left")? totaloffset+parentEl.offsetLeft : totaloffset+parentEl.offsetTop;
+                parentEl=parentEl.offsetParent;
+            }
+            return totaloffset;
+        },
+
+        swipeeffect:function(){
+            if (this.bottomclip<parseInt(this.dropmenuobj.offsetHeight)){
+                this.bottomclip+=10+(this.bottomclip/10)
+                this.dropmenuobj.style.clip="rect(0 auto "+this.bottomclip+"px 0)"
+            }
+            else
+                return
+            this.swipetimer=setTimeout("cssdropdown.swipeeffect()", 10)
+        },
+
+        showhide:function(obj, e){
+            if (this.ie || this.firefox)
+                this.dropmenuobj.style.left=this.dropmenuobj.style.top="-500px"
+            if (e.type=="click" && obj.visibility==hidden || e.type=="mouseover"){
+                if (this.enableswipe==1){
+                    if (typeof this.swipetimer!="undefined")
+                        clearTimeout(this.swipetimer)
+                    obj.clip="rect(0 auto 0 0)"
+                    this.bottomclip=0
+                    this.swipeeffect()
+                }
+                obj.visibility="visible"
+            }
+            else if (e.type=="click")
+                obj.visibility="hidden"
+        },
+
+        iecompattest:function(){
+            return (document.compatMode && document.compatMode!="BackCompat")? document.documentElement : document.body
+        },
+
+        clearbrowseredge:function(obj, whichedge){
+            var edgeoffset=0
+            if (whichedge=="rightedge"){
+                var windowedge=this.ie && !window.opera? this.iecompattest().scrollLeft+this.iecompattest().clientWidth-15 : window.pageXOffset+window.innerWidth-15
+                this.dropmenuobj.contentmeasure=this.dropmenuobj.offsetWidth
+                if (windowedge-this.dropmenuobj.x < this.dropmenuobj.contentmeasure)
+                    edgeoffset=this.dropmenuobj.contentmeasure-obj.offsetWidth
+            }
+            else{
+                var topedge=this.ie && !window.opera? this.iecompattest().scrollTop : window.pageYOffset
+                var windowedge=this.ie && !window.opera? this.iecompattest().scrollTop+this.iecompattest().clientHeight-15 : window.pageYOffset+window.innerHeight-18
+                this.dropmenuobj.contentmeasure=this.dropmenuobj.offsetHeight
+                if (windowedge-this.dropmenuobj.y < this.dropmenuobj.contentmeasure){
+                    edgeoffset=this.dropmenuobj.contentmeasure+obj.offsetHeight
+                    if ((this.dropmenuobj.y-topedge)<this.dropmenuobj.contentmeasure)
+                        edgeoffset=this.dropmenuobj.y+obj.offsetHeight-topedge
+                }
+            }
+            return edgeoffset
+        },
+
+        dropit:function(obj, e, dropmenuID){
+            if (this.dropmenuobj!=null)
+                this.dropmenuobj.style.visibility="hidden"
+            this.clearhidemenu()
+            if (this.ie||this.firefox){
+                obj.onmouseout=function(){cssdropdown.delayhidemenu()}
+                obj.onclick=function(){return !cssdropdown.disablemenuclick}
+                this.dropmenuobj=document.getElementById(dropmenuID)
+                if(!this.dropmenuobj) return;
+                this.dropmenuobj.onmouseover=function(){cssdropdown.clearhidemenu()}
+                this.dropmenuobj.onmouseout=function(e){cssdropdown.dynamichide(e)}
+                this.dropmenuobj.onclick=function(){cssdropdown.delayhidemenu()}
+                this.showhide(this.dropmenuobj.style, e)
+                this.dropmenuobj.x=this.getposOffset(obj, "left")
+                this.dropmenuobj.y=this.getposOffset(obj, "top")
+                this.dropmenuobj.style.left=this.dropmenuobj.x-this.clearbrowseredge(obj, "rightedge")+"px"
+                this.dropmenuobj.style.top=this.dropmenuobj.y-this.clearbrowseredge(obj, "bottomedge")+obj.offsetHeight+1+"px"
+                this.positionshim()
+            }
+        },
+
+        positionshim:function(){
+            if (this.enableiframeshim && typeof this.shimobject!="undefined"){
+                if (this.dropmenuobj.style.visibility=="visible"){
+                    this.shimobject.style.width=this.dropmenuobj.offsetWidth+"px"
+                    this.shimobject.style.height=this.dropmenuobj.offsetHeight+"px"
+                    this.shimobject.style.left=this.dropmenuobj.style.left
+                    this.shimobject.style.top=this.dropmenuobj.style.top
+                }
+                this.shimobject.style.display=(this.dropmenuobj.style.visibility=="visible")? "block" : "none"
+            }
+        },
+
+        hideshim:function(){
+            if (this.enableiframeshim && typeof this.shimobject!="undefined")
+                this.shimobject.style.display='none'
+        },
+
+        contains_firefox:function(a, b) {
+            while (b.parentNode)
+                if ((b = b.parentNode) == a)
+                    return true;
+            return false;
+        },
+
+        dynamichide:function(e){
+            var evtobj=window.event? window.event : e
+            if (this.ie&&!this.dropmenuobj.contains(evtobj.toElement))
+                this.delayhidemenu()
+            else if (this.firefox&&e.currentTarget!= evtobj.relatedTarget&& !this.contains_firefox(evtobj.currentTarget, evtobj.relatedTarget))
+                this.delayhidemenu()
+        },
+
+        delayhidemenu:function(){
+            this.delayhide=setTimeout("cssdropdown.dropmenuobj.style.visibility='hidden'; cssdropdown.hideshim()",this.disappeardelay)
+        },
+
+        clearhidemenu:function(){
+            if (this.delayhide!="undefined")
+                clearTimeout(this.delayhide)
+        },
+
+        startchrome:function(){
+            for (var ids=0; ids<arguments.length; ids++){
+                var menuitems=document.getElementById(arguments[ids]).getElementsByTagName("a")
+                for (var i=0; i<menuitems.length; i++){
+                    if (menuitems[i].getAttribute("rel")){
+                        var relvalue=menuitems[i].getAttribute("rel")
+                        menuitems[i].onmouseover=function(e){
+                            var event=typeof e!="undefined"? e : window.event
+                            cssdropdown.dropit(this,event,this.getAttribute("rel"))
+                        }
+                    }
+                }
+            }
+            if (window.createPopup && !window.XmlHttpRequest){
+                document.write('<IFRAME id="iframeshim"  src="" style="display: none; left: 0; top: 0; z-index: 90; position: absolute; filter: progid:DXImageTransform.Microsoft.Alpha(style=0,opacity=0)" frameBorder="0" scrolling="no"></IFRAME>')
+                this.shimobject=document.getElementById("iframeshim")
+            }
+        }
+
+    }
+</script><script type="text/javascript">cssdropdown.startchrome("navMenu")</script>
+<script>
+    var cssdropdowns={
+        disappeardelay: 250,
+        disablemenuclick: false,
+        enableswipe: 1,
+        enableiframeshim: 1,
+        dropmenuobj: null, ie: document.all, firefox: document.getElementById&&!document.all, swipetimer: undefined, bottomclip:0,
+
+        getposOffset:function(what, offsettype){
+            var totaloffset=(offsettype=="left")? what.offsetLeft : what.offsetTop;
+            var parentEl=what.offsetParent;
+            while (parentEl!=null){
+                totaloffset=(offsettype=="left")? totaloffset+parentEl.offsetLeft : totaloffset+parentEl.offsetTop;
+                parentEl=parentEl.offsetParent;
+            }
+            return totaloffset;
+        },
+
+        swipeeffect:function(){
+            if (this.bottomclip<parseInt(this.dropmenuobj.offsetHeight)){
+                this.bottomclip+=10+(this.bottomclip/10)
+                this.dropmenuobj.style.clip="rect(0 auto "+this.bottomclip+"px 0)"
+            }
+            else
+                return
+            this.swipetimer=setTimeout("cssdropdown.swipeeffect()", 10)
+        },
+
+        showhide:function(obj, e){
+            if (this.ie || this.firefox)
+                this.dropmenuobj.style.left=this.dropmenuobj.style.top="-500px"
+            if (e.type=="click" && obj.visibility==hidden || e.type=="mouseover"){
+                if (this.enableswipe==1){
+                    if (typeof this.swipetimer!="undefined")
+                        clearTimeout(this.swipetimer)
+                    obj.clip="rect(0 auto 0 0)"
+                    this.bottomclip=0
+                    this.swipeeffect()
+                }
+                obj.visibility="visible"
+            }
+            else if (e.type=="click")
+                obj.visibility="hidden"
+        },
+
+        iecompattest:function(){
+            return (document.compatMode && document.compatMode!="BackCompat")? document.documentElement : document.body
+        },
+
+        clearbrowseredge:function(obj, whichedge){
+            var edgeoffset=0
+            if (whichedge=="rightedge"){
+                var windowedge=this.ie && !window.opera? this.iecompattest().scrollLeft+this.iecompattest().clientWidth-15 : window.pageXOffset+window.innerWidth-15
+                this.dropmenuobj.contentmeasure=this.dropmenuobj.offsetWidth
+                if (windowedge-this.dropmenuobj.x < this.dropmenuobj.contentmeasure)
+                    edgeoffset=this.dropmenuobj.contentmeasure-obj.offsetWidth
+            }
+            else{
+                var topedge=this.ie && !window.opera? this.iecompattest().scrollTop : window.pageYOffset
+                var windowedge=this.ie && !window.opera? this.iecompattest().scrollTop+this.iecompattest().clientHeight-15 : window.pageYOffset+window.innerHeight-18
+                this.dropmenuobj.contentmeasure=this.dropmenuobj.offsetHeight
+                if (windowedge-this.dropmenuobj.y < this.dropmenuobj.contentmeasure){
+                    edgeoffset=this.dropmenuobj.contentmeasure+obj.offsetHeight
+                    if ((this.dropmenuobj.y-topedge)<this.dropmenuobj.contentmeasure)
+                        edgeoffset=this.dropmenuobj.y+obj.offsetHeight-topedge
+                }
+            }
+            return edgeoffset
+        },
+
+        dropit:function(obj, e, dropmenuID){
+            if (this.dropmenuobj!=null)
+                this.dropmenuobj.style.visibility="hidden"
+            this.clearhidemenu()
+            if (this.ie||this.firefox){
+                obj.onmouseout=function(){cssdropdown.delayhidemenu()}
+                obj.onclick=function(){return !cssdropdown.disablemenuclick}
+                this.dropmenuobj=document.getElementById(dropmenuID)
+                if(!this.dropmenuobj) return;
+                this.dropmenuobj.onmouseover=function(){cssdropdown.clearhidemenu()}
+                this.dropmenuobj.onmouseout=function(e){cssdropdown.dynamichide(e)}
+                this.dropmenuobj.onclick=function(){cssdropdown.delayhidemenu()}
+                this.showhide(this.dropmenuobj.style, e)
+                this.dropmenuobj.x=this.getposOffset(obj, "left")
+                this.dropmenuobj.y=this.getposOffset(obj, "top")
+                this.dropmenuobj.style.left=this.dropmenuobj.x-this.clearbrowseredge(obj, "rightedge")+"px"
+                this.dropmenuobj.style.top=this.dropmenuobj.y-this.clearbrowseredge(obj, "bottomedge")+obj.offsetHeight+1+"px"
+                this.positionshim()
+            }
+        },
+
+        positionshim:function(){
+            if (this.enableiframeshim && typeof this.shimobject!="undefined"){
+                if (this.dropmenuobj.style.visibility=="visible"){
+                    this.shimobject.style.width=this.dropmenuobj.offsetWidth+"px"
+                    this.shimobject.style.height=this.dropmenuobj.offsetHeight+"px"
+                    this.shimobject.style.left=this.dropmenuobj.style.left
+                    this.shimobject.style.top=this.dropmenuobj.style.top
+                }
+                this.shimobject.style.display=(this.dropmenuobj.style.visibility=="visible")? "block" : "none"
+            }
+        },
+
+        hideshim:function(){
+            if (this.enableiframeshim && typeof this.shimobject!="undefined")
+                this.shimobject.style.display='none'
+        },
+
+        contains_firefox:function(a, b) {
+            while (b.parentNode)
+                if ((b = b.parentNode) == a)
+                    return true;
+            return false;
+        },
+
+        dynamichide:function(e){
+            var evtobj=window.event? window.event : e
+            if (this.ie&&!this.dropmenuobj.contains(evtobj.toElement))
+                this.delayhidemenu()
+            else if (this.firefox&&e.currentTarget!= evtobj.relatedTarget&& !this.contains_firefox(evtobj.currentTarget, evtobj.relatedTarget))
+                this.delayhidemenu()
+        },
+
+        delayhidemenu:function(){
+            this.delayhide=setTimeout("cssdropdown.dropmenuobj.style.visibility='hidden'; cssdropdown.hideshim()",this.disappeardelay)
+        },
+
+        clearhidemenu:function(){
+            if (this.delayhide!="undefined")
+                clearTimeout(this.delayhide)
+        },
+
+        startchrome:function(){
+            for (var ids=0; ids<arguments.length; ids++){
+                var menuitems=document.getElementById(arguments[ids]).getElementsByTagName("a")
+                for (var i=0; i<menuitems.length; i++){
+                    if (menuitems[i].getAttribute("rel")){
+                        var relvalue=menuitems[i].getAttribute("rel")
+                        menuitems[i].onmouseover=function(e){
+                            var event=typeof e!="undefined"? e : window.event
+                            cssdropdown.dropit(this,event,this.getAttribute("rel"))
+                        }
+                    }
+                }
+            }
+            if (window.createPopup && !window.XmlHttpRequest){
+                document.write('<IFRAME id="iframeshim"  src="" style="display: none; left: 0; top: 0; z-index: 90; position: absolute; filter: progid:DXImageTransform.Microsoft.Alpha(style=0,opacity=0)" frameBorder="0" scrolling="no"></IFRAME>')
+                this.shimobject=document.getElementById("iframeshim")
+            }
+        }
+
+    }
+</script><script type="text/javascript">cssdropdown.startchrome("navMenus")</script>
+<script>
+    var cssdropdownv={
+        disappeardelay: 250,
+        disablemenuclick: false,
+        enableswipe: 1,
+        enableiframeshim: 1,
+        dropmenuobj: null, ie: document.all, firefox: document.getElementById&&!document.all, swipetimer: undefined, bottomclip:0,
+
+        getposOffset:function(what, offsettype){
+            var totaloffset=(offsettype=="left")? what.offsetLeft : what.offsetTop;
+            var parentEl=what.offsetParent;
+            while (parentEl!=null){
+                totaloffset=(offsettype=="left")? totaloffset+parentEl.offsetLeft : totaloffset+parentEl.offsetTop;
+                parentEl=parentEl.offsetParent;
+            }
+            return totaloffset;
+        },
+
+        swipeeffect:function(){
+            if (this.bottomclip<parseInt(this.dropmenuobj.offsetHeight)){
+                this.bottomclip+=10+(this.bottomclip/10)
+                this.dropmenuobj.style.clip="rect(0 auto "+this.bottomclip+"px 0)"
+            }
+            else
+                return
+            this.swipetimer=setTimeout("cssdropdown.swipeeffect()", 10)
+        },
+
+        showhide:function(obj, e){
+            if (this.ie || this.firefox)
+                this.dropmenuobj.style.left=this.dropmenuobj.style.top="-500px"
+            if (e.type=="click" && obj.visibility==hidden || e.type=="mouseover"){
+                if (this.enableswipe==1){
+                    if (typeof this.swipetimer!="undefined")
+                        clearTimeout(this.swipetimer)
+                    obj.clip="rect(0 auto 0 0)"
+                    this.bottomclip=0
+                    this.swipeeffect()
+                }
+                obj.visibility="visible"
+            }
+            else if (e.type=="click")
+                obj.visibility="hidden"
+        },
+
+        iecompattest:function(){
+            return (document.compatMode && document.compatMode!="BackCompat")? document.documentElement : document.body
+        },
+
+        clearbrowseredge:function(obj, whichedge){
+            var edgeoffset=0
+            if (whichedge=="rightedge"){
+                var windowedge=this.ie && !window.opera? this.iecompattest().scrollLeft+this.iecompattest().clientWidth-15 : window.pageXOffset+window.innerWidth-15
+                this.dropmenuobj.contentmeasure=this.dropmenuobj.offsetWidth
+                if (windowedge-this.dropmenuobj.x < this.dropmenuobj.contentmeasure)
+                    edgeoffset=this.dropmenuobj.contentmeasure-obj.offsetWidth
+            }
+            else{
+                var topedge=this.ie && !window.opera? this.iecompattest().scrollTop : window.pageYOffset
+                var windowedge=this.ie && !window.opera? this.iecompattest().scrollTop+this.iecompattest().clientHeight-15 : window.pageYOffset+window.innerHeight-18
+                this.dropmenuobj.contentmeasure=this.dropmenuobj.offsetHeight
+                if (windowedge-this.dropmenuobj.y < this.dropmenuobj.contentmeasure){
+                    edgeoffset=this.dropmenuobj.contentmeasure+obj.offsetHeight
+                    if ((this.dropmenuobj.y-topedge)<this.dropmenuobj.contentmeasure)
+                        edgeoffset=this.dropmenuobj.y+obj.offsetHeight-topedge
+                }
+            }
+            return edgeoffset
+        },
+
+        dropit:function(obj, e, dropmenuID){
+            if (this.dropmenuobj!=null)
+                this.dropmenuobj.style.visibility="hidden"
+            this.clearhidemenu()
+            if (this.ie||this.firefox){
+                obj.onmouseout=function(){cssdropdown.delayhidemenu()}
+                obj.onclick=function(){return !cssdropdown.disablemenuclick}
+                this.dropmenuobj=document.getElementById(dropmenuID)
+                if(!this.dropmenuobj) return;
+                this.dropmenuobj.onmouseover=function(){cssdropdown.clearhidemenu()}
+                this.dropmenuobj.onmouseout=function(e){cssdropdown.dynamichide(e)}
+                this.dropmenuobj.onclick=function(){cssdropdown.delayhidemenu()}
+                this.showhide(this.dropmenuobj.style, e)
+                this.dropmenuobj.x=this.getposOffset(obj, "left")
+                this.dropmenuobj.y=this.getposOffset(obj, "top")
+                this.dropmenuobj.style.left=this.dropmenuobj.x-this.clearbrowseredge(obj, "rightedge")+"px"
+                this.dropmenuobj.style.top=this.dropmenuobj.y-this.clearbrowseredge(obj, "bottomedge")+obj.offsetHeight+1+"px"
+                this.positionshim()
+            }
+        },
+
+        positionshim:function(){
+            if (this.enableiframeshim && typeof this.shimobject!="undefined"){
+                if (this.dropmenuobj.style.visibility=="visible"){
+                    this.shimobject.style.width=this.dropmenuobj.offsetWidth+"px"
+                    this.shimobject.style.height=this.dropmenuobj.offsetHeight+"px"
+                    this.shimobject.style.left=this.dropmenuobj.style.left
+                    this.shimobject.style.top=this.dropmenuobj.style.top
+                }
+                this.shimobject.style.display=(this.dropmenuobj.style.visibility=="visible")? "block" : "none"
+            }
+        },
+
+        hideshim:function(){
+            if (this.enableiframeshim && typeof this.shimobject!="undefined")
+                this.shimobject.style.display='none'
+        },
+
+        contains_firefox:function(a, b) {
+            while (b.parentNode)
+                if ((b = b.parentNode) == a)
+                    return true;
+            return false;
+        },
+
+        dynamichide:function(e){
+            var evtobj=window.event? window.event : e
+            if (this.ie&&!this.dropmenuobj.contains(evtobj.toElement))
+                this.delayhidemenu()
+            else if (this.firefox&&e.currentTarget!= evtobj.relatedTarget&& !this.contains_firefox(evtobj.currentTarget, evtobj.relatedTarget))
+                this.delayhidemenu()
+        },
+
+        delayhidemenu:function(){
+            this.delayhide=setTimeout("cssdropdown.dropmenuobj.style.visibility='hidden'; cssdropdown.hideshim()",this.disappeardelay)
+        },
+
+        clearhidemenu:function(){
+            if (this.delayhide!="undefined")
+                clearTimeout(this.delayhide)
+        },
+
+        startchrome:function(){
+            for (var ids=0; ids<arguments.length; ids++){
+                var menuitems=document.getElementById(arguments[ids]).getElementsByTagName("a")
+                for (var i=0; i<menuitems.length; i++){
+                    if (menuitems[i].getAttribute("rel")){
+                        var relvalue=menuitems[i].getAttribute("rel")
+                        menuitems[i].onmouseover=function(e){
+                            var event=typeof e!="undefined"? e : window.event
+                            cssdropdown.dropit(this,event,this.getAttribute("rel"))
+                        }
+                    }
+                }
+            }
+            if (window.createPopup && !window.XmlHttpRequest){
+                document.write('<IFRAME id="iframeshim"  src="" style="display: none; left: 0; top: 0; z-index: 90; position: absolute; filter: progid:DXImageTransform.Microsoft.Alpha(style=0,opacity=0)" frameBorder="0" scrolling="no"></IFRAME>')
+                this.shimobject=document.getElementById("iframeshim")
+            }
+        }
+
+    }
+</script><script type="text/javascript">cssdropdown.startchrome("navMenuv")</script>
+
+
+</body>
+</html>

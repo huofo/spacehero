@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html style="font-size: 117.188px;">
+
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<meta name="keywords" content="">
+		<meta name="description" content="">
+		<meta name="full-screen" content="yes">
+		<meta name="browsermode" content="application">
+		<meta name="x5-page-mode" content="app">
+		<meta name="x5-fullscreen" content="true">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport">
+		<link href="/index/css/index_for.css" rel="stylesheet" type="text/css">
+		<link rel="stylesheet" href="//at.alicdn.com/t/font_2805586_as3rpjoc9x9.css" >
+		<script src="https://hm.baidu.com/hm.js?ea5da0ed025ce44718399d39b666bfc5"></script>
+		<script type="text/javascript" src="/index/js/jquery-2.1.4.min.js"></script>
+		<script type="text/javascript" src="/index/js/touchSlider.js"></script>
+		<script type="text/javascript" src="/index/js/index.js"></script>
+
+	</head>
+	<body>
+		<style>
+			.mgywo{width: 100%; height: 100%;position: fixed;top: 0%; background-color: #FFFFFF;z-index: 9999;}
+			.mgywo>ul{width: 96%; margin: 5% auto;}
+			.mgywo>ul>li{width: 100%;height: 40px;font-size: 20px; line-height: 38px; }
+			.mgywo>ul>li>a{color: #666666;}
+			.mgywo>ul>li>span{float: right; color: #666666;}
+		</style>
+
+		<div class="inner-head">
+			<a class="inner-head-ma" href="javascript:history.go(-1)">
+				<img class="return_img" src="/index/images/gg-icon13.png">
+			</a>
+			{$Think.lang.ind_gywm}
+		</div>
+		<!-- 中间内容切换 -->
+		<div class="about-us" style="font-size: 0.11rem;color: #ffffff;">
+
+
+			<div class="about-box" style="display: block">{$aboutdetail.content}</div>
+
+		</div>
+
+		{include file="foot" /}

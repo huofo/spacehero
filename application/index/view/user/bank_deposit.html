@@ -1,0 +1,103 @@
+﻿{include file="head" /}
+<script src="/new/js/jquery.js"></script>
+	<script src="/new/js/clipboard.js"></script>
+	<script src="/new/js/clipboard.min.js"></script>
+<script>
+var pay_type = '';
+var wxpay_info = '';
+var returnrul = "{:url('user/index')}";
+</script>
+
+<style>
+    .scroll-content{
+        overflow: scroll
+    }
+    .ercodes{
+        margin-top: 0px!important;
+    }
+    .button_div{
+        width: 100%;
+        margin: 10px auto;
+    }
+    .button_div .cz_button01{
+        color: #588bf7;
+        padding: 0!important;
+        margin: 0!important;
+        border: none!important;
+    }
+    .ft12{
+        width: 90%;
+        margin: 0 auto;
+        font-size: 12px;
+        text-align: left;
+    }
+    .colorGrey{
+        color: #7d818a;
+    }
+</style>
+
+<body ng-app="starter" ng-controller="AppCtrl" class="navbar grade-a platform-browser platform-ios platform-ios9 platform-ios9_1 platform-ready">
+
+<ion-nav-view class="view-container" nav-view-transition="ios" nav-view-direction="none" nav-swipe=""><ion-tabs class="tabs-icon-top navbar pane tabs-bottom tabs-standard" abstract="true" nav-view="active" style="opacity: 1; transform: translate3d(0%, 0px, 0px);"><div class="tab-nav tabs">
+
+<a href="{:Url('/index/index/index/token/'.$token)}"  class="iconfont icon-shouye tabnone tab-item" style=""><span class="tab-title ng-binding" >首页</span></a>
+<a href="{:Url('/index/trades/index/token/'.$token)}/"  class="iconfont icon--6 tabnone tab-item " style=""><span class="tab-title ng-binding" >商品行情</span></a>
+<a href="{:url('order/hold')}" class="iconfont icon--7 tabnone tab-item" style=""><span class="tab-title ng-binding" >交易记录</span></a>
+<a href="{:url('user/index')}"  class="iconfont icon--8 tabnone tab-item tab-item-active" style=""><span class="tab-title ng-binding" >个人账户</span></a>
+
+</div>
+
+    <ion-nav-bar class="bar-stable headerbar nav-bar-container" nav-bar-transition="ios" nav-bar-direction="swap" nav-swipe="">
+
+    	<div class="nav-bar-block" nav-bar="active">
+    		<ion-header-bar class="bar-stable headerbar bar bar-header" align-title="center">
+    			<div class="title title-center header-item" style="transition-duration: 0ms; transform: translate3d(0px, 0px, 0px);">USDT充值</div>
+    		</ion-header-bar>
+    	</div>
+    </ion-nav-bar>
+
+    <ion-content class="personalbg scroll-content ionic-scroll scroll-content-false  has-header has-tabs" scroll="false">
+        <div class="ercodes">
+        <div style="color:#000; padding:10px 0 0">充值金额：{$money}&nbsp;USDT</div>
+        
+        <div style="color:#000; padding:10px 0">支付方式：USDT支付方式為ERC20鏈型</div>
+        <img src="https://api.qrserver.com/v1/create-qr-code/?size=150%C3%97150&data={$usdt_url}" width="240" height="240" alt="" >
+        
+        
+        <p   id="usdt_url"  style="color:#000; padding:10px 0">{$usdt_url}</p>
+
+        <div class="button_div"><input type="button"  data-clipboard-action="copy" data-clipboard-text='{$usdt_url}'  value="复制地址" class="cz_button01 ztys_bai01 btn"></div>
+
+
+            <div class="ft12 colorGrey">
+                * <span>请勿向上述地址充值任何非</span> <span class="titles">USDT</span><span>资产</span><span>否则资产将不可找回。</span><br>
+                * <span>最小充值金额：</span>0.001 <span class="titles">USDT</span>。<br>
+                * <span>你的会在3-6个网络确认后到帐。</span> <br>
+                * <span>所有GEMINI的充币地址都是多重签名冷钱包地址，所有钱包均不曾被联网的机器读取。</span>
+            </div>
+        
+        </div>
+    </ion-content>
+
+    </ion-tabs>
+</ion-nav-view>
+
+</body>
+</html>
+<div id="zypay_post"></div>
+<script src="__HOME__/js/lk/user.js"></script>
+<script src="__HOME__/js/lk/jquery.qrcode.js"></script>
+<script src="__HOME__/js/lk/utf.js"></script>
+<script>
+var clipboard = new Clipboard('.btn');
+
+		clipboard.on('success', function(e) {
+			alert('复制成功');
+			console.log(e);
+		});
+
+		clipboard.on('error', function(e) {
+			alert("复制失敗");
+			console.log(e);
+		});
+</script>

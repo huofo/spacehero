@@ -1,0 +1,74 @@
+{include file="head" /}
+
+{include file="menu" /}
+
+
+<!--main content start-->
+      <section id="main-content">
+          <section class="wrapper">
+
+              <br>
+
+             <div class="row">
+                  <div class="col-lg-12">
+                      <section class="panel">
+                          <header class="panel-heading">
+
+                              管理员列表
+
+                          </header>
+                          <table class="table table-striped table-advance table-hover">
+                            <thead class="ordertable">
+                              <tr>
+                                <th>编号</th>
+                                <th>用户名</th>
+                                
+                                <th>身份</th>
+                                <th>操作</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <!-- {volist name="list" id="vo"} -->
+                              <tr>
+                                  <td>{$vo.uid}</td>
+                                  <td>{$vo.username}</td>
+
+
+                                  <td>{if $vo.otype == 1}后台管理员{elseif $vo.otype == 3/}客服{/if}</td>
+
+                                  <td>
+                                      <a title="编辑" href="{:url('system/adminadd',array('uid'=>$vo.uid))}"><button class="btn btn-primary btn-xs"><i class="icon-pencil"></i></button></a>
+                                      <a class="btn btn-danger btn-xs" onclick="deleteinfo('{$vo.uid}')" title="点击删除"><i class="icon-trash"></i></a>
+                                  </td>
+                              </tr>
+                              <!-- {/volist} -->
+
+
+
+
+                              </tbody>
+                          </table>
+                      </section>
+                  </div>
+              </div>
+
+
+
+          </section>
+      </section>
+      <!--main content end-->
+  </section>
+
+{include file="foot" /}
+<script>
+function deleteinfo(id){
+    layer.open({
+      content: '确定删除吗',
+      yes: function(index){
+        var url = "{:url('system/deluser')}"+"?id="+id;
+        var locurl = "{:Url('admin/system/adminlist')}";
+        WPget(url,locurl);
+      }
+    });
+  }
+</script>

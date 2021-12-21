@@ -1,0 +1,18 @@
+@font-face {
+  font-family: "iconfont"; /* Project id  */
+  src: url('iconfont.ttf?t=1628493757801') format('truetype');
+}
+
+
+.icon-icon_set_up:before {
+  content: "\e612";
+}
+
+.icon-liaotian:before {
+  content: "\e6db";
+}
+
+.icon-shenfenrenzheng:before {
+  content: "\e682";
+}
+

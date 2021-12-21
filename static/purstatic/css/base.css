@@ -1,0 +1,42 @@
+*{
+	margin: 0;
+	padding: 0;
+	/*去掉点击高亮效果-主要针对移动端*/
+	-webkit-tap-highlight-color:transparent;
+	/*设置元素宽高计算方式*/
+	box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	 -webkit-text-size-adjust: 100%;
+}
+/*设置统一的字体*/
+body{
+	font-size: 13px;
+	font-family: "微软雅黑";
+	color: #333;
+}
+a{
+	color: #333;
+	text-decoration: none;
+}
+a:hover{
+	text-decoration: none;
+}
+/*重置input样式*/
+input{
+	border:none;
+	/*去掉选中状态下的高亮效果*/
+	outline: none;
+	/*清除移动端默认的表单样式*/
+	/*-webkit-appearance:none;*/
+}
+ul,ol{
+	list-style: none;
+}
+form{
+	flex:1;
+	position: relative;
+}
+.addlist{
+	text-align: center;
+    margin: 10px;
+}

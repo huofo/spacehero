@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html style="font-size: 132.813px;">
+
+	<head>
+		<meta charset="utf-8">
+		<title>B.King官网|期权,外汇,虚拟币投资开户交易平台-enctrades.COM</title>
+		<meta name="keywords" content="B.Kingenctrades,B.King,安信enctrades,合约交易,秒合约">
+		<meta name="description" content="B.Kingenctrades平台拥有合约_秒合约2种交易模式，双重监管，正规安全。合约交易助力老手增加盈利，秒合约让新手轻松入门，闪电盈利！多终端交易，用户可24小时体验一流交易!">
+		<meta name="full-screen" content="yes">
+		<meta name="browsermode" content="application">
+		<meta name="x5-page-mode" content="app">
+		<meta name="x5-fullscreen" content="true">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport">
+		<link href="/index/css/index_for.css" rel="stylesheet" type="text/css">
+		<script type="text/javascript">
+			//web端自适应rem样式
+			//auto adaptation
+			var calculate_size = function() {
+				var BASE_FONT_SIZE = 100;
+				var docEl = document.documentElement,
+					clientWidth = docEl.clientWidth;
+				if(!clientWidth) return;
+				docEl.style.fontSize = BASE_FONT_SIZE * (clientWidth / 320) + 'px';
+			};
+			// Abort if browser does not support addEventListener
+			if(document.addEventListener) {
+				var resizeEvt = 'orientationchange' in window ? 'orientationchange' : 'resize';
+				window.addEventListener(resizeEvt, calculate_size, false);
+				document.addEventListener('DOMContentLoaded', calculate_size, false);
+				calculate_size();
+			}
+		</script>
+		<script type="text/javascript" src="/index/js/jquery-2.1.4.min.js"></script>
+		<script type="text/javascript" src="/index/js/index.js"></script>
+		<script src="/static/public/js/function.js"></script>
+		<script src="/static/layer/layer.js"></script>
+	</head>
+
+	<body>
+		<div class="head">
+			<div class="nav"></div>
+			<div class="logo" style="background: url({$logo_src}) no-repeat bottom; background-size: contain;"></div>
+		</div>
+		<div class="pop hide">
+			<script type="text/javascript">
+				//1
+				$(document).ready(function() {
+					$(".pop-shut").click(function() {
+						$(".pop").toggle(300);
+					});
+					$(".nav").click(function() {
+						$(".pop").toggle(300);
+					});
+				});
+			</script>
+			<div class="pop-shut"></div>
+			<div class="list">
+				<a href="{:url('index/index')}" style="color:#fff">
+                    <div class="list-1">首页</div>
+                </a>
+                <a href="{:url('about/about')}" style="color:#fff">
+                    <div class="list-1">关于我们</div>
+                </a>
+                <a href="{:url('operation/operation')}" style="color:#fff">
+                    <div class="list-1">操作指导</div>
+                </a>
+                <a href="{:url('contact/contact')}" style="color:#fff">
+                    <div class="list-1">联系我们</div>
+                </a>
+			</div>
+		</div>
+		<div class="join-box">
+			<div class="join">
+				<li class="lb j_cuurt">个人加盟</li>
+				<li class="rb">公司加盟</li>
+			</div>
+			<div class="join-pro join_show">
+				<h2></h2>
+				<form id="papply" action="" name="papply" method="post">
+					<input type="text" name="lastName" placeholder="姓" class="input_bg" style="margin-right: 0.05rem;">
+					<input type="text" name="firstName" placeholder="名" class="input_bg">
+					<input type="text" name="email" id="reg-email" placeholder="邮箱" class="mail">
+					<input type="password" name="password" placeholder="密码" class="mail">
+					<input type="password" name="confirm" placeholder="确认密码" class="mail">
+					<input type="text" name="papply_phone" placeholder="电话" class="mail">
+					<div class="input_bg2">
+						<input type="text" name="code" placeholder="验证码" class="code">
+						<input type="button" id="papply_send_code" value="获取验证码" class="obtain" onclick=" return get_code(1);">
+					</div>
+					<div class="input_bg3">
+						<input type="checkbox" name="papply_protocol" class="checkbox" checked="checked">
+						<span class="clause">我已阅读并同意<a href="" target="_blank">服务条款</a>和<a href="" target="_blank">隐私政策</a></span>
+					</div>
+					<div class="clear"></div>
+					<div class="p1_btn">
+						<input class="btn-found" type="button" onclick="return papply_submit();" value="提交申请">
+					</div>
+					<p onclick="" style="width:auto;height:auto;margin-top:0.15rem;font-size:0.13rem;text-align:center;color:#f9c21c;">
+						<a style="border-bottom:1px solid #f9c21c;">遇到问题？找客服</a>
+					</p>
+				</form>
+			</div>
+			<div class="join-pro">
+				<h2></h2>
+				<form action="" name="capply" id="capply" method="post">
+					<input type="text" name="email" placeholder="邮箱" class="mail">
+					<input type="password" name="password" id="reg-password" placeholder="密码" class="mail">
+					<input type="text" name="company" placeholder="公司名称" class="mail">
+					<input type="text" name="legal" placeholder="法人代表" class="mail">
+					<input type="text" name="regnumber" placeholder="公司编号" class="mail">
+					<input type="text" name="capply_phone" id="reg-phone" placeholder="电话" class="mail">
+					<div class="input_bg2">
+						<input type="text" name="code" placeholder="验证码" class="code">
+						<input type="button" value="获取验证码" id="capply_send_code" class="obtain" onclick=" return get_code(2);">
+					</div>
+					<div class="input_bg3">
+						<input type="checkbox" name="capply_protocol" id="reg-agreement" class="checkbox" checked="checked">
+						<span class="clause">我已阅读并同意<a href="" target="_blank">服务条款</a>和<a href="" target="_blank">隐私政策</a></span>
+					</div>
+					<div class="clear"></div>
+					<div class="p1_btn">
+						<input class="btn-found" type="button" onclick="return capply_submit();" value="提交申请">
+					</div>
+					<p onclick="" style="width:auto;height:auto;margin-top:0.15rem;font-size:0.13rem;text-align:center;color:#f9c21c;">
+						<a style="border-bottom:1px solid #f9c21c;">遇到问题？找客服</a>
+					</p>
+				</form>
+			</div>
+		</div>
+		<script type="text/javascript">
+			$(document).ready(function() {
+				//内容切换
+				$('.join li').click(function() {
+					$(this).addClass("j_cuurt").siblings().removeClass("j_cuurt");
+					var index = $('.join li').index(this);
+					$('.join-pro').eq(index).addClass('join_show').siblings().removeClass('join_show');
+				})
+			});
+
+			function get_code(type){
+				if(type == 1){
+					var phone = $("input[name='papply_phone']").val();
+				}else{
+					var phone = $("input[name='capply_phone']").val();
+				}
+				if(checkPhone(phone) == false) {
+					layer.msg('请输入正确的邮箱', {icon: 5});
+					return false;
+				}
+				var url = "/index/login/sendmsm/phone/"+phone;
+				$.get(url,function(resdata){
+					layer.msg(resdata.data);
+					if(resdata.type == 1){
+						if(type == 1){
+							$("#papply_send_code").attr('onclick',"return false;");
+						}else{
+							$("#capply_send_code").attr('onclick',"return false;");
+						}
+						listion_sendmsm(type);
+					}
+				})
+				return false;
+			}
+
+			function listion_sendmsm(type){
+				if(type == 1){
+					var code_class = 'papply_send_code';
+				}else{
+					var code_class = 'capply_send_code';
+				}
+				var time= 61;
+			    setTime=setInterval(function(){
+			        if(time<=1){
+			            clearInterval(setTime);
+			            $("#"+code_class).val("再发一次");
+			            $("#"+code_class).attr('onclick',"return get_code();");
+			            return;
+			        }
+			        time--;
+			        $("#"+code_class).val(time+"s");
+			    },1000);
+			}
+
+
+			//个人代理注册
+			function papply_submit(){
+				var data_arr = $('#papply').serializeArray();
+				// layer.msg(false, "代理暂时停止注册，开放时间待定...", "");
+				// return false;
+				if(data_arr[0].value == "") {
+					layer.msg("姓不能为空",{icon: 2});
+					return false;
+				}
+				if(data_arr[1].value == "") {
+					layer.msg("名不能为空",{icon: 2});
+					return false;
+				}
+				if(checkEmail($.trim(data_arr[2].value)) == false) {
+					layer.msg("请填写正确的邮箱",{icon: 2});
+					return false;
+				}
+				if(check_password($.trim(data_arr[3].value)) == false) {
+					layer.msg("密码要6-15位长度",{icon: 2});
+					return false;
+				}
+				if($.trim(data_arr[3].value) != $.trim(data_arr[4].value)) {
+					layer.msg("两次密码输入要一致",{icon: 2});
+					return false;
+				}
+				if(data_arr[5].value == "") {
+					layer.msg("邮箱不能为空",{icon: 2});
+					return false;
+				}
+				if(data_arr[6].value == "") {
+					layer.msg("验证码不能为空",{icon: 2});
+					return false;
+				}
+				var papply_protocol = $("input[name='papply_protocol']").is(":checked");
+				if(!papply_protocol) {
+					layer.msg("请先阅读并勾选《协议政策》",{icon: 2});
+					return false;
+				}
+				var data = $('#papply').serialize();
+			    var formurl = "{:Url('jiameng/papply')}";
+			    var locurl = "{:Url('index/index')}";
+			    WPpost(formurl,data,locurl);
+			    return false;
+			};
+			//公司代理注册
+			function capply_submit(){
+				var data_arr = $('#capply').serializeArray();
+				// message(false, "代理暂时停止注册，开放时间待定...", "");
+				// return false;
+				if(checkEmail($.trim(data_arr[0].value)) == false) {
+					layer.msg("请填写正确的邮箱");
+					return false;
+				}
+				if(check_password($.trim(data_arr[1].value)) == false) {
+					layer.msg("密码要6-15位长度");
+					return false;
+				}
+				if(data_arr[2].value == "") {
+					layer.msg("公司名称不能为空");
+					return false;
+				}
+				if(data_arr[3].value == "") {
+					layer.msg("法人代表不能为空");
+					return false;
+				}
+				if(data_arr[4].value == "") {
+					layer.msg("注册编号不能为空");
+					return false;
+				}
+				if(data_arr[5].value == "") {
+					layer.msg("邮箱不能为空");
+					return false;
+				}
+				if(data_arr[6].value == "") {
+					layer.msg("验证码不能为空");
+					return false;
+				}
+				var capply_protocol = $("input[name='capply_protocol']").is(":checked");
+				if(!capply_protocol) {
+					layer.msg("请先阅读并勾选《协议政策》");
+					return false;
+				}
+				var data = $('#capply').serialize();
+			    var formurl = "{:Url('jiameng/capply')}";
+			    var locurl = "{:Url('index/index')}";
+			    WPpost(formurl,data,locurl);
+			    return false;
+			};
+		</script>
+
+	</body>
+
+</html>

@@ -1,0 +1,83 @@
+{include file="head" /}
+
+{include file="menu" /}
+
+   <!--main content start-->
+      <section id="main-content">
+          <section class="wrapper">
+              <!-- page start-->
+              <div class="row">
+                  <div class="col-lg-8">
+                      <!--widget start-->
+                      <aside class="profile-nav alt green-border">
+                          <section class="panel">
+                              
+                          {if $bank}
+                              <div class="panel-body bio-graph-info">
+                              
+                              <div class="form-horizontal">
+                                  <div class="form-group">
+                                      <label class="col-lg-2 control-label">交易姓名：</label>
+                                      <div class="col-lg-6">
+                                          <p class="control-label">{$bank.username}</p>
+                                      </div>
+                                  </div>
+									<hr>
+                                 
+                                  <div class="form-group">
+                                      <label class="col-lg-2 control-label">类型：</label>
+                                      <div class="col-lg-6">
+                                          <p class="control-label">{$bank.usdt_type}</p>
+                                      </div>
+                                  </div>
+									<hr>
+                                  <div class="form-group">
+                                      <label class="col-lg-2 control-label">USDT收币地址：</label>
+                                      <div class="col-lg-6">
+                                          <p class="control-label">{$bank.usdt_url}</p>
+                                      </div>
+                                  </div>
+<hr>
+                                   <div class="form-group">
+                                      <label class="col-lg-2 control-label">USDT二维码：</label>
+                                      <div class="col-lg-6">
+                                          <p class="control-label"><img src="https://api.qrserver.com/v1/create-qr-code/?size=150%C3%97150&data={$bank.usdt_url}" width="240" height="240" alt="" ></p>
+                                      </div>
+                                  </div>
+<hr>
+                              </div>
+
+
+
+                          </div>
+                        {else/}
+                        <div class="row">
+                            <div class="col-lg-12">
+                              <div class="noorder">
+                                暂无数据
+                              </div>
+                            </div>
+                          </div>
+                        {/if}
+
+                          </section>
+                      </aside>
+                      <!--widget end-->
+                      
+                  </div>
+                 </div> 
+              
+                 
+              
+              <!-- page end-->
+          </section>
+      </section>
+      <!--main content end-->
+  </section>
+
+{include file="foot" /}
+<script>
+
+
+
+</script>

@@ -1,0 +1,267 @@
+body{
+	background: #fff;
+}
+/* 头部box */
+.head-box{
+	/*min-height: 35%;*/
+	/*height: calc(35% + 50px);*/
+	color: #fff;
+}
+/* 顶部box */
+.head-box .nav-box{
+	background: linear-gradient(to right, #86a0ff, #d260ff);
+	z-index: 1;
+}
+
+
+/* 轮播图box */
+.switch-box{
+	width: 98%;
+	/*height: calc(100% - 50px);*/
+	height:170px;/*原高度200*/
+	border: 1px solid #ccc;
+	border-radius: 5px;
+	background: #fff;
+	/*box-shadow: 0px 0px 3px rgba(0,0,0,0.3);*/
+	margin: 5px auto;
+	overflow: hidden;
+}
+.switch-box .items{
+	height: 100%;
+	font-size: 0;
+}
+.switch-box .item{
+	height: 100%;
+	text-align: center;
+	line-height: 200px;
+	font-size: 12px;
+	display: inline-block;
+	position: relative;
+}
+.switch-box .item img{
+	width: 100%;
+	position: absolute;
+	top: 0;
+	left: 0;
+}
+.switch-box .item a{
+	margin: auto;
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+}
+
+
+
+
+
+/* 中部主要内容 */
+.main{
+	width: 98%;
+	min-height: 300px;
+	margin: 0 auto 0px;
+	position: relative;
+	z-index: 1;
+}
+.main>*{
+	/*border: 1px solid #ddd;*/
+	border-radius: 4px;
+	/*margin-bottom: 10px;*/
+
+	box-sizing: border-box;
+	/*overflow: hidden;*/
+}
+
+/* 公告box */
+.main .gg-box{
+	width: 100%;
+	height: 80px;
+	text-align: center;
+	line-height: 60px;
+	font-size: 20px;
+	color: #fff;
+	/*background: #673ab7;*/
+	background: url(../images/index/news.png);
+	background-size: cover;
+	background-position: center;
+	padding: 10px 5%;
+	box-sizing: border-box;
+	position: relative;
+}
+.main .gg-box .img{
+	width: 60px;
+	height: 60px;
+	background: #ddd;
+	margin: 0 10px 0 0;
+	box-sizing: border-box;
+	float: left;
+}
+.main .gg-box p{
+	font-size: 14px;
+}
+.main .gg-box a{
+	margin: auto;
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+}
+
+
+
+
+/* a链接组 */
+.main .list-box-title{
+	text-align: center;
+	color: #333;
+	margin: 0;
+}
+.main .list-box{
+	width: 100%;
+	background: #fefefe;
+	padding: 5px 0;
+	display: flex;
+	justify-content: space-around;
+}
+.main .list-box .item{
+	min-height: 60px;
+	text-align: center;
+	box-sizing: border-box;
+}
+.main .list-box .item::before{
+	width: 33px;
+	height: 33px;
+	font-size: 30px;
+	margin: 5px auto;
+	display: block;
+	position: relative;
+}
+.main .list-box .item img{
+	width: 33px;
+	height: 33px;
+	margin: 5px 0;
+	position: relative;
+}
+.main .list-box .item svg{
+	width: 33px;
+	height: 33px;
+	margin: 5px 0;
+	position: relative;
+		
+	fill: red;
+	/*transform: translateY(10px);
+	-webkit-mask-image: none;
+	filter: drop-shadow(0px 0px #ddd);*/
+}
+
+.main .list-box .item p{
+	font-size: 12px;
+	color: #333;
+}
+
+
+
+/* 介绍box */
+.main .info-box{
+	text-indent: 2em;
+	color: #fff;
+	background: url(../images/index/info.png);
+	background-size: cover;
+	background-position: center;
+	padding: 5% 5%;
+}
+.main .info-box p{
+	margin: 10px 0;
+}
+.main .info-box .title{
+	text-indent: calc(2em - 5px);
+	font-weight: bold;
+	border-left: 5px solid #fff;
+}
+.main .info-box .title .text_size
+{
+	font-size: 25px;
+}
+.main .info-box .title .text_size img
+{
+	height:25px;
+}
+.main .info-box .divcgdt
+{
+	height: 200px;
+	overflow-y:scroll;
+	overflow-x:scroll;
+}
+/* 左侧box */
+.left-hidden-box{
+	width: 100%;
+	height: 100%;
+	background: rgba(0,0,0,0.3);
+	position: fixed;
+	top: 0;
+	left: 0;
+	z-index: 10;
+}
+.left-hidden-box .nav-box{
+	width: 60%;
+	height: 100%;
+	background: linear-gradient(to right, #86a0ff, #d260ff);
+	box-shadow: 1px 0px 3px rgba(0,0,0,0.3);
+	transform: translateX(-60%);
+	transition: 0.5s ease-in;
+}
+.left-hidden-box .nav-box .top-box{
+	padding: 20% 5% 10%;
+	box-sizing: border-box;
+}
+.left-hidden-box .nav-box .top-box p{
+	line-height: 1.5em;
+	font-weight: bold;
+	color: #fff;
+}
+.left-hidden-box .nav-box .top-box p span{
+	font-weight: normal;
+}
+
+
+.left-hidden-box .nav-box ul{
+	margin: 20% 0 0;
+}
+.left-hidden-box .nav-box .item{
+	text-align: right;
+	color: #fff;
+}
+
+.left-hidden-box .nav-box .item span{
+	line-height: 2em;
+	text-indent: 5px;
+	font-size: 18px;
+	border-bottom: 1px solid #fff;
+	display: inline-block;
+	padding: 5px 4em 5px 0;
+	box-sizing: border-box;
+	position: relative;
+}
+.left-hidden-box .nav-box a:last-of-type .item span{
+	/*border: none;*/
+}
+
+.left-hidden-box .nav-box .item span::before{
+	line-height: 2em;
+	font-size: 18px;
+	display: inline-block;
+	margin: auto 0;
+	padding: 5px 0;
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	left: -2em;
+}
+
+
+
+
+

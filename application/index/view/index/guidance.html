@@ -1,0 +1,75 @@
+<html style="font-size: 117.188px; overflow-y: hidden;">
+<head>
+    <meta charset="utf-8">
+    <title>B.KingEnctrade导师,名师大咖,安信导师-B.KingEnctrade官网</title>
+    <meta name="keywords" content="B.KingEnctrade导师,名师大咖,安信导师">
+    <meta name="description" content="B.KingEnctrade导师，名师大咖，金牌讲师，拥有长达十余年外汇交易资深经验的大咖，为投资者提供金融分析，黄金、原油、外汇的分析和操盘经验分析，把握市场节奏，从而稳住收益">
+    <!-- <meta name="full-screen" content="yes"> -->
+    <!-- <meta name="browsermode" content="application">
+    <meta name="x5-page-mode" content="app"> -->
+    <!-- <meta name="x5-fullscreen" content="true"> -->
+    <!-- <meta name="viewport" content="width=device-width, initial-scale=1"> -->
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport">
+    <link href="/index/css/index_for.css" rel="stylesheet" type="text/css">
+    <script type="text/javascript" src="/index/js/jquery-2.1.4.min.js"></script>
+    <script type="text/javascript" src="/index/js/touchSlider.js"></script>
+    <script type="text/javascript" src="/index/js/index.js"></script>
+<link href="/index/css/swiper.min.css" rel="stylesheet" type="text/css"><script type="text/javascript" src="/index/js/swiper.min.js"></script></head>
+
+
+<body style="background:#262b3e; overflow-y: hidden; ">
+<div class="inner-head">
+    <a href="javascript:history.go(-1)">
+        <img class="return_img" src="/index/images/gg-icon13.png">
+    </a>
+    更多名师
+</div>
+<!--banner-->
+<div id="banner">
+    <div class="swiper-container swiper-container-horizontal swiper-container-ios" id="bannerSwiper">
+        <div class="swiper-wrapper" style="transition-duration: 0ms; transform: translate3d(-1500px, 0px, 0px);">
+    <!-- {volist name="guilist" id="vo"} -->
+    <div class="swiper-slide" data-swiper-slide-index="{$vo.key}" style="width: 375px;">
+        <div class="inner">
+            <img class="head" src="{$vo.gavatar}">
+            <h2>{$vo.gname}</h2>
+            <p>{$vo.gskill}</p>
+        </div>
+        <div class="lx"></div>
+        <div class="b_text">{$vo.gdetails}</div>
+    </div>
+    <!-- {/volist} -->
+</div>
+<div id="bannerpagination" class="pagination swiper-pagination-clickable swiper-pagination-bullets">
+    <!-- {volist name="guilist" id="vo"} -->
+    <span class="swiper-pagination-bullet {if $vo.key eq 1} swiper-pagination-bullet-active {/if}" tabindex="0" role="button" aria-label="Go to slide {$vo.key}"></span>
+    <!-- {/volist} -->
+</div>
+</div>
+<script>
+    var mySwiper = new Swiper('#bannerSwiper', {
+        loop: true,
+        speed: 600,
+        grabCursor: true,
+        parallax: true,
+        autoplay: {
+            delay: 3000,
+        },
+        pagination: {
+            el: '#bannerpagination',
+            clickable: true,
+        },
+        navigation: {
+            nextEl: '.arrow-right',
+            prevEl: '.arrow-left',
+        },
+    });
+</script>
+{include file="foot" /}
+<script type="text/javascript">
+    var ph = $(window).height();
+    var th = $('.inner-head').height();
+    var fh = $('.bottom-nav').height();
+    $('#bannerSwiper').height(ph-th-fh+'px');
+    $('#bannerSwiper').css({'overflow-y':'hidden'});
+</script>

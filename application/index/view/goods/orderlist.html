@@ -1,0 +1,540 @@
+{include file="head" /}
+<link href="/index/css/index_for.css" rel="stylesheet" type="text/css">
+<!--        夜间白天切换的文件-->
+{if $_SESSION["night"]=="yes"}<link rel="stylesheet" href="/index/css/goods-orderlist.css" >{/if}
+<script type="text/javascript">
+window.onload=function(){
+//设置适配rem
+var change_rem = ((window.screen.width > 450) ? 450 : window.screen.width)/375*100;
+document.getElementsByTagName("html")[0].style.fontSize=change_rem+"px";
+window.onresize = function(){
+change_rem = ((window.screen.width > 450) ? 450 : window.screen.width)/375*100;
+document.getElementsByTagName("html")[0].style.fontSize=change_rem+"px";
+}
+}
+</script>
+<script type="text/javascript" src="__HOME__/js/lodash.min.js"></script>
+
+
+
+<style>
+
+    body{
+        background: #102030;
+    }
+
+    .wtall-nav2 {
+        background-color: #102030;
+    }
+
+    .nav-bar-block{
+        width: 100%;
+        height: 40px;
+        position: fixed;
+        top: 0;
+    }
+    .bar-header{
+    }
+    .bottom-nav ul li{
+        float: left;
+        text-align: center;
+        height: 0.5rem;
+        padding: 1% 0 0;
+    }
+    .bottom-nav ul li p{
+        height: 17px;
+        line-height: 17px!important;
+        margin-top: -8px!important;
+    }
+    .left-buttons, .left-buttons .back-button{
+        height: 40px!important;
+        line-height: 40px!important;
+    }
+    .left-buttons, .left-buttons .icon-caidan{
+        color: #000000;
+        font-size: 24px;
+    }
+    .nav-bar-container{
+        width: 100%;
+        height: 40px;
+        position: fixed;
+        top: 0;
+        left: 0;
+    }
+    .bar-header .close{
+        color: black!important;
+    }
+    .zuihoumianl{
+        border-bottom: none;
+    }
+    .wtall-nav2{
+        height: calc(100% - 40px);
+        overflow-y: scroll;
+    }
+    .cc_modals .prices-modals {
+        line-height: 12px;
+    }
+    .cc_modals-header span {
+        line-height: 12px;
+    }
+    .cc_modals .tc {text-align: left;}
+
+</style>
+
+<body ng-app="starter" ng-controller="AppCtrl" class="grade-a platform-browser platform-ios platform-ios9 platform-ios9_1 platform-ready">
+    <ion-nav-bar class="bar-stable headerbar nav-bar-container" nav-bar-transition="ios" nav-bar-direction="swap" nav-swipe="">
+        <div class="nav-bar-block" nav-bar="active">
+            <ion-header-bar class="bar-stable headerbar bar bar-header" align-title="center">
+                <a class="close" href="javascript:void(0)" onClick="javascript:history.back(-1);">
+                    <i class="icon ion-ios-arrow-left"></i>
+                </a>
+                <div class="clearfix tab-list between">
+                    <div>
+                        <span data-type="1">{$Think.lang.bi_dqcc}</span>
+                    </div>
+
+                </div>
+            </ion-header-bar>
+        </div>
+    </ion-nav-bar>
+    <!--隔离层div-->
+    <div class="header-space"></div>
+
+
+    <div class="wtall-nav2">
+        <div class="content">
+            <!--<div class="wtall-nav-top wl_flex wl_align_center wl_justify_between">
+                <div class="wtall-nav-top-l">
+                    <p>风险率：0.00%</p>
+                    <p style="padding-top: 5px">持仓总盈亏：<span class="green">0.0000</span></p>
+                </div>
+                <button type="button" class="bt_yjpc">一键平仓</button>
+            </div>-->
+            
+
+            <div class="wtall-nav-center">
+                {volist name="$hold" id="vo"}
+                <div class="wtall-box">
+                    <div class="zuihoumianls wl_flex wl_align_center wl_justify_between">
+                        <div class="yuuuus green" style="width: 70%"><span id="ostyle_{$vo.oid}" atrr_data="{$vo.ostyle}" {if $vo.ostyle eq 0} class="green" {else}  class="red"{/if}>{$vo.fangxiang}</span> <span style="color: #fff;font-size: 12px;">{$vo.ptitle} &nbsp; x{$vo.onumber}{$Think.lang.gb_le_s} </span></div>
+                        <div class="yuuuus red" style="font-size: 12px"  id="yingkui_{$vo.oid}" >{$vo.ploss}</div>
+                    </div>
+                    <div class="zuihoumianl wl_flex wl_align_center wl_justify_between">
+                        <div class="yuuuus" style="text-align: left"><span class="top">{$Think.lang.or_kcj}</span><br><span id="buyprice_{$vo.oid}">{$vo.buyprice}</span></div>
+                        <div class="yuuuus" style="text-align: center"><span class="top">{$Think.lang.or_zyj}</span><br><span  id="stopwin_price_{$vo.oid}">{$vo.stopwin_price}</span></div>
+                        <div class="yuuuus" style="text-align: right"><span class="top">{$Think.lang.or_dqj}</span><br><span  id="nowprice_{$vo.oid}">{$vo.nowprice}</span></div>
+                    </div>
+                    <div class="zuihoumianl wl_flex wl_align_center wl_justify_between">
+                        <div class="yuuuus" style="text-align: left"><span class="top">{$Think.lang.or_zsj}</span><br><span  id="stoploss_price_{$vo.oid}">{$vo.stoploss_price}</span></div>
+                        <div class="yuuuus" style="text-align: center"><span class="top">{$Think.lang.or_bzj}</span><br><span>{$vo.fee}</span></div>
+                        <div class="yuuuus" style="text-align: right"><span class="top">{$Think.lang.or_jyl}</span><br><span   id="chicang_{$vo.oid}">{$vo.chicang}</span></div>
+                    </div>
+                    <div class="zuihoumianl wl_flex wl_align_center wl_justify_between">
+                        <div class="yuuuus" style="text-align: left"><span class="top">{$Think.lang.or_sxf}</span><br><span>{$vo.sx_fee}</span></div>
+                        <div class="yuuuus" style="text-align: center"><span class="top">{$Think.lang.or_gg}</span><br><span  id="code_{$vo.oid}">{$vo.code}</span>x</div>
+                        <div class="yuuuus" style="text-align: right"><span class="top">{$Think.lang.or_kcsj}</span><br><span>{$vo.kctime}</span></div>
+                    
+                    </div>
+                    <div class="zuihoumianl caozuo wl_flex wl_align_center wl_justify_between">
+                        <div class="yuuuus" style="text-align: right;width: 100%">
+                            <button type="button" onClick="bt_xg({$vo.oid},{$vo.nowprice})">{$Think.lang.or_szzyzs}</button>
+                            <button type="button" onClick="bt_pc({$vo.oid})">{$Think.lang.le_pc}</button>
+                        </div>
+                    </div>
+                </div>
+                {/volist}
+            </div>
+
+        </div>
+    </div>
+
+<input type="hidden" value="{$daojishiid}" id="daojishiid"/>
+
+    <!--修改弹窗-->
+    <div class="xg-mark" style="display: none"></div>
+    <div id="cc_modals">
+        <from>
+            
+            <input type="hidden" id="oid" />
+            <div class="cc_modals">
+                <div class="cc_modals-header">
+                    <span>{$Think.lang.or_szzyzs}</span>
+                </div>
+                <div class="wl_flex wl_align_center wl_justify_between">
+                    <span class="prices-modals">{$Think.lang.or_zyj}</span>
+                    <p class="clearfix inputs" style="border:0px">
+                        <span class="reduce fl tc" onClick="jiajian(0) ">-</span>
+                        <input type="number" id="stopwin_price"  oninput="jisuanziying()" class="prices fl">
+                        <span class="add fr" onClick="jiajian(1)">+</span>
+                    </p>
+                </div>
+                <p class="yl tc">{$Think.lang.gs_yqsy}：<span style="color: rgb(88, 139, 247);" id="yuqi_win">0.00</span></p>
+                
+                
+                <div class="wl_flex wl_align_center wl_justify_between">
+                    <span class="prices-modals">{$Think.lang.or_zsj}</span>
+                    <p class="clearfix inputs" style="border:0px">
+                        <span class="reduce fl tc" onClick="jiajian2(0)">-</span>
+                        <input type="number"  id="stoploss_price"  oninput="jisuanzisun()" class="reduce-price fl">
+                        <span class="add fr" onClick="jiajian2(1)">+</span>
+                    </p>
+                </div>
+                <p class="ks tc">{$Think.lang.or_yqks}：<span style="color: rgb(88, 139, 247);"  id="yuqi_loss">0.00</span></p>
+                
+                
+                <div class="cc_modals-bottom wl_flex wl_justify_between">
+                    <input class="cc_tjbt" type="button"  onclick="tijiao()"  value="{$Think.lang.or_tj}" />
+                    <input class="cc_tjqx" type="button" value="{$Think.lang.or_qx}" onClick="bt_qx()" />
+                </div>
+            </div>
+        </from>
+    </div>
+</body>
+
+<script>
+ 
+
+    $('.show-content').on('click', function () {
+        $(this).next().toggleClass('show')
+    })
+
+
+    function bt_pc(id){
+
+        layer.confirm('{$Think.lang.le_qdypcm}', {
+            btn: ['{$Think.lang.bi_qd}','{$Think.lang.bi_qx}'] //按钮
+        }, function(){
+            $.ajax({
+                type:'POST',
+                url:'/index/api/free_order',
+                data:{id:id},
+                success: function(msg){
+                    var msg = eval("(" + msg + ")");
+                    if(msg.error){
+                        layer.msg(msg.error);
+                    }
+                    if(msg.success){
+                        layer.msg('{$Think.lang.le_pccg}', {icon: 1});
+
+                        setTimeout(function () {
+
+                            window.location.reload();
+
+                        }, 1000);
+
+                    }
+                }
+            })
+        }, function(){
+
+        });
+
+    }
+    
+    
+    function tijiao(){
+        var stopwin_price = $('#stopwin_price').val();
+        var stoploss_price = $('#stoploss_price').val();
+        var oid = $('#oid').val();
+        
+        var yuqi_loss = $('#yuqi_loss').html();
+        var yuqi_win = $('#yuqi_win').html();
+       
+        if(stopwin_price==''||stopwin_price<0){
+            layer.msg('{$Think.lang.or_qsrzyjg}');return;
+        }
+        
+        if(stoploss_price==''||stoploss_price<0){
+            layer.msg('{$Think.lang.or_qsrzsjg}');return;
+        }
+        
+        
+           
+    
+    
+            $.ajax({
+                url: '/index/order/dowin_loss',
+                type: 'post',
+                data: {oid:oid,stoploss_price:stoploss_price,stopwin_price:stopwin_price,yuqi_loss:yuqi_loss,yuqi_win:yuqi_win},
+                success: function(res){
+                    res =$.parseJSON(res);
+    
+                    if(res.error==1){
+                        layer.msg(res.msg);
+                    }else{
+    
+                        layer.msg("{$Think.lang.or_szcg}", {
+                            time: 1500,
+                            end: function(){
+                                window.location.href="/index/goods/orderlist";
+                            }
+                        });
+    
+                    }
+    
+                }
+            });
+        
+    }
+    
+    
+    
+   
+    
+    function bt_xg(oid,price) {
+        
+        var stoploss_price = $("#stoploss_price_"+oid).html();
+        var stopwin_price = $("#stopwin_price_"+oid).html();
+        
+        stoploss_price =  cutZero(stoploss_price);
+        stopwin_price =  cutZero(stopwin_price);
+        
+        if(stopwin_price>0){
+            $("#stopwin_price").val(stopwin_price);
+        }else{
+            $("#stopwin_price").val(price);
+        }
+        
+        if(stoploss_price>0){
+            $("#stoploss_price").val(stoploss_price);
+        }else{
+            $("#stoploss_price").val(price);
+        }
+        
+        
+        
+        $("#oid").val(oid);
+
+        $('.xg-mark').show();
+        $('#cc_modals').addClass('show')
+        $('#cc_modals').removeClass('hide')
+        
+        jisuanziying();
+        jisuanzisun()
+        
+        
+        
+
+    }
+    
+    function bt_qx() {
+        $('.xg-mark').hide();
+        $('#cc_modals').addClass('hide')
+        $('#cc_modals').removeClass('show')
+    }
+
+    //控制数量加减
+    function  jiajian(type) {
+        
+        var stopwin_price = $('#stopwin_price').val();
+        
+
+        if(stopwin_price==''||stopwin_price<0){
+            stopwin_price=0;
+        }
+        
+         if(type==0){
+            var newjiage = Subtr(stopwin_price,0.01);
+        }else{
+            var newjiage = accAdd(stopwin_price,0.01);
+        }
+        
+    
+        if(newjiage<=0){
+            newjiage = 0;
+            $('#stopwin_price').val(0);
+        }else{
+            $('#stopwin_price').val(newjiage);
+        }
+        
+        jisuanziying();
+        
+        
+        
+    
+    };
+    
+    function jisuanziying(){
+        var newjiage = $('#stopwin_price').val();
+        var oid = $('#oid').val();
+        var enter = $("#buyprice_"+oid).html();
+        var point =Subtr(newjiage,enter);
+        var code = $("#code_"+oid).html();
+        var chicang = $("#chicang_"+oid).html();
+        var chae = accMul(point,chicang);
+        var win_loss = accMul(chae,code);
+        var ostyle = $("#ostyle_"+oid).attr('atrr_data');
+       
+     
+        if(ostyle == 0){
+            if(win_loss>0){
+                $("#yuqi_win").html(win_loss);
+            }else{
+                $("#yuqi_win").html('0.00');
+            }
+        }else{
+            
+            if(win_loss>0){
+                $("#yuqi_win").html('0.00');
+                
+            }else{
+                $("#yuqi_win").html(-1*win_loss);
+            }
+        }
+    }
+    
+    
+    
+    function jisuanzisun(){
+        var newjiage = $('#stoploss_price').val();
+        var oid = $('#oid').val();
+        var enter = $("#buyprice_"+oid).html();
+        var point =Subtr(newjiage,enter);
+        var code = $("#code_"+oid).html();
+        var chicang = $("#chicang_"+oid).html();
+        var chae = accMul(point,chicang);
+        var win_loss = accMul(chae,code);
+        var ostyle = $("#ostyle_"+oid).attr('atrr_data');
+       
+     
+        if(ostyle == 0){
+            if(win_loss>0){
+                
+                $("#yuqi_loss").html('0.00');
+            }else{
+               
+                $("#yuqi_loss").html(win_loss);
+            }
+        }else{
+            
+            if(win_loss>0){
+               
+                $("#yuqi_loss").html('-'+win_loss);
+            }else{
+               
+                $("#yuqi_loss").html('0.00');
+            }
+        }
+    }
+    
+    
+    function  jiajian2(type) {
+        
+        var stoploss_price = $('#stoploss_price').val();
+
+        if(stoploss_price==''||stoploss_price<0){
+            stoploss_price=0;
+        }
+        
+         if(type==0){
+            var newjiage = Subtr(stoploss_price,0.01);
+        }else{
+            var newjiage = accAdd(stoploss_price,0.01);
+        }
+        
+    
+        if(newjiage<=0){
+            newjiage = 0;
+            $('#stoploss_price').val(0);
+        }else{
+            $('#stoploss_price').val(newjiage);
+        }
+        jisuanzisun()
+    };
+    
+   
+    
+    
+    //加法
+    function accAdd(arg1,arg2){
+        var r1,r2,m;
+        try{r1=arg1.toString().split(".")[1].length}catch(e){r1=0}
+        try{r2=arg2.toString().split(".")[1].length}catch(e){r2=0}
+        m=Math.pow(10,Math.max(r1,r2))
+        return (arg1*m+arg2*m)/m
+    }
+    //减法
+    function Subtr(arg1,arg2){
+        var r1,r2,m,n;
+        try{r1=arg1.toString().split(".")[1].length}catch(e){r1=0}
+        try{r2=arg2.toString().split(".")[1].length}catch(e){r2=0}
+        m=Math.pow(10,Math.max(r1,r2));
+        n=(r1>=r2)?r1:r2;
+        return ((arg1*m-arg2*m)/m).toFixed(n);
+    }
+    
+    //乘法 
+     function accMul(arg1,arg2) 
+     { 
+         var m=0,s1=arg1.toString(),s2=arg2.toString(); 
+         try{m+=s1.split(".")[1].length}catch(e){} 
+         try{m+=s2.split(".")[1].length}catch(e){} 
+         return Number(s1.replace(".",""))*Number(s2.replace(".",""))/Math.pow(10,m) 
+     }
+
+    function cutZero(old){
+        //拷贝一份 返回去掉零的新串
+        newstr=old;
+        //循环变量 小数部分长度
+        var leng = old.length-old.indexOf(".")-1
+        //判断是否有效数
+        if(old.indexOf(".")>-1){
+            //循环小数部分
+            for(i=leng;i>0;i--){
+                //如果newstr末尾有0
+                if(newstr.lastIndexOf("0")>-1 && newstr.substr(newstr.length-1,1)==0){
+                    var k = newstr.lastIndexOf("0");
+                    //如果小数点后只有一个0 去掉小数点
+                    if(newstr.charAt(k-1)=="."){
+                        return  newstr.substring(0,k-1);
+                    }else{
+                        //否则 去掉一个0
+                        newstr=newstr.substring(0,k);
+                    }
+                }else{
+                    //如果末尾没有0
+                    return newstr;
+                }
+            }
+        }
+        return old;
+    }
+    
+    
+window.onload=function(){
+
+	daojishi()
+}
+    
+    
+function daojishi(){
+	var daojishiid = $("#daojishiid").val();
+	$.ajax({
+		type: 'post',
+		url: "/index/goods/daojishi",
+		data:{
+			daojishiid:daojishiid,	
+		},
+		success: function (msg) {
+			if(msg){
+				msg = eval("("+msg+")");
+				$.each(msg,function(key,val){
+				  
+                        $("#nowprice_"+val['oid']+"").html(val['sellprice']);
+                        $("#yingkui_"+val['oid']+"").html(val['ploss']);
+                       
+                    
+
+
+				});
+			
+			}
+		}
+	});
+	setTimeout("daojishi()",1000);	
+}
+
+
+
+</script>
+</html>

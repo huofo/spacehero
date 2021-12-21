@@ -1,0 +1,211 @@
+<html style="font-size: 120px;">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+    <!-- 是否启用全屏模式 -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <!-- 全屏时状态颜色设置 -->
+    <meta name="apple-mobile-web-status-bar-style" content="white">
+    <!-- 禁用电话号码自动识别 -->
+    <meta name="format-detection" content="telephone=no">
+    <!--禁止读取本地缓存模板-->
+    <meta http-equiv="Pragma" contect="no-cache">
+    <script type="text/javascript">
+
+        var fbjy_lksr='{$Think.lang.fbjy_lksr}';
+        var fbjy_srcg='{$Think.lang.fbjy_srcg}';
+
+        window.onload=function(){
+//设置适配rem
+            var change_rem = ((window.screen.width > 450) ? 450 : window.screen.width)/375*100;
+            document.getElementsByTagName("html")[0].style.fontSize=change_rem+"px";
+            window.onresize = function(){
+                change_rem = ((window.screen.width > 450) ? 450 : window.screen.width)/375*100;
+                document.getElementsByTagName("html")[0].style.fontSize=change_rem+"px";
+            }
+
+        }
+    </script>
+    <title>{$Think.lang.fbjy_fbzhsr}</title>
+    <link href="/index/css/index_for.css" rel="stylesheet" type="text/css">
+    <link href="__HOME__/layui/css/layui.css" rel="stylesheet" type="text/css">
+    <!--<link href="__HOME__/css/pay1.css" rel="stylesheet" media="screen">-->
+    <script type="text/javascript" src="__HOME__/js/jquery-3.2.1.min.js"></script>
+    <script type="text/javascript" src="__HOME__/js/lk/user.js"></script>
+    <link rel="stylesheet" href="/index/iconfont/iconfont.css">
+    <!--        夜间白天切换的文件-->
+    {if $_SESSION["night"]=="yes"}<link rel="stylesheet" href="/index/css/assets-huazhuan.css" >{/if}
+    <script type="text/javascript" src="/index/iconfont/iconfont.js"></script>
+
+    <style>
+        body{background: #102030;}
+        .bar-stable{width: 100%; height: 40px; position: fixed;top: 0;left: 0;z-index: 3;background: #102030;}
+        .bottom-nav ul li{float: left;text-align: center;height: 0.5rem;padding: 1% 0 0;}
+        .headerbar .header-item{color: #fff; background-color: #102030;}
+        .bar-header .close{color: #fff;}
+        .bar-header .bar-header-right{height:40px; position: absolute;right: 10px;top: 0;color: #999999; font-size: 30px}
+        input.layui-input.layui-unselect {
+            color: #fff;
+            background-color: #102030;
+        }
+        #hz-from .hz-num .hz-row em {line-height: 40px;}
+    </style>
+</head>
+
+<body>
+<ion-nav-bar class="bar-stable headerbar nav-bar-container" nav-bar-transition="ios" nav-bar-direction="swap" nav-swipe="">
+    <div class="nav-bar-block" nav-bar="active">
+        <ion-header-bar class="bar-stable headerbar bar bar-header" align-title="center">
+            <div class="title title-center header-item" style="transition-duration: 0ms; transform: translate3d(0px, 0px, 0px);">{$Think.lang.fbjy_fbzhsr}</div>
+            <a class="close" href="javascript:void(0)" onclick="javascript:history.back(-1);">
+                <i class="iconfont icon-back_icon"></i>
+            </a>
+
+        </ion-header-bar>
+    </div>
+</ion-nav-bar>
+
+<div style="width: 100%;height: 40px"></div>
+
+<form id="hz-from" class="layui-form" action="">
+    <div class="huazhuan">
+        <div class="huazhuan-nav">
+            <div class="huazhuan-nav-box wl_flex wl_flex1 wl_align_center">
+                <div class="huanzhuan-bj wl_flex wl_align_center wl_column" style="box-sizing: border-box;font-size: 12px">
+                    <em class="bgBlue"><span></span></em>
+                    <div class="huanzhuan-shu"></div>
+                    <em class="bgred"><span></span></em>
+                </div>
+                <div class="huanzhuan-nav-r wl_flex1">
+                    <div class="huanzhuan-nav-r-box wl_flex wl_align_center border-bottom">
+                        <div class="huanzhuan-nav-r-box-l" style="width: 8%;">{$Think.lang.hz_c}</div>
+                        <div class="huanzhuan-nav-r-box-r">
+                            <div class="layui-form-item">
+                                <div class="layui-input-block" style=" background-color: inherit; " >
+                                    <select name="interest" lay-filter="aihao1" id="from_account" >
+
+                                        <option value="USDT">USDT</option>
+                                        <option value="AGC" >AGC</option>
+
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="huanzhuan-nav-r-box wl_flex wl_align_center">
+                        <div class="huanzhuan-nav-r-box-l" style="width: 8%;">{$Think.lang.hz_z}</div>
+                        <div class="huanzhuan-nav-r-box-r">
+                            <div class="layui-form-item">
+                                <div class="layui-input-block">
+                                    <select name="outto" lay-filter="aihao2"  id="to_account" >
+
+                                        <option value="AGC">AGC</option>
+                                        <option value="USDT" >USDT</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="hz-num">
+        <div class="hz-title">{$Think.lang.fbjy_srsl}</div>
+        <div class="hz-row">
+
+            <input type="text" placeholder="{$Think.lang.fbjy_srsl}" style="color:#ffffff"  class="ft14 huazhuan-num">
+            <span class="all"  onclick="quanbu();">{$Think.lang.ti_qb}</span>
+        </div>
+        <div class="hz-balance">
+            <span>{$Think.lang.bi_ky}</span> <span id="keyong" attrdata = "{$account.sl}">{$account.sl}</span>
+        </div>
+    </div>
+    <div class="hz-submit">
+        <input type="button"  id="tijiao" value="{$Think.lang.fbjy_lksr}" />
+    </div>
+</form>
+
+
+<script type="text/javascript" src="__HOME__/layui/layui.js"></script>
+<script>
+
+
+    layui.use(['form', 'layedit', 'laydate'], function(){
+        var form = layui.form
+            ,layer = layui.layer;
+
+
+        //表单取值
+        form.on('select(aihao1)', function (e) {
+
+            $.ajax({
+                type:'POST',
+                url:'/index/assets/sdgetmoney',
+                data:{name:e.value},
+                success: function(msg){
+                    var msg = eval("(" + msg + ")");
+                    $('#keyong').html(msg.money);
+                    $('.huazhuan-num').val('');
+                }
+            })
+
+        })
+        form.on('select(aihao2)', function (e) {
+            console.log(e.value)
+        })
+
+
+    });
+
+    function quanbu(){
+        var price = $('#keyong').html();
+        $('.huazhuan-num').val(price);
+
+
+    }
+
+
+    $("#tijiao").click(function(){
+        var num =  $(".huazhuan-num").val();
+        var from_account = $("#from_account").val();
+
+        var to_account = $("#to_account").val();
+
+        if(num==''||num<=0){
+            layer.msg(fbjy_lksr);return;
+        }
+
+        $.ajax({
+            url: '/index/assets/doshandui',
+            type: 'post',
+            data: {num:num,from_account:from_account,to_account:to_account},
+            success: function(res){
+                res =$.parseJSON(res);
+
+                if(res.error==1){
+                    layer.msg(res.msg);
+                }else{
+
+                    layer.msg(fbjy_srcg, {
+                        time: 1500,
+                        end: function(){
+                            window.location.href="/index/assets/bibi";
+                        }
+                    });
+
+                }
+
+            }
+        });
+
+
+
+
+    });
+
+
+</script>
+</body>
+</html>

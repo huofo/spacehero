@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+{include file="nodejs" /}
+<script>
+	var wap_qsz_bxl='{$Think.lang.wap_qsz_bxl}';
+	var wap_qsz_lbt='{$Think.lang.wap_qsz_lbt}';
+	var jm_qsrndmm='{$Think.lang.jm_qsrndmm}';
+	var ai_qzcsrmm='{$Think.lang.ai_qzcsrmm}';
+	var wap_wa_jmm='{$Think.lang.wap_wa_jmm}';
+</script>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<!-- <meta name="viewport" content="width=device-width, initial-scale=1.0,maximum-scale=1"> 下行代码解决导航栏没锁死会动问题-->
+		<meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+		<title>B.King</title>
+		<link rel="stylesheet" href="/mcss/setup.css" />
+		<link rel="stylesheet" href="/application/wap/view/setup/font_iqznw9a7es9/iconfont.css" />
+		<!--        夜间白天切换的文件-->
+		{if $_SESSION["night"]=="yes"}<link rel="stylesheet" href="/index/css/wap_css/setup-xgmm.css" >{/if}
+	</head>
+	<body>
+	<style>
+		.xh_flex{
+		display:-webkit-box;/*Chrome4+,Safari3.1,iOSSafari3.2+*/
+		display:-moz-box;/*Firefox17-*/
+		display:-webkit-flex;/*Chrome21+,Safari6.1+,iOSSafari7+,Opera15/16*/
+		display:-moz-flex;/*Firefox18+*/
+		display:-ms-flexbox;/*IE10*/
+		display:flex;
+		/*//这个必须有用来创建盒子*/
+	}
+	.xh_align_center{
+		-webkit-box-align: center;
+		-webkit-align-items: center;
+		align-items: center;
+	}
+	.xh_align-items-start{
+		-ms-flex-align: start;
+		align-items: flex-start;
+	}
+	.xh_justify_between{
+		-webkit-justify-content: space-between;
+		-moz-justify-content: space-between;
+		-ms-justify-content: space-between;
+		-webkit-box-pack: justify;
+		justify-content: space-between;
+		/*//左右分布排列*/
+	}
+		.jiohjhs{width: 220px;height: 40px;border-radius: 5px}
+		.jiohjhs input{width: 100%;height: 40px;border-radius: 5px;outline: none;border: 1px solid #cad7e0;padding-left: 10px}
+		.gjkghgs{width: 115px;height: 40px;margin-left: 35px}
+		.gjkghgs span{width: 100%;height: 40px;display: block;line-height: 40px;text-align: center;border-radius: 5px;background: #00c087;color: white;font-size: 13px}
+	</style>
+		<div class="xgm-whole">
+			<div class="xgm-top">
+				<p>{$Think.lang.xgmm_xgmm}</p>
+			</div>
+			<div class="xgm-two">
+				<p>{$Think.lang.wap_dl_zh}</p>
+				<input readonly="readonly" value="{$user.utel}" />
+			</div>
+			<!--<div class="xgm-two">
+				<p>{$Think.lang.wap_wa_jmm}</p>
+				<input id="password" type="password" />
+			</div>-->
+			<div class="xgm-two">
+				<p>{$Think.lang.wap_dl_qmima}</p>
+				<input id="password" type="password" />
+			</div>
+			<div class="xgm-two">
+				<p>{$Think.lang.rt_qzcqrmm}</p>
+				<input id="password2" type="password" />
+			</div>
+			<div class="xh_flex xh_align_center" style="width: 540px;height: 40px;margin-top: 20px">
+				<div class="jiohjhs"><input type="text" name="phonecode" id="phonecode" placeholder="{$Think.lang.ri_qsyzm}"></div>
+				<div class="gjkghgs"><span class="code_btn_dl"  onclick ="return get_svgdl();">{$Think.lang.ri_hqyzm}</span></div>
+			</div>
+			<div class="xgm-butt">
+				<a href="javascript:void (0)" onclick="checkform_xgdlmm()">{$Think.lang.wap_wa_qrs}</a>
+			</div>
+		</div>
+		<script src="/index/js/jquery-2.1.4.min.js"></script>
+
+		<script src="/static/layer/layer.js"></script>
+		<script>
+			// $(".xgm-butt>a").click(function(){
+			// 	var ve=$(".xgm-two>input").eq(1).val();
+			// 	var ve2=$(".xgm-two>input").eq(2).val();
+			// 	var ve3=$(".xgm-two>input").eq(3).val();
+			// 	var lng=ve2.length;
+			// 	if(!ve){alert(wap_wa_jmm);return;}
+			// 	if(!ve2){alert(jm_qsrndmm);return;}
+			// 	if(!ve3){alert(ai_qzcsrmm);return;}
+			// 	if(ve2!=ve3){alert(wap_qsz_lbt);return;}
+			// 	if(lng<6){alert(wap_qsz_bxl);return;}
+			// })
+			//
+			function get_svgdl() {
+				var url = "/index/login/sendmsm_suiji";
+				$.get(url,function(resdata){
+					layer.msg(resdata.data);
+					if(resdata.type == 1){
+						$(".code_btn_dl").attr('onclick',"return false;");
+						listion_bangdl();
+					}
+				})
+				return false;
+			}
+			function listion_bangdl(){
+
+				var time= 61;
+				setTime=setInterval(function(){
+					if(time<=1){
+						clearInterval(setTime);
+						$(".code_btn_dl").html("{$Think.lang.rj_zfyc}");
+						$(".code_btn_dl").attr('onclick',"return get_svgdl();");
+						return;
+					}
+					time--;
+					$(".code_btn_dl").html(time+"s");
+
+				},1000);
+			}
+			function checkform_xgdlmm(){
+
+				// var phonecode = form.phonecode.value;
+				// var upwd = form.upwd.value;
+				// var upwd2 = form.upwd2.value;
+
+				var upwd=$("#password").val();
+				var upwd2=$("#password2").val();
+				var phonecode = $('#phonecode').val();
+
+				if(!upwd){
+					layer.msg('{$Think.lang.rt_qsrdlmm2}');
+					return false;
+				}
+
+				if (!upwd2) {
+					layer.msg('{$Think.lang.rt_qzcqrmm}');
+					return false;
+				}
+				if (!phonecode) {
+					layer.msg('{$Think.lang.rt_qsryzm}');
+					return false;
+				}
+
+
+				if(upwd.length < 6 || upwd2.length < 6){
+					layer.msg('{$Think.lang.rj_mmcddylw}');
+					return false;
+				}
+
+
+				var postdata = 'upwd='+upwd+"&upwd2="+upwd2+"&phonecode="+phonecode;
+
+				var posturl = "/index/user/xgdlmm";
+				$.post(posturl,postdata,function(resdata){
+					layer.msg(resdata.data);
+
+					if(resdata.type == 1){
+						setTimeout('gourl()',1000);
+					}
+
+				})
+
+
+
+			}
+			function gourl() {
+
+				history.go(-1);
+			}
+
+		</script>
+	</body>
+</html>

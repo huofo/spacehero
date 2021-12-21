@@ -1,0 +1,482 @@
+{include file="head" /}
+<link href="/index/css/index_for.css" rel="stylesheet" type="text/css">
+<link href="__HOME__/layui/css/layui.css" rel="stylesheet">
+<script src="__HOME__/layui/layui.js"></script>
+
+
+<script type="text/javascript">
+    var order_type = 0;
+    var order_pid = {$pro.pid};
+    var newprice = {$pro.Price};  //实时价格
+    var rawData_data = [];
+    var my_money = {$userinfo.usermoney?$userinfo.usermoney:'0'};
+</script>
+
+<style>
+    body{
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+        overflow-y: scroll;
+        background: #FFFFFF;
+    }
+    
+    .activess{
+            border-color: #00c087!important;
+    }
+    
+    .bar-header{
+        border-bottom: 1px solid #f1f1f1!important;
+    }
+    .bottom-nav ul li{
+        float: left;
+        text-align: center;
+        height: 0.5rem;
+        padding: 1% 0 0;
+    }
+    .bottom-nav ul li p{
+        height: 17px;
+        line-height: 17px!important;
+        margin-top: 0px!important;
+    }
+    .left-buttons, .left-buttons .back-button{
+        height: 40px!important;
+        line-height: 40px!important;
+    }
+    .left-buttons, .left-buttons .icon-caidan{
+        color: #000000;
+        font-size: 24px;
+    }
+
+    #container{ background: #ffffff;}
+
+</style>
+
+<body ng-app="starter" ng-controller="AppCtrl" class="grade-a platform-browser platform-ios platform-ios9 platform-ios9_1 platform-ready">
+
+<ion-nav-bar style="height:40px; display:block" class="bar-stable headerbar nav-bar-container" nav-bar-transition="ios" nav-bar-direction="exit" nav-swipe="">
+    <!--头部-->
+    <div class="nav-bar-block" nav-bar="active">
+        <ion-header-bar class="bar-stable headerbar bar bar-header" align-title="center">
+            <div class="buttons buttons-left" style="transition-duration: 0ms;">
+                <span class="left-buttons">
+                    <a href="javascript:(0);" class="back-button" btn="show-left" style="transition-duration: 0ms;">
+                        <i class="iconfont icon-caidan"></i>
+                    </a>
+                </span>
+            </div>
+            <p>{$pro.Name}</p>
+<!--            右边logo-->
+            <div class="youlogo"style="position: absolute;margin-left: 90%;margin-top: 2.4%;">
+                <a href="{:url('goods/goods_heyue',array('pid'=>$pro.pid,'token'=>$token,'fangxiang'=>'0'))}"><img src="/index/images/Kxian.png"style="width: 25px;height: 25px"></a>
+                </div>
+        </ion-header-bar>
+    </div>
+</ion-nav-bar>
+
+    <div id="place">
+        <div id="data" class="bgColor pb10" style="margin-bottom: 55px ;margin-top: 0px;">
+
+            <div class="shuju">
+                <div class="shuju1">
+                    <span class="now" >{$pro.Price}</span>
+                    <div class="shuju1s" {if $pro.chajia>0}style="color:green"{else} style="color:red"{/if}><em id="chajia" >{$pro.chajia}</em>&nbsp;&nbsp;<em  id="zhangfu">{$pro.zhangfu}</em>%</div>
+                </div>
+                <div class="youhezi">
+                    <div class="youhezi-zuo">
+                        <li style="font-size: 14px;line-height: 20px;">最高价<span class="highest"style="color: #1d1d25">{$pro.High}</span></li>
+                        <li style="font-size: 14px;line-height: 20px;">最低价<span  class="lowest"style="color: #1d1d25">{$pro.Low}</span></li>
+                    </div>
+                </div>
+
+
+                <div class="clear"></div>
+            </div>
+            <footer style="height: 250px">
+                    <div id="container">
+                        <div id="ecKx"  style="height: 250px"></div>
+                    </div>
+
+
+                </footer>
+            <!--左边-->
+            <div class="pull-left active" style="height: auto;">
+                <div class="deal switch-col">
+                    <h4>闪电交易<span style="font-size: 12px;margin: 0 3px">(市价)</span></h4>
+                </div>
+               
+                <div class="control">
+                    <div class="huang" style="width: 12%">杠杆</div>
+                    <div class="multiple_sel bgColor multiples gg colorGrey" style="width: 85%;display: inline-block">
+                        {volist name="$code" id="vo"  key="k"}
+                        <span class="code {if $k==1}actives{/if}" onClick="beishu({$vo})"  data-sen="{$vo}">{$vo}X</span>
+                        {/volist}
+                    </div>
+
+                </div>
+
+
+
+
+                <div class="LimitedPrice ft12">
+                    <div class="num mt10 move-share wl_flex">
+                        <p class="colorGrey" style="width: 12%">
+                            <b>数量</b>
+                        </p>
+                        <div class="wl_flex wl_align_center wl_justify_between xx_zui" style="border: 0.3px solid #696969">
+                            <button class="minus" onClick="jiajian(-1)">-</button>
+                            <input type="number" id="num" class="num" oninput="bzj()" value="100" style="text-align: center"/>
+                            <button class="plus"  onclick="jiajian(1)">+</button>
+                        </div>
+                    </div>
+                </div>
+
+
+
+
+
+                <div class="xin">=<span id="pronum">{$pronum}</span>&nbsp;{$procode}(<span id="proprice">{$proprice}</span>&nbsp;USDT)</div>
+
+                <div class="sigehezi">
+                    <div class="konghezi" style="width: 12%;display: inline-block";></div>
+                    <div style="width: 85%;display: inline-block;border: #696969" class="wl_flex wl_align_center wl_justify_between xx_box">
+                        <div style="margin: 0 5%;width: 23%"></div>
+                        <buttom class="di yi" onclick="zhang(100)"  data-sen="100">100张</buttom>
+                        <buttom class="di er" onclick="zhang(500)" data-sen="500">500张</buttom>
+                        <buttom class="di san"  onclick="zhang(1000)" data-sen="1000">1000张</buttom>
+                        <buttom class="di si" onclick="zhang(2000)" data-sen="2000">2000张</buttom>
+                    </div>
+                </div>
+
+
+                <div class="control" style="display:none" >
+                    <div class="huang" style="width: 12%">止盈</div>
+                    <div class="multiple_sel bgColor multiples colorGrey" style="width:85% ;display: inline-block; ">
+                        <span class="never-wins actives"  data-sen="100">100%</span>
+                        <span class="never-wins" data-sen="60">60%</span>
+                        <span  class="never-wins"  data-sen="20">20%</span>
+                        <input style="border: 1px solid #f1f1f1;display: inline-block;width: 21%;height: 28px!important;line-height: 28px;padding-top: 0px;text-align: center; " type="number" id="ng-wins" placeholder="其他">
+                    </div>
+                </div>
+                <div class="control" style="display:none">
+                    <div class="huang" style="width: 12%">止损</div>
+                    <div class="multiple_sel bgColor multiples colorGrey" style="width:85% ;display: inline-block; ">
+                        <span  class="never-losss actives"  data-sen="100">100%</span>
+                        <span class="never-losss"  data-sen="60">60%</span>
+                        <span class="never-losss"  data-sen="20">20%</span>
+                        <input style="border: 1px solid #f1f1f1;display: inline-block;width: 21%;height: 28px!important;line-height: 28px;padding-top: 0px;text-align: center; " type="number" id="ng_losss"  placeholder="其他">
+                    </div>
+
+                </div>
+
+
+                <div class="lever-total ft12">
+                    <p class="clearfix mt5">
+                        <span class="fl colorGrey">可用余额&nbsp;&nbsp; &nbsp;  {$userinfo.usermoney?$userinfo.usermoney:'0'}&nbsp;USDT</span>
+
+                    </p>
+                    <p class="use_legal_num mt5 colorGrey">
+                        <span class="fl colorGrey">占用保证金</span>
+                        <span class="bond fr colorGrey">&nbsp;<span  id="bzj">{$bzj}</span>&nbsp;USDT</span>
+
+                    </p>
+                </div>
+
+
+                <div class="transactionAmount mb10" >
+
+                    <button class="buy_sell" id="bt_zd"   onClick="addordersheyue(0)" >
+                        <span>买涨<span  id="spread_zhang">{$spread_zhang}</span></span>
+                        <span class="legal_title"></span>
+                    </button>
+                    <button class="buy_sell" id="bt_zk"  onClick="addordersheyue(1)" >
+                        <span >买跌<span id="spread_die">{$spread_die}</span></span>
+                        <span class="legal_title"></span>
+                    </button>
+
+                    <div class="dingdan">
+                        <a href="{:url('/index/order/hold/token/'.$token)}"><svg t="1626165528132" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="2485" width="30" height="20"><path d="M759.621818 170.589091h-104.261818V143.592727a26.065455 26.065455 0 1 0-52.130909 0v26.996364h-182.458182V143.592727a26.065455 26.065455 0 1 0-52.130909 0v26.996364h-104.261818A79.825455 79.825455 0 0 0 186.181818 252.043636V849.454545a79.825455 79.825455 0 0 0 78.196364 81.454546h495.243636A79.825455 79.825455 0 0 0 837.818182 849.454545V252.043636a79.825455 79.825455 0 0 0-78.196364-81.454545z m26.065455 678.865454a26.763636 26.763636 0 0 1-26.065455 27.229091H264.378182a26.763636 26.763636 0 0 1-26.065455-27.229091V252.043636a26.530909 26.530909 0 0 1 26.065455-26.996363h104.261818v26.996363a26.065455 26.065455 0 1 0 52.130909 0V225.047273h182.458182v26.996363a26.065455 26.065455 0 1 0 52.130909 0V225.047273h104.261818a26.530909 26.530909 0 0 1 26.065455 26.996363zM707.490909 401.454545H316.509091a27.229091 27.229091 0 0 0 0 54.225455h390.981818a27.229091 27.229091 0 0 0 0-54.225455z m0 135.68H316.509091a27.229091 27.229091 0 0 0 0 54.458182h390.981818a27.229091 27.229091 0 0 0 0-54.458182z m0 135.912728H316.509091a27.229091 27.229091 0 0 0 0 54.225454h390.981818a27.229091 27.229091 0 0 0 0-54.225454z" p-id="2486" fill="#707070"></path></svg><span>订单</span>
+                        </a>
+                    </div>
+
+
+                </div>
+                <div class="kongheziX"></div>
+
+
+            </div>
+        </div>
+    </div>
+
+
+    <script>
+        function bzj() {
+            var num = $('#num').val();
+            if(num==''){
+                num=0;
+            }
+            var code = $('.gg .actives').attr('data-sen');
+
+            $.ajax({
+                type:'POST',
+                url:'/index/Goods/bzj',
+                data:{pid:{$pro.pid},number:num,code:code},
+                success: function(msg){
+                    var msg = eval("(" + msg + ")");
+
+
+                    $('#bzj').html(msg.bzj);
+                    $('#pronum').html(msg.pronum);
+                    $('#proprice').html(msg.proprice);
+
+
+                }
+            })
+
+        }
+        function zhang(num) {
+            $('#num').val(num);
+            var code = $('.gg .actives').attr('data-sen');
+
+            $.ajax({
+                type:'POST',
+                url:'/index/Goods/bzj',
+                data:{pid:{$pro.pid},number:num,code:code},
+                success: function(msg){
+                    var msg = eval("(" + msg + ")");
+
+
+                    $('#bzj').html(msg.bzj);
+                    $('#pronum').html(msg.pronum);
+                    $('#proprice').html(msg.proprice);
+
+
+                }
+            })
+
+
+        }
+
+        function beishu(code) {
+            var num = $('#num').val();
+
+            if(num==''){
+                num=0;
+            }
+
+            $.ajax({
+                type:'POST',
+                url:'/index/Goods/bzj',
+                data:{pid:{$pro.pid},number:num,code:code},
+                success: function(msg){
+                    var msg = eval("(" + msg + ")");
+
+                    $('#bzj').html(msg.bzj);
+                    $('#pronum').html(msg.pronum);
+                    $('#proprice').html(msg.proprice);
+
+                }
+            })
+
+
+        }
+
+        function jiajian(cha) {
+            var num = $('#num').val();
+            if(num==''){
+                num=0;
+            }
+            var shuliang = parseInt(num)+parseInt(cha);
+            if(shuliang<=0){
+                shuliang = 0;
+                $('#num').val(0);
+            }else{
+                $('#num').val(shuliang);
+            }
+            var code = $('.gg .actives').attr('data-sen');
+            $.ajax({
+                type:'POST',
+                url:'/index/Goods/bzj',
+                data:{pid:{$pro.pid},number:shuliang,code:code},
+                success: function(msg){
+                    var msg = eval("(" + msg + ")");
+                    $('#bzj').html(msg.bzj);
+                    $('#pronum').html(msg.pronum);
+                    $('#proprice').html(msg.proprice);
+                }
+            })
+
+
+        }
+
+    </script>
+
+
+
+    <!--左侧弹出菜单-->
+    <div id="left-hidden-box" class="left-hidden-box" style="display: none;">
+        <div class="nav-box">
+            <div class="nav-box-header">
+                合约
+            </div>
+            <div class="nav-box-tabs">
+                <div class="currency_name">
+                    <ul class="ul">
+
+                        {volist name="$allpro" id="vo"}
+                        <li class="legal_name flex between" onClick="parent.location='{:url('goods/heyuegoods',array('pid'=>$vo['pid'],'token'=>$token))}';">
+                            <strong><span>{$vo.ptitle}</span></strong>
+                            <p class="gre"><span>{$vo.Price}</span></p>
+                        </li>
+                        {/volist}
+
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="__HOME__/js/lk/chardata.js"></script>
+    <script src="__HOME__/js/echarts.js"></script>
+    <script src="__HOME__/js/ms.js"></script>
+
+
+    <script>
+        //左侧菜单开启
+        (function(){
+            var Pdiv = document.querySelector('#left-hidden-box');
+            var Sdiv = Pdiv.querySelector('.nav-box');
+            var btn = document.querySelector('[btn="show-left"]');
+
+            Pdiv.addEventListener('click', function(){
+                hiddenBox();
+            });
+            Sdiv.addEventListener('click', function(){
+                window.event ? window.event.cancelBubble = true : e.stopPropagation();
+            });
+            btn.addEventListener('click', function(){
+                showBox();
+            });
+
+            function showBox(){
+                Pdiv.style.display = 'block';
+                setTimeout(function(){
+                    Sdiv.style.transition ='0.5s';
+                    Sdiv.style.transform = 'translateX(0%)';
+                }, 0);
+            }
+            function hiddenBox(){
+                Pdiv.style.display = 'none';
+                Sdiv.style.transition ='0s';
+                Sdiv.style.transform = 'translateX(-100%)';
+            }
+        })();
+        //左侧菜单关闭
+        (function(){
+            var Pdiv = document.querySelector('#left-hidden-box');
+            var Sdiv = Pdiv.querySelector('.nav-box');
+            var btn = document.querySelector('[btn="off-left"]');
+
+            Pdiv.addEventListener('click', function(){
+                hiddenBox();
+            });
+            Sdiv.addEventListener('click', function(){
+                window.event ? window.event.cancelBubble = true : e.stopPropagation();
+            });
+            // btn.addEventListener('click', function(){
+            //     showBox();
+            // });
+
+            function showBox(){
+                setTimeout(function(){
+                    Sdiv.style.transition ='0.5s';
+                    Sdiv.style.transform = 'translateX(-100%)';
+                }, 0);
+                Pdiv.style.display = 'none';
+            }
+            function hiddenBox(){
+                Pdiv.style.display = 'blck';
+                Sdiv.style.transition ='0s';
+                Sdiv.style.transform = 'translateX(0%)';
+            }
+        })();
+
+        //写在这即可
+
+        $('.switch-col a').on('click', function () {
+            $('.switch-col .col').removeClass('col')
+            $(this).addClass('col')
+            if($(this).data('index') == 1){
+                $('#data').removeClass('col2');
+                $('#bt_zd').css('display','block');
+                $('#bt_zk').css('display','none');
+
+            }else {
+                $('#data').addClass('col2')
+                $('#bt_zd').css('display','none');
+                $('#bt_zk').css('display','block');
+            }
+        })
+
+        $('.control').on('click', function (e) {
+            // console.log(e.target.nodeName)
+            // console.log($(this).find('.actives'))
+            if(e.target.nodeName == 'SPAN' ){
+                $(this).find('.actives').removeClass('actives')
+                $(this).find('.activess').removeClass('activess')
+                $(e.target).addClass('actives')
+            }else if( e.target.nodeName == 'INPUT'){
+                $(this).find('.actives').removeClass('actives')
+                $(this).find('.activess').removeClass('activess')
+                $(e.target).addClass('activess')
+            }
+
+
+        })
+
+
+
+
+
+        layui.use('layer', function(){
+            var layer = layui.layer;
+
+        });
+
+       // setInterval("ajaxpros()",2000);
+        function ajaxpros(){
+             var geturl = "/index/Goods/heyuegoodsajax/pid/"+{$pro.pid};
+             var type = '';
+            $.get(geturl,function(data){
+                if (data) {
+                    data = jQuery.parseJSON(Base64.decode(data));
+
+
+                    $('#goodsprice').html(data.price);
+                    $('#goodsrmbprice').html(data.goodsrmbprice);
+                    $.each(data.jia,function(k,v){
+                        $('#jia'+k+' .jiage').html(v.jiage);
+
+                        $('#jia'+k+' .shuliang').html(v.shuliang);
+
+                    });
+
+                    $.each(data.jian,function(k,v){
+
+
+                        $('#jian'+k+' .jiage').html(v.jiage);
+
+                        $('#jian'+k+' .shuliang').html(v.shuliang);
+
+
+                    });
+                }
+
+            });
+        }
+
+    </script>
+
+{include file="foot" /}
+</body>
+</html>

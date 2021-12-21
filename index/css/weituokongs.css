@@ -1,0 +1,53 @@
+.xh_flex{
+    display:-webkit-box;/*Chrome4+,Safari3.1,iOSSafari3.2+*/
+    display:-moz-box;/*Firefox17-*/
+    display:-webkit-flex;/*Chrome21+,Safari6.1+,iOSSafari7+,Opera15/16*/
+    display:-moz-flex;/*Firefox18+*/
+    display:-ms-flexbox;/*IE10*/
+    display:flex;
+    /*//这个必须有用来创建盒子*/
+}
+.xh_align_center{
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+    align-items: center;
+}
+.xh_align-items-start{
+    -ms-flex-align: start;
+    align-items: flex-start;
+}
+.xh_justify_between{
+    -webkit-justify-content: space-between;
+    -moz-justify-content: space-between;
+    -ms-justify-content: space-between;
+    -webkit-box-pack: justify;
+    justify-content: space-between;
+    /*//左右分布排列*/
+}
+.xh_justify-content{
+    -webkit-justify-content: space-around;
+    justify-content: space-around;
+}
+.xh_justify-content-start{
+    -ms-flex-pack: start;
+    justify-content: flex-start;
+}
+.weituo{width: 100%;height: 500px;background: white}
+.weituoxia{width: 92%;height: 500px;margin-left: 4%;background: white;margin-top: 15px;}
+.daohangxian{width: 100%;height: 45px;background: white}
+.sangexuanze{width: 100%;height: 40px;background: white;line-height: 40px;font-size: 0.8rem;}
+.daohangxian{line-height: 45px}
+.shijiannage{width: 100%;height: 40px;border-bottom: 1px solid #f8f8ff;line-height: 40px;color: #708090;font-size: 0.8rem}
+.sangexuanze a{text-decoration: none;color: black}
+.sangexuanze .active{color: #7a98f7;border-bottom: 1px solid #7a98f7}
+.lishiweituo{width: 100%;height: 40px;line-height: 40px;border-bottom: 1px solid #f8f8ff;color: #708090;font-size: 0.8rem}
+.yanqin{padding: 0 20px}
+.kkkkks a:link{color: black}
+.kkkkks a:visited{color: #00a0e9}
+.ttttts a:link{color: black}
+.ttttts a:visited{color: #00a0e9}
+.daohangxian .active{color: #7a98f7!important;border-bottom: 1px solid #7a98f7}
+.kongtubiao{width: 120px;height: 230px;margin: 0 auto}
+.huhhukk{width: 100%;height: 70px}
+.zheshitu{width: 100%;height: 120px;}
+.zanzanwu{width: 100%;height: 40px;text-align: center;color: #637085}

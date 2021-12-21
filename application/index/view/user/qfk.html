@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0, user-scalable=no">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+    <!-- 是否启用全屏模式 -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <!-- 全屏时状态颜色设置 -->
+    <meta name="apple-mobile-web-status-bar-style" content="white">
+    <!-- 禁用电话号码自动识别 -->
+    <meta name="format-detection" content="telephone=no">
+    <!--禁止读取本地缓存模板-->
+    <meta http-equiv="Pragma" contect="no-cache">
+    {include file="alyslt" /}
+    {include file="fbjy_js" /}
+    <link rel="stylesheet" href="/index/css/optional.css" >
+<!--    黑夜模式-->
+<!--    <link rel="stylesheet" href="/index/css/user-qfk.css" >-->
+
+    {if $_SESSION["night"]=="yes"}<link rel="stylesheet" href="/index/css/optional.css" >{else} <link rel="stylesheet" href="/index/css/user-qfk.css" >{/if}
+
+    <link rel="stylesheet" href="/static/bootstrap-4.6.1-dist/css/bootstrap.min.css" >
+    <script src="/index/js/jquery-2.1.4.min.js"></script>
+    <script src="/static/bootstrap-4.6.1-dist/js/bootstrap.bundle.js"></script>
+    <script src="/static/bootstrap-4.6.1-dist/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="/new/layui/css/layui.css">
+    <script src="/new/layui/layui.js"></script>
+</head>
+<style>
+    body {background-color: #f5f5f5;}
+    p{margin-bottom: 0px;}
+    .pay-qqrsk{position: inherit;}
+    .hawhle {height: auto;}
+    .cld-whole-jbjs {margin-top: 35%;}
+    .cld-whole2>p {font-size: 12px; line-height: 30px;}
+    .cld-wholes2-div1>p{font-size: 12px; line-height: 30px;}
+    .cld-wholes2-div1>p>span:nth-child(1){color: #999999;}
+    .cld-wholes2-div1>p>span:nth-child(1){color: #999999;}
+    .cld-wholes2-div1>p>span:nth-child(2){color: #000000;}
+    .cld-whole2>p>span:nth-child(2){font-size: 16px;}
+    .cld-wholes2>p:nth-child(1){font-size: 14px;}
+</style>
+<style>
+
+</style>
+<body>
+<div class="pay-qqrsk">
+    <div class="hawhle">
+        <div class="cld-hode">
+            <div><a href="javascript:window.history.go(-1);"><i class="iconfont icon-31fanhui1"></i></a></div>
+            <div></div>
+            {if $talk_side}
+            <div><a href="/index/user/lxmj?oid={$id}"><i class="iconfont icon-xiaoxi"></i><span class="cld-lxmj">0</span>&#8194;{$Think.lang.fbjy_lxmj}</a></div>
+            {/if}
+        </div>
+        <div class="cld-top">
+            <div class="cld-top-noe">
+                <h5>{$Think.lang.fbjy_qfk}</h5>
+                <p class="qxm-hode-p2">{$Think.lang.fbjy_fksysj}<span id="timer"></span></p>
+            </div>
+            <div class="">
+            </div>
+        </div>
+    </div>
+    <div class="cld-whole-jbjs">
+        <div class="cld-whole cld-whole2">
+            <div class="cld-whole2 cld-wholes2">
+                <p><span>{$Think.lang.sw_gm}</span> {$order.symbol} <i class="iconfont icon-USDT"></i></p>
+                <p><span>{$Think.lang.fbjy_zj}</span><span class="cld-wholes2-sp2">{$currency.symbol}{$all_amount}</span></p>
+                <div class="cld-wholes2-div1">
+                    <p><span>{$Think.lang.bi_js}</span><span>{$currency.symbol}{$one_amount}</span></p>
+                    <p><span>{$Think.lang.bi_sl}</span><span>{$order.t_num}{$order.symbol}</span></p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="pay-qqrsk-zfbzh pay-qqrsk-zfbzh2">
+        <a href="/index/User/qxmjfk?id={$id}"><p><span>{$Think.lang.fbjy_fkfs}</span><span>{$payment.name}<i class="iconfont icon-youjiantou-copy"></i></span></p></a>
+    </div>
+    <div class="pay-div1 pay-div2 pay-div3"><span>{$Think.lang.fbjy_jytk}</span><span class="pay-div3-sp2"><i class="iconfont icon-down icon-downm2"></i><i class="iconfont icon-xiangshang icon-xiangshangm2" style="font-size: 20px!important;"></i></span></div>
+    <div class="pay-qqrsk-txxx"><i class="iconfont icon-gantanhao "></i>{$Think.lang.fbjy_qbyxxrh}</div>
+    <div class="pay-butt-back pay-qqrsk-butt">
+        <div class="pay-butt pay-butt2 pay-butt3">
+            <button onclick="cancel_order()">{$Think.lang.fbjy_qxdd}</button>
+            <button id="pay_btn"><a href="/index/User/qxmjfk?id={$id}" id="go_pay">{$Think.lang.fbjy_qfk2}</a></button>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(".pay-div3-sp2>i").eq(1).hide();
+    $(".pay-qqrsk-txxx").hide();
+    $(".pay-div3").click(function () {
+        $(".pay-qqrsk-txxx").toggle();
+    });
+    layui.use('layer', function(){
+        var layer = layui.layer;
+
+    });
+    var oid = {$id};
+    //取消订单
+    function cancel_order() {
+        layer.confirm(fbjy_qrqxdd,{
+            btn: [fbjy_bl, bi_qd]
+        }, function (index) {
+            // 按钮1的事件
+            layer.close(index);
+            return false;
+        }, function(){
+            $.ajax({
+                url: '/index/Currencytrade/cancel_order',
+                type: 'post',
+                dataType: 'json',
+                data: {
+                    'oid': oid,
+
+                },
+                success: function (res) {
+                    if(res.code == 1){
+                        layer.msg(res.msg);
+                        setTimeout(function () {
+                            window.location.href = '/index/user/curordes';
+                        },1000)
+                    }else{
+                        layer.msg(res.msg);
+                    }
+                }
+            });
+
+            // 按钮2的事件
+        });
+    }
+
+    //15分钟倒计时
+    /*times();
+    var has_time = {$has_time};
+    has_time = parseInt(has_time);
+    var time1 = parseInt(has_time/60);
+    var time2 = has_time%60;
+    console.log(time1);
+    console.log(time2);
+
+    function times() {
+       var timer = setInterval(function(){
+            if(time1==-1&&time2==59){
+                $(".qxm-hode-p2>span").eq(0).text(0);
+                $(".qxm-hode-p2>span").eq(2).text("00");
+                return ;
+            }
+            time2=time2-1;
+            if(time2==1){
+                time2=59;
+                time1=time1-1;
+            }
+            $(".qxm-hode-p2>span").eq(0).text(time1);
+            $(".qxm-hode-p2>span").eq(2).text(time2);
+
+            if(time1 <= 0 && time2 <= 0){
+                $(".qxm-hode-p2>span").eq(0).text(0);
+                $(".qxm-hode-p2>span").eq(2).text("00");
+                $('#go_pay').attr('href','javascript:void(0)');
+                $('#go_pay').attr('onclick','order_fali()');
+                $('#pay_btn').css('background-color','#cccccc');
+                layer.msg(fbjy_ddysx);
+                clearInterval(timer);
+                // setTimeout(function () {
+                //     window.location.href = '/index/user/curordes';
+                // },1100)
+
+            }
+
+        },1000)
+    }*/
+
+
+
+    function order_fali() {
+        layer.msg(fbjy_ddysx);
+    }
+
+    var maxtime =  {$has_time};
+    function CountDown() {
+        if (maxtime >= 0) {
+            minutes = Math.floor(maxtime / 60);
+            if(minutes<10){
+                minutes='0'+minutes;
+            }
+            seconds = Math.floor(maxtime % 60);
+            if(seconds<10){
+                seconds='0'+seconds;
+            }
+
+            msg =  minutes + "&nbsp;:&nbsp;" + seconds ;
+            document.all["timer"].innerHTML = msg;
+
+            --maxtime;
+        } else{
+            msg = "00：00" ;
+            document.all["timer"].innerHTML = msg;
+            $('#go_pay').attr('href','javascript:void(0)');
+            $('#go_pay').attr('onclick','order_fali()');
+            $('#pay_btn').css('background-color','#cccccc');
+
+        }
+    }
+    timer = setInterval("CountDown()", 1000);
+
+</script>
+</body>
+</html>

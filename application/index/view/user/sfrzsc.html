@@ -1,0 +1,271 @@
+{include file="head" /}
+<link href="__HOME__/css/mystyle.css" rel="stylesheet">
+<link href="__HOME__/layui/css/layui.css" rel="stylesheet">
+<script src="__HOME__/layui/layui.js"></script>
+<script>
+var pay_type = '';
+var wxpay_info = '';
+var returnrul = "{:url('user/index')}";
+</script>
+
+
+<style>
+    .scroll-content{
+        overflow: scroll
+    }
+    .user_btn {
+        border-top: solid 1px #F1F1F1;
+    }
+    .user_btn h5{
+        color: #666666;
+    }
+    .tab-nav{
+        width: 100%;
+        position: fixed;
+        bottom: 0;
+    }
+</style>
+
+<body ng-app="starter" ng-controller="AppCtrl" class="navbar grade-a platform-browser platform-ios platform-ios9 platform-ios9_1 platform-ready">
+
+<ion-nav-view class="view-container" nav-view-transition="ios" nav-view-direction="none" nav-swipe=""><ion-tabs class="tabs-icon-top navbar pane tabs-bottom tabs-standard" abstract="true" nav-view="active" style="opacity: 1; transform: translate3d(0%, 0px, 0px);background: #0b1622">
+    
+ 
+
+    <ion-nav-bar class="bar-stable headerbar nav-bar-container" nav-bar-transition="ios" nav-bar-direction="swap" nav-swipe="">
+
+    	<div class="nav-bar-block" nav-bar="active">
+    		<ion-header-bar class="bar-stable headerbar bar bar-header" align-title="center">
+    			<div class="title title-center header-item" style="transition-duration: 0ms; transform: translate3d(0px, 0px, 0px);">{$Think.lang.sz_smrz}</div>
+                <a class="close" href="javascript:void(0)" onclick="javascript:history.back(-1);">
+                    <i class="icon ion-ios-arrow-left"></i>
+                </a>
+    		</ion-header-bar>
+    	</div>
+
+    </ion-nav-bar>
+
+    <ion-content class="personalbg scroll-content ionic-scroll scroll-content-false  has-header has-tabs" scroll="false" style="background: #0b1622">
+        
+        <div class="anquanzhongxin_nav">
+            
+            
+            
+            
+            <form method="post" id="form_smrz" action="">
+                
+               
+            <div class="frambox">
+                <h2>{$Think.lang.sz_qtxyxxx}</h2>
+                <div class="list_box">
+                    <div class="m-cell demo-small-pitch">
+                        <div class="cell-item">
+                            <div class="cell-left">{$Think.lang.sr_xm}</div>
+                            <div class="cell-right">
+                                <input type="text" name="xingming" value="{$user.nickname}" class="cell-input" id="xingming" placeholder="{$Think.lang.sz_qsrxm}"
+                                       autocomplete="off">
+                            </div>
+                        </div>
+                        <div class="cell-item">
+                            <div class="cell-left">{$Think.lang.sz_sfzh}</div>
+                            <div class="cell-right">
+                                <input type="text" class="cell-input" id="id_card"  value="{$user.id_card}"  name="id_card"  placeholder="{$Think.lang.sz_qsrsfzh}"
+                                       autocomplete="off">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="frambox">
+                <h2>{$Think.lang.sz_sczjxx}</h2>
+                <div class="font_box">
+                    <div class="m-grids-2 wl_flex wl_justify_between">
+                        <a href="javascript:void(0);" class="grids-item" id="upzmimg">
+                            <div id="sfzzmImg" class="grids-icon">
+                                {if $user.zm_img}
+                                <img src="{$user.zm_img}" id="zhengmian">
+                                 <input type="hidden"  name="zmurl" id="zmurl" value="{$user.zm_img}" />
+                                {else}
+                                <img src="__HOME__/img/shenfen/shenfenzheng-a.png" id="zhengmian">
+                                 <input type="hidden"  name="zmurl" id="zmurl" />
+                                {/if}
+                               
+                            </div>
+                            <div class="grids-txt">
+                                <span>{$Think.lang.sz_zm}</span>
+                            </div>
+                        </a> 
+                        <a href="javascript:void(0);" class="grids-item"  id="upfmimg">
+                            <div id="sfzfmImg" class="grids-icon">
+                                
+                                 {if $user.fm_img}
+                                <img src="{$user.fm_img}" id="fanmian">
+                                <input type="hidden" name="fmurl"  id="fmurl"  value="{$user.fm_img}" />
+                                   {else}
+                                   <img src="__HOME__/img/shenfen/shenfenz-b.png" id="fanmian" >
+                                   <input type="hidden" name="fmurl"  id="fmurl" />
+                                    {/if}
+                                
+                            </div>
+                            <div class="grids-txt">
+                                <span>{$Think.lang.sz_fm}</span>
+                            </div>
+                        </a> 
+                    </div>
+                </div>
+            </div>
+            
+            
+
+            <div class="btn_mian">
+                {if $user.smsh_state eq 0 ||  $user.smsh_state eq 3}
+                <input type="submit" name="submit" value="{$Think.lang.sz_qrtj}" class="sub_btn"  onclick ="return tijiao(this.form);" >
+                
+                 {elseif $user.smsh_state eq 1 }
+                 <input type="submit" name="submit" value="{$Think.lang.sz_shz}" class="sub_btn" style="background-color:grey"  onclick ="return false;" >
+                 {elseif $user.smsh_state eq 2 }
+                 
+                 <input type="submit" name="submit" value="{$Think.lang.sz_rzcg}" class="sub_btn" style="background-color:grey"  onclick ="return false;" >
+                 {else}
+                 {/if}
+              
+            </div>
+            </form>
+        </div>
+    </ion-content>
+
+    </ion-tabs>
+</ion-nav-view>
+<style>
+    
+    .btn_mian .sub_btn {
+    width: 100%;
+    height: 45px;
+    line-height: 45px;
+    border: none;
+    border-radius: 5px;
+    color: #ffffff;
+    background: #2873c8;
+}
+</style>
+
+</body>
+</html>
+<div id="zypay_post"></div>
+<script src="__HOME__/js/lk/user.js"></script>
+<script src="__HOME__/js/lk/jquery.qrcode.js"></script>
+<script src="__HOME__/js/lk/utf.js"></script>
+
+<script src="__HOME__/js/jquery.min.js"></script>
+
+
+
+<script>
+	layui.use('layer', function(){
+		var layer = layui.layer;
+
+	});
+	layui.use('upload', function(){
+		var upload = layui.upload;
+		//执行实例
+		var uploadInst = upload.render({
+			elem:'#upzmimg' //绑定元素
+			,url:'{:url("User/upzmimg")}' //上传接口
+			, exts:'jpg|png|gif|bmp|jpeg'         //可传输文件的后缀
+			, accept:'images'              //video audio images
+			,done: function(res){
+				if(res.error==1){
+					layer.msg(res.content);
+				}else{
+					$("#zhengmian").attr('src',res.file_url); 
+					$("#zmurl").val(res.file_url);
+				}
+				//上传完毕回调
+			}
+			,error: function(){
+				layer.msg('{$Think.lang.sz_qqycqcs}');
+			}
+		});
+	});
+	
+	
+	layui.use('upload', function(){
+		var upload = layui.upload;
+		//执行实例
+		var uploadInst = upload.render({
+			elem:'#upfmimg' //绑定元素
+			,url:'{:url("User/upfmimg")}' //上传接口
+			, exts:'jpg|png|gif|bmp|jpeg'         //可传输文件的后缀
+			, accept:'images'              //video audio images
+			,done: function(res){
+				if(res.error==1){
+					layer.msg(res.content);
+				}else{
+					$("#fanmian").attr('src',res.file_url); 
+					$("#fmurl").val(res.file_url);
+				}
+				//上传完毕回调
+			}
+			,error: function(){
+				layer.msg('{$Think.lang.sz_qqycqcs}');
+			}
+		});
+	});
+	
+	
+	function tijiao(){
+	    var xingming = $("#xingming").val();
+	    var id_card = $("#id_card").val();
+	    var zmurl = $("#zmurl").val();
+	    var fmurl = $("#fmurl").val();
+	    if(!xingming){
+	        layer.msg('{$Think.lang.sz_qsrzsxm}');
+	         return false;
+	    }
+	    if(!id_card){
+	        layer.msg('{$Think.lang.sz_qsrsfzh}');
+	         return false;
+	    }
+	    if(!zmurl){
+	        layer.msg('{$Think.lang.sz_qscsfzzm}');
+	         return false;
+	    }
+	    
+	    if(!fmurl){
+	        layer.msg('{$Think.lang.sz_qscsfzfm}');
+	        return false;
+	    }
+	    
+	    var data = $('#form_smrz').serialize();
+	    var formurl = "{:Url('user/smrztj')}";
+	    var locurl = "{:Url('user/smrz')}";
+	    WPpost(formurl,data,locurl);
+	    return false;
+	    
+	}
+	</script>
+
+
+
+<script>
+    //切换
+    $(function () {
+        // intervalData(true);
+        setInterval(function () {
+            // intervalData(false)
+        }, 6000)
+        $('.anquanzhongxin_nav').hide().eq(0).show()
+        $(".anquanzhongxin_tabbox").click(function () {
+            $('.anquanzhongxin_nav').hide().eq($(this).data('type')).show()
+            $(".anquanzhongxin_tabbox").removeClass('active');
+            $(this).addClass('active');
+            if ($(this).attr('data-type') == 2) {
+
+            } else if($(this).attr('data-type') == 1) {
+
+            }
+        })
+    });
+</script>
+

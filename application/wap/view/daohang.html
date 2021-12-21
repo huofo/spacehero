@@ -1,0 +1,149 @@
+{include file="nodejs" /}
+<link href="/static/index/layui/css/layui.css" rel="stylesheet" type="text/css">
+<script src="/static/index/layui/layui.js"></script>
+<style>
+    .logoxt img {
+        width: 40px;
+        height: 40px;
+        margin-top: 0px;
+    }
+    .layui-input-block{margin-left: 0px!important;margin-right: 10px}
+    .layui-form-onswitch em{margin-left: 2.98px}
+    .layui-form-switch em{top: -2px;}
+    .layui-form-item{margin-bottom: 0!important;}
+    .layui-form-label{float: unset!important;padding: 0;margin-bottom: 0px;margin-right: 10px}
+    .layui-input-block {min-height: 40px;}
+    .myjms{font-size: 12px;}
+    .myjms-form{margin-top: 7%;}
+</style>
+<div class="daohang">
+    <div class="logoxt"><a href="/wap/index"><img src="/index/images/language/logo10.png" alt="{$Think.lang.rzhi_fhsy}"></a></div>
+    <div class="m-bthy" style="width: 10%;height: 60px">
+        <form class="layui-form myjms-form" action="">
+            <div class="layui-form-item wl_flex wl_align_center">
+                <label class="layui-form-label myjms">白天模式</label>
+                <div class="layui-input-block">
+                    <input  {if $_SESSION["night"]=="yes"} checked{/if}  type="checkbox"  name="open" lay-skin="switch" lay-filter="switchTest" lay-text="ON|OFF">
+                </div>
+            </div>
+        </form>
+    </div>
+    <div style="width: 10%;height: 60px"></div>
+    <div class="zhongbu wl_flex wl_justify_between wl_align_center">
+        <div class="neirongji"><p><a href="/wap/index/hangqing/"style="font-size: 0.8rem;">{$Think.lang.ti_hq}</a></p></div>
+        <div class="neirongji"><p><a href="/wap/index/bibijiaoyi/"style="font-size: 0.8rem;">{$Think.lang.set_bbjy}</a></p></div>
+        <div class="neirongji"><p><a href="/wap/index/heyuejiaoyi/"style="font-size: 0.8rem;">{$Think.lang.ind_hyjy}</a></p></div>
+        <div class="neirongji"><p><a href="/wap/second/index"style="font-size: 0.8rem;">{$Think.lang.ind_myhjy}</a></p></div>
+        <div class="neirongji"><p><a href="/wap/mining/index"style="font-size: 0.8rem;">{$Think.lang.ind_scwk}</a></p></div>
+        <div class="neirongji"><p><a href="/wap/zichan/bibi"style="font-size: 0.8rem;">{$Think.lang.set_wdzc}</a></p></div>
+        {if isset($_SESSION['uid'])}
+
+        <div class="neirongji"><p><span style="font-size: 0.8rem;">{$_SESSION['uid']|GetUserInfo}</span></p></div>
+
+        <div class="neirongji">
+            <ul id="navMenuv" style="list-style: none;">
+                <li><a href="#" rel='dropmenu1v'><img src="/index/images/dengluxiao.png" alt="" style="margin-top: 10px;"></a></li>
+            </ul>
+
+
+            <ul id="dropmenu1v" class="dropMenuv"style="margin-top: -2px;border-radius: 5px;margin-left: -50px">
+                <li><a href="/wap/setup/shezhi"style="color: black;font-size: 13px">{$Think.lang.set_zhsz}</a></li>
+                <li><a href="/wap/setup/rzhi"style="color: black;font-size: 13px">{$Think.lang.set_jyrz}</a></li>
+<!--                <li><a href="/wap/setup/sksz"style="color: black;font-size: 0.8rem">收款设置</a></li>-->
+                <li><a href="/wap/setup/sfrz"style="color: black;font-size: 13px">{$Think.lang.ind_sfzr}</a></li>
+                <li><a href="/wap/Denglu/logout"style="color: black;font-size: 13px">{$Think.lang.ind_tcdl}</a></li>
+            </ul>
+        </div>
+        {else/}
+
+
+        <div class="neirongji wl_flex wl_align_center">
+            <div><img src="/index/images/dengluxiao.png" alt="" "></div>
+            <div><a href="/wap/denglu/dl"style="color: white;font-size: 0.8rem;">{$Think.lang.denglu}</a></div>
+        </div>
+        <div class="neirongji wl_flex wl_align_center">
+            <div><img src="/index/images/zhuchexiao.png" alt="" ></div>
+            <div><a href="/wap/denglu/zc"style="color: white;font-size: 0.8rem;"><span style="margin-left: 5px">{$Think.lang.regetit}</span></a></div>
+        </div>
+        {/if}
+<!--        <div class="neirongji"><a href=""><img src="/index/images/yangshengqi.png" alt=""style="margin-top: 25px;"/></a></div>-->
+
+    </div>
+    <div class="xiala wl_flex wl_justify_between">
+        <div class="jianti wl_flex wl_align_center" style="width: 160px;font-size: 0.11rem">
+            <div class="gvs"><img src="/index/images/language/{$_COOKIE['think_var']}.png" alt=""style="width: 25px;"></div>
+            <div class="gvs">
+                <!--                <a href="">简体中文</a>-->
+                <ul id="navMenu" style="list-style: none;">
+                    <li><a href="#" rel='dropmenu1' id="cked_lang">{$langagename}</a></li>
+                </ul>
+                <ul id="dropmenu1" class="dropMenu"style="margin-left: -50px;border-radius: 5px;">
+
+                    <li><a class="sygq2 dah_yanshi dah_zw" lang="cn"><img src="/index/images/language/CNY.png" alt=""><span style="width: 60%">简体中文</span></a></li>
+                    <!--                    <li><a href="javascript:void (0)"style="color: #596a7a;font-size: 0.8rem" lang="en">繁體中文</a></li>-->
+                    <li><a class="sygq2 dah_yanshi dah_rw" lang="jpn"><img src="/index/images/language/JPY.png" alt=""><span style="width: 60%">日本語</span></a></li>
+                    <li><a class="sygq2 dah_yanshi dah_hw" lang="kro"><img src="/index/images/language/KRW.png" alt=""><span style="width: 60%">한국어</span></a></li>
+                    <li><a class="sygq2 dah_yanshi dah_yw" lang="en"><img src="/index/images/language/USD.png" alt=""><span style="width: 60%">English</span></a></li>
+
+                </ul>
+            </div>
+        </div>
+
+        <div class="jianti" style="width: 100%">
+            <a href="">
+                <ul id="navMenus" style="list-style: none;">
+                    <li><a href="#" rel='dropmenu1s'>{$Think.lang.set_xz}</a></li>
+                </ul>
+                <ul id="dropmenu1s" class="dropMenus">
+                    <li><img src="/index/images/language/ewm3.png" alt=""style="width: 120px;height: 120px;border-radius: 5px;"></li>
+                </ul>
+<!--                huangxinghua.png-->
+            </a>
+        </div>
+    </div>
+</div>
+<script>
+
+    var url = window.location.href;
+    //'element', var element = layui.element;
+    layui.use('form', function(){
+        var form = layui.form;
+        //监听提交
+        form.on('submit(formDemo)', function(data){
+            layer.msg(JSON.stringify(data.field));
+            return false;
+        });
+
+        //点击切换黑夜白天模式
+        $(".layui-form-switch").click(function () {
+            var vau=$(".layui-form-switch>em").text();
+            var yes="yes"
+            if (vau=="ON"){
+                $.post("/index/index/night",{yes:yes},function (re) {
+                    if (re=="ok"){window.location.href=url}
+                });
+            }else if(vau=="OFF"){
+                $.post("/index/index/night",{yes:"on"},function (re) {
+                    if (re=="on"){window.location.href=url;}
+                });
+            }
+        })
+    });
+
+
+    $(function () {
+        $(".neirongji p").click(function () {
+            $(".neirongji p").removeClass('active');
+            $(this).addClass('active');
+        })
+    });
+    $(".sygq2").click(function () {
+        // var cked_lang = $(this).innerHTML;
+        // $('#cked_lang').html(cked_lang);
+        var data={'lang':$(this).attr('lang')};
+        $.get("{:url('/index/login/lang')}",data,function(){
+            location.reload();
+        })
+    });
+
+</script>

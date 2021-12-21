@@ -1,0 +1,772 @@
+<!DOCTYPE html>
+{include file="nodejs" /}
+
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<!-- <meta name="viewport" content="width=device-width, initial-scale=1.0,maximum-scale=1"> 下行代码解决导航栏没锁死会动问题-->
+		<meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+		<title>B.King</title>
+		<link rel="stylesheet" href="/application/wap/view/zichan/font_latdk7zioj/iconfont.css" />
+		<link rel="stylesheet" href="/mcss/zichan.css" />
+<!--		<link rel="stylesheet" href="layui/css/layui.css" />-->
+<!--		<script src="layui/layui.js"></script>-->
+<!--		<link rel="stylesheet" href="zichan.css" />-->
+		<link rel="stylesheet" href="layui/css/modules/code.css" />
+		<link rel="stylesheet" href="layui/css/modules/laydate/default/laydate.css" />
+		<script type="text/javascript" src="/static/index/js/jquery-3.2.1.min.js"></script>
+		<script src="/static/layer/layer.js"></script>
+
+		<link rel="stylesheet" href="layui/css/modules/layer/default/layer.css" />
+		<link rel="stylesheet" href="./font_latdk7zioj/iconfont.css" />
+		<link href="/index/css/mango.css" rel="stylesheet" media="screen">
+		<!--        夜间白天切换的文件-->
+		{if $_SESSION["night"]=="yes"}<link rel="stylesheet" href="/index/css/wap_css/zichan-huazhuan.css" >{/if}
+	</head>
+	
+<style>
+	/* 此次的CSS代码请勿删除或移动到其他页面 */
+	.bi-shujv{min-height: 1000px;}
+	.bi-content>a:nth-child(5)>div{ color: #5697f4; background-color: #c9ccd0;}
+</style>
+<body style="background-color: #e5ebf5;">
+
+<style>
+
+	.wl_flex{
+		display:-webkit-box;/*Chrome4+,Safari3.1,iOSSafari3.2+*/
+		display:-moz-box;/*Firefox17-*/
+		display:-webkit-flex;/*Chrome21+,Safari6.1+,iOSSafari7+,Opera15/16*/
+		display:-moz-flex;/*Firefox18+*/
+		display:-ms-flexbox;/*IE10*/
+		display:flex;
+	}
+	.wl_align_center{
+		-webkit-box-align: center;
+		-webkit-align-items: center;
+		align-items: center;
+	}
+	.wl_align-items-start{
+		-ms-flex-align: start;
+		align-items: flex-start;
+	}
+	.wl_justify_between{
+		-webkit-justify-content: space-between;
+		-moz-justify-content: space-between;
+		-ms-justify-content: space-between;
+		-webkit-box-pack: justify;
+		justify-content: space-between;
+	}
+	.wl_justify-content{
+		-webkit-justify-content: space-around;
+		justify-content: space-around;
+	}
+	.wl_justify-content-start{
+		-ms-flex-pack: start;
+		justify-content: flex-start;
+	}
+
+	.mmining-head{width: 100%;overflow: inherit;background-color: #000;}
+	.gvs>img{}
+	.mtop-zc>img{margin-top: 20px;}
+	.neirongji>a>img{margin-top: 20px;}
+	.zjhz-div2>select {text-indent: 2%;}
+	.zjhz-div2>select {width: 150px;}
+</style>
+
+<div class="mmining-head">
+	<div style="margin: 0 auto;">
+		{include file="daohang" /}
+	</div>
+</div>
+
+
+
+
+
+<div class="whole">
+<div class="bi-two">
+	<div>{$Think.lang.ti_zc}</div>
+</div>
+<div class="bi-qbsj">
+	<div class="bi-content">
+		<a href="bibi.html">
+			<div class="bi-content-div1">
+				<div><span class="iconfont">&#xe610;</span></div>
+				<div>{$Think.lang.bii_bzh}</div>
+			</div>
+		</a>
+		<a href="heyue.html">
+			<div class="bi-content-div1">
+				<div><span class="iconfont">&#xe610;</span></div>
+				<div>{$Think.lang.hy_hyzh}</div>
+			</div>
+		</a>
+		<a href="fabi.html">
+			<div class="bi-content-div1">
+				<div><span class="iconfont">&#xe610;</span></div>
+				<div>{$Think.lang.fb_fbzh}</div>
+			</div>
+		</a>
+		<a href="miaoheyue.html">
+			<div class="bi-content-div1">
+				<div><span class="iconfont">&#xe610;</span></div>
+				<div>{$Think.lang.mhy_mhyzh}</div>
+			</div>
+		</a>
+		<a href="huazhuan.html">
+			<div class="bi-content-div1">
+				<div><span class="iconfont">&#xe612;</span></div>
+				<div>{$Think.lang.bibi_zjhz}</div>
+			</div>
+		</a>
+		<div></div>
+	</div>
+
+	<div class="bi-shujv">
+		<div class="zjhz">
+			<div class="zjhz-div1">
+				<div>
+					<span>{$Think.lang.sl_bz} &emsp;</span>
+					<select name="bi_type" id="change_bi">
+						{volist name="bi" id="vo"}
+						<option value="{$vo}" {if $vo == $biname}selected="selected"{/if} >{$vo}</option>
+						{/volist}
+					</select>
+				</div>
+				<a href="jilu.html"><span>{$Think.lang.tt_jl}</span></a>
+			</div>
+			<div class="zjhz-div2">
+				<span>{$Think.lang.hz_c}&emsp;</span>
+				<select name="from_qb" id="from_qb" >
+					<option value="1" {if $type == 1}selected="selected"{/if} >{$Think.lang.bii_bzh}</option>
+					<option value="2" {if $type == 2}selected="selected"{/if}>{$Think.lang.hy_hyzh}</option>
+					<option value="3" {if $type == 3}selected="selected"{/if}>{$Think.lang.fb_fbzh}</option>
+					<option value="4" {if $type == 4}selected="selected"{/if}>{$Think.lang.mhy_mhyzh}</option>
+				</select>
+				<span>&emsp;{$Think.lang.hz_z}&emsp;</span>
+
+				<select name="to_qb" id="to_qb">
+					{volist name="to_arr" id="vv" key="k"}
+					<option value="{$k}">{$vv}{$Think.lang.sr_zh}</option>
+					{/volist}
+				</select>
+			</div>
+
+			<div class="zjhz-div3">
+				<span>{$Think.lang.hz_hzsl}</span>
+			</div>
+			<div class="zjhz-div4">
+				<input type="text" id="change_num" placeholder="&emsp;{$Think.lang.zt_qsrhzsl}" />
+			</div>
+			<div class="zjhz-div5">
+				<span>{$Think.lang.huaz_keye}：<span id="has_money">{$has_money}</span> <span id="bi_name">{$biname}</span></span>
+			</div>
+			<div class="zjhz-boutt">
+				<a href="javascript:void (0)" id="tijiao">{$Think.lang.huaz_qehz}</a>
+			</div>
+			
+		</div>
+	</div>
+	  
+</div>
+<div class="bi-bottu">
+	
+</div>
+
+<!-- 勿删 -->
+</div>
+
+
+<script>
+	$(function () {
+		$(".neirongji p").click(function () {
+			$(".neirongji p").removeClass('active');
+			$(this).addClass('active');
+		})
+	});
+</script>
+<script src="js/bibi.js"></script>
+<script>
+    $(".neirongji p:eq(5)").addClass('active');
+// $(".zjhz-boutt>a").click(function(){
+// 	$vle=$(".zjhz-div4>input").val();
+// 	if(!$vle){alert("请输入划转数量");return;}
+// 	if($vle<=0){alert("输入的数量不能小于0");return;}
+// });
+</script>
+
+
+
+
+<script>
+	// 类名是需要隐藏的div
+	$(".huhuhus").show();
+	$(".gugugus").show();
+	// 点击的按钮
+	$(".kjkjkj>a").click(function(){
+		// 类名是需要隐藏的div
+		$(".huhuhus").show();
+		$(".gugugus").show();
+	});
+	$(".klklkl>a").click(function(){
+		// 类名是需要隐藏的div
+		$(".huhuhus").show();
+		$(".gugugus").hide();
+	});
+	$(".kukuku>a").click(function(){
+		// 类名是需要隐藏的div
+		$(".zhuliuugh").show();
+		$(".huhuhus").hide();
+		$(".gugugus").hide();
+	});
+	var type = {$type};
+	var name = '{$biname}';
+	$('select#change_bi').change(function () {
+		 name = $(this).val();
+
+		$.ajax({
+			url: '/wap/zichan/select_money',
+			type: 'post',
+			data: {type:type,name:name,},
+			success: function(res){
+				res = $.parseJSON(res);
+
+				if(res.error==1){
+					layer.msg(res.msg);
+				}else{
+					$('#has_money').html(res.money);
+					$('#bi_name').html(name);
+				}
+
+			}
+		});
+	})
+	$('select#from_qb').change(function () {
+
+		type = $(this).val();
+
+		$.ajax({
+			url: '/wap/zichan/select_money',
+			type: 'post',
+			data: {type:type,name:name,},
+			success: function(res){
+				res = $.parseJSON(res);
+
+				if(res.error==1){
+					layer.msg(res.msg);
+				}else{
+					$('#has_money').html(res.money);
+					$('#bi_name').html(name);
+				}
+
+			}
+		});
+	})
+	$("#tijiao").click(function(){
+		var num =  $("#change_num").val();
+		var from_account = $('#from_qb option:selected').val();
+
+		var to_account = $('#to_qb option:selected').val();
+
+		if(num==''||num<=0){
+			layer.msg('{$Think.lang.zt_qsrhzsl}');return;
+		}
+
+
+
+		$.ajax({
+			url: '/index/assets/dohuazhuan',
+			type: 'post',
+			data: {num:num,name:name,from_account:from_account,to_account:to_account},
+			success: function(res){
+				res =$.parseJSON(res);
+
+				if(res.error==1){
+					layer.msg(res.msg);
+				}else{
+
+					layer.msg("{$Think.lang.zh_hzcg}", {
+						time: 1500,
+						end: function(){
+							window.location.href="/wap/zichan/bibi";
+						}
+					});
+
+				}
+
+			}
+		});
+
+
+
+
+	});
+
+</script>
+<script>
+	var cssdropdown={
+		disappeardelay: 250,
+		disablemenuclick: false,
+		enableswipe: 1,
+		enableiframeshim: 1,
+		dropmenuobj: null, ie: document.all, firefox: document.getElementById&&!document.all, swipetimer: undefined, bottomclip:0,
+
+		getposOffset:function(what, offsettype){
+			var totaloffset=(offsettype=="left")? what.offsetLeft : what.offsetTop;
+			var parentEl=what.offsetParent;
+			while (parentEl!=null){
+				totaloffset=(offsettype=="left")? totaloffset+parentEl.offsetLeft : totaloffset+parentEl.offsetTop;
+				parentEl=parentEl.offsetParent;
+			}
+			return totaloffset;
+		},
+
+		swipeeffect:function(){
+			if (this.bottomclip<parseInt(this.dropmenuobj.offsetHeight)){
+				this.bottomclip+=10+(this.bottomclip/10)
+				this.dropmenuobj.style.clip="rect(0 auto "+this.bottomclip+"px 0)"
+			}
+			else
+				return
+			this.swipetimer=setTimeout("cssdropdown.swipeeffect()", 10)
+		},
+
+		showhide:function(obj, e){
+			if (this.ie || this.firefox)
+				this.dropmenuobj.style.left=this.dropmenuobj.style.top="-500px"
+			if (e.type=="click" && obj.visibility==hidden || e.type=="mouseover"){
+				if (this.enableswipe==1){
+					if (typeof this.swipetimer!="undefined")
+						clearTimeout(this.swipetimer)
+					obj.clip="rect(0 auto 0 0)"
+					this.bottomclip=0
+					this.swipeeffect()
+				}
+				obj.visibility="visible"
+			}
+			else if (e.type=="click")
+				obj.visibility="hidden"
+		},
+
+		iecompattest:function(){
+			return (document.compatMode && document.compatMode!="BackCompat")? document.documentElement : document.body
+		},
+
+		clearbrowseredge:function(obj, whichedge){
+			var edgeoffset=0
+			if (whichedge=="rightedge"){
+				var windowedge=this.ie && !window.opera? this.iecompattest().scrollLeft+this.iecompattest().clientWidth-15 : window.pageXOffset+window.innerWidth-15
+				this.dropmenuobj.contentmeasure=this.dropmenuobj.offsetWidth
+				if (windowedge-this.dropmenuobj.x < this.dropmenuobj.contentmeasure)
+					edgeoffset=this.dropmenuobj.contentmeasure-obj.offsetWidth
+			}
+			else{
+				var topedge=this.ie && !window.opera? this.iecompattest().scrollTop : window.pageYOffset
+				var windowedge=this.ie && !window.opera? this.iecompattest().scrollTop+this.iecompattest().clientHeight-15 : window.pageYOffset+window.innerHeight-18
+				this.dropmenuobj.contentmeasure=this.dropmenuobj.offsetHeight
+				if (windowedge-this.dropmenuobj.y < this.dropmenuobj.contentmeasure){
+					edgeoffset=this.dropmenuobj.contentmeasure+obj.offsetHeight
+					if ((this.dropmenuobj.y-topedge)<this.dropmenuobj.contentmeasure)
+						edgeoffset=this.dropmenuobj.y+obj.offsetHeight-topedge
+				}
+			}
+			return edgeoffset
+		},
+
+		dropit:function(obj, e, dropmenuID){
+			if (this.dropmenuobj!=null)
+				this.dropmenuobj.style.visibility="hidden"
+			this.clearhidemenu()
+			if (this.ie||this.firefox){
+				obj.onmouseout=function(){cssdropdown.delayhidemenu()}
+				obj.onclick=function(){return !cssdropdown.disablemenuclick}
+				this.dropmenuobj=document.getElementById(dropmenuID)
+				if(!this.dropmenuobj) return;
+				this.dropmenuobj.onmouseover=function(){cssdropdown.clearhidemenu()}
+				this.dropmenuobj.onmouseout=function(e){cssdropdown.dynamichide(e)}
+				this.dropmenuobj.onclick=function(){cssdropdown.delayhidemenu()}
+				this.showhide(this.dropmenuobj.style, e)
+				this.dropmenuobj.x=this.getposOffset(obj, "left")
+				this.dropmenuobj.y=this.getposOffset(obj, "top")
+				this.dropmenuobj.style.left=this.dropmenuobj.x-this.clearbrowseredge(obj, "rightedge")+"px"
+				this.dropmenuobj.style.top=this.dropmenuobj.y-this.clearbrowseredge(obj, "bottomedge")+obj.offsetHeight+1+"px"
+				this.positionshim()
+			}
+		},
+
+		positionshim:function(){
+			if (this.enableiframeshim && typeof this.shimobject!="undefined"){
+				if (this.dropmenuobj.style.visibility=="visible"){
+					this.shimobject.style.width=this.dropmenuobj.offsetWidth+"px"
+					this.shimobject.style.height=this.dropmenuobj.offsetHeight+"px"
+					this.shimobject.style.left=this.dropmenuobj.style.left
+					this.shimobject.style.top=this.dropmenuobj.style.top
+				}
+				this.shimobject.style.display=(this.dropmenuobj.style.visibility=="visible")? "block" : "none"
+			}
+		},
+
+		hideshim:function(){
+			if (this.enableiframeshim && typeof this.shimobject!="undefined")
+				this.shimobject.style.display='none'
+		},
+
+		contains_firefox:function(a, b) {
+			while (b.parentNode)
+				if ((b = b.parentNode) == a)
+					return true;
+			return false;
+		},
+
+		dynamichide:function(e){
+			var evtobj=window.event? window.event : e
+			if (this.ie&&!this.dropmenuobj.contains(evtobj.toElement))
+				this.delayhidemenu()
+			else if (this.firefox&&e.currentTarget!= evtobj.relatedTarget&& !this.contains_firefox(evtobj.currentTarget, evtobj.relatedTarget))
+				this.delayhidemenu()
+		},
+
+		delayhidemenu:function(){
+			this.delayhide=setTimeout("cssdropdown.dropmenuobj.style.visibility='hidden'; cssdropdown.hideshim()",this.disappeardelay)
+		},
+
+		clearhidemenu:function(){
+			if (this.delayhide!="undefined")
+				clearTimeout(this.delayhide)
+		},
+
+		startchrome:function(){
+			for (var ids=0; ids<arguments.length; ids++){
+				var menuitems=document.getElementById(arguments[ids]).getElementsByTagName("a")
+				for (var i=0; i<menuitems.length; i++){
+					if (menuitems[i].getAttribute("rel")){
+						var relvalue=menuitems[i].getAttribute("rel")
+						menuitems[i].onmouseover=function(e){
+							var event=typeof e!="undefined"? e : window.event
+							cssdropdown.dropit(this,event,this.getAttribute("rel"))
+						}
+					}
+				}
+			}
+			if (window.createPopup && !window.XmlHttpRequest){
+				document.write('<IFRAME id="iframeshim"  src="" style="display: none; left: 0; top: 0; z-index: 90; position: absolute; filter: progid:DXImageTransform.Microsoft.Alpha(style=0,opacity=0)" frameBorder="0" scrolling="no"></IFRAME>')
+				this.shimobject=document.getElementById("iframeshim")
+			}
+		}
+
+	}
+</script><script type="text/javascript">cssdropdown.startchrome("navMenu")</script>
+<script>
+	var cssdropdowns={
+		disappeardelay: 250,
+		disablemenuclick: false,
+		enableswipe: 1,
+		enableiframeshim: 1,
+		dropmenuobj: null, ie: document.all, firefox: document.getElementById&&!document.all, swipetimer: undefined, bottomclip:0,
+
+		getposOffset:function(what, offsettype){
+			var totaloffset=(offsettype=="left")? what.offsetLeft : what.offsetTop;
+			var parentEl=what.offsetParent;
+			while (parentEl!=null){
+				totaloffset=(offsettype=="left")? totaloffset+parentEl.offsetLeft : totaloffset+parentEl.offsetTop;
+				parentEl=parentEl.offsetParent;
+			}
+			return totaloffset;
+		},
+
+		swipeeffect:function(){
+			if (this.bottomclip<parseInt(this.dropmenuobj.offsetHeight)){
+				this.bottomclip+=10+(this.bottomclip/10)
+				this.dropmenuobj.style.clip="rect(0 auto "+this.bottomclip+"px 0)"
+			}
+			else
+				return
+			this.swipetimer=setTimeout("cssdropdown.swipeeffect()", 10)
+		},
+
+		showhide:function(obj, e){
+			if (this.ie || this.firefox)
+				this.dropmenuobj.style.left=this.dropmenuobj.style.top="-500px"
+			if (e.type=="click" && obj.visibility==hidden || e.type=="mouseover"){
+				if (this.enableswipe==1){
+					if (typeof this.swipetimer!="undefined")
+						clearTimeout(this.swipetimer)
+					obj.clip="rect(0 auto 0 0)"
+					this.bottomclip=0
+					this.swipeeffect()
+				}
+				obj.visibility="visible"
+			}
+			else if (e.type=="click")
+				obj.visibility="hidden"
+		},
+
+		iecompattest:function(){
+			return (document.compatMode && document.compatMode!="BackCompat")? document.documentElement : document.body
+		},
+
+		clearbrowseredge:function(obj, whichedge){
+			var edgeoffset=0
+			if (whichedge=="rightedge"){
+				var windowedge=this.ie && !window.opera? this.iecompattest().scrollLeft+this.iecompattest().clientWidth-15 : window.pageXOffset+window.innerWidth-15
+				this.dropmenuobj.contentmeasure=this.dropmenuobj.offsetWidth
+				if (windowedge-this.dropmenuobj.x < this.dropmenuobj.contentmeasure)
+					edgeoffset=this.dropmenuobj.contentmeasure-obj.offsetWidth
+			}
+			else{
+				var topedge=this.ie && !window.opera? this.iecompattest().scrollTop : window.pageYOffset
+				var windowedge=this.ie && !window.opera? this.iecompattest().scrollTop+this.iecompattest().clientHeight-15 : window.pageYOffset+window.innerHeight-18
+				this.dropmenuobj.contentmeasure=this.dropmenuobj.offsetHeight
+				if (windowedge-this.dropmenuobj.y < this.dropmenuobj.contentmeasure){
+					edgeoffset=this.dropmenuobj.contentmeasure+obj.offsetHeight
+					if ((this.dropmenuobj.y-topedge)<this.dropmenuobj.contentmeasure)
+						edgeoffset=this.dropmenuobj.y+obj.offsetHeight-topedge
+				}
+			}
+			return edgeoffset
+		},
+
+		dropit:function(obj, e, dropmenuID){
+			if (this.dropmenuobj!=null)
+				this.dropmenuobj.style.visibility="hidden"
+			this.clearhidemenu()
+			if (this.ie||this.firefox){
+				obj.onmouseout=function(){cssdropdown.delayhidemenu()}
+				obj.onclick=function(){return !cssdropdown.disablemenuclick}
+				this.dropmenuobj=document.getElementById(dropmenuID)
+				if(!this.dropmenuobj) return;
+				this.dropmenuobj.onmouseover=function(){cssdropdown.clearhidemenu()}
+				this.dropmenuobj.onmouseout=function(e){cssdropdown.dynamichide(e)}
+				this.dropmenuobj.onclick=function(){cssdropdown.delayhidemenu()}
+				this.showhide(this.dropmenuobj.style, e)
+				this.dropmenuobj.x=this.getposOffset(obj, "left")
+				this.dropmenuobj.y=this.getposOffset(obj, "top")
+				this.dropmenuobj.style.left=this.dropmenuobj.x-this.clearbrowseredge(obj, "rightedge")+"px"
+				this.dropmenuobj.style.top=this.dropmenuobj.y-this.clearbrowseredge(obj, "bottomedge")+obj.offsetHeight+1+"px"
+				this.positionshim()
+			}
+		},
+
+		positionshim:function(){
+			if (this.enableiframeshim && typeof this.shimobject!="undefined"){
+				if (this.dropmenuobj.style.visibility=="visible"){
+					this.shimobject.style.width=this.dropmenuobj.offsetWidth+"px"
+					this.shimobject.style.height=this.dropmenuobj.offsetHeight+"px"
+					this.shimobject.style.left=this.dropmenuobj.style.left
+					this.shimobject.style.top=this.dropmenuobj.style.top
+				}
+				this.shimobject.style.display=(this.dropmenuobj.style.visibility=="visible")? "block" : "none"
+			}
+		},
+
+		hideshim:function(){
+			if (this.enableiframeshim && typeof this.shimobject!="undefined")
+				this.shimobject.style.display='none'
+		},
+
+		contains_firefox:function(a, b) {
+			while (b.parentNode)
+				if ((b = b.parentNode) == a)
+					return true;
+			return false;
+		},
+
+		dynamichide:function(e){
+			var evtobj=window.event? window.event : e
+			if (this.ie&&!this.dropmenuobj.contains(evtobj.toElement))
+				this.delayhidemenu()
+			else if (this.firefox&&e.currentTarget!= evtobj.relatedTarget&& !this.contains_firefox(evtobj.currentTarget, evtobj.relatedTarget))
+				this.delayhidemenu()
+		},
+
+		delayhidemenu:function(){
+			this.delayhide=setTimeout("cssdropdown.dropmenuobj.style.visibility='hidden'; cssdropdown.hideshim()",this.disappeardelay)
+		},
+
+		clearhidemenu:function(){
+			if (this.delayhide!="undefined")
+				clearTimeout(this.delayhide)
+		},
+
+		startchrome:function(){
+			for (var ids=0; ids<arguments.length; ids++){
+				var menuitems=document.getElementById(arguments[ids]).getElementsByTagName("a")
+				for (var i=0; i<menuitems.length; i++){
+					if (menuitems[i].getAttribute("rel")){
+						var relvalue=menuitems[i].getAttribute("rel")
+						menuitems[i].onmouseover=function(e){
+							var event=typeof e!="undefined"? e : window.event
+							cssdropdown.dropit(this,event,this.getAttribute("rel"))
+						}
+					}
+				}
+			}
+			if (window.createPopup && !window.XmlHttpRequest){
+				document.write('<IFRAME id="iframeshim"  src="" style="display: none; left: 0; top: 0; z-index: 90; position: absolute; filter: progid:DXImageTransform.Microsoft.Alpha(style=0,opacity=0)" frameBorder="0" scrolling="no"></IFRAME>')
+				this.shimobject=document.getElementById("iframeshim")
+			}
+		}
+
+	}
+</script><script type="text/javascript">cssdropdown.startchrome("navMenus")</script>
+<script>
+	var cssdropdownv={
+		disappeardelay: 250,
+		disablemenuclick: false,
+		enableswipe: 1,
+		enableiframeshim: 1,
+		dropmenuobj: null, ie: document.all, firefox: document.getElementById&&!document.all, swipetimer: undefined, bottomclip:0,
+
+		getposOffset:function(what, offsettype){
+			var totaloffset=(offsettype=="left")? what.offsetLeft : what.offsetTop;
+			var parentEl=what.offsetParent;
+			while (parentEl!=null){
+				totaloffset=(offsettype=="left")? totaloffset+parentEl.offsetLeft : totaloffset+parentEl.offsetTop;
+				parentEl=parentEl.offsetParent;
+			}
+			return totaloffset;
+		},
+
+		swipeeffect:function(){
+			if (this.bottomclip<parseInt(this.dropmenuobj.offsetHeight)){
+				this.bottomclip+=10+(this.bottomclip/10)
+				this.dropmenuobj.style.clip="rect(0 auto "+this.bottomclip+"px 0)"
+			}
+			else
+				return
+			this.swipetimer=setTimeout("cssdropdown.swipeeffect()", 10)
+		},
+
+		showhide:function(obj, e){
+			if (this.ie || this.firefox)
+				this.dropmenuobj.style.left=this.dropmenuobj.style.top="-500px"
+			if (e.type=="click" && obj.visibility==hidden || e.type=="mouseover"){
+				if (this.enableswipe==1){
+					if (typeof this.swipetimer!="undefined")
+						clearTimeout(this.swipetimer)
+					obj.clip="rect(0 auto 0 0)"
+					this.bottomclip=0
+					this.swipeeffect()
+				}
+				obj.visibility="visible"
+			}
+			else if (e.type=="click")
+				obj.visibility="hidden"
+		},
+
+		iecompattest:function(){
+			return (document.compatMode && document.compatMode!="BackCompat")? document.documentElement : document.body
+		},
+
+		clearbrowseredge:function(obj, whichedge){
+			var edgeoffset=0
+			if (whichedge=="rightedge"){
+				var windowedge=this.ie && !window.opera? this.iecompattest().scrollLeft+this.iecompattest().clientWidth-15 : window.pageXOffset+window.innerWidth-15
+				this.dropmenuobj.contentmeasure=this.dropmenuobj.offsetWidth
+				if (windowedge-this.dropmenuobj.x < this.dropmenuobj.contentmeasure)
+					edgeoffset=this.dropmenuobj.contentmeasure-obj.offsetWidth
+			}
+			else{
+				var topedge=this.ie && !window.opera? this.iecompattest().scrollTop : window.pageYOffset
+				var windowedge=this.ie && !window.opera? this.iecompattest().scrollTop+this.iecompattest().clientHeight-15 : window.pageYOffset+window.innerHeight-18
+				this.dropmenuobj.contentmeasure=this.dropmenuobj.offsetHeight
+				if (windowedge-this.dropmenuobj.y < this.dropmenuobj.contentmeasure){
+					edgeoffset=this.dropmenuobj.contentmeasure+obj.offsetHeight
+					if ((this.dropmenuobj.y-topedge)<this.dropmenuobj.contentmeasure)
+						edgeoffset=this.dropmenuobj.y+obj.offsetHeight-topedge
+				}
+			}
+			return edgeoffset
+		},
+
+		dropit:function(obj, e, dropmenuID){
+			if (this.dropmenuobj!=null)
+				this.dropmenuobj.style.visibility="hidden"
+			this.clearhidemenu()
+			if (this.ie||this.firefox){
+				obj.onmouseout=function(){cssdropdown.delayhidemenu()}
+				obj.onclick=function(){return !cssdropdown.disablemenuclick}
+				this.dropmenuobj=document.getElementById(dropmenuID)
+				if(!this.dropmenuobj) return;
+				this.dropmenuobj.onmouseover=function(){cssdropdown.clearhidemenu()}
+				this.dropmenuobj.onmouseout=function(e){cssdropdown.dynamichide(e)}
+				this.dropmenuobj.onclick=function(){cssdropdown.delayhidemenu()}
+				this.showhide(this.dropmenuobj.style, e)
+				this.dropmenuobj.x=this.getposOffset(obj, "left")
+				this.dropmenuobj.y=this.getposOffset(obj, "top")
+				this.dropmenuobj.style.left=this.dropmenuobj.x-this.clearbrowseredge(obj, "rightedge")+"px"
+				this.dropmenuobj.style.top=this.dropmenuobj.y-this.clearbrowseredge(obj, "bottomedge")+obj.offsetHeight+1+"px"
+				this.positionshim()
+			}
+		},
+
+		positionshim:function(){
+			if (this.enableiframeshim && typeof this.shimobject!="undefined"){
+				if (this.dropmenuobj.style.visibility=="visible"){
+					this.shimobject.style.width=this.dropmenuobj.offsetWidth+"px"
+					this.shimobject.style.height=this.dropmenuobj.offsetHeight+"px"
+					this.shimobject.style.left=this.dropmenuobj.style.left
+					this.shimobject.style.top=this.dropmenuobj.style.top
+				}
+				this.shimobject.style.display=(this.dropmenuobj.style.visibility=="visible")? "block" : "none"
+			}
+		},
+
+		hideshim:function(){
+			if (this.enableiframeshim && typeof this.shimobject!="undefined")
+				this.shimobject.style.display='none'
+		},
+
+		contains_firefox:function(a, b) {
+			while (b.parentNode)
+				if ((b = b.parentNode) == a)
+					return true;
+			return false;
+		},
+
+		dynamichide:function(e){
+			var evtobj=window.event? window.event : e
+			if (this.ie&&!this.dropmenuobj.contains(evtobj.toElement))
+				this.delayhidemenu()
+			else if (this.firefox&&e.currentTarget!= evtobj.relatedTarget&& !this.contains_firefox(evtobj.currentTarget, evtobj.relatedTarget))
+				this.delayhidemenu()
+		},
+
+		delayhidemenu:function(){
+			this.delayhide=setTimeout("cssdropdown.dropmenuobj.style.visibility='hidden'; cssdropdown.hideshim()",this.disappeardelay)
+		},
+
+		clearhidemenu:function(){
+			if (this.delayhide!="undefined")
+				clearTimeout(this.delayhide)
+		},
+
+		startchrome:function(){
+			for (var ids=0; ids<arguments.length; ids++){
+				var menuitems=document.getElementById(arguments[ids]).getElementsByTagName("a")
+				for (var i=0; i<menuitems.length; i++){
+					if (menuitems[i].getAttribute("rel")){
+						var relvalue=menuitems[i].getAttribute("rel")
+						menuitems[i].onmouseover=function(e){
+							var event=typeof e!="undefined"? e : window.event
+							cssdropdown.dropit(this,event,this.getAttribute("rel"))
+						}
+					}
+				}
+			}
+			if (window.createPopup && !window.XmlHttpRequest){
+				document.write('<IFRAME id="iframeshim"  src="" style="display: none; left: 0; top: 0; z-index: 90; position: absolute; filter: progid:DXImageTransform.Microsoft.Alpha(style=0,opacity=0)" frameBorder="0" scrolling="no"></IFRAME>')
+				this.shimobject=document.getElementById("iframeshim")
+			}
+		}
+
+	}
+</script><script type="text/javascript">cssdropdown.startchrome("navMenuv")</script>
+
+
+
+
+</body>
+</html>

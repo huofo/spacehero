@@ -1,0 +1,99 @@
+*{
+	    list-style: none;
+	    margin: 0;
+	    padding: 0;
+}
+a{text-decoration: none;}
+
+		.mdl-div1{width: 1200px;margin: 100px auto;}
+		.mdl-div1>div{width: 50%;float: left;}
+		.mdl-div2{width: 100%;height: 40px;}
+		.mdl-div2>span{width: 80px;height: 40px; font-size: 16px; display: block;text-align: left;float: left;line-height: 40px;}
+		.mdl-left{width: 100%; margin-top: 30px;}
+		.mdl-left>p{color: #333;font-size: 12px;}
+		.mdl-left-inpu{width: 100%;height: 44px; margin-top: 5px;}
+		.mdl-left-inpu>div{width: 18.3%; height: 100%; font-size: 14px; float: left;border: 1px solid #cad7e0; border-right: none;line-height: 44px;padding-left: 10px;border-top-left-radius: 5px;border-bottom-left-radius: 5px;}
+		.mdl-left-inpu>input{width: 77.8%; height: 100%; float: left;background-color: inherit;border: 1px solid #cad7e0; outline: none; border-top-right-radius: 5px; border-bottom-right-radius: 5px; padding-left: 10px;}
+		.mdl-left-inpu2>input{width: 98%;border-radius: 5px;}
+		.mdl-left-butt{width: 100%;height: 46px; margin-top: 20px;}
+		.mdl-left-butt>div:nth-child(1){width: 33%;height: 100%;float: left; line-height: 46px;}
+		.mdl-left-butt>div:nth-child(1)>a{width: 100%;height: 100%; color: #fff; display: block; text-align: center; border-radius: 5px; background-color: #7a98f7; }
+		.mdl-left-butt>div:nth-child(2){width: 30%;height: 100%;float: left;text-align: center;}
+		.mdl-left-butt>div:nth-child(2)>a{font-size: 14px; text-align: center;color: #7a98f7;line-height: 46px;}
+		.mdl-right{width: 80%;margin: 0 auto;margin-top: 20%;}
+		.mdl-right>p{font: 12px;color: #61688a;margin-top: 5px;}
+		.mdl-right>div{width: 40%;height: 60px;}
+		.mdl-right>div>a{ font-size: 14px; color: #7a98f7; line-height: 60px;line-height: 60px;}
+		.dl-tb{color: #c7cce6;float: right;padding-right: 10px;}
+		.mdl-yc{width: 99.5%;height: 250px;border: 1px solid #ccd2db;}
+		.mdl-yc>ul{width: 100%;height: 100%;}
+		.mdl-yc>ul>li{width: 100%;height: 50px;border-bottom: 1px solid #cdd9e2;}
+		.mdl-yc>ul>li>a{color: #333;}
+		.mdl-yc>ul>li>a>div{ width: 50%; height: 100%; float: left; line-height: 50px;}
+		.mdl-yc>ul>li>a>div:nth-child(1){text-align: left;}
+		.mdl-yc>ul>li>a>div:nth-child(2){text-align: right;}
+		.dl-sz{cursor: pointer;}
+		
+		.wg-whole{width: 1200px; margin: 0 auto; margin-top: 100px;}
+		.wg-div1{font-size: 36px;color: #2b3d4a;}
+		.wg-div2{width: 45%;overflow: inherit; margin-top: 2%;}
+		.wg-div2>p{ font-size: 12px; color: #61688a; margin-bottom: 5px;}
+		.wg-div2>input{width: 100%;height: 46px; border: 1px solid #cad7e0; outline: none; padding-left: 10px;}
+		.wg-butt{width: 15%;height: 46px; margin-top: 2%;}
+		.wg-butt>a{width: 100%;height: 100%; color: #fff;font-size: 12px; display: block;background-color: #7a98f7;border-radius: 5px;line-height: 46px;text-align: center;}
+		
+		.zc-whole{width: 1200px;margin: 0 auto; margin-top: 50px;}
+		.zc-div0{width: 50%;float: left;}
+		.zc-div1{font-size: 36px;}
+		.zc-rageh{width: 50%;float: right;}
+		.zc-div2{width: 100%;height: 50px; margin-bottom: 10px;}
+		.zc-div2>span{width: 20%; color: #c7cce6; text-align: center; float: left; line-height: 50px;}
+		.zc-div3{width: 100%;height: 60px;}
+		.zc-div3>p{font-size: 12px;color: #61688a;margin-bottom: 5px;}
+		.zc-div4{width: 100%; height: 50px; overflow: inherit;position: relative;}
+		.zc-div4>div{height: 46px;float: left;line-height: 46px;}
+		.zc-div4>div:nth-child(1){ width: 80%; background-color: #fff; padding-left: 10px;}
+		.zc-an-div0{width: 20px !important;background-color: #fff; padding-right: 10px;}
+		.zc-tcc{width: 520px;height: 250px;background-color: #fff; position: fixed; overflow-y: auto; position: absolute;}
+		.zc-tcc>ul{width: 100%;height: 100%;}
+		.zc-tcc>ul>li{width: 100%;height: 50px;border-bottom: 1px solid #ccd2db; cursor: pointer;}
+		.zc-tcc>ul>li>div{width: 48%;float: left; line-height: 50px;}
+		.zc-tcc>ul>li>div:nth-child(1){text-align: left;padding-left: 10px;}
+		.zc-tcc>ul>li>div:nth-child(2){text-align: right; padding-right: 10px;}
+		.zc-div5{width: 83.5%; height: 50px; background-color: #fff;}
+		.zc-div5-div1{width: 20%;height: 100%;border-right: 1px solid #ddd; float: left;line-height: 50px; padding-left: 10px;}
+		.zc-div5-div2{width: 75%; height: 100%; float: right;}
+		.zc-div5-div2>input{width: 100%;height: 100%;background-color: inherit;outline: none;border: none;}
+		.zc-dh{ width: 45%;height: 100%; display: block; text-align: right;float: right;padding-right: 10px;}
+		.zc-div6{width: 520px;height: 250px;background-color: #fff; overflow-y: auto;}
+		.zc-div6>ul{width: 100%;height: 100%;}
+		.zc-div6>ul>li{width: 100%;height: 50px;border-bottom: 1px solid #cdd9e2;}
+		.zc-div6>ul>li>div{line-height: 50px;}
+		.zc-div6>ul>li>div:nth-child(1){ width: 50%;height: 100%;float: left; padding-left: 10px;}
+		.zc-div6>ul>li>div:nth-child(2){ width: 45%; text-align: right;padding-right: 10px;float: right;}
+		.zc-p1{width: 100%;height: 40px; font-size: 12px; line-height: 40px;}
+		.zc-div7{width: 84%;height: 46px; background-color: #fff;}
+		.zc-div7>input{width: 100%;height: 100%; background-color: inherit; border: none; padding-left: 20px; outline: none;}
+		.zc-div8{width: 100%;height: 20px; margin-top: 20px;margin-bottom: 20px;}
+		.zc-div8>div:nth-child(1){width: 3%;float: left;}
+		.zc-div8>div:nth-child(2){width: 40%; color: #7a98f7; height: 100%; font-size: 12px; float: left;line-height: 20px;}
+		.zc-div9{width: 30%;height: 50px;}
+		.zc-div9>a{width: 100%;height: 100%; color: #fff; display: block; line-height: 50px; border-radius: 5px; text-align: center; background-color: #7a98f7;}
+		.zc-rageh-div1{width: 100%;margin-top: 130px;}
+		.zc-rageh-div1>p{width: 100%;height: 30px; font-size: 12px; color: #61688a; line-height: 30px;}
+		.zc-div2>span>span{width: 70%; display: block; border-bottom: 2px solid #e5ebf5; cursor: pointer;}
+		.zc-div10{width: 83.5%;height: 46px;}
+		.zc-div10>div:nth-child(1){width: 75%; height: 100%; text-align: center; line-height: 46px; background-color: #fff; float: left;}
+		.zc-div10>div:nth-child(2){width: 20%; height: 100%; background-color: #fff; float: right;}
+		.zc-div10>div:nth-child(1)>input{width: 94.9%;height: 100%;border: none;background-color: inherit;outline: none;padding-left: 20px;}
+		.zc-div10>div:nth-child(2)>a{width: 100%;height: 100%; color: #1c242c; text-align: center; display: block; font-size: 12px; line-height: 46px;}
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		

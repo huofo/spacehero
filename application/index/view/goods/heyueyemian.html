@@ -1,0 +1,644 @@
+{include file="head_bibi" /}
+<link rel="stylesheet" href="/index/css/bibi.css">
+<link href="/index/css/index_for_bibi.css" rel="stylesheet" type="text/css">
+<link href="__HOME__/layui/css/layui.css" rel="stylesheet">
+<script src="__HOME__/layui/layui.js"></script>
+<script type="text/javascript">
+window.onload=function(){
+//设置适配rem
+var change_rem = ((window.screen.width > 450) ? 450 : window.screen.width)/375*100;
+document.getElementsByTagName("html")[0].style.fontSize=change_rem+"px";
+window.onresize = function(){
+change_rem = ((window.screen.width > 450) ? 450 : window.screen.width)/375*100;
+document.getElementsByTagName("html")[0].style.fontSize=change_rem+"px";
+}
+}
+</script>
+<script type="text/javascript" src="__HOME__/js/lodash.min.js"></script>
+
+
+
+<script src="/static/public/js/function.js"></script>
+		<script src="/static/public/js/base64.js"></script>
+        <script type="text/javascript">
+          var Base64 = new Base64();
+        </script>
+        
+
+<script>
+
+
+var order_type = 0;
+var order_pid = {$pro.pid};
+var order_price = {$pay_choose_arr[0]};
+var order_sen = {$protime[0]*60};
+var order_shouyi = {$proscale[0]};
+var newprice = {$pro.Price};  //实时价格
+var rawData_data = [];
+var my_money = {$userinfo.usermoney?$userinfo.usermoney:'0'};
+var order_min_price = {:getconf('order_min_price')};
+var order_max_price = {:getconf('order_max_price')};
+var numprice = {$pro.numprice};
+
+
+</script>
+
+<style>
+    body{
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+        overflow-y: scroll;
+        background: #FFFFFF;
+    }
+    .nav-bar-block{
+        width: 100%;
+        height: 40px;
+        position: fixed;
+        top: 0;
+    }
+    .bar-header{
+        border-bottom: 1px solid #f1f1f1!important;
+    }
+    .bottom-nav ul li{
+        float: left;
+        text-align: center;
+        height: 0.5rem;
+        padding: 1% 0 0;
+    }
+    .bottom-nav ul li p{
+        height: 17px;
+        line-height: 17px!important;
+        margin-top: 0px!important;
+    }
+    .left-buttons, .left-buttons .back-button{
+        height: 40px!important;
+        line-height: 40px!important;
+    }
+    .left-buttons, .left-buttons .icon-caidan{
+        color: #000000;
+        font-size: 24px;
+    }
+    /*实验下拉菜单样式*/
+    .dropbtnst {
+        background: none;
+        color: black;
+        padding: 2px 5px;
+        font-size: 16px;
+        border: none;
+        cursor: pointer;
+    }
+
+    .dropbtnst:hover, .dropbtnst:focus {
+        background: none;
+    }
+
+    .dropdownst {
+        position: relative;
+        display: inline-block;
+    }
+
+    .dropdown-contentst {
+        display: none;
+        position: absolute;
+        background-color: #f9f9f9;
+        min-width: 160px;
+        overflow: auto;
+        box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+        z-index: 1;
+    }
+
+    .dropdown-contentst a {
+        color: black;
+        padding: 10px 10px;
+        text-decoration: none;
+        display: block;
+    }
+
+    .dropdownst a:hover {background-color: #f1f1f1}
+
+    .showst {display:block;}
+    .dropbtnvu{
+        background: none;
+        color: black;
+        padding: 2px 5px;
+        font-size: 16px;
+        border: none;
+        cursor: pointer;
+    }
+
+    .dropbtnvu:hover, .dropbtnvu:focus {
+        background: none;
+    }
+
+    .dropdownvu{
+        position: relative;
+        display: inline-block;
+    }
+
+    .dropdown-contentvu{
+        display: none;
+        position: absolute;
+        background-color: #f9f9f9;
+        min-width: 160px;
+        overflow: auto;
+        box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+        z-index: 1;
+    }
+
+    .dropdown-contentvu a {
+        color: black;
+        padding: 1px 5px;
+        text-decoration: none;
+        display: block;
+    }
+
+    .dropdownvu a:hover {background-color: #f1f1f1}
+
+    .showvu {display:block;}
+    .zuihoumianl{width: 100%;height: 30px;}
+    .zuihoumianls{width: 100%;height: 45px;}
+</style>
+
+<body ng-app="starter" ng-controller="AppCtrl" class="grade-a platform-browser platform-ios platform-ios9 platform-ios9_1 platform-ready">
+
+<ion-nav-bar class="bar-stable headerbar nav-bar-container" nav-bar-transition="ios" nav-bar-direction="exit" nav-swipe="">
+    <!--头部-->
+    <div class="nav-bar-block" nav-bar="active" style="background: white">
+        <ion-header-bar class="bar-stable headerbar bar bar-header wl_flex wl_justify_between" align-title="center">
+            <div class="buttons buttons-left" style="transition-duration: 0ms;">
+                <span class="left-buttons">
+                    <a href="javascript:(0);" class="back-button" btn="show-left" style="transition-duration: 0ms;">
+                        <i class="iconfont icon-caidan" style="margin-left: 10px;"></i>
+                    </a>
+                </span>
+            <!--商品名称参数-->
+            <p style="font-size: 0.2rem">{$pro.Name}</p><span style="color: red;font-size: 0.16rem;margin-left: 9px">-0.60%</span></div>
+            <div class="tupianks"><a href="#"><img src="/index/images/xinkxian.png" alt="" style="height: 25px;margin-right: -3px"></a>
+                <a href="#"><img src="/index/images/zhishibenlp.png" alt="" style="height: 33px;margin-right: 15px"></a>
+            </div>
+        </ion-header-bar>
+    </div>
+</ion-nav-bar>
+
+    <div id="place">
+        <div id="data" class="bgColor pb10">
+            <!--左边-->
+            <div class="pull-left active">
+                <div class="deal flex between switch-col">
+                    <span class="pull-left buy business bor">
+                        <a  class="col" data-index="1">买入</a>
+                        <em></em>
+                    </span>
+                    <span class="sell business">
+                        <a  data-index="2">卖出</a>
+                        <em></em>
+                    </span>
+                </div>
+
+                    <div class="wl_justify_between wl_flex"><div class="dropdown" style="width: 50%">
+                        <button onClick="myFunction()" class="dropbtn" style="border: 0.5px solid;border-radius: 5px;padding: 2px 9px;margin-bottom: 5px;width: 100%;">限价</button>
+                        <div id="myDropdown" class="dropdown-content">
+                            <a href="javascript:void(0)" data-type="0">限价</a>
+                            <a href="javascript:void(0)" data-type="1">市价</a>
+                        </div>
+                    </div>
+                    <div class="dropdownst" style="width: 45%">
+                        <button onClick="myFunctionst()" class="dropbtnst" style="border: 0.5px solid;padding: 2px 10px;width: 100%;border-radius: 5px">50X</button>
+                        <div id="myDropdownst" class="dropdown-contentst">
+                            <a href="#home">50X</a>
+                            <a href="#about">100X</a>
+                            <a href="#contact">200X</a>
+                        </div>
+                    </div>
+                </div>
+
+<!--                实验限价-->
+                <div class="control" >
+                   <input id="bibi-text" value="41569.3100" type="text" style="border: 0.5px solid;width: 100%;border-radius: 5px;margin-top: 3%;">
+<!--                    <input class="bibi-text2 bibi-jian" readonly="readonly"; value="-" type="text">-->
+<!--                    <input class="bibi-text2 bibi-jia" readonly="readonly"; value="+" type="text">-->
+                </div>
+                <div class="control">
+                    <input class="bibi-text2 bibi-jian" value="以当前最优价格交易" type="text" style="border: 0.5px solid;width: 100%;border-radius: 5px">
+                </div>
+                <div class="bibi-ktys" style="margin-top: 20%!important;padding: 2px 0;">
+                    <span>1.000BTC</span><br>
+                    <span>交易手数</span>
+                </div>
+
+                <div class="bibi-sl">
+                    <input class="bibi-sl-inp1" type="text" placeholder="数量" style="width: 100%;border: 0.5px solid;border-radius: 5px;margin-top: -10%;">
+                </div>
+
+<!--                <div class="bibi-bfb">-->
+<!--                    <ul>-->
+<!--                        <li>25%</li>-->
+<!--                        <li>50%</li>-->
+<!--                        <li>75%</li>-->
+<!--                        <li>100%</li>-->
+<!--                    </ul>-->
+<!--                </div>-->
+                <div class="bibi-cje" style="margin-top: 38%;">
+                    <span>余额:0.0000USDT</span>
+
+                </div>
+                <div class="transactionAmount mb10">
+                    <button class="buy_sell" id="bt_zd"   onClick="addordersheyue(0)" >
+                        <span>买入(做多)</span>
+                        <span class="legal_title"></span>
+                    </button>
+                    <button class="buy_sell" id="bt_zk" style="display: none" onClick="addordersheyue(1)" >
+                        <span>卖出(做空)</span>
+                        <span class="legal_title"></span>
+                    </button>
+                </div>
+            </div>
+            <!--右边-->
+            <div class="pull-right active1">
+                <div class="ft10color1">
+                    <div class="flex alcenter around pb10  ft12 colorGrey" style="margin-left: -0.31rem;margin-right: -0.2rem;">
+                        <div class="flex1 mr5">价格</div>
+                        <div class="flex1 tr">数量</div>
+                    </div>
+                    <div>
+                        <div class="sell_out" style="margin-right: -.1rem;">
+
+                            {volist name="jiashendu" id="vo"  key="k"}
+                            <div class="flex alcenter around pb10 pd5" id="jia{$k-1}">
+                                <div class="red flex2 ft12 jiage">{$vo.jiage}</div>
+                                <div class="flex2 tc gray ft12 shuliang">{$vo.shuliang}</div>
+                            </div>
+                            {/volist}
+                        </div>
+                        <p class="new_price red mt10" id="goodsprice">{$goodsprice}</p>
+                        <p style="margin-bottom: 10px;">≈<span class="cny_price colorGrey ft12"  id="goodsrmbprice">{$goodsrmbprice}</span>CNY</p>
+                    </div>
+                </div>
+                <div class="ft10color1" style="margin-right: -.1rem;">
+                    <div class="buyIn">
+                        {volist name="jianshendu" id="vo"  key="k"}
+                        <div class="flex alcenter around pb10 pd5"  id="jian{$k-1}">
+                            <div class="gre flex2 ft12 jiage">{$vo.jiage}</div>
+                            <div class="flex2 tc gray ft12 shuliang">{$vo.shuliang}</div>
+                        </div>
+                        {/volist}
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div style="height: 10px; background-color: rgb(244, 248, 251);"></div>
+        <div id="entrust" class="bgColor mt10" style="margin-bottom: 50px">
+            <div>
+                <div><h3 class="pull-left ">当前委托</h3>
+<!--                    <span class="bibi-mr"><div class="dropdownvu">-->
+<!--                        <button onclick="myFunctionvu()" class="dropbtnvu">买入</button>-->
+<!--                        <div id="myDropdownvu" class="dropdown-contentvu">-->
+<!--                            <a>买入</a>-->
+<!--                            <a>卖出</a>-->
+<!--                        </div>-->
+<!--                    </div></span>-->
+                    <p class="pull-right filtrate all">
+                        <a href="#"><img src="/index/images/zhishibenlp.png" alt="" style="height: 33px;margin-top: -5px;"></a>
+                        <a href="{:url('/index/order/hold/token/'.$token)}"><span style="color: #778899!important;">全部</span></a>
+                    </p></div>
+
+                <div class="zuihoumianl wl_flex wl_align_center wl_justify_between">
+                    <div class="yuuuus">类型</div>
+                    <div class="yuuuus">时间</div>
+                    <div class="yuuuus">价格</div>
+                    <div class="yuuuus">交易额</div>
+                    <div class="yuuuus">操作</div>
+                </div>
+                <div class="zuihoumianls wl_flex wl_align_center wl_justify_between">
+                    <div class="yuuuus">买入</div>
+                    <div class="yuuuus">2021-08-06<br><span>18:18:48</span></div>
+                    <div class="yuuuus">40538.9600</div>
+                    <div class="yuuuus">0.10</div>
+                    <div class="yuuuus"style="background: aqua;color: white;width: 40px;height: 25px;line-height: 25px;text-align: center;border-radius: 3px;">平仓</div>
+                </div>
+
+                    <li>
+                        <ul class="conplete_list colorGrey ft12" style="padding: 10px 0px;">
+
+                            {volist name="$hold" id="vo"}
+                            <li class="clearfix" style="padding: 5px 0px;">
+<!--                                <span class="width2 tc fl">{$vo.name}</span>-->
+<!--                                <span class="width2 tc fl">{$vo.buytime}</span>-->
+<!--                                <span class="width2 tc fl">{$vo.buyprice}<br><span class="">{$vo.fangxiang}</span></span>-->
+<!--                                <span class="width11 tc fl">{$vo.onumber}</span>-->
+                                <p><span>买入</span><span>{$vo.buytime}</span><span class="bibi-bbu">已完成</span></p>
+                                <span class="bibi-bp">价格</span>
+                                <span class="bibi-bp">数量</span>
+                                <span class="bibi-bp">交易对</span>
+                                <span class="bibi-bp">{$vo.buyprice}</span>
+                                <span class="bibi-bp">{$vo.onumber}</span>
+                                <span class="bibi-bp">{$vo.name}</span>
+<!--                                <a class="pingcang white tc width1 fl" onClick="bt_pc({$vo.oid})">平仓</a>-->
+                            </li>
+                            {/volist}
+
+                        </ul>
+                    </li>
+
+                </ul>
+            </div>
+        </div>
+    </div>
+<script>
+    function bt_pc(id){
+
+        layer.confirm('确定要平仓么？', {
+            btn: ['确定','取消'] //按钮
+        }, function(){
+
+
+            $.ajax({
+                type:'POST',
+                url:'/index/api/free_order',
+                data:{id:id},
+                success: function(msg){
+                    var msg = eval("(" + msg + ")");
+                    if(msg.error){
+                        layer.msg(msg.error);
+                    }
+                    if(msg.success){
+                        layer.msg('平仓成功', {icon: 1});
+
+                        setTimeout(function () {
+
+                            window.location.reload();
+
+                        }, 1000);
+
+                    }
+                }
+            })
+
+
+        }, function(){
+
+        });
+
+
+
+    }
+</script>
+
+
+    <!--左侧弹出菜单-->
+    <div id="left-hidden-box" class="left-hidden-box" style="display: none;">
+        <div class="nav-box" style="background: white">
+            <div class="nav-box-header" style="color: black;font-weight: 600;">
+                币币
+            </div>
+            <div class="nav-box-tabs">
+                <div class="currency_name">
+                    <ul class="ul">
+
+
+                        {volist name="$allpro" id="vo"}
+                        <li class="legal_name flex between" onClick="parent.location='{:url('goods/heyuegoods',array('pid'=>$vo['pid'],'token'=>$token))}';">
+                            <strong><span>{$vo.ptitle}</span></strong>
+                            <p class="gre"><span>{$vo.Price}</span></p>
+                        </li>
+                        {/volist}
+
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="__HOME__/js/lk/chardata.js"></script>
+    <script src="__HOME__/js/echarts.js"></script>
+
+
+<script>
+    //左侧菜单开启
+    (function(){
+        var Pdiv = document.querySelector('#left-hidden-box');
+        var Sdiv = Pdiv.querySelector('.nav-box');
+        var btn = document.querySelector('[btn="show-left"]');
+
+        Pdiv.addEventListener('click', function(){
+            hiddenBox();
+        });
+        Sdiv.addEventListener('click', function(){
+            window.event ? window.event.cancelBubble = true : e.stopPropagation();
+        });
+        btn.addEventListener('click', function(){
+            showBox();
+        });
+
+        function showBox(){
+            Pdiv.style.display = 'block';
+            setTimeout(function(){
+                Sdiv.style.transition ='0.5s';
+                Sdiv.style.transform = 'translateX(0%)';
+            }, 0);
+        }
+        function hiddenBox(){
+            Pdiv.style.display = 'none';
+            Sdiv.style.transition ='0s';
+            Sdiv.style.transform = 'translateX(-100%)';
+        }
+    })();
+    //左侧菜单关闭
+    (function(){
+        var Pdiv = document.querySelector('#left-hidden-box');
+        var Sdiv = Pdiv.querySelector('.nav-box');
+        var btn = document.querySelector('[btn="off-left"]');
+
+        Pdiv.addEventListener('click', function(){
+            hiddenBox();
+        });
+        Sdiv.addEventListener('click', function(){
+            window.event ? window.event.cancelBubble = true : e.stopPropagation();
+        });
+        // btn.addEventListener('click', function(){
+        //     showBox();
+        // });
+
+        function showBox(){
+            setTimeout(function(){
+                Sdiv.style.transition ='0.5s';
+                Sdiv.style.transform = 'translateX(-100%)';
+            }, 0);
+            Pdiv.style.display = 'none';
+        }
+        function hiddenBox(){
+            Pdiv.style.display = 'blck';
+            Sdiv.style.transition ='0s';
+            Sdiv.style.transform = 'translateX(0%)';
+        }
+    })();
+
+    //写在这即可
+
+    $('.switch-col a').on('click', function () {
+        $('.switch-col .col').removeClass('col')
+        $(this).addClass('col')
+        if($(this).data('index') == 1){
+            $('#data').removeClass('col2');
+            $('#bt_zd').css('display','block');
+            $('#bt_zk').css('display','none');
+
+        }else {
+            $('#data').addClass('col2')
+            $('#bt_zd').css('display','none');
+            $('#bt_zk').css('display','block');
+        }
+    })
+
+    $('.control').on('click', function (e) {
+        // console.log(e.target.nodeName)
+        // console.log($(this).find('.actives'))
+        if(e.target.nodeName == 'SPAN' || e.target.nodeName == 'INPUT'){
+            $(this).find('.actives').removeClass('actives')
+            $(e.target).addClass('actives')
+        }
+
+
+    })
+
+    layui.use('layer', function(){
+        var layer = layui.layer;
+
+    });
+	
+	
+	
+	
+           setInterval("ajaxpros()",2000);
+			function ajaxpros(){
+				 var geturl = "/index/Goods/heyuegoodsajax/pid/"+{$pro.pid};
+				 var type = '';
+				$.get(geturl,function(data){
+					if (data) {
+						data = jQuery.parseJSON(Base64.decode(data)); 
+						
+						
+						$('#goodsprice').html(data.price);
+						$('#goodsrmbprice').html(data.goodsrmbprice);
+						$.each(data.jia,function(k,v){
+							$('#jia'+k+' .jiage').html(v.jiage);
+							
+							$('#jia'+k+' .shuliang').html(v.shuliang);
+			
+						});
+						
+						$.each(data.jian,function(k,v){
+							
+							
+							$('#jian'+k+' .jiage').html(v.jiage);
+							
+							$('#jian'+k+' .shuliang').html(v.shuliang);
+							
+			
+						});
+					}
+			
+				});
+			}
+
+   
+
+</script>
+<!--后来进行的修改-->
+<script src="/index/js/jquery-2.1.4.min.js">
+$(".bibi-jian").click(function(){
+    var a=$(".bibi-text").val();
+    alert("7987");
+    console.log(a);
+});
+</script><script>
+    $(function () {
+        setInterval(function () {
+        }, 6000)
+        $('.control').hide().eq(0).show()
+        $("#myDropdown a").click(function () {
+            $('.control').hide().eq($(this).data('type')).show()
+            $("#myDropdown a").removeClass('active');
+            $(this).addClass('active');
+            if ($(this).attr('data-type') == 2) {
+
+            } else if($(this).attr('data-type') == 1) {
+
+            }
+        })
+    });
+</script>
+<script>
+    /* 点击按钮，下拉菜单在 显示/隐藏 之间切换 */
+    function myFunction() {
+        document.getElementById("myDropdown").classList.toggle("show");
+    }
+    // 点击下拉菜单意外区域隐藏
+    window.onclick = function(event) {
+
+        if (!event.target.matches('.dropbtn')) {
+
+            var dropdowns = document.getElementsByClassName("dropdown-content");
+            var i;
+            for (i = 0; i < dropdowns.length; i++) {
+                var openDropdown = dropdowns[i];
+
+                if (openDropdown.classList.contains('show')) {
+                    openDropdown.classList.remove('show');
+                }
+            }
+        }
+    }
+</script>
+
+<script>
+    /* 点击按钮，下拉菜单在 显示/隐藏 之间切换 */
+    function myFunctionst() {
+        document.getElementById("myDropdownst").classList.toggle("showst");
+    }
+
+    // 点击下拉菜单意外区域隐藏
+    window.addEventListener('click',function(){
+        if (!event.target.matches('.dropbtnst')) {
+
+            var dropdownst = document.getElementsByClassName("dropdown-contentst");
+            var i;
+            for (i = 0; i < dropdownst.length; i++) {
+                var openDropdownst = dropdownst[i];
+                if (openDropdownst.classList.contains('showst')) {
+                    openDropdownst.classList.remove('showst');
+                }
+            }
+        }
+    })
+</script>
+
+
+
+<script>
+    /* 点击按钮，下拉菜单在 显示/隐藏 之间切换 */
+    function myFunctionvu() {
+        document.getElementById("myDropdownvu").classList.toggle("showvu");
+    }
+
+    // 点击下拉菜单意外区域隐藏
+    window.addEventListener('click',function(){
+        if (!event.target.matches('.dropbtnvu')) {
+
+            var dropdownvu = document.getElementsByClassName("dropdown-contentvu");
+            var i;
+            for (i = 0; i < dropdownvu.length; i++) {
+                var openDropdownst = dropdownvu[i];
+                if (openDropdownst.classList.contains('showvu')) {
+                    openDropdownst.classList.remove('showvu');
+                }
+            }
+        }
+    })
+</script>
+
+{include file="foot" /}
+</body>
+</html>

@@ -1,0 +1,158 @@
+<html style="font-size: 120px;">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+    <!-- 是否启用全屏模式 -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <!-- 全屏时状态颜色设置 -->
+    <meta name="apple-mobile-web-status-bar-style" content="white">
+    <!-- 禁用电话号码自动识别 -->
+    <meta name="format-detection" content="telephone=no">
+    <!--禁止读取本地缓存模板-->
+    <meta http-equiv="Pragma" contect="no-cache">
+    <script type="text/javascript">
+        window.onload=function(){
+//设置适配rem
+            var change_rem = ((window.screen.width > 450) ? 450 : window.screen.width)/375*100;
+            document.getElementsByTagName("html")[0].style.fontSize=change_rem+"px";
+            window.onresize = function(){
+                change_rem = ((window.screen.width > 450) ? 450 : window.screen.width)/375*100;
+                document.getElementsByTagName("html")[0].style.fontSize=change_rem+"px";
+            }
+        }
+    </script>
+    <title>{$Think.lang.rj_xgjjmm}</title>
+    <link href="__HOME__/css/pay1.css" rel="stylesheet" media="screen">
+    <script type="text/javascript" src="__HOME__/js/jquery-3.2.1.min.js"></script>
+    <script type="text/javascript" src="__HOME__/js/lk/user.js"></script>
+    <link href="__HOME__/layui/css/layui.css" rel="stylesheet">
+    {include file="alyslt" /}
+    <!--        夜间白天切换的文件-->
+    {if $_SESSION["night"]=="yes"}<link rel="stylesheet" href="/index/css/reseterjipwd.css" >{/if}
+    <script src="__HOME__/layui/layui.js"></script>
+</head>
+<body style="background: black">
+<style>
+    .daohang{width: 100%;height: 45px;background: #000033;position: relative;top: 0;left: 0;z-index: 999;}
+    .daohang-zuo{float: left;margin-left: 5px;width: 15px;margin-left: 2%;}
+    .daohang-zhong{text-align: center;font-size: 15px;color: white;line-height: 45px;font-weight: 600;}
+    .jiaoyi{width: 90%;height: 25%;margin: auto;margin-top: 1rem;}
+    .querenanniu{width: 90%;margin: auto;height: 6%;background: #00a0e9;border-radius: 7px;font-size: 0.16rem;margin-top: 5%;text-align: center;}
+    .querenannius{width: 20%;height: 23%;background: #00a0e9;border-radius: 7px;font-size: 0.16rem;text-align: center;display: inline-block;margin-left: 20px;}
+
+    .daohang-zuo{width: 20%;height: 40px;position: fixed;}
+    .daohang-zuo>a{width: 100%;height: 100%; display: block; line-height: 50px;}
+    .daohang-zuo>a>i{font-size: 25px;}
+</style>
+<div class="daohang">
+    <div class="daohang-zuo"><a  href="javascript:void(0)" onclick="javascript:history.back(-1);"><i class="iconfont icon-31fanhui1"></i></a></div>
+    <div class="daohang-zhong">{$Think.lang.rj_xgjjmm}</div>
+</div>
+ <form method="post" id="form_password2" action="">
+<div class="jiaoyi">
+    <input type="password"  name="upwd"  placeholder="{$Think.lang.rj_qsrjymm}" style="border-bottom: 1px solid #00a0e9;height: 35px;width: 100%;border: none;background: #000033;margin-top: 10px;color: white; padding:0 8px"/>
+    <input type="password"  name="upwd2"  placeholder="{$Think.lang.rj_qqrjymm}" style="border-bottom: 1px solid #00a0e9;height: 35px;width: 100%;border: none;background: #000033;margin-top: 10px;color: white; padding:0 8px"/>
+    <input type="text"  name="phonecode"  placeholder="{$Think.lang.rj_qsryzm}" style="border-bottom: 1px solid #00a0e9;height: 35px;width: 70%;border: none;background: #000033;margin-top: 10px;color: white; padding:0 8px"/>
+    <div class="querenannius"><span class="code_btn_dl"  onclick ="return get_svgdl();" style="line-height: 35px;color: white">{$Think.lang.rj_fs}</span></div>
+</div>
+<div style="white:100%; text-align:center">
+    <input class="querenanniu" style="line-height: 35px;color: white; border:0px"  type="button" name="submit" value="{$Think.lang.rj_qrtj}"   onclick ="return checkform_xgdlmm(this.form);">
+</div>
+
+</form>
+
+<script>
+    
+    //设置登录密码
+layui.use('layer', function(){
+		var layer = layui.layer;
+
+	});
+
+function get_svgdl() {
+	
+	
+	var url = "/index/login/sendmsm_suiji";
+	$.get(url,function(resdata){
+		layer.msg(resdata.data);
+		if(resdata.type == 1){
+			$(".code_btn_dl").attr('onclick',"return false;");
+			listion_bangdl();
+		}
+	})
+	return false;
+}
+
+function listion_bangdl(){
+
+	 var time= 61;
+    setTime=setInterval(function(){
+        if(time<=1){
+            clearInterval(setTime);
+            $(".code_btn_dl").html("{$Think.lang.rj_zfyc}");
+            $(".code_btn_dl").attr('onclick',"return get_svgdl();");
+            return;
+        }
+        time--;
+        $(".code_btn_dl").html(time+"s");
+
+    },1000);
+}
+
+
+
+	function checkform_xgdlmm(form){
+	    
+	   var phonecode = form.phonecode.value;
+		var upwd = form.upwd.value;
+		var upwd2 = form.upwd2.value;
+	
+		if(!upwd){
+			layer.msg('{$Think.lang.rj_qsrhymm2}');
+			return false; 
+		}
+
+		if (!upwd2) {
+			layer.msg('{$Think.lang.rj_qqrjimm2}');
+			return false;
+		}
+        if (!phonecode) {
+        			layer.msg('{$Think.lang.rj_qsryzm}');
+        			return false;
+        		}
+        		
+        		
+        		if(upwd.length < 6 || upwd2.length < 6){
+			layer.msg('{$Think.lang.rj_mmcddylw}');
+			return false;
+		}
+		
+		
+       var postdata = 'upwd='+upwd+"&upwd2="+upwd2+"&suijicode="+phonecode;
+
+            var posturl = "/index/user/xgjymm";
+            $.post(posturl,postdata,function(resdata){
+                layer.msg(resdata.data);
+
+                if(resdata.type == 1){
+                    setTimeout('gourl()',1000);
+                }
+
+            })
+		
+        		
+
+	}
+	
+	
+	 function gourl() {
+
+            history.go(0);
+        }
+
+	
+
+</script>
+
+</body>
+</html>

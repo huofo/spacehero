@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0, user-scalable=no">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+    <!-- 是否启用全屏模式 -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <!-- 全屏时状态颜色设置 -->
+    <meta name="apple-mobile-web-status-bar-style" content="white">
+    <!-- 禁用电话号码自动识别 -->
+    <meta name="format-detection" content="telephone=no">
+    <!--禁止读取本地缓存模板-->
+    <meta http-equiv="Pragma" contect="no-cache">
+    {include file="alyslt" /}
+    {include file="fbjy_js" /}
+    <link rel="stylesheet" href="/index/css/optional.css" >
+<!--    黑夜模式-->
+    {if $_SESSION["night"]=="yes"}<link rel="stylesheet" href="/index/css/optional.css" >{else} <link rel="stylesheet" href="/index/css/user-ddmjqrsk.css" >{/if}
+    <link rel="stylesheet" href="/static/bootstrap-4.6.1-dist/css/bootstrap.min.css" >
+    <link rel="stylesheet" href="/static/index/layui/css/modules/layer/default/layer.css?v=3.1.1" >
+<!--    <link rel="stylesheet" href="/index/css/user-ddmjqrsk.css" >-->
+    <script src="/index/js/jquery-2.1.4.min.js"></script>
+    <script type="text/javascript" src="/index/js/jquery.min.js"></script>
+    <script type="text/javascript" src="/index/js/clipboard.js"></script>
+    <script type="text/javascript" src="/index/js/clipboard.min.js"></script>
+    {include file="fbjy_js" /}
+    <script src="/static/bootstrap-4.6.1-dist/js/bootstrap.bundle.js"></script>
+    <script src="/static/bootstrap-4.6.1-dist/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="/static/index/layui/lay/modules/layer.js"></script>
+</head>
+<style>
+    body {background-color: #f5f5f5;}
+    p{margin-bottom: 0px;}
+    .pay-qqrsk{position: inherit;}
+    .hawhle {height: auto;}
+    .cld-whole-jbjs {margin-top: 40%;}
+    .cld-whole2>p {font-size: 12px; line-height: 30px;}
+    .cld-wholes2-div1>p{font-size: 12px; line-height: 30px;}
+    .cld-wholes2-div1>p>span:nth-child(1){color: #999999;}
+    .cld-wholes2-div1>p>span:nth-child(1){color: #999999;}
+    .cld-wholes2-div1>p>span:nth-child(2){color: #000000;}
+    .cld-whole2>p>span:nth-child(2){font-size: 16px;}
+    .cld-wholes2>p:nth-child(1){font-size: 14px;}
+    .pay-qqrsk-zfbzh2>p>span:nth-child(2) {line-height: 20px;}
+    .pay-qqrsk-zfbzh>p:nth-child(1), .pay-qqrsk-zfbzh>p:nth-child(2) {font-weight: 500;}
+    .icon-xiangshang{font-size: 20px!important;}
+    .czbt_fz{color: #f4ea2a;}
+</style>
+<style>
+
+</style>
+<body>
+<div class="pay-qqrsk">
+    <div class="hawhle">
+        <div class="cld-hode">
+            <div><a href="javascript:window.history.go(-1);"><i class="iconfont icon-31fanhui1"></i></a></div>
+            <div></div>
+            {if $talk_side}
+            <div><a href="/index/user/lxmj?oid={$id}"><i class="iconfont icon-xiaoxi"></i><span class="cld-lxmj">0</span>&#8194;{$Think.lang.fbjy_lxmj}</a></div>
+            {/if}
+<!--            <div><a href=""><i class="iconfont icon-xiaoxi"></i><span class="cld-lxmj">1</span>&#8194;联系卖家</a></div>-->
+        </div>
+        <div class="cld-top">
+            <div class="cld-top-noe" style="width: 100%;">
+                <h5>{$Think.lang.fbjy_ddmjqrsk}</h5>
+            <!--    <p class="qxm-hode-p2">{$Think.lang.fbjy_nrwcfkqlx}</p>-->
+            </div>
+            <div class="">
+            </div>
+        </div>
+    </div>
+    <div class="cld-whole-jbjs">
+        <div class="cld-whole cld-whole2">
+            <div class="cld-whole2 cld-wholes2">
+                <p><span>{$Think.lang.sw_gm}</span>  {$order.symbol} <i class="iconfont icon-USDT"></i></p>
+                <p><span>{$Think.lang.fbjy_zj}</span><span class="cld-wholes2-sp2">{$currency.symbol}{$all_amount}</span></p>
+                <div class="cld-wholes2-div1">
+                    <p><span>{$Think.lang.bi_js}</span><span>{$currency.symbol}{$one_amount}</span></p>
+                    <p><span>{$Think.lang.bi_sl}</span><span>{$order.t_num}{$order.symbol}</span></p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="pay-qqrsk-zfbzh pay-qqrsk-zfbzh2 pay-qqrsk-zfbzh4">
+        <p><span>{$Think.lang.fbjy_fkfs}</span><span class="pay-qqrsk-zfbzh4-sp2">{$payment.name}&#8195;<i class="iconfont icon-down"></i><i class="iconfont icon-xiangshang"></i></span></p>
+    </div>
+    <div class="qxm-tow">
+        <p>{$payment_type.name}</p>
+        {if $shoukuan.account_name}
+        <p><span>{$Think.lang.sr_xm}</span><span class="a22">{$shoukuan.account_name}<i class="iconfont icon-fuzhi czbt_fz"  data-clipboard-action="copy" data-clipboard-target="#cz_cbadz"></i></span></p>
+        {/if}
+        {if $shoukuan.account_num}
+        <p><span>{$Think.lang.sksz_wx}</span><span class="a22">{$shoukuan.account_num}<i class="iconfont icon-fuzhi czbt_fz"  data-clipboard-action="copy" data-clipboard-target="#cz_cbadz"></i></span></p>
+        {/if}
+        {if $shoukuan.bank_name}
+        <p><span>{$Think.lang.fbjy_hykh}</span><span class="a22">{$shoukuan.bank_name}<i class="iconfont icon-fuzhi czbt_fz"  data-clipboard-action="copy" data-clipboard-target="#cz_cbadz"></i></span></p>
+        {/if}
+        {if $shoukuan.bank_num}
+        <p><span>{$Think.lang.sksz_yhkh}</span><span class="a22">{$shoukuan.bank_num}<i class="iconfont icon-fuzhi czbt_fz"  data-clipboard-action="copy" data-clipboard-target="#cz_cbadz"></i></span></p>
+        {/if}
+        {if $shoukuan.qrcode}
+        <p><span>{$Think.lang.fbjy_skewm}</span><span><i class="iconfont icon-erweima"></i></span></p>
+        {/if}
+
+<!--        <p><span>姓名</span><span>2张当当</span></p>-->
+<!--        <p><span>微信账号</span><span>扫码加好友付款</span></p>-->
+<!--        <p><span>收款二维码</span><span><i class="iconfont icon-erweima"></i></span></p>-->
+    </div>
+    <div class="pay-div1 pay-div2 pay-div3 pay-div4"><span>{$Think.lang.fbjy_jytk}</span><span class="pay-div3-sp2"><i class="iconfont icon-down icon-downm2"></i><i class="iconfont icon-xiangshang icon-xiangshangm2" style="font-size: 20px!important;"></i></span></div>
+    <div class="pay-tow">
+        <div class="pay-tow-whloe">
+            <div class="pay-tow-tx"><img src="/index/images/language/lajiao.jpg"></div>
+            <div class="pay-tow-text">
+                <p>{$Think.lang.fbjy_xkt}</p>
+                <!--<p>{$Think.lang.fbjy_drqxddsc}</p>-->
+            </div>
+        </div>
+    </div>
+<!--    <div class="pay-qqrsk-txxx"><i class="iconfont icon-gantanhao "></i>请不要相信任何催促放币的理由，确认收到款项后再释放数字资产，避免造成损失</div>-->
+    <div class="pay-butt-back pay-qqrsk-butt">
+        <div class="pay-butt pay-butt2 pay-butt3 pay-butt4">
+            <button >{$Think.lang.fbjy_qxdd}</button>
+            {if $_SESSION['uid']}
+            <button onclick="javascript:window.location.href='/index/user/zym_kflt'">{$Think.lang.fbjy_ss}</button>
+            {/if}
+
+        </div>
+    </div>
+</div>
+<div class="ddm-qxdd">
+    <div class="ddm-qxdd-hode">
+        <p><a><i class="iconfont icon-31fanhui1"></i></a> {$Think.lang.fbjy_qxdd}</p>
+    </div>
+    <div class="ddm-qxdd-top">
+        <p><i class="iconfont icon-gantanhao"></i>{$Think.lang.bibi_wxts}</p>
+        <p>1.{$Think.lang.fbjy_rgnyjxmjfk}</p>
+        <p>2.{$Think.lang.fbjy_mjdeljqx}</p>
+    </div>
+    <p class="ddm-qxdd-p2">{$Think.lang.fbjy_qgswmnwsm}</p>
+    <div class="ddm-qxdd-whole">
+        <div class="form-check">
+            <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="{$Think.lang.fbjy_wbxjyl}">
+            <label class="form-check-label" for="exampleRadios1">
+                {$Think.lang.fbjy_wbxjyl}
+            </label>
+        </div>
+        <div class="form-check">
+            <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="{$Think.lang.fbjy_wbmzggjy}">
+            <label class="form-check-label" for="exampleRadios2">
+                {$Think.lang.fbjy_wbmzggjy}
+            </label>
+        </div>
+        <div class="form-check">
+            <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios3" value="{$Think.lang.fbjy_mjyewsqfz}">
+            <label class="form-check-label" for="exampleRadios3">
+                {$Think.lang.fbjy_mjyewsqfz}
+            </label>
+        </div>
+        <div class="form-check">
+            <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios4" value="{$Think.lang.fbjy_mjskfsywt}">
+            <label class="form-check-label" for="exampleRadios4">
+                {$Think.lang.fbjy_mjskfsywt}
+            </label>
+        </div>
+        <div class="form-check">
+            <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios5" value="{$Think.lang.fbjy_qt}">
+            <label class="form-check-label" for="exampleRadios5">
+               {$Think.lang.fbjy_qt}
+            </label>
+        </div>
+    </div>
+    <button class="ddm-qxdd-butt" >{$Think.lang.fbjy_qxdd}</button>
+</div>
+<script>
+
+    $(".a22").click(function () {
+        $(".a22").attr("id","nul");
+        $(this).attr("id","cz_cbadz");
+    });
+
+    //复制文本 JS
+    var clipboard = new Clipboard('.czbt_fz');
+    clipboard.on('success', function(e) {
+        layer.msg(cd_fzcg);
+        console.log(cd_fzcg);
+        console.log(e);
+    });
+    clipboard.on('error', function(e) {
+        layer.msg(cd_fzsb);
+        console.log(cd_fzsb);
+        console.log(e);
+    });
+
+
+
+
+    $(".pay-qqrsk-txxx").hide();
+    $(".pay-qqrsk-zfbzh4-sp2>i").eq(1).hide();
+    $(".pay-div3").click(function () {
+        $(".pay-qqrsk-txxx").toggle();
+    });
+
+    //获去不想交易的原因
+    var texts
+    $(".form-check input").click(function () {
+        texts =$(".form-check input:checked").val();
+       // alert(texts);
+        $(".ddm-qxdd-butt").addClass("ddm-qxdd-butts");
+    });
+
+    //取消订单界面的显示和隐藏
+    $(".ddm-qxdd").hide();
+    $(".pay-butt4>button").eq(0).click(function(){
+        $(".ddm-qxdd").show();
+    });
+    $(".ddm-qxdd-hode>p>a").click(function () {
+        $(".ddm-qxdd").hide();
+    });
+
+    //订单取消，提交按钮点击事件
+    $(".ddm-qxdd-butt").click(function () {
+        var clas =$(this).attr("class");
+        console.log(clas);
+        if (clas!="ddm-qxdd-butt ddm-qxdd-butts"){layer.msg(fbjy_qxzqxdd);return;}
+
+        cancel_order();
+
+    });
+    var oid = {$id};
+    //取消订单
+    function cancel_order() {
+        layer.confirm(fbjy_qrqxdd,{
+            btn: [fbjy_bl, bi_qd]
+        }, function (index) {
+            // 按钮1的事件
+            layer.close(index);
+            return false;
+        }, function(){
+            $.ajax({
+                url: '/index/Currencytrade/cancel_order',
+                type: 'post',
+                dataType: 'json',
+                data: {
+                    'oid': oid,
+
+                },
+                success: function (res) {
+                    if(res.code == 1){
+                        layer.msg(res.msg);
+                        setTimeout(function () {
+                            window.location.href = '/index/user/curordes';
+                        },1000)
+                    }else{
+                        layer.msg(res.msg);
+                    }
+                }
+            });
+
+            // 按钮2的事件
+        });
+    }
+    var timer = setInterval("select_order()",1000)
+    var id = {$id};
+    function select_order(){
+        $.ajax({
+            type:"post",
+            url:"{:url('index/Currencytrade/select_order')}",
+            data:{
+                id:id
+            },
+            dataType:'JSON',
+            async:false,
+            success:function(data){
+                if(data.code == 1){
+                        if(data.status == 2){
+                            window.location.href = '/index/user/success2.html?id='+ id;
+                        }
+                }
+            },
+            error:function(){
+                layer.msg(fbjy_wlcc+"..",{time:2*1000});
+            }
+        });
+    }
+
+    //点击收款方式div的显示和隐藏
+    $(".qxm-tow").hide();
+    $(".pay-div3-sp2>i").eq(1).hide();
+    $(".pay-qqrsk-zfbzh4").click(function () {
+        $(".pay-qqrsk-zfbzh4-sp2>i").eq(1).toggle();
+        $(".pay-qqrsk-zfbzh4-sp2>i").eq(0).toggle();
+        $(".qxm-tow").slideToggle(1000);
+    });
+
+    //点击交易条款div的显示和隐藏
+    $(".pay-div4").click(function () {
+        $(".pay-div3-sp2>i").eq(0).toggle();
+        $(".pay-div3-sp2>i").eq(1).toggle();
+
+        $(".pay-tow-whloe").toggle();
+    });
+
+</script>
+</body>
+</html>

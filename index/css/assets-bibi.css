@@ -1,0 +1,12 @@
+.child a {color: #333333!important;}
+.child:nth-child(1)>li>a{color: #afeeee!important;}
+/*.mdhyskz{ color: #afeeee!important;}*/
+.daohangt {background-color: #FFFFFF!important;}
+.neirong {background-color: #8bc4eb!important;}
+.childs {color: #f2f2f2!important;}
+body {background-color: #f7f7fb!important;}
+.childkeyongg{color: #000!important;}
+.childkeyongs {color: #666!important;}
+.neirongt {background-color: #FFFFFF!important;}
+.bottom-nav {background-color: #FFFFFF;}
+.neirong{background-image: url(/index/images/language/grzxbj.jpg); no-repeat centen;background-size:100%100%;box-sizing: border-box;}

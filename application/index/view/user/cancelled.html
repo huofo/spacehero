@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0, user-scalable=no">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+    <!-- 是否启用全屏模式 -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <!-- 全屏时状态颜色设置 -->
+    <meta name="apple-mobile-web-status-bar-style" content="white">
+    <!-- 禁用电话号码自动识别 -->
+    <meta name="format-detection" content="telephone=no">
+    <!--禁止读取本地缓存模板-->
+    <meta http-equiv="Pragma" contect="no-cache">
+    {include file="alyslt" /}
+    <link rel="stylesheet" href="/index/css/optional.css" >
+    <link rel="stylesheet" href="/static/bootstrap-4.6.1-dist/css/bootstrap.min.css" >
+    {if $_SESSION["night"]=="yes"}<link rel="stylesheet" href="/index/css/optional.css" >{else}<link rel="stylesheet" href="/index/css/user-cancellad.css" >{/if}
+<!--    黑夜模式-->
+<!--    <link rel="stylesheet" href="/index/css/user-cancellad.css" >-->
+    <script src="/index/js/jquery-2.1.4.min.js"></script>
+    <script src="/static/bootstrap-4.6.1-dist/js/bootstrap.bundle.js"></script>
+    <script src="/static/bootstrap-4.6.1-dist/js/bootstrap.min.js"></script>
+</head>
+<body class="cld-body">
+<div class="cld-hode">
+    <div><a href="javascript:window.history.go(-1);"><i class="iconfont icon-31fanhui1"></i></a></div>
+    <div></div>
+    {if $talk_side}
+    <div><a href="/index/user/lxmj?oid={$id}"><i class="iconfont icon-xiaoxi"></i> {$Think.lang.fbjy_lx}{$seller_msg}</a></div>
+    {/if}
+</div>
+<div class="cld-top">
+    <div class="cld-top-noe">
+        <h5>{$order.status}</h5>
+        <p>{$order.trade_type}{$order.symbol}</p>
+    </div>
+    <div class="cld-top-twe"><i class="iconfont icon-gantanhao"></i></div>
+</div>
+<div class="cld-whole">
+    <div class="cld-whole2">
+        <p><span>{$order.trade_type}</span> {$order.symbol} </p>
+        <p><span>{$Think.lang.fbjy_zj}</span><span>{$order.currency_icon}{$order.all_pay_amount}</span></p>
+        <p><span>{$Think.lang.bi_js}</span><span>{$order.currency_icon}{$order.s_price * $order.c_exc_rate}</span></p>
+        <p><span>{$Think.lang.bi_sl}</span><span>{$order.t_num} {$order.symbol}</span></p>
+        <div></div>
+        <p><span>{$Think.lang.fbjy_ddh}</span><span>{$order.order_sn}  <!--<i class="iconfont icon-tubiao_dingdan"></i>--></span></p>
+        <p><span>{$Think.lang.fbjy_cjsj}</span><span>{$order.addtime}</span></p>
+       <!-- <p><span>{$Think.lang.fbjy_mjnc}</span><span>{$Think.lang.fbjy_snnzj}</span></p>-->
+    </div>
+</div>
+<!--<button class="cld-butt">{$Think.lang.fbjy_ks}</button>-->
+</body>
+</html>

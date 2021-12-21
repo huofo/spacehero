@@ -1,0 +1,10 @@
+.bottom-nav {background-color: #FFFFFF;}
+.headerbar {background-color: #FFFFFF!important;}
+*, *:before, *:after {color: #666666;}
+.headerbar .header-item {color: #333333!important;}
+.trade_history header {background-color: #f7f7fb;}
+.slider-slide{background-color: #f7f7fb!important;}
+.trade_history_list ul {background-color: #f7f7fb;}
+.trade_history_list ul li{background-color: #f7f7fb;}
+ul.uls {background-color: inherit!important;}
+.trade_history_list ul li {border-bottom: 1px solid rgba(102,102,102,0.1);}

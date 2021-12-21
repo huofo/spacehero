@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0, user-scalable=no">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+    <!-- 是否启用全屏模式 -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <!-- 全屏时状态颜色设置 -->
+    <meta name="apple-mobile-web-status-bar-style" content="white">
+    <!-- 禁用电话号码自动识别 -->
+    <meta name="format-detection" content="telephone=no">
+    <!--禁止读取本地缓存模板-->
+    <meta http-equiv="Pragma" contect="no-cache">
+    {include file="alyslt" /}
+    {include file="fbjy_js" /}
+    <link rel="stylesheet" href="/index/css/optional.css" >
+
+    {if $_SESSION["night"]=="yes"}<link rel="stylesheet" href="/index/css/optional.css" >{else} <link rel="stylesheet" href="/index/css/user-ordes.css" >{/if}
+
+<!--    黑夜模式-->
+<!--    <link rel="stylesheet" href="/index/css/user-ordes.css" >-->
+
+    <script src="/index/js/jquery-2.1.4.min.js"></script>
+    <script type="text/javascript" src="/static/public/js/lowgetmoredata.js"></script>
+</head>
+<body>
+<div class="ods-hode">
+    <div><a href="javascript:window.history.go(-1);"><i class="iconfont icon-31fanhui1"></i></a></div>
+    <div>{$Think.lang.fbjy_ddlb}</div>
+    <div></div>
+</div>
+<div class="ods-list">
+    <ul id="olist">
+       <!-- <li>
+            <div class="ods-list-one">
+                <span><span>购买 </span>USDT</span>
+                <span><a href="/index/User/cancelled">已取消 <i class="iconfont icon-youjiantou-copy"></i></a></span>
+            </div>
+            <div class="ods-list-two">
+                <p><span>单价 ￥6.42</span><span>10-29 09:02:06</span></p>
+                <p><span>数量：15.57 USDT</span><span>￥ 100.00</span></p>
+            </div>
+        </li>
+        <li>
+            <div class="ods-list-one">
+                <span><span>购买 </span>USDT</span>
+                <span><a href="">已取消 <i class="iconfont icon-youjiantou-copy"></i></a></span>
+            </div>
+            <div class="ods-list-two">
+                <p><span>单价 ￥6.42</span><span>10-29 09:02:06</span></p>
+                <p><span>数量：15.57 USDT</span><span>￥ 100.00</span></p>
+            </div>
+        </li>
+        <li>
+            <div class="ods-list-one">
+                <span><span>购买 </span>USDT</span>
+                <span><a href="/index/User/success2">交易成功 <i class="iconfont icon-youjiantou-copy"></i></a></span>
+            </div>
+            <div class="ods-list-two">
+                <p><span>单价 ￥6.42</span><span>10-29 09:02:06</span></p>
+                <p><span>数量：15.57 USDT</span><span>￥ 100.00</span></p>
+            </div>
+        </li>
+        <li>
+            <div class="ods-list-one">
+                <span><span>购买 </span>USDT</span>
+                <span><a href="">交易成功 <i class="iconfont icon-youjiantou-copy"></i></a></span>
+            </div>
+            <div class="ods-list-two">
+                <p><span>单价 ￥6.42</span><span>10-29 09:02:06</span></p>
+                <p><span>数量：15.57 USDT</span><span>￥ 100.00</span></p>
+            </div>
+        </li>-->
+    </ul>
+</div>
+</body>
+<script>
+    var page = 0;
+    getmore();
+    function getmore(){
+        $.ajax({
+            url: '/index/Currencytrade/ajax_get_torder',
+            type: 'post',
+            dataType: 'json',
+            data: {
+
+                'page': page,
+
+            },
+            success: function (res) {
+                //console.log(res);
+                var html = '';
+                if(res.code == 1){
+                    if(res.page !== page){
+                        $.each(res.data,function (index,item) {
+                            html += ' <li>\n' +
+                                '            <div class="ods-list-one">\n' +
+                                '                <span><span>'+item.type+' </span>USDT</span>\n' +
+                                '                <span><a href="/index/User/cancelled">'+item.status_name+' <i class="iconfont icon-youjiantou-copy"></i></a></span>\n' +
+                                '            </div>\n' +
+                                '            <div class="ods-list-two">\n' +
+                                '                <p><span>'+fbjy_dj+' '+item.icon+item.one_price+'</span><span>'+item.add_time+'</span></p>\n' +
+                                '                <p><span>'+bi_sl+'：'+item.t_num+item.symbol+'</span><span>'+item.icon+item.all_pay+'</span></p>\n' +
+                                '            </div>\n' +
+                                '        </li>';
+                        })
+                        $('#olist').append(html);
+                        page = res.page;
+
+
+
+                    }
+
+
+                }
+
+
+            }
+        });
+    }
+</script>
+</html>

@@ -1,0 +1,251 @@
+.wl_flex{
+    display:-webkit-box;/*Chrome4+,Safari3.1,iOSSafari3.2+*/
+    display:-moz-box;/*Firefox17-*/
+    display:-webkit-flex;/*Chrome21+,Safari6.1+,iOSSafari7+,Opera15/16*/
+    display:-moz-flex;/*Firefox18+*/
+    display:-ms-flexbox;/*IE10*/
+    display:flex;
+    /*//这个必须有用来创建盒子*/
+}
+.wl_align_center{
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+    align-items: center;
+}
+.wl_align-items-start{
+    -ms-flex-align: start;
+    align-items: flex-start;
+}
+.wl_justify_between{
+    -webkit-justify-content: space-between;
+    -moz-justify-content: space-between;
+    -ms-justify-content: space-between;
+    -webkit-box-pack: justify;
+    justify-content: space-between;
+    /*//左右分布排列*/
+}
+.wl_justify-content{
+    -webkit-justify-content: space-around;
+    justify-content: space-around;
+}
+.wl_justify-content-start{
+    -ms-flex-pack: start;
+    justify-content: flex-start;
+}
+/*实验代码*/
+    .dropbtnst {
+    background: none;
+    color: black;
+    padding: 2px 5px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+}
+
+.dropbtnst:hover, .dropbtnst:focus {
+    background: none;
+}
+
+.dropdownst {
+    position: relative;
+    line-height: 50px!important;
+    display: inline-block;
+}
+.dropdown-contentst {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    overflow: auto;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+
+.dropdown-contentst a {
+    color: #6d7c8a;
+    width: 230px;
+    height: 40px;
+    line-height: 40px;
+    padding: 0 10px;
+    font-size: 0.75rem;
+    text-decoration: none;
+}
+.dropdown-contentst ul {
+    color: black;
+    width: 200px;
+    height: 40px;
+    line-height: 40px;
+    text-align: center;
+    padding: 0 10px;
+    font-size: 0.65rem;
+    text-decoration: none;
+    display: block;
+}
+.dropdown-contentst a span{
+    /*padding: 0 15px;*/
+}
+.zuihoumianhe input{padding-left: 10px!important;}
+.dropdownst a:hover {background-color: #f1f1f1}
+
+.showst {display:block;border-radius: 5px;}
+/*实验代码*/
+*{outline: none;}
+.zuidahezi{width: 100%;height: 500px;background: #f5f5f5}
+.mvtsv{width: 100%;height: 50px;background: white}
+.mvtso{width: 100%;height: 450px;background: white}
+.svuh{width: 12.5%}
+.zuoyouhezis{width: 65%;height: 100%;background: white}
+.zuoyouhezit{width: 35%;height: 100%;}
+.zuoyouhezit a{font-size: 0.95rem;color: #596a7a;line-height: 50px;margin-left: 20px}
+.tysvu{width: 65%;height: 100%;background: #e3046f}
+.tysvuss{width: 34%;height: 100%;background: white}
+.shujujtt{width: 100%;height: 50%;font-size: 0.8rem;color: #696969;}
+.xiaodaohang{width: 100%;height: 30px;margin: 0 auto;background: white;line-height: 30px}
+.xiaheziyi{width: 100%;height: 500px;background: white;}
+.hhhjjjj{width: 100%;height: 30px;margin: 0 auto;line-height: 30px;}
+.zuodahe{width: 50%;height: 100%;}
+.youdahe{width: 50%;height: 100%;background: white}
+.daohezihezi{width: 100%;height: 50px;line-height: 50px;margin-left: 20px}
+.zuost{width: 65%;height: 100%}
+.youst{width: 60%;height: 100%;color: #7aa5f9;text-align: center}
+.hezihezi{width: 90%;height: 30px;color: #637085;margin: 0 auto;border-bottom: 1px solid #e6e6fa;font-size: 0.8rem}
+.svuh{width: 11%;text-align: center;}
+.youdaohangl{height: 50px;background: #f2f6fa;line-height: 50px}
+.kkhu{width: 100%;height: 50px;line-height: 50px}
+.xiadakuangufs{height: 84%;color: #696969;}
+.uytr{height: 100%;}
+.yustgy{width: 100%;height: 15%;}
+.svuyl{padding: 8px 0 8px 0}
+.hungy{width: 80%;height: 40px;margin: 0 auto;margin: 40px auto;text-align: center;background: #50dab5;border-radius: 5px;line-height: 40px}
+.bufs a{text-decoration: none;display: block;color: #596a7a}
+/*.bufs a:hover{color: #7a98f7;}*/
+.bufs .active{color: #7a98f7;border-bottom: 1px solid #7a98f7;box-sizing: border-box}
+ .dropbtnstss {
+    background: none;
+    color: black;
+    padding: 2px 5px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+}
+
+.dropbtnstss:hover, .dropbtnst:focus {
+    background: none;
+}
+
+.dropdownstss {
+    position: relative;
+    /*display: inline-block;*/
+}
+
+.dropdown-contentstss {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 90%;
+    margin-left: 5%;
+    overflow: auto;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+
+.dropdown-contentstss a {
+    color: black;
+    width: 100%;
+    /*padding: 10px 10px;*/
+    text-decoration: none;
+    display: block;
+}
+
+.dropdownstss a:hover {background-color: #f1f1f1}
+
+.showstss {display:block;}
+/*实验样式*/
+ .dropbtnvu{
+    background: none;
+    color: black;
+    padding: 2px 5px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+}
+
+.dropbtnvu:hover, .dropbtnvu:focus {
+    background: none;
+}
+
+.dropdownvu{
+    position: relative;
+    /*display: inline-block;*/
+}
+
+.dropdown-contentvu{
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 90%;
+    margin-left: 5%;
+    overflow: auto;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+
+.dropdown-contentvu a {
+    width: 100%;
+    color: black;
+    /*padding: 10px 10px;*/
+    text-decoration: none;
+    display: block;
+}
+
+.dropdownvu a:hover {background-color: #f1f1f1}
+
+.showvu {display:block;}
+.sssssssxc{width: 100%;height: 35px}
+.sctu{color: white;padding: 0 10px;font-size: 0.7rem}
+.sssssssxc{width: 100%;height: 40px;background: #1a243b;}
+.sctu{padding: 0 10px;font-size: 0.7rem;width: 51px;line-height: 30px;height: 30px;color: #4e5b85;}
+.zuihoumianhe{width: 100%;height: 400px;background: white}
+.liangghezis{width: 50%;height: 100%;color: #596a7a}
+.sctu span{display: block;width: 40px;text-align: center;}
+.sctu .active{color: white;background: #344568}
+.xuantingli:hover{background: #f2f5fa}
+.tup{width: 200px;height: 240px;margin: auto;}
+.tup img{margin: 0 40px}
+.tusi{width: 100%;height: 70px;}
+.tuse{width: 100%;height: 120px}
+.tuss{width: 100%;height: 50px;text-align: center;line-height: 50px;color: #637085}
+.pklobh{width: 90%;height: 30px;color: #637085;margin: 15px auto;font-size: 0.8rem;line-height: 30px}
+.phuoed{width: 11%!important;text-align: center;}
+.svuh{width: 11%}
+.heyue_ani{background: #00a0e9;color: #eeeeee;border-radius: 5px;height: 30px;}
+.phuoeds{width: 11%!important;text-align: center;}
+
+.hey_xuanz{width: 90%;height: 50px;margin: 0 5%;line-height: 50px}
+.hey_xtm{text-align: center;line-height: 50px;font-size: 20px;}
+.heyue_jiaj{width: 15%;height: 40px}
+.heyue_jiaj img{display: block;width: 30px;height: 30px;margin: 5px auto;}
+.heyue_qqu span{width: 100%;height: 100%;display: block;text-align: center;line-height: 40px;border-radius: 5px;color: white}
+.heyue_lan{width: 45%;height: 40px;background: #12b886;border-radius: 5px}
+.heyue_hon{width: 45%;height: 40px;background: #cc4951;border-radius: 5px}
+.hutu_mengl{width: 100%;height: 100%;background: rgba(0,0,0,0.3);position: fixed;z-index: 998;top: 0;}
+.heyue_tchu{position: fixed;width: 40%;height: 300px;background: whitesmoke;top: 30%;margin: 0 30%;border-radius: 5px;z-index: 999}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

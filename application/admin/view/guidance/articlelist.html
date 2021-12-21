@@ -1,0 +1,167 @@
+{include file="head" /}
+<style type="text/css">
+  .col-lg-8{
+    width: 100% !important;
+  }
+</style>
+{include file="menu" /}
+<!--main content start-->
+      <section id="main-content">
+          <section class="wrapper">
+            <br>
+            <div class="row state-overview">
+            <form action="" method="get">
+              <div class="col-lg-3 mar-10">
+                <div class="input-group">
+                    <span class="input-group-addon" id="basic-addon1">名师列表</span>
+                    <select name="gname" class="form-control">
+                      <option value="">请选择名师</option>
+                      <!-- {volist name="guidancelist" id="vo"} -->
+                      <option {if $getdata.gid eq $vo.gid} selected="selected" {/if} value="{$vo.gid}">{$vo.gname}</option>
+                      <!-- {/volist} -->
+                    </select>
+                </div>
+              </div>
+              <div class="col-lg-3 mar-10">
+                <div class="input-group">
+                    <span class="input-group-addon" id="basic-addon1">标题编号</span>
+                    <input type="text"  name="title"  class="form-control" value="{$getdata.title?$getdata.title:''}" placeholder="输入标题编号/标题"/>
+                </div>
+              </div>
+              <div class="col-lg-6 mar-10">
+                <div class="input-group">
+                    <span class="input-group-addon" id="basic-addon1">添加时间</span>
+                    <input type="text"  id="datetimepicker" class="form-control" placeholder="点击选择时间" name="starttime" value="{$getdata.starttime?$getdata.starttime:''}"/>
+                    <span class="input-group-addon" id="basic-addon1">至</span>
+                    <input type="text"  id="datetimepicker_end" class="form-control" placeholder="点击选择时间" name="endtime" value="{$getdata.endtime?$getdata.endtime:''}" />
+                </div>
+              </div>
+              <div class="col-lg-6 mar-10">
+               <input type="submit" class="btn btn-success" value="搜索">
+              </div>
+            </form>
+            </div>
+             <div class="row">
+                  <div class="col-lg-8">
+                      <section class="panel">
+                          <header class="panel-heading">
+                              <h4 class="left">文章列表</h4>
+                              <a href="{:url('guidance/articleadd')}"><button type="button" class="btn btn-primary right">添加文章</button></a>
+                              <br><br>
+                          </header>
+                          <table class="table table-striped table-advance table-hover">
+                            <thead class="ordertable">
+                              <tr>
+                                <th width="10%">编号</th>
+                                <th>标题</th>
+                                <th width="10%">名师姓名</th>
+                                <th width="10%">来源</th>
+                                <th width="10%">置顶</th>
+                                <th width="10%">显示</th>
+                                <th width="10%">时间</th>
+                                <th width="15%">操作</th>
+                            </tr>
+                          </thead>
+                           <form action="" method="post">
+                          <tbody>
+                              <!-- {volist name="articlelist" id="vo"} -->
+                              <tr>
+                                  <td width="10%">{$vo.id}</td>
+                                  <td>{$vo.gtitle}</td>
+                                  <td>{$vo.gname}</td>
+                                  <td>{$vo.gsource}</td>
+                                  <td width="10%">{if $vo.g_top gt 0}<img style="width: 16px;height: 16px;cursor: pointer;" src="/static/admin/img/success.png" onclick="article_gtop({$vo.id},$(this))" />{else}<img  style="width: 16px;height: 16px;cursor: pointer;" src="/static/admin/img/error.png" onclick="article_gtop({$vo.id},$(this))" />{/if}</td>
+                                  <td width="10%">{if $vo.g_show eq 1}<img style="width: 16px;height: 16px;cursor: pointer;" src="/static/admin/img/success.png" onclick="article_gshow({$vo.id},$(this))" />{else}<img  style="width: 16px;height: 16px;cursor: pointer;" src="/static/admin/img/error.png" onclick="article_gshow({$vo.id},$(this))" />{/if}</td><!-- check-on -->
+                                  <td width="10%">{$vo.g_time|date='Y-m-d H:i:s',###}</td>
+                                  <td width="15%">
+                                      <a class="btn btn-primary btn-xs" href="{:url('guidance/articleadd',array('id'=>$vo['id']))}" title="点击编辑"><i class="icon-pencil"></i></a>
+                                      <a class="btn btn-danger btn-xs" onclick="deleteinfo('{$vo.id}')" title="点击删除"><i class="icon-trash"></i></a>
+                                  </td>
+                              </tr>
+                              <!-- {/volist} -->
+                              </tbody>
+                          </table>
+                      </section>
+                      {$articlelist->render()}
+                  </form>
+                  </div>
+              </div>
+              
+             
+
+          </section>
+      </section>
+      <!--main content end-->
+  </section>
+
+{include file="foot" /}
+<script>
+$('#datetimepicker').datetimepicker();
+$('#datetimepicker_end').datetimepicker();
+	function deleteinfo(id){
+		layer.open({
+		  content: '确定删除吗',
+		  yes: function(index){
+		    var url = "{:url('guidance/articledel')}"+"?id="+id;
+		    var locurl = "{:Url('admin/guidance/articlelist')}";
+		    WPget(url,locurl);
+		  }
+		});
+	}
+
+  function article_gtop(id,obj){
+    $.ajax({
+      type:"post",
+      url:"{:url('guidance/articlegtop')}",
+      data:{
+        id:id
+      },
+      dataType:'JSON',
+      async:false,
+      beforeSend: function(){
+      },
+      success:function(msg){
+        if(msg.state == 'success'){
+          if(msg.gtop == 0){
+            obj.attr("src","/static/admin/img/error.png");
+          }else{
+            obj.attr("src","/static/admin/img/success.png");
+          }
+        }else{
+          return false;
+        }
+      },
+      error:function(){
+          layer.msg("网络出错..",{time:2*1000});
+      }
+    });
+  }
+
+  function article_gshow(id,obj){
+    $.ajax({
+      type:"post",
+      url:"{:url('guidance/articleshow')}",
+      data:{
+        id:id
+      },
+      dataType:'JSON',
+      async:false,
+      beforeSend: function(){
+      },
+      success:function(msg){
+        if(msg.state == 'success'){
+          if(msg.show == 0){
+            obj.attr("src","/static/admin/img/error.png");
+          }else{
+            obj.attr("src","/static/admin/img/success.png");
+          }
+        }else{
+          return false;
+        }
+      },
+      error:function(){
+          layer.msg("网络出错..",{time:2*1000});
+      }
+    });
+  }
+</script>

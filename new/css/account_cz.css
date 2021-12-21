@@ -1,0 +1,162 @@
+/* 充值box */
+.box{
+	width: 100%;
+
+	height: calc(100% - 50px);
+	background: #fff;
+	box-shadow: 0px 1px 3px rgba(0,0,0,0.3);
+	padding: 5% 5%;
+	box-sizing: border-box;
+	overflow: auto;
+}
+
+
+.cz-box .top-box{
+	border-bottom: 2px solid #2196f3;
+}
+.cz-box .top-box .title{
+	height: 34px;
+	line-height: 34px;
+	display: inline-block;
+}
+.cz-box .top-box .money{
+	height: 34px;
+	line-height: 34px;
+	font-size: 18px;
+	color: #673ab7;
+	float: right;
+}
+.cz-box .top-box .state{
+	line-height: 2em;
+	font-size: 14px;
+	border-bottom: 2px solid #2196f3;
+	margin-bottom: 10px;
+}
+.cz-box .top-box .attach{
+	color: #f44336;
+}
+.cz-box .top-box .one-box{
+	display: flex;
+	justify-content: space-between;
+}
+.cz-box .top-box .one-box .item{
+	width: 40%;
+}
+.cz-box .top-box .item{
+	margin-bottom: 5px;
+}
+.cz-box .top-box .item p{
+	line-height: 2em;
+	color: #666;
+	font-size: 12px;
+}
+#yangshi
+{
+	line-height: 2em;
+    font-size:8px;
+	color:red;
+}
+.cz-box .top-box .item input{
+	max-width: 100%;
+	height: 2em;
+	border: 1px solid #ccc;
+	border-radius: 2px;
+	background: #fff;
+	padding: 0 5px;
+}
+.cz-box .top-box .item select{
+	width: 70%;
+	height: calc(2em + 2px);
+	line-height: calc(2em + 2px);
+	/*border: 1px solid #ccc;*/
+	border: none;
+	border-radius: 2px;
+	background: #fff;
+	padding: 0 5px;
+}
+.cz-box .top-box .item img
+{
+	width: 25px;
+}
+#xialakuang
+{
+	width: 93%;
+	border-radius: 2px;
+	border: 1px solid #ccc;
+}
+.cz-box .top-box [type="submit"]{
+	width: 70%;
+	height: 2em;
+	font-size: 20px;
+	color: #fff;
+	border: none;
+	border-radius: 2px;
+	background: linear-gradient(to right, #86a0ff, #d260ff);
+	margin: 10% auto 5%;
+	display: block;
+}
+
+
+
+/* 记录box */
+.cz-box .log-box{
+	/*max-height: 200px;*/
+	margin: 5% auto 0;
+	overflow: auto;
+}
+.cz-box .log-box .item{
+	font-size: 14px;
+	border-radius: 10px;
+	background: #eee;
+	box-shadow: 0px 0px 2px inset rgba(0,0,0,0.3);
+	margin: 0 auto 8%;
+	padding: 10px 5% 0;
+	box-sizing: border-box;
+	
+}
+.cz-box .log-box .item .flex-box{
+	display: flex;
+	justify-content: space-between;
+}
+.cz-box .log-box .item .flex-box .left{
+	max-width: calc(90% - 7em);
+}
+.cz-box .log-box .item .flex-box .right{
+	min-width: 5em;
+	padding: 0 1em;
+}
+.cz-box .log-box .item p{
+	line-height: 2em;
+}
+.cz-box .log-box .item .money{
+	color: #ff5722;
+}
+.cz-box .log-box .item .address{
+	color: #009688;
+}
+.cz-box .log-box .item .address span{
+	word-wrap: break-word;
+    word-break: normal;
+}
+.cz-box .log-box .item .state{
+	color: #673ab7;
+}
+.cz-box .log-box .item .img{
+	width: 80px;
+	height: 80px;
+	background: #fff;
+	margin: 5px 0;
+}
+.cz-box .log-box .item .img img{
+	width: 100%;
+}
+
+
+.cz-box .log-box .item .time{
+	text-align: center;
+	line-height: 2.5em;
+	font-size: 16px;
+	color: #673ab7;
+	border-top: 1px solid #ccc;
+	margin: 10px 0 0;
+}

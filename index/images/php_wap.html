@@ -1,0 +1,147 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!-- saved from url=(0031)https://www.ggfx.com/re/php_wap -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <title>实时数据</title>
+    <meta name="keywords" content="{$_SEO[&#39;keywords&#39;]}">
+    <meta name="description" content="{$_SEO[&#39;description&#39;]}">
+    <style>
+        /*实时数据*/
+        .real-data {
+            width: 100%;
+            min-height: 300px;
+            background: #202435;
+        }
+		.real-data .color_white{color:#fff;} 
+		.real-data .color_red{color:#f24343;} 
+		.real-data .color_blue{color:#50dab5;} 
+		
+            .real-data .title {
+                width: 100%;
+                padding: 9px 0;
+                border-bottom: 1px solid #dfdfdf;
+                color: #606060;
+            }
+
+                .real-data .title .tt {
+                    font-size: 18px;
+                    font-weight: bold;
+                    float: left;
+                }
+
+                .real-data .title .tet {
+                    float: right;
+                    font-size: 12px;
+                }
+
+            .real-data table {
+                width: 100%;
+                text-align: left;
+                border-collapse: collapse;
+                font-size: 14px;
+                color: #606060;
+            }
+
+            .real-data .tab-title {
+                font-weight: bold;
+                height: 50px;
+                border-bottom: 1px solid #dfdfdf;
+            }
+
+            .real-data .tr-tit {
+                height: 50px;
+                border-bottom: 1px solid #262a3c;
+                font-size: 12px;
+            }
+    </style>
+
+    <script src="./jquery-1.7.1.min.js.下载" type="text/javascript"></script>
+</head>
+<body style="background:#202435;">
+    <div class="real-data">
+        <table>
+            <tbody>
+                <tr class="tr-tit" id="EURUSD">
+                    <td width="36%" class="color_white">EUR/USD</td>
+                    <td width="16%" class="color_blue" id="EURUSD_1">0</td>
+                    <td width="16%" class="color_red" id="EURUSD_2">0</td>
+                    <td width="16%" class="color_white">3</td>
+                    <td width="16%" style="text-align:right;" id="EURUSD_4"><img src="./icon23.png"></td>
+                </tr>
+                <tr class="tr-tit" id="GBPUSD">
+                    <td width="36%" class="color_white">GBP/USD</td>
+                    <td width="16%" class="color_blue" id="GBPUSD_1">0</td>
+                    <td width="16%" class="color_red" id="GBPUSD_2">0</td>
+                    <td width="16%" class="color_white">3</td>
+                    <td width="16%" style="text-align:right;" id="GBPUSD_4"><img src="./icon22.png"></td>
+                </tr>
+                <tr class="tr-tit" id="USDJPY">
+                    <td width="36%" class="color_white">USD/JPY</td>
+                    <td width="16%" class="color_blue" id="USDJPY_1">0</td>
+                    <td width="16%" class="color_red" id="USDJPY_2">0</td>
+                    <td width="16%" class="color_white">3</td>
+                    <td width="16%" style="text-align:right;" id="USDJPY_4"><img src="./icon23.png"></td>
+                </tr>
+                <tr class="tr-tit" id="AUDUSD">
+                    <td width="36%" class="color_white">AUD/USD</td>
+                    <td width="16%" class="color_blue" id="AUDUSD_1">0</td>
+                    <td width="16%" class="color_red" id="AUDUSD_2">0</td>
+                    <td width="16%" class="color_white">3</td>
+                    <td width="16%" style="text-align:right;" id="AUDUSD_4"><img src="./icon23.png"></td>
+                </tr>
+                <tr class="tr-tit" id="USDCAD">
+                    <td width="36%" class="color_white">USD/CAD</td>
+                    <td width="16%" class="color_blue" id="USDCAD_1">0</td>
+                    <td width="16%" class="color_red" id="USDCAD_2">0</td>
+                    <td width="16%" class="color_white">3</td>
+                    <td width="16%" style="text-align:right;" id="USDCAD_4"><img src="./icon22.png"></td>
+                </tr>
+                <tr class="tr-tit" id="USDCHF">
+                    <td width="36%" class="color_white">USD/CHF</td>
+                    <td width="16%" class="color_blue" id="USDCHF_1">0</td>
+                    <td width="16%" class="color_red" id="USDCHF_2">0</td>
+                    <td width="16%" class="color_white">3</td>
+                    <td width="16%" style="text-align:right;" id="USDCHF_4"><img src="./icon22.png"></td>
+                </tr>
+                <tr class="tr-tit" id="NZDUSD">
+                    <td width="36%" class="color_white">NZD/USD</td>
+                    <td width="16%" class="color_blue" id="NZDUSD_1">0</td>
+                    <td width="16%" class="color_red" id="NZDUSD_2">0</td>
+                    <td width="16%" class="color_white">3</td>
+                    <td width="16%" style="text-align:right;" id="NZDUSD_4"><img src="./icon22.png"></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <script>
+        jQuery(document).ready(function () {
+            setInterval(updateSybols, 1000);
+        });
+        function updateSybols() {
+            $.ajax({
+                url: "/re/update_symbols_offer/",
+                type: "post",
+                data: "",
+                dataType: 'json',
+                cache: false,
+                processData: false,
+                contentType: false,
+                success: function (json) {
+                    console.log(json);
+                    for (var i = 0; i < json.length; i++) {
+                        console.log(json[i].symbol);
+                        $("#" + json[i].symbol + "_1").html(parseFloat(json[i].ask.toFixed(5)));
+                        $("#" + json[i].symbol + "_2").html(parseFloat(json[i].bid.toFixed(5)));
+                        var img = "<img src='/Content/php/icon22.png'>";
+                        if (json[i].direction == 1) {
+                            img = "<img src='/Content/php/icon23.png'>";
+                        }
+                        $("#" + json[i].symbol + "_4").html(img)
+                    }
+                    return false;
+                }
+            });
+        }
+    </script>
+
+</body></html>

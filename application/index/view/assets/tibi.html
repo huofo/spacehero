@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+    <title>{$Think.lang.tt_tb}</title>
+
+
+	<!--图标字体插件-->
+	<link rel="stylesheet" href="/index/iconfont/iconfont.css">
+	<script type="text/javascript" src="/index/iconfont/iconfont.js"></script>
+
+	<script type="text/javascript" src="/index/js/jquery.min.js"></script>
+<link href="__HOME__/layui/css/layui.css" rel="stylesheet">
+	<!--        夜间白天切换的文件-->
+	{if $_SESSION["night"]=="yes"}<link rel="stylesheet" href="/index/css/assets-tibi.css" >{/if}
+<script src="__HOME__/layui/layui.js"></script>
+	<style>
+		*{
+			list-style: none;
+			margin: 0;
+			padding: 0;
+		}
+		.clear{
+			clear: both;
+		}
+		.daohangt{
+			width: 100%;
+			height: 44px;
+			font-size: 0.9rem;
+			background-color: #102030;
+			position: relative;
+		}
+		.child{
+			font-size: 17px;
+			height: auto;
+			width: 20%;
+			display: inline-block;
+			text-align: center;
+			flex: 1;
+			line-height: 40px;
+			color: white;
+		}
+		.neirong{
+			width: 100%;
+			height: 110px;
+			margin-top: 55px;
+			background-color: #000033;
+		}
+		.neirongs{
+			width: 60%;
+			height: 100%;
+			float: left;
+		}
+		.neirongy{
+			width: 40%;
+			height: 100%;
+			float: right;
+		}
+
+		.childs{
+			margin-left: 5.5%;
+			padding: 0.25rem;
+			font-size: 0.72rem;
+			color: white;
+		}
+		.childs:nth-child(1){
+			color: #999999;
+		}
+		.childs:nth-child(3){
+			color: #999999;
+		}
+		/* 以上为导航和78996样式 */
+		.xuni{
+			width: 100%;
+			height: 40rem;
+			position: absolute;
+		}
+		.neirongt{
+			width: 95%;
+			height: 85px;
+			background-color: #6666;
+			margin: auto;
+			margin-top: 2%;
+			border-radius: 5px;
+		}
+		.child-btc{
+			width: 100%;
+			height: 30%;
+		}
+		.child-btc-zuo{
+			font-weight: 600;
+			float: left;
+			color: #3399ff;
+			margin-left: 5px;
+		}
+		.child-btc-you{
+			float: right;
+			margin-right: 5px;
+		}
+		.child-keyong{
+			width: 100%;
+			height: 30%;
+			display: flex;
+			text-align: center;
+		}
+		.childkeyongs{
+			color: #dcdcdc;
+			text-align: center;
+			display: block;
+			font-size: 0.7rem;
+
+		}
+		.wl_flex{
+			display:-webkit-box;/*Chrome4+,Safari3.1,iOSSafari3.2+*/
+			display:-moz-box;/*Firefox17-*/
+			display:-webkit-flex;/*Chrome21+,Safari6.1+,iOSSafari7+,Opera15/16*/
+			display:-moz-flex;/*Firefox18+*/
+			display:-ms-flexbox;/*IE10*/
+			display:flex;
+		}
+		.wl_align_center{
+			-webkit-box-align: center;
+			-webkit-align-items: center;
+			align-items: center;
+		}
+		.wl_align-items-start{
+			-ms-flex-align: start;
+			align-items: flex-start;
+		}
+		.wl_justify_between{
+			-webkit-justify-content: space-between;
+			-moz-justify-content: space-between;
+			-ms-justify-content: space-between;
+			-webkit-box-pack: justify;
+			justify-content: space-between;
+		}
+		.wl_justify-content{
+			-webkit-justify-content: space-around;
+			justify-content: space-around;
+		}
+		.wl_justify-content-start{
+			-ms-flex-pack: start;
+			justify-content: flex-start;
+		}
+		.child-shuzis{
+			width: 100%;
+			height: 30%;
+			display: flex;
+
+		}
+		.childkeyongg{
+			width: 33.33%;
+			display: block;
+			font-size: 0.8rem;
+			margin-right: 0.9rem;
+
+		}
+		.childkeyongg:nth-child(1){
+			text-align: left;
+		}
+		.childkeyongg:nth-child(2){
+			text-align: center;
+		}
+		.childkeyongg:nth-child(3){
+			text-align: right;
+		}
+		.neirongy img{
+			width: 20px;
+			height: 15px;
+			margin-top: 5px;
+			float: right;
+			margin-right: 10px;
+		}
+		/* 试验样式 */
+		.child li{
+			list-style: none;
+			list-style-type: none;
+		}
+		.child a{
+			color: #afeeee;
+			font-weight: 600;
+		}
+		.child li>a{
+			text-decoration: none;
+		}
+		.child a:hover{
+			color: white;
+		}
+		.contt{width: 100%;height: auto;background-color: #102030;}
+		.jingtou{font-size: 24px;float: left;margin-left: 4%; color: #FFFFFF;}
+		.upper{width: 90%;margin-top: 44px; margin-left: auto; margin-right: auto; margin-bottom: 10px; background-color: #102030; overflow: hidden;}
+		.upper-p{ width: 100%; font-size: 18px;color: #1881d2;font-weight: 700;margin-top: 10px;}
+		.upper-div1{width: 100%;font-size: 12px;margin: 15px; margin: 0 auto;}
+		.upper-div1 div{width: 33.3%;height: auto;float: left; color: #9fafab;}
+		.upper-div1 div:nth-child(1){text-align: left;}
+		.upper-div1 div:nth-child(2){text-align: center;}
+		.upper-div1 div:nth-child(3){text-align: right;}
+		.upper-jl{margin-top: 15px;}
+		.upper-div2{margin-top: 40px;}
+		.line{width: 100%;height: 15px;color: #0b1622; background-color: #0b1622;}
+		.jilu{width: 96%;height: auto; margin: 0 auto;}
+		.jilu-p{ font-size: 16px; color: #9fbedc;margin-top: 15px}
+		.jilu-div1{width: 100%;height: 44px;line-height: 44px;}
+		.jilu-div1 div{width: 33.3%;height: auto;font-size: 12px;color: #9fbedc;float: left;}
+		.jilu-div1 div:nth-child(1){text-align: left;}
+		.jilu-div1 div:nth-child(2){text-align: left;}
+		.jilu-div1 div:nth-child(3){text-align: right;}
+		.sv{width: 100%;height: auto;background-color: #102030;}
+		.shjv{width: 100%;height: 39px;margin-top: 10px;}
+		.shjv-xian{width: 100%;height: 1px;color: #0b1622;background-color: #0b1622;}
+		.shjv>div{width: 33.3%;height: auto;font-size: 12px;color: #9fbedc;float: left;}
+		.shjv>div:nth-child(1){text-align: left;}
+		.shjv>div:nth-child(2){text-align: center}
+		.shjv>div:nth-child(3){text-align: right}
+		.shjv-sj{width: 80%;}
+		.shjv-sj:nth-child(1){text-align: left;}
+		.shjv-sj:nth-child(2){text-align: left;margin: 0 auto;}
+		.sv-div1{width: 96%;margin: 0 auto;}
+
+		.botom{ position: fixed;bottom: 0; left: 0;z-index: 999; margin-top: 80px; width: 100%;height: 67px;border-top: 1px solid #15293d;border-bottom: 1px solid #15293d;padding-top: 10px; background-color: #102030;;}
+		.bott{width: 96%;height: 30px;}
+		.bott>div{width: 33.3%;float: left;text-align: center;}
+		.bott-div1 img{width: 30px;height: 30px;}
+		.bott2{width: 96%;}
+		.bott2 div{width: 33.3%; font-size: 12px; float: left;text-align: center;color: #9fbedc;}
+
+
+		/* 提币页面 */
+		.tb-two{width: 100%;height: 34px; margin-top: 54px;}
+		.tb-two>div{width: 47%; height: 34px; font-size: 12px; color: #f2f5ff;text-align: center;line-height: 34px;}
+		.tb-two>div.active{background-color: #007aff;}
+		.tb-two>div{background-color: #102030;width: 48%}
+		.tre{width: 100%; height: 85px; color: #f2f5ff; background-color: #102030; margin-top: 10px;}
+		.tre>p:nth-child(1){font-size: 18px; margin-top: 10px; margin-left: 5%; padding-top: 10px; line-height: 35px;}
+		.tre>p:nth-child(2){font-size: 12px; margin-left: 5%;}
+		.four{width: 100%;}
+		.four-div1{width: 90%; height: 54px; margin: 0 auto;}
+		.four-div1>p{font-size: 12px;color: #f2f5ff; margin-top: 20px;}
+		.four-div1>input{width: 100%; height: 39px; color: #FFFFFF; background-color: #0b1622; padding-left: 10px; border-top: none;border-right: none; border-left: none; border-bottom: 1px solid #1f253c; outline: none;}
+		.four-div2{width: 90%; height: 54px; margin: 0 auto; padding-bottom: 1px; border-bottom: 1px solid #1f253c; }
+		.four-div2>p{font-size: 12px;color: #f2f5ff; margin-top: 20px;}
+		.four-div2 input{width: 75%; height: 38px; color: #FFFFFF; background-color: #0b1622; padding-left: 10px; border-top: none;border-right: none; border-left: none; border-bottom: none; outline: none;}
+		.four-div2-div1>div{width: 25%; color: #8cbed0; text-align: right;  padding-right: 5px;}
+		.four-div2-div1>div>span:nth-child(2){color: #f2f5ff; font-size: 12px;}
+		.four-div2-div1>div>span:nth-child(1){color: #1f2832;}
+		.four-div3{width: 90%; height: 54px; font-size: 12px; color: #f2f5ff; margin: 0 auto; padding-bottom: 1px; border-bottom: 1px solid #1f253c;line-height: 74px;}
+		.four-div3>span:nth-child(1){float: left;}
+		.four-div3>span:nth-child(2){float: right;}
+		.five{width: 100%;height: 54px; margin-top: 20px;}
+		.five-div1{width: 90%; margin: 0 auto;}
+		.five-div1 p{width: 100%; color: #f2f5ff;font-size: 12px;}
+		.five-div1 p:nth-child(2){margin-top: 20px;}
+		.tb-bott{width: 100%; margin-top: 10%;}
+		.tb-bott>a{width: 90%;height: 36px; text-align: center; line-height: 36px; display: block; color: #FFFFFF; background-color: #1881d2;margin: 0 auto;font-size: 12px; border-radius: 5px;}
+		.daohangt .close{color: #ffffff;text-decoration:none;margin-left: 15px;z-index: 1000}
+		.daohangt .close i{font-size: 16px}
+		.daohang{position: fixed;top: 0;left: 0;width: 100%}
+	</style>
+</head>
+<body style="background-color: #0b1622;">
+	<div class="daohang">
+		<div class="daohangt wl_flex wl_align_center">
+			<a class="close" href="javascript:void(0)" onclick="javascript:history.back(-1);">
+				<i class="iconfont icon-back_icon"></i>
+			</a>
+			<div class="wl_flex wl_align_center wl_justify-content-start" style="width: 100%;position: absolute;top: 0;left: 0">
+				<div class="child"><li><a href="/index/Assets/bibi" style="color: #ffffff">{$Think.lang.tt_tb}</a></li></div>
+			</div>
+			<div></div>
+		</div>
+	</div>
+	
+ {if $account.cp eq 'USDT'}	 
+<div class="tb-two wl_flex wl_justify_between">
+    
+	<div class="active" date-type="0">ERC20</div>
+	<div date-type="1">TRC20</div>
+	
+</div>
+{else}
+<div class="tb-two wl_flex wl_justify_between" style="    margin-top: 5px;">
+    
+	
+	
+</div>
+{/if}
+<div class="tre">
+		<p>{$account.cp}&nbsp;{$Think.lang.tt_tb}</p>
+	    <p id="quanbu" attrdata="{$account.sl}" >{$Think.lang.bi_ky} : {$account.sl} {$account.cp}</p>
+	
+</div>
+<div class="four">
+	<div class="four-div1">
+		<p>{$Think.lang.tb_tb}</p>
+		<input class="usdt-url" placeholder="{$Think.lang.jse_qsrtbdz}" />
+	</div>
+	<div class="four-div2">
+		<p>{$Think.lang.bi_sl}</p>
+		<div class="four-div2-div1 wl_flex wl_align_center wl_justify_between cash">
+			<input type="text"  class="cash-price" placeholder="{$Think.lang.tb_zxtbs}{$tizx}" />
+			<div>{$account.cp} <span>|</span> <span onclick="quanbu();">{$Think.lang.ti_qb}</span></div>
+		</div>
+	</div>
+	
+	<div class="four-div1">
+		<p>{$Think.lang.su_jxmm}</p>
+		<input class="erjimima" type="password" placeholder="{$Think.lang.rj_qsrjymm}" />
+	</div>
+	
+	<div class="four-div3">
+		<span>{$Think.lang.tb_dqsl}</span><span class="true_price" >0.0 </span><span>{$account.cp}</span>
+	</div>
+	
+</div>
+<div class="five">
+	<div class="five-div1">
+		<p attrdata="{$tisxf}" class="reg_par">{$Think.lang.gs_syf}： {$tisxf} {$account.cp}</p>
+		<p>{$Think.lang.tb_qye}: {$account.sl} {$account.cp}</p>
+	</div>
+</div>
+<div class="tb-bott">
+	<a  href="javascript:void(0)" onclick="out_withdraw();" >
+		{$Think.lang.tt_tb}
+	</a>
+</div>
+
+
+
+
+
+<script>
+layui.use(['layer', 'form'], function(){
+            var layer = layui.layer
+                ,form = layui.form;
+        });
+	//新选项卡切换效果
+	$(function () {
+	
+		$(".tb-two div").click(function () {
+			
+			$(".tb-two div").removeClass('active');
+			$(this).addClass('active');
+			if ($(this).attr('data-type') == 0) {
+
+			} else if($(this).attr('data-type') == 1) {
+
+			}
+		})
+	})
+	
+	
+	/**
+	 * 监听输入提现金额
+	 * @author lukui  2017-07-05
+	 * @param  {[type]} ) {		var       price [description]
+	 * @return {[type]}   [description]
+	 */
+	$('.cash input').bind('input propertychange', function() {
+		var price = $('.cash-price').val();
+		
+		var reg_par = $('.reg_par').attr('attrdata');
+		
+		
+		var true_price = Subtr(price,reg_par);
+		$('.true_price').html(true_price);
+	
+
+	});
+	
+	function quanbu(){
+	    var price = $('#quanbu').attr('attrdata');
+		$('.cash-price').val(price);
+		$('.true_price').html(true_price);
+		var reg_par = $('.reg_par').attr('attrdata');
+		
+		
+		var true_price = Subtr(price,reg_par);
+		$('.true_price').html(true_price);
+	}
+
+	
+	//减法
+    function Subtr(arg1,arg2){
+        var r1,r2,m,n;
+        try{r1=arg1.toString().split(".")[1].length}catch(e){r1=0}
+        try{r2=arg2.toString().split(".")[1].length}catch(e){r2=0}
+        m=Math.pow(10,Math.max(r1,r2));
+        n=(r1>=r2)?r1:r2;
+        return ((arg1*m-arg2*m)/m).toFixed(n);
+    }
+	/**
+ * 出金申请
+ * @author lukui  2017-07-04
+ * @return {[type]} [description]
+ */
+function out_withdraw() {
+	
+	var price = $('.cash-price').val();
+	var leixing = ''
+	if('{$account.cp}'=='USDT'){
+	  leixing =  $('.tb-two .active').html();  
+	}
+	var erjimima = $('.erjimima').val();
+	var usdt_url = $('.usdt-url').val();
+	
+
+	if(usdt_url==''){
+	    layer.msg('{$Think.lang.jse_qsrtbdz}');
+		return false;
+	}
+	
+	if(erjimima==''){
+	    layer.msg('{$Think.lang.tb_qsrejmm}');
+		return false;
+	}
+    if(price=='' || price<{$tizx}){
+		layer.msg('{$Think.lang.jse_zdtbslw}{$tizx}');
+		return false;
+	}
+
+
+	var postdata = 'price='+price+"&usdt_type="+leixing+"&usdt_url="+usdt_url+"&erjimima="+erjimima+"&name={$account.cp}";
+	var posturl = '/index/assets/cash';
+	$.post(posturl,postdata,function(resdata){
+
+		layer.msg(resdata.data);
+		if(resdata.type == 1){
+			setTimeout('gourl()',1000);
+		}
+
+	})
+
+}
+
+function gourl() {
+	
+	history.go(0);
+}
+
+</script>
+
+	</body>
+</html>

@@ -1,0 +1,45 @@
+{include file="head" /}
+{include file="menu" /}
+<link href="__ADMIN__/css/aui.css" rel="stylesheet">
+<section id="main-content">
+	<section class="wrapper">
+<div class="aui-margin-b-15 aui-content">
+	<ul class="aui-list aui-media-list">
+
+			{volist name="plist" id="acl"}
+		<a href="{:url('consult_detail?id='.$acl['id'])}">
+			<li class="aui-list-item-middle" style="padding: 0 0 0 15px;    border-bottom: 1px solid #ebebeb;">
+				<div class="aui-media-list-item-inner">
+					<div class="aui-list-item-media" style="width: 3rem;">
+						<img src="/new/images/touxiang.png"  style="width: 60px;
+    height: 60px;" class="aui-img-round aui-list-img-sm">
+					</div>
+
+					<div class="aui-list-item-inner" >
+						<div class="aui-list-item-text">
+							<div class="aui-list-item-title aui-font-size-14">
+								{$acl.nick_name}</div>
+							<div class="aui-list-item-right xd">{$acl.add_time}</div>
+						</div>
+						<div class="aui-list-item-text aui-ellipsis-1" style="font-size:0.4rem;width:70%;">
+							{$acl.msg}
+						</div>
+						<div class="aui-list-item-text" style="float:right;right: 25px;top: -15px;">
+							{if $acl.msg_nums > 0}
+
+							<div></div><i class="aui-badge">{$acl.msg_nums}</i>
+							{/if}
+						</div>
+					</div>
+				</div>
+			</li>
+		</a>
+			{/volist}
+	</ul>
+</div>
+<div>{$plistpage}</div>
+	</section>
+
+</section>
+
+{include file="foot" /}

@@ -1,0 +1,10 @@
+.headerbar .header-item {background-color: #FFFFFF!important;}
+.headerbar .header-item {color: #333333!important;}
+.bar-header .close {color: #666666!important;}
+body{background-color: #f7f7fb!important;}
+input.layui-input.layui-unselect {color: #333!important;background-color: #fff!important;}
+#hz-from .hz-num .hz-title {color: #333333!important;}
+#hz-from .hz-num .hz-row span{color: #333333!important;}
+.hz-row>input{color: #333333!important;}
+.bar-header .close {color: #333333!important;}
+#hz-from .hz-num .hz-row {border-bottom: 1px solid #e2e2e2;}

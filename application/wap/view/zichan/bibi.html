@@ -1,0 +1,1069 @@
+<!DOCTYPE html>
+{include file="nodejs" /}
+<script>
+	// var cd_fzcg='{$Think.lang.cd_fzcg}';
+	// var shez_fzsb='{$Think.lang.shez_fzsb}';
+	// var bibi_xzczbz='{$Think.lang.bibi_xzczbz}';
+	// var bibi_xzczqd='{$Think.lang.bibi_xzczqd}';
+	// var bibi_jzz='{$Think.lang.bibi_jzz}';
+	var cd_fzcg='{$Think.lang.cd_fzcg}';
+	var shez_fzsb='{$Think.lang.shez_fzsb}';
+	var bibi_xzczbz='{$Think.lang.bibi_xzczbz}';
+	var bibi_xzczqd='{$Think.lang.bibi_xzczqd}';
+	var bibi_jzz='{$Think.lang.bibi_jzz}';
+	var jse_zdtbslw='{$Think.lang.jse_zdtbslw}';
+	var tb_qsrejmm='{$Think.lang.tb_qsrejmm}';
+	var jse_qsrtbdz='{$Think.lang.jse_qsrtbdz}';
+	var cb_tjcg='{$Think.lang.cb_tjcg}';
+	var cb_qsrcbsl='{$Think.lang.cb_qsrcbsl}';
+	var cb_qsrcbdz='{$Think.lang.cb_qsrcbdz}';
+</script>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<!-- <meta name="viewport" content="width=device-width, initial-scale=1.0,maximum-scale=1"> 下行代码解决导航栏没锁死会动问题-->
+		<meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+		<title>B.King</title>
+		<link rel="stylesheet" href="/mcss/zichan.css" />
+		<link href="/index/css/mango.css" rel="stylesheet" media="screen">
+		<link rel="stylesheet" href="/application/wap/view/zichan/font_latdk7zioj/iconfont.css" />
+		<!--        夜间白天切换的文件-->
+		{if $_SESSION["night"]=="yes"}<link rel="stylesheet" href="/index/css/wap_css/zichan-bibi.css" >{/if}
+		<script type="text/javascript" src="/static/index/js/jquery-3.2.1.min.js"></script>
+		<script type="text/javascript" src="/static/public/js/jquery.base64.js"></script>
+		<script type="text/javascript" src="/static/public/js/clipboard.min.js"></script>
+		<script src="/static/layer/layer.js"></script>
+
+
+
+	</head>
+<style>
+/* 此处CSS代码请不要删除或移动到其他页面 */
+.bi-shujv-jilvl>ul>li>div>div{width: 33.3%;float: left;}
+.bi-shujv-jilvl>ul>li:nth-child(1)>div>div{width: 25%;float: left; text-align: center; margin-left: 0px; margin-right: 0px;}
+.bi-shujv-jilvl>ul>li:nth-child(2)>div>div{width: 25%;float: left; text-align: center;margin-left: 0px; margin-right: 0px;}
+/*.bi-shujv-jilvl>ul>li:nth-child(3)>div>div{width: 25%;float: left; text-align: center;margin-left: 0px; margin-right: 0px;}*/
+.bi-shujv-jilvl>ul>li:nth-child(4)>div>div{width: 25%;float: left; text-align: center;margin-left: 0px; margin-right: 0px;}
+.bi-content>a:nth-child(1)>div{ color: #5697f4; background-color: #c9ccd0;}
+</style>
+<style>
+.bi-cb-tc-div4{width: 100%;height: 37px;margin-top: 100px;overflow: hidden;}
+.bi-cb-tc-div4>a{width: 150px;height: 100%;display: block; color: #fff; font-size: 12px; text-decoration: none;background-color: #5697f4;text-align: center;line-height: 37px;}
+.bi-cb-tc-div5{font-size: 12px;color: #637085;}
+.bi-cb-tc-div5>p{width: 100%;font-size: 12px;}
+.bi-cb-tc-div5>div{width: 100%;overflow: hidden;}
+.bi-cb-tc-div5>div>div{width: 5px;height: 5px;background-color: #637085;float: left; margin-top: 5px; border-radius: 50%; }
+.bi-cb-tc-div5>div>span{float: left;}
+.bi-cb-tc-div5{margin-top: 50px;    margin-bottom: 50px;}
+
+.bi-cb-tb-div2{width: 100%;}
+.bi-cb-tb-div2>div{width: 48%;float: left;}
+.bi-cb-tb-div2>div:nth-child(2){float: right;}
+.bi-cb-tb-div2>div>p{ font-size: 12px; color: #637085;margin-bottom: 10px;}
+.bi-cb-tb-div2>div>div>input{border-radius: 5px 0px 0px 5px;padding-left: 10px;width: 80%; height: 46PX;border: 1px solid #6b80ae; border-right: none; background-color: inherit;outline: none;float: left;}
+.bi-cb-tb-div2>div>div>div{width: 19.5%; height: 46px; color: #c7cce6; font-size: 12px; border: 1px solid #6b80ae; border-left: none; line-height: 46px; text-align: right; float: right;}
+.bi-cb-tb-div3{margin-top: 40px;}
+.pjklhjkh{}
+.mcbtc{width: 100%;height: 500px;background-color: #ffffff;}
+</style>
+<body style="background-color: #e5ebf5;">
+<style>
+	.mmining-head{width: 100%;overflow: inherit;background-color: #000;}
+	.gvs>img{}
+	.mtop-zc>img{margin-top: 20px;}
+	.neirongji>a>img{margin-top: 20px;}
+
+</style>
+
+<div class="mmining-head">
+	<div style="margin: 0 auto;">
+		{include file="daohang" /}
+	</div>
+</div>
+
+
+
+
+<div class="whole">
+<div class="bi-two">
+	<div>{$Think.lang.ti_zc}</div>
+</div>
+<div class="bi-qbsj">
+	<div class="bi-content">
+		<a href="/wap/zichan/bibi">
+			<div class="bi-content-div1">
+				<div><span class="iconfont">&#xe610;</span></div>
+				<div>{$Think.lang.bii_bzh}</div>
+			</div>
+		</a>
+		<a href="/wap/zichan/heyue">
+			<div class="bi-content-div1">
+				<div><span class="iconfont">&#xe610;</span></div>
+				<div>{$Think.lang.hy_hyzh}</div>
+			</div>
+		</a>
+		<a href="/wap/zichan/fabi">
+			<div class="bi-content-div1">
+				<div><span class="iconfont">&#xe610;</span></div>
+				<div>{$Think.lang.fb_fbzh}</div>
+			</div>
+		</a>
+		<a href="/wap/zichan/miaoheyue">
+			<div class="bi-content-div1">
+				<div><span class="iconfont">&#xe610;</span></div>
+				<div>{$Think.lang.mhy_mhyzh}</div>
+			</div>
+		</a>
+		<a href="/wap/zichan/huazhuan">
+			<div class="bi-content-div1">
+				<div><span class="iconfont">&#xe612;</span></div>
+				<div>{$Think.lang.bibi_zjhz}</div>
+			</div>
+		</a>
+		<div></div>
+	</div>
+	<style>
+		.bi-shujv{width: 960px;float: right;}
+		.bi-shujv-top{}
+	</style>
+	<div class="bi-shujv">
+		
+		<div class="bi-shujv-top">
+			<p>{$Think.lang.bii_zcc}：${$allbibi_money}</p>
+			<div>
+				<div>{$Think.lang.sl_bz}</div>
+				<div>{$Think.lang.bi_ky}</div>
+				<div>{$Think.lang.bii_dj}</div>
+				<div>{$Think.lang.bii_zh}</div>
+				<div>{$Think.lang.le_cz}</div>
+			</div>
+		</div>
+		<div class="bi-shujv-jilvl">
+			<ul>
+
+				{volist name='bibi' id='vo'}
+				<li>
+					<div>{$vo.cp}</div>
+					<div>{$vo.sl}</div>
+					<div>{$vo.dj}</div>
+					<div>{$vo.zhehe?$vo.zhehe:'0'}</div>
+					<div style="width: 28%">
+						{if $vo.can_re == 1}
+						<div><a href="#" class="bi-cb" data-id="{$vo.id}" data-name="{$vo.cp}">{$Think.lang.tt_cb}</a></div>
+						{/if}
+						<div><a href="#" class="bi-tb" data-name="{$vo.cp}" >{$Think.lang.tt_tb}</a></div>
+						<div><a href="/wap/zichan/change_log?name={$vo.cp}&type=1" class="bi-jl" data-name="{$vo.cp}">{$Think.lang.tt_jl}</a></div>
+						<div><a href="huazhuan.html?name={$vo.cp}&type=1" class="bi-hz">{$Think.lang.tt_hz}</a></div>
+					</div>
+				</li>
+				{/volist}
+			</ul>
+			<div></div>
+<!--充值弹窗-->
+			<div class="bi-cb-tc pjklhjkh" style=" width: 961px; height: 584px;margin-left: -20px;;top: 162px; overflow-y: scroll" hidden>
+				<div class="bi-cb-tc-div0">
+					<div class="bi-cb-tc-div1">
+						<a>{$Think.lang.cb_cbdz}</a>
+						<span><a href="#">×</a></span>
+					</div>
+					<div id="re_address" style="overflow:auto; height: 100px;">
+				<!--		<div class="bi-cb-tc-div2-ewm">
+								<img src="/application/wap/view/zichan/ewm.png" />
+						</div>
+						<div class="bi-cb-tc-div2">
+							<div>3P9E7L4uKsQaKpLd1kRfVwtiL5CGsBLuGX</div>
+							<span>复制</span>
+							<span>二维码</span>
+						</div>
+						<div class="bi-cb-tc-div2-ewm">
+							<img src="/application/wap/view/zichan/ewm.png" />
+						</div>
+						<div class="bi-cb-tc-div2">
+							<div>3P9E7L4uKsQaKpLd1kRfVwtiL5CGsBLuGX</div>
+							<span>复制</span>
+							<span>二维码</span>
+						</div>
+						<div class="bi-cb-tc-div2-ewm">
+							<img src="/application/wap/view/zichan/ewm.png" />
+						</div>
+						<div class="bi-cb-tc-div2">
+							<div>3P9E7L4uKsQaKpLd1kRfVwtiL5CGsBLuGX</div>
+							<span>复制</span>
+							<span>二维码</span>
+						</div>-->
+					</div>
+		<!--			<div class="bi-cb-tc-div2-ewm">
+						<img src="/application/wap/view/zichan/ewm.png" />
+					</div>
+					<div class="bi-cb-tc-div2">
+						<div>3P9E7L4uKsQaKpLd1kRfVwtiL5CGsBLuGX</div>
+						<span>复制</span>
+						<span>二维码</span>
+					</div>
+					<div class="bi-cb-tc-div2-ewm">
+						<img src="/application/wap/view/zichan/ewm.png" />
+					</div>
+					<div class="bi-cb-tc-div2">
+						<div>3P9E7L4uKsQaKpLd1kRfVwtiL5CGsBLuGX</div>
+						<span>复制</span>
+						<span>二维码</span>
+					</div>-->
+					<div class="bi-cb-tc-div3">
+						<p>{$Think.lang.bibi_czsl}</p>
+						<div>
+							<div>
+								<input id="num" placeholder="&emsp;{$Think.lang.bibi_qsrczsl}" />
+							</div>
+							<div class="bi_name">
+								BTC
+							</div>
+						</div>
+					</div>
+					<div class="bi-cb-tc-div3" style="margin-top: 80px;">
+						<p>{$Think.lang.bibi_czdz}</p>
+						<div>
+							<div>
+								<input id="cbdz" placeholder="&emsp;{$Think.lang.bibi_qsrczdz}" />
+							</div>
+							<div >
+
+							</div>
+						</div>
+					</div>
+					<div class="bi-cb-tc-div4">
+						<a href="javascript:void(0)" onclick="tijiao()">{$Think.lang.cb_tjsh}</a>
+					</div>
+					<div class="bi-cb-tc-div5">
+						<p>{$Think.lang.bibi_wxts}</p>
+						<div style="margin-top: 10px;">
+							<div></div>
+							<span>&emsp;{$Think.lang.bibi_qwzcbkz}</span>
+						</div>
+						<div>
+							<div></div>
+							<span>&emsp;{$Think.lang.bibi_cbjzc}</span>
+						</div>
+					</div>
+				</div>
+				<div class="mcbtc"></div>
+			</div>
+		</div>
+<!--提币弹窗-->
+		<div class="bi-cb-tb" hidden style="overflow-y: scroll;">
+			<div class="bi-cb-tb-whole">
+				<div class="bi-cb-tb-div1">
+					<p><span>{$Think.lang.tb_tb}</span></p>
+					<p class="bi-cb-tb-div1-cha"><span><a href="#">×</a></span></p>
+					<input id="tx_address" placeholder="&emsp;{$Think.lang.jse_qsrtbdz}" />
+				</div>
+				<div class="bi-cb-tb-div1">
+					<div>
+						<span>{$Think.lang.bi_sl}</span>
+						<div><span>{$Think.lang.bi_ky}：</span><span class="has_money">0.0</span><span class="base_name">&emsp;BTC</span></div>
+					</div>
+					<input id="tx_num" placeholder="&emsp;{$Think.lang.at_qsrtbsl}" />
+				</div>
+				<div class="bi-cb-tb-div1">
+					<div>
+						<span>{$Think.lang.su_jxmm}</span>
+						<div></div>
+					</div>
+					<input type="password" id="password2" placeholder="&emsp;{$Think.lang.rj_qsrjymm}" />
+				</div>
+				<div class="bi-cb-tb-div1" id="tx_type_div" hidden>
+					<input class="tx_radio" style="width: 20px;height: 20px;line-height: 20px;" type="radio" value="ERC20" name="tx_type" id="type1" checked><label for="type1">ERC20</label>
+					<input class="tx_radio" style="width: 20px;height: 20px;line-height: 20px;" type="radio" value="TRC20" name="tx_type" id="type2"><label for="type2">TRC20</label>
+
+				</div>
+				<div class="bi-cb-tb-div2">
+					<div>
+						<p>{$Think.lang.gs_syf}</p>
+						<div>
+							<input id="tx_fee" readonly />
+							<div class="base_name">BTC&emsp;</div>
+						</div>
+					</div>
+					<div>
+						<p>{$Think.lang.tb_dqsl}</p>
+						<div>
+							<input id="true_amount" readonly/>
+							<div class="base_name">BTC&emsp;</div>
+						</div>
+					</div>
+				</div>
+				<div class="bi-cb-tc-div4">
+					<a href="javascript:void(0)" onclick="tijiao_tx()">{$Think.lang.cb_tjsh}</a>
+				</div>
+				<div class="bi-cb-tc-div5 bi-cb-tb-div3">
+					<p>{$Think.lang.bibi_wxts}</p>
+					<div style="margin-top: 10px;">
+						<div></div>
+						<span>&emsp;{$Think.lang.bibi_zxtxs} <span id="tx_min_num"></span>。</span>
+					</div>
+
+<!--					<div>
+						<div></div>
+						<span>&emsp;充币仅支持simple send的方法，使用其他方法（send all）的充币暂时无法上账，请您谅解。</span>
+					</div>-->
+				</div>
+			</div>
+			<div class="mcbtc"></div>
+		</div>
+<!--记录弹窗-->
+		<div class="bi-cb-jl" hidden>
+			<div class="bi-cb-jl-cha">
+				<span><a href="#">×</a></span>
+			</div>
+			<div class="bi-cb-jl-while">
+				<div class="bi-cb-jl-div1">
+					<span>{$Think.lang.bi_sl}</span>
+					<span>{$Think.lang.tt_jl}</span>
+					<span>{$Think.lang.le_sj}</span>
+				</div>
+				<div class="bi-cb-jl-div2">
+					<span>0.24936410</span>
+					<span>{$Think.lang.set_bbjy}</span>
+					<span>2021-08-01 12:03:01</span>
+				</div>
+				<div class="bi-cb-jl-div2">
+					<span>0.24936410</span>
+					<span>{$Think.lang.bibi_jyzh}</span>
+					<span>2021-08-01 12:03:01</span>
+				</div>
+				<div class="bi-cb-jl-div2">
+					<span>0.24936410</span>
+					<span>{$Think.lang.set_bbjy}</span>
+					<span>2021-08-01 12:03:01</span>
+				</div>
+			</div>
+			<div class="bi-cb-jl-div3">
+				<div>
+					<a href="#">{$Think.lang.sec_jzgd}</a>
+				</div>
+			</div>
+			<div class="bi-cb-jl-bott"></div>
+		</div>
+		
+		<div class="">
+			
+		</div>
+		
+		
+	</div>
+
+
+	
+</div>
+<div class="bi-bottu">
+</div>
+
+<!-- 勿删 -->
+</div>
+
+
+<script>
+
+
+
+	$(function () {
+		$(".neirongji p").click(function () {
+			$(".neirongji p").removeClass('active');
+			$(this).addClass('active');
+		})
+	});
+	$(".neirongji p:eq(5)").addClass('active');
+	function copy_id(key) {
+		var cli = new ClipboardJS('#copy_btn'+key);
+
+		cli.on('success',function (e) {
+			e.clearSelection();
+			layer.msg(cd_fzcg);
+			//cli.destroy();
+		})
+		cli.on('error', function(e) {
+			console.log(e);
+			layer.msg(shez_fzsb);
+			//cli.destroy();
+		});
+
+	}
+	var bi_name = '';
+
+	function tijiao(){
+		var num =  $("#num").val();
+		var cbdz =  $("#cbdz").val();
+		var usdt_type = '';
+		if(bi_name == ''){
+			layer.msg(bibi_xzczbz);
+			return;
+		}
+		if(bi_name =='USDT'){
+			usdt_type = $('input[name="usdt_type"]:checked').val(); // $("input[type='radio']:checked").val();
+			if(usdt_type == ''){
+				layer.msg(bibi_xzczqd);
+				return;
+			}
+			//usdt_type = $(".tb-two .active").html();
+		}
+
+		if(cbdz==''){
+			layer.msg(cb_qsrcbdz);return;
+		}
+
+		if(num==''||num<=0){
+			layer.msg(cb_qsrcbsl);return;
+		}
+
+		$.ajax({
+			url: '/index/assets/dorecharge',
+			type: 'post',
+			data: {num:num,cbdz:cbdz,name:bi_name,usdt_type:usdt_type},
+			success: function(res){
+				res =$.parseJSON(res);
+
+				if(res.error==1){
+					layer.msg(res.msg);
+				}else{
+					layer.msg(cb_tjcg, {
+						time: 1500,
+						end: function(){
+							window.location.href="/wap/zichan/bibi";
+						}
+					});
+
+				}
+
+			}
+		});
+	}
+
+</script>
+<script src="js/bibi.js"></script>
+<script>
+	$(".bi-cb-tc").hide();
+	$(".bi-cb").click(function(){
+	var pid = $(this).data('id');
+	var name = $(this).data('name');
+		bi_name = name;
+	$('.bi_name').html(name);
+
+	$.ajax({
+		type:'POST',
+		url:'/wap/zichan/url',
+		data:{name:name},
+		datatype:'json',
+		success: function(res){
+			var html = jQuery.parseJSON($.base64.decode(res))
+			console.log(html);
+			$("#re_address").html(html.data);
+			$(".bi-cb-tc").show();
+		},error:function (err) {
+			layer.msg(err);
+		}
+	})
+
+});
+
+
+$(".bi-cb-tc-div1>span").click(function(){
+	$(".bi-cb-tc").hide();
+});
+
+
+var base_name = '';
+var tx_min_num = 0;
+var tx_fee=0;
+	$(".bi-cb-tb").hide();
+$(".bi-tb").click(function(){
+	base_name = $(this).data('name');
+	$('.base_name').html(base_name);
+	if(base_name=='USDT'){
+		$('#tx_type_div').show();
+	}
+	var tishi = layer.load(1, {
+		shadeClose: false,
+		title: bibi_jzz+'..',
+		shade: [0.8,'#fff'] //0.1透明度的白色背景
+	});
+	$.ajax({
+		type:'POST',
+		url:'/wap/zichan/tx_msg',
+		data:{name:base_name},
+		dataType:'json',
+		success: function(res){
+			//var html = jQuery.parseJSON($.base64.decode(res))
+			console.log(res);
+			$("#tx_fee").val(res.fee);
+			tx_fee = res.fee;
+			$(".has_money").html(res.has_money);
+			tx_min_num = res.min_num;
+			$('#tx_min_num').html(tx_min_num);
+
+			layer.close(tishi);
+			$(".bi-cb-tb").show();
+
+		},error:function (err) {
+			layer.close(tishi);
+			layer.msg(err);
+		}
+	})
+	$(".bi-cb-tb").show();
+});
+	$("#tx_num").bind("input propertychange",function(event){
+		var tx_num = parseFloat($("#tx_num").val());
+		var true_num = tx_num - tx_fee;
+		$('#true_amount').val(true_num);
+	});
+
+	function tijiao_tx() {
+
+		var price = $('#tx_num').val();
+		var leixing = ''
+		if(base_name=='USDT'){
+			leixing =  $('input[name="tx_type"]:checked').val();
+		}
+		var erjimima = $('#password2').val();
+		var usdt_url = $('#tx_address').val();
+
+
+		if(usdt_url==''){
+			layer.msg(jse_qsrtbdz);
+			return false;
+		}
+
+		if(erjimima==''){
+			layer.msg(tb_qsrejmm);
+			return false;
+		}
+		if(price=='' || price< tx_min_num ){
+			layer.msg(jse_zdtbslw+tx_min_num);
+			return false;
+		}
+
+
+		var postdata = 'price='+price+"&usdt_type="+leixing+"&usdt_url="+usdt_url+"&erjimima="+erjimima+"&name="+base_name;
+		var posturl = '/index/assets/cash';
+		$.post(posturl,postdata,function(resdata){
+
+			layer.msg(resdata.data);
+			if(resdata.type == 1){
+				setTimeout('gourl()',1000);
+			}
+
+		})
+
+	}
+
+	function gourl() {
+
+		history.go(0);
+	}
+
+
+
+
+$(".bi-cb-tb-div1-cha").click(function(){
+	$(".bi-cb-tb").hide();
+});
+
+
+
+	$(".bi-cb-jl").hide();
+// $(".bi-jl").click(function(){
+// 	$(".bi-cb-jl").show();
+// });
+//
+
+$(".bi-cb-jl-cha>span>a").click(function(){
+	$(".bi-cb-jl").hide();
+});
+
+</script>
+
+
+<script>
+	// 类名是需要隐藏的div
+	$(".huhuhus").show();
+	$(".gugugus").show();
+	// 点击的按钮
+	$(".kjkjkj>a").click(function(){
+		// 类名是需要隐藏的div
+		$(".huhuhus").show();
+		$(".gugugus").show();
+	});
+	$(".klklkl>a").click(function(){
+		// 类名是需要隐藏的div
+		$(".huhuhus").show();
+		$(".gugugus").hide();
+	});
+	$(".kukuku>a").click(function(){
+		// 类名是需要隐藏的div
+		$(".zhuliuugh").show();
+		$(".huhuhus").hide();
+		$(".gugugus").hide();
+	});
+</script>
+<script>
+	var cssdropdown={
+		disappeardelay: 250,
+		disablemenuclick: false,
+		enableswipe: 1,
+		enableiframeshim: 1,
+		dropmenuobj: null, ie: document.all, firefox: document.getElementById&&!document.all, swipetimer: undefined, bottomclip:0,
+
+		getposOffset:function(what, offsettype){
+			var totaloffset=(offsettype=="left")? what.offsetLeft : what.offsetTop;
+			var parentEl=what.offsetParent;
+			while (parentEl!=null){
+				totaloffset=(offsettype=="left")? totaloffset+parentEl.offsetLeft : totaloffset+parentEl.offsetTop;
+				parentEl=parentEl.offsetParent;
+			}
+			return totaloffset;
+		},
+
+		swipeeffect:function(){
+			if (this.bottomclip<parseInt(this.dropmenuobj.offsetHeight)){
+				this.bottomclip+=10+(this.bottomclip/10)
+				this.dropmenuobj.style.clip="rect(0 auto "+this.bottomclip+"px 0)"
+			}
+			else
+				return
+			this.swipetimer=setTimeout("cssdropdown.swipeeffect()", 10)
+		},
+
+		showhide:function(obj, e){
+			if (this.ie || this.firefox)
+				this.dropmenuobj.style.left=this.dropmenuobj.style.top="-500px"
+			if (e.type=="click" && obj.visibility==hidden || e.type=="mouseover"){
+				if (this.enableswipe==1){
+					if (typeof this.swipetimer!="undefined")
+						clearTimeout(this.swipetimer)
+					obj.clip="rect(0 auto 0 0)"
+					this.bottomclip=0
+					this.swipeeffect()
+				}
+				obj.visibility="visible"
+			}
+			else if (e.type=="click")
+				obj.visibility="hidden"
+		},
+
+		iecompattest:function(){
+			return (document.compatMode && document.compatMode!="BackCompat")? document.documentElement : document.body
+		},
+
+		clearbrowseredge:function(obj, whichedge){
+			var edgeoffset=0
+			if (whichedge=="rightedge"){
+				var windowedge=this.ie && !window.opera? this.iecompattest().scrollLeft+this.iecompattest().clientWidth-15 : window.pageXOffset+window.innerWidth-15
+				this.dropmenuobj.contentmeasure=this.dropmenuobj.offsetWidth
+				if (windowedge-this.dropmenuobj.x < this.dropmenuobj.contentmeasure)
+					edgeoffset=this.dropmenuobj.contentmeasure-obj.offsetWidth
+			}
+			else{
+				var topedge=this.ie && !window.opera? this.iecompattest().scrollTop : window.pageYOffset
+				var windowedge=this.ie && !window.opera? this.iecompattest().scrollTop+this.iecompattest().clientHeight-15 : window.pageYOffset+window.innerHeight-18
+				this.dropmenuobj.contentmeasure=this.dropmenuobj.offsetHeight
+				if (windowedge-this.dropmenuobj.y < this.dropmenuobj.contentmeasure){
+					edgeoffset=this.dropmenuobj.contentmeasure+obj.offsetHeight
+					if ((this.dropmenuobj.y-topedge)<this.dropmenuobj.contentmeasure)
+						edgeoffset=this.dropmenuobj.y+obj.offsetHeight-topedge
+				}
+			}
+			return edgeoffset
+		},
+
+		dropit:function(obj, e, dropmenuID){
+			if (this.dropmenuobj!=null)
+				this.dropmenuobj.style.visibility="hidden"
+			this.clearhidemenu()
+			if (this.ie||this.firefox){
+				obj.onmouseout=function(){cssdropdown.delayhidemenu()}
+				obj.onclick=function(){return !cssdropdown.disablemenuclick}
+				this.dropmenuobj=document.getElementById(dropmenuID)
+				if(!this.dropmenuobj) return;
+				this.dropmenuobj.onmouseover=function(){cssdropdown.clearhidemenu()}
+				this.dropmenuobj.onmouseout=function(e){cssdropdown.dynamichide(e)}
+				this.dropmenuobj.onclick=function(){cssdropdown.delayhidemenu()}
+				this.showhide(this.dropmenuobj.style, e)
+				this.dropmenuobj.x=this.getposOffset(obj, "left")
+				this.dropmenuobj.y=this.getposOffset(obj, "top")
+				this.dropmenuobj.style.left=this.dropmenuobj.x-this.clearbrowseredge(obj, "rightedge")+"px"
+				this.dropmenuobj.style.top=this.dropmenuobj.y-this.clearbrowseredge(obj, "bottomedge")+obj.offsetHeight+1+"px"
+				this.positionshim()
+			}
+		},
+
+		positionshim:function(){
+			if (this.enableiframeshim && typeof this.shimobject!="undefined"){
+				if (this.dropmenuobj.style.visibility=="visible"){
+					this.shimobject.style.width=this.dropmenuobj.offsetWidth+"px"
+					this.shimobject.style.height=this.dropmenuobj.offsetHeight+"px"
+					this.shimobject.style.left=this.dropmenuobj.style.left
+					this.shimobject.style.top=this.dropmenuobj.style.top
+				}
+				this.shimobject.style.display=(this.dropmenuobj.style.visibility=="visible")? "block" : "none"
+			}
+		},
+
+		hideshim:function(){
+			if (this.enableiframeshim && typeof this.shimobject!="undefined")
+				this.shimobject.style.display='none'
+		},
+
+		contains_firefox:function(a, b) {
+			while (b.parentNode)
+				if ((b = b.parentNode) == a)
+					return true;
+			return false;
+		},
+
+		dynamichide:function(e){
+			var evtobj=window.event? window.event : e
+			if (this.ie&&!this.dropmenuobj.contains(evtobj.toElement))
+				this.delayhidemenu()
+			else if (this.firefox&&e.currentTarget!= evtobj.relatedTarget&& !this.contains_firefox(evtobj.currentTarget, evtobj.relatedTarget))
+				this.delayhidemenu()
+		},
+
+		delayhidemenu:function(){
+			this.delayhide=setTimeout("cssdropdown.dropmenuobj.style.visibility='hidden'; cssdropdown.hideshim()",this.disappeardelay)
+		},
+
+		clearhidemenu:function(){
+			if (this.delayhide!="undefined")
+				clearTimeout(this.delayhide)
+		},
+
+		startchrome:function(){
+			for (var ids=0; ids<arguments.length; ids++){
+				var menuitems=document.getElementById(arguments[ids]).getElementsByTagName("a")
+				for (var i=0; i<menuitems.length; i++){
+					if (menuitems[i].getAttribute("rel")){
+						var relvalue=menuitems[i].getAttribute("rel")
+						menuitems[i].onmouseover=function(e){
+							var event=typeof e!="undefined"? e : window.event
+							cssdropdown.dropit(this,event,this.getAttribute("rel"))
+						}
+					}
+				}
+			}
+			if (window.createPopup && !window.XmlHttpRequest){
+				document.write('<IFRAME id="iframeshim"  src="" style="display: none; left: 0; top: 0; z-index: 90; position: absolute; filter: progid:DXImageTransform.Microsoft.Alpha(style=0,opacity=0)" frameBorder="0" scrolling="no"></IFRAME>')
+				this.shimobject=document.getElementById("iframeshim")
+			}
+		}
+
+	}
+</script><script type="text/javascript">cssdropdown.startchrome("navMenu")</script>
+<script>
+	var cssdropdowns={
+		disappeardelay: 250,
+		disablemenuclick: false,
+		enableswipe: 1,
+		enableiframeshim: 1,
+		dropmenuobj: null, ie: document.all, firefox: document.getElementById&&!document.all, swipetimer: undefined, bottomclip:0,
+
+		getposOffset:function(what, offsettype){
+			var totaloffset=(offsettype=="left")? what.offsetLeft : what.offsetTop;
+			var parentEl=what.offsetParent;
+			while (parentEl!=null){
+				totaloffset=(offsettype=="left")? totaloffset+parentEl.offsetLeft : totaloffset+parentEl.offsetTop;
+				parentEl=parentEl.offsetParent;
+			}
+			return totaloffset;
+		},
+
+		swipeeffect:function(){
+			if (this.bottomclip<parseInt(this.dropmenuobj.offsetHeight)){
+				this.bottomclip+=10+(this.bottomclip/10)
+				this.dropmenuobj.style.clip="rect(0 auto "+this.bottomclip+"px 0)"
+			}
+			else
+				return
+			this.swipetimer=setTimeout("cssdropdown.swipeeffect()", 10)
+		},
+
+		showhide:function(obj, e){
+			if (this.ie || this.firefox)
+				this.dropmenuobj.style.left=this.dropmenuobj.style.top="-500px"
+			if (e.type=="click" && obj.visibility==hidden || e.type=="mouseover"){
+				if (this.enableswipe==1){
+					if (typeof this.swipetimer!="undefined")
+						clearTimeout(this.swipetimer)
+					obj.clip="rect(0 auto 0 0)"
+					this.bottomclip=0
+					this.swipeeffect()
+				}
+				obj.visibility="visible"
+			}
+			else if (e.type=="click")
+				obj.visibility="hidden"
+		},
+
+		iecompattest:function(){
+			return (document.compatMode && document.compatMode!="BackCompat")? document.documentElement : document.body
+		},
+
+		clearbrowseredge:function(obj, whichedge){
+			var edgeoffset=0
+			if (whichedge=="rightedge"){
+				var windowedge=this.ie && !window.opera? this.iecompattest().scrollLeft+this.iecompattest().clientWidth-15 : window.pageXOffset+window.innerWidth-15
+				this.dropmenuobj.contentmeasure=this.dropmenuobj.offsetWidth
+				if (windowedge-this.dropmenuobj.x < this.dropmenuobj.contentmeasure)
+					edgeoffset=this.dropmenuobj.contentmeasure-obj.offsetWidth
+			}
+			else{
+				var topedge=this.ie && !window.opera? this.iecompattest().scrollTop : window.pageYOffset
+				var windowedge=this.ie && !window.opera? this.iecompattest().scrollTop+this.iecompattest().clientHeight-15 : window.pageYOffset+window.innerHeight-18
+				this.dropmenuobj.contentmeasure=this.dropmenuobj.offsetHeight
+				if (windowedge-this.dropmenuobj.y < this.dropmenuobj.contentmeasure){
+					edgeoffset=this.dropmenuobj.contentmeasure+obj.offsetHeight
+					if ((this.dropmenuobj.y-topedge)<this.dropmenuobj.contentmeasure)
+						edgeoffset=this.dropmenuobj.y+obj.offsetHeight-topedge
+				}
+			}
+			return edgeoffset
+		},
+
+		dropit:function(obj, e, dropmenuID){
+			if (this.dropmenuobj!=null)
+				this.dropmenuobj.style.visibility="hidden"
+			this.clearhidemenu()
+			if (this.ie||this.firefox){
+				obj.onmouseout=function(){cssdropdown.delayhidemenu()}
+				obj.onclick=function(){return !cssdropdown.disablemenuclick}
+				this.dropmenuobj=document.getElementById(dropmenuID)
+				if(!this.dropmenuobj) return;
+				this.dropmenuobj.onmouseover=function(){cssdropdown.clearhidemenu()}
+				this.dropmenuobj.onmouseout=function(e){cssdropdown.dynamichide(e)}
+				this.dropmenuobj.onclick=function(){cssdropdown.delayhidemenu()}
+				this.showhide(this.dropmenuobj.style, e)
+				this.dropmenuobj.x=this.getposOffset(obj, "left")
+				this.dropmenuobj.y=this.getposOffset(obj, "top")
+				this.dropmenuobj.style.left=this.dropmenuobj.x-this.clearbrowseredge(obj, "rightedge")+"px"
+				this.dropmenuobj.style.top=this.dropmenuobj.y-this.clearbrowseredge(obj, "bottomedge")+obj.offsetHeight+1+"px"
+				this.positionshim()
+			}
+		},
+
+		positionshim:function(){
+			if (this.enableiframeshim && typeof this.shimobject!="undefined"){
+				if (this.dropmenuobj.style.visibility=="visible"){
+					this.shimobject.style.width=this.dropmenuobj.offsetWidth+"px"
+					this.shimobject.style.height=this.dropmenuobj.offsetHeight+"px"
+					this.shimobject.style.left=this.dropmenuobj.style.left
+					this.shimobject.style.top=this.dropmenuobj.style.top
+				}
+				this.shimobject.style.display=(this.dropmenuobj.style.visibility=="visible")? "block" : "none"
+			}
+		},
+
+		hideshim:function(){
+			if (this.enableiframeshim && typeof this.shimobject!="undefined")
+				this.shimobject.style.display='none'
+		},
+
+		contains_firefox:function(a, b) {
+			while (b.parentNode)
+				if ((b = b.parentNode) == a)
+					return true;
+			return false;
+		},
+
+		dynamichide:function(e){
+			var evtobj=window.event? window.event : e
+			if (this.ie&&!this.dropmenuobj.contains(evtobj.toElement))
+				this.delayhidemenu()
+			else if (this.firefox&&e.currentTarget!= evtobj.relatedTarget&& !this.contains_firefox(evtobj.currentTarget, evtobj.relatedTarget))
+				this.delayhidemenu()
+		},
+
+		delayhidemenu:function(){
+			this.delayhide=setTimeout("cssdropdown.dropmenuobj.style.visibility='hidden'; cssdropdown.hideshim()",this.disappeardelay)
+		},
+
+		clearhidemenu:function(){
+			if (this.delayhide!="undefined")
+				clearTimeout(this.delayhide)
+		},
+
+		startchrome:function(){
+			for (var ids=0; ids<arguments.length; ids++){
+				var menuitems=document.getElementById(arguments[ids]).getElementsByTagName("a")
+				for (var i=0; i<menuitems.length; i++){
+					if (menuitems[i].getAttribute("rel")){
+						var relvalue=menuitems[i].getAttribute("rel")
+						menuitems[i].onmouseover=function(e){
+							var event=typeof e!="undefined"? e : window.event
+							cssdropdown.dropit(this,event,this.getAttribute("rel"))
+						}
+					}
+				}
+			}
+			if (window.createPopup && !window.XmlHttpRequest){
+				document.write('<IFRAME id="iframeshim"  src="" style="display: none; left: 0; top: 0; z-index: 90; position: absolute; filter: progid:DXImageTransform.Microsoft.Alpha(style=0,opacity=0)" frameBorder="0" scrolling="no"></IFRAME>')
+				this.shimobject=document.getElementById("iframeshim")
+			}
+		}
+
+	}
+</script><script type="text/javascript">cssdropdown.startchrome("navMenus")</script>
+<script>
+	var cssdropdownv={
+		disappeardelay: 250,
+		disablemenuclick: false,
+		enableswipe: 1,
+		enableiframeshim: 1,
+		dropmenuobj: null, ie: document.all, firefox: document.getElementById&&!document.all, swipetimer: undefined, bottomclip:0,
+
+		getposOffset:function(what, offsettype){
+			var totaloffset=(offsettype=="left")? what.offsetLeft : what.offsetTop;
+			var parentEl=what.offsetParent;
+			while (parentEl!=null){
+				totaloffset=(offsettype=="left")? totaloffset+parentEl.offsetLeft : totaloffset+parentEl.offsetTop;
+				parentEl=parentEl.offsetParent;
+			}
+			return totaloffset;
+		},
+
+		swipeeffect:function(){
+			if (this.bottomclip<parseInt(this.dropmenuobj.offsetHeight)){
+				this.bottomclip+=10+(this.bottomclip/10)
+				this.dropmenuobj.style.clip="rect(0 auto "+this.bottomclip+"px 0)"
+			}
+			else
+				return
+			this.swipetimer=setTimeout("cssdropdown.swipeeffect()", 10)
+		},
+
+		showhide:function(obj, e){
+			if (this.ie || this.firefox)
+				this.dropmenuobj.style.left=this.dropmenuobj.style.top="-500px"
+			if (e.type=="click" && obj.visibility==hidden || e.type=="mouseover"){
+				if (this.enableswipe==1){
+					if (typeof this.swipetimer!="undefined")
+						clearTimeout(this.swipetimer)
+					obj.clip="rect(0 auto 0 0)"
+					this.bottomclip=0
+					this.swipeeffect()
+				}
+				obj.visibility="visible"
+			}
+			else if (e.type=="click")
+				obj.visibility="hidden"
+		},
+
+		iecompattest:function(){
+			return (document.compatMode && document.compatMode!="BackCompat")? document.documentElement : document.body
+		},
+
+		clearbrowseredge:function(obj, whichedge){
+			var edgeoffset=0
+			if (whichedge=="rightedge"){
+				var windowedge=this.ie && !window.opera? this.iecompattest().scrollLeft+this.iecompattest().clientWidth-15 : window.pageXOffset+window.innerWidth-15
+				this.dropmenuobj.contentmeasure=this.dropmenuobj.offsetWidth
+				if (windowedge-this.dropmenuobj.x < this.dropmenuobj.contentmeasure)
+					edgeoffset=this.dropmenuobj.contentmeasure-obj.offsetWidth
+			}
+			else{
+				var topedge=this.ie && !window.opera? this.iecompattest().scrollTop : window.pageYOffset
+				var windowedge=this.ie && !window.opera? this.iecompattest().scrollTop+this.iecompattest().clientHeight-15 : window.pageYOffset+window.innerHeight-18
+				this.dropmenuobj.contentmeasure=this.dropmenuobj.offsetHeight
+				if (windowedge-this.dropmenuobj.y < this.dropmenuobj.contentmeasure){
+					edgeoffset=this.dropmenuobj.contentmeasure+obj.offsetHeight
+					if ((this.dropmenuobj.y-topedge)<this.dropmenuobj.contentmeasure)
+						edgeoffset=this.dropmenuobj.y+obj.offsetHeight-topedge
+				}
+			}
+			return edgeoffset
+		},
+
+		dropit:function(obj, e, dropmenuID){
+			if (this.dropmenuobj!=null)
+				this.dropmenuobj.style.visibility="hidden"
+			this.clearhidemenu()
+			if (this.ie||this.firefox){
+				obj.onmouseout=function(){cssdropdown.delayhidemenu()}
+				obj.onclick=function(){return !cssdropdown.disablemenuclick}
+				this.dropmenuobj=document.getElementById(dropmenuID)
+				if(!this.dropmenuobj) return;
+				this.dropmenuobj.onmouseover=function(){cssdropdown.clearhidemenu()}
+				this.dropmenuobj.onmouseout=function(e){cssdropdown.dynamichide(e)}
+				this.dropmenuobj.onclick=function(){cssdropdown.delayhidemenu()}
+				this.showhide(this.dropmenuobj.style, e)
+				this.dropmenuobj.x=this.getposOffset(obj, "left")
+				this.dropmenuobj.y=this.getposOffset(obj, "top")
+				this.dropmenuobj.style.left=this.dropmenuobj.x-this.clearbrowseredge(obj, "rightedge")+"px"
+				this.dropmenuobj.style.top=this.dropmenuobj.y-this.clearbrowseredge(obj, "bottomedge")+obj.offsetHeight+1+"px"
+				this.positionshim()
+			}
+		},
+
+		positionshim:function(){
+			if (this.enableiframeshim && typeof this.shimobject!="undefined"){
+				if (this.dropmenuobj.style.visibility=="visible"){
+					this.shimobject.style.width=this.dropmenuobj.offsetWidth+"px"
+					this.shimobject.style.height=this.dropmenuobj.offsetHeight+"px"
+					this.shimobject.style.left=this.dropmenuobj.style.left
+					this.shimobject.style.top=this.dropmenuobj.style.top
+				}
+				this.shimobject.style.display=(this.dropmenuobj.style.visibility=="visible")? "block" : "none"
+			}
+		},
+
+		hideshim:function(){
+			if (this.enableiframeshim && typeof this.shimobject!="undefined")
+				this.shimobject.style.display='none'
+		},
+
+		contains_firefox:function(a, b) {
+			while (b.parentNode)
+				if ((b = b.parentNode) == a)
+					return true;
+			return false;
+		},
+
+		dynamichide:function(e){
+			var evtobj=window.event? window.event : e
+			if (this.ie&&!this.dropmenuobj.contains(evtobj.toElement))
+				this.delayhidemenu()
+			else if (this.firefox&&e.currentTarget!= evtobj.relatedTarget&& !this.contains_firefox(evtobj.currentTarget, evtobj.relatedTarget))
+				this.delayhidemenu()
+		},
+
+		delayhidemenu:function(){
+			this.delayhide=setTimeout("cssdropdown.dropmenuobj.style.visibility='hidden'; cssdropdown.hideshim()",this.disappeardelay)
+		},
+
+		clearhidemenu:function(){
+			if (this.delayhide!="undefined")
+				clearTimeout(this.delayhide)
+		},
+
+		startchrome:function(){
+			for (var ids=0; ids<arguments.length; ids++){
+				var menuitems=document.getElementById(arguments[ids]).getElementsByTagName("a")
+				for (var i=0; i<menuitems.length; i++){
+					if (menuitems[i].getAttribute("rel")){
+						var relvalue=menuitems[i].getAttribute("rel")
+						menuitems[i].onmouseover=function(e){
+							var event=typeof e!="undefined"? e : window.event
+							cssdropdown.dropit(this,event,this.getAttribute("rel"))
+						}
+					}
+				}
+			}
+			if (window.createPopup && !window.XmlHttpRequest){
+				document.write('<IFRAME id="iframeshim"  src="" style="display: none; left: 0; top: 0; z-index: 90; position: absolute; filter: progid:DXImageTransform.Microsoft.Alpha(style=0,opacity=0)" frameBorder="0" scrolling="no"></IFRAME>')
+				this.shimobject=document.getElementById("iframeshim")
+			}
+		}
+
+	}
+</script><script type="text/javascript">cssdropdown.startchrome("navMenuv")</script>
+
+
+</body>
+</html>

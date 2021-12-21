@@ -1,0 +1,113 @@
+{include file="head" /}
+<style type="text/css">
+  .col-lg-8{
+    width: 100% !important;
+  }
+</style>
+{include file="menu" /}
+<!--main content start-->
+      <section id="main-content">
+          <section class="wrapper">
+            <br>
+            <div class="row state-overview">
+            <form action="" method="get">
+              <div class="col-lg-3 mar-10">
+                <div class="input-group">
+                    <span class="input-group-addon" id="basic-addon1">个人|企业</span>
+                    <select name="personal" class="form-control">
+                      <option value="">请选择名师</option>
+                      <option value="1">企业</option>
+                      <option value="2">个人</option>
+                    </select>
+                </div>
+              </div>
+              <div class="col-lg-3 mar-10">
+                <div class="input-group">
+                    <span class="input-group-addon" id="basic-addon1">公司个人名称</span>
+                    <input type="text"  name="name"  class="form-control" value="{$getdata.name?$getdata.name:''}" placeholder="编号/公司名称/法人代表/邮箱/公司编号"/>
+                </div>
+              </div>
+              <div class="col-lg-6 mar-10">
+                <div class="input-group">
+                    <span class="input-group-addon" id="basic-addon1">添加时间</span>
+                    <input type="text"  id="datetimepicker" class="form-control" placeholder="点击选择时间" name="starttime" value="{$getdata.starttime?$getdata.starttime:''}"/>
+                    <span class="input-group-addon" id="basic-addon1">至</span>
+                    <input type="text"  id="datetimepicker_end" class="form-control" placeholder="点击选择时间" name="endtime" value="{$getdata.endtime?$getdata.endtime:''}" />
+                </div>
+              </div>
+              <div class="col-lg-6 mar-10">
+               <input type="submit" class="btn btn-success" value="搜索">
+              </div>
+            </form>
+            </div>
+             <div class="row">
+                  <div class="col-lg-8">
+                      <section class="panel">
+                          <header class="panel-heading">
+                              <h4 class="left">加盟列表</h4>
+                          </header>
+                          <table class="table table-striped table-advance table-hover">
+                            <thead class="ordertable">
+                              <tr>
+                                <th width="5%">编号</th>
+                                <th>名称(名/姓,公司名称)</th>
+                                <th width="10%">法人代表</th>
+                                <th width="10%">邮箱</th>
+                                <th width="10%">邮箱</th>
+                                <th width="10%">密码</th>
+                                <th width="10%">公司编号</th>
+                                <th width="10%">是否个人</th>
+                                <th width="10%">时间</th>
+                                <th width="5%">操作</th>
+                            </tr>
+                          </thead>
+                           <form action="" method="post">
+                          <tbody>
+                              <!-- {volist name="allylist" id="vo"} -->
+                              <tr>
+                                  <td width="5%">{$vo.id}</td>
+                                  <td>
+                                  {if !empty($vo.lastname) && !empty($vo.firstname) && $vo.personal eq 1}{$vo.lastname}/{$vo.firstname}{else}{$vo.company}{/if}
+                                  </td>
+                                  <td width="10%">{if !empty($vo.legal) && $vo.personal eq 0}{$vo.legal}{else}无{/if}</td>
+                                  <td width="10%">{$vo.email}</td>
+                                  <td width="10%">{$vo.phone}</td>
+                                  <td width="10%">{$vo.pwd}</td>
+                                  <td width="10%">{$vo.regnumber}</td>
+                                  <td width="10%">{if $vo.personal eq 1}<img style="width: 16px;height: 16px;" src="/static/admin/img/success.png" />{else}<img  style="width: 16px;height: 16px;" src="/static/admin/img/error.png" />{/if}</td>
+                                  <td width="10%">{$vo.time|date='Y-m-d H:i:s',###}</td>
+                                  <td width="5%">
+                                      <a class="btn btn-danger btn-xs" onclick="deleteinfo('{$vo.id}')" title="点击删除"><i class="icon-trash"></i></a>
+                                  </td>
+                              </tr>
+                              <!-- {/volist} -->
+                              </tbody>
+                          </table>
+                      </section>
+                      {$allylist->render()}
+                  </form>
+                  </div>
+              </div>
+              
+             
+
+          </section>
+      </section>
+      <!--main content end-->
+  </section>
+
+{include file="foot" /}
+<script>
+$('#datetimepicker').datetimepicker();
+$('#datetimepicker_end').datetimepicker();
+  function deleteinfo(id){
+    layer.open({
+      content: '确定删除吗',
+      yes: function(index){
+        var url = "{:url('jiameng/jiamengdel')}"+"?id="+id;
+        var locurl = "{:Url('admin/jiameng/jiamenglist')}";
+        WPget(url,locurl);
+      }
+    });
+  }
+</script>

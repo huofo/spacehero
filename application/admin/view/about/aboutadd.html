@@ -1,0 +1,82 @@
+{include file="head" /}
+{include file="menu" /}
+<!--main content start-->
+      <section id="main-content">
+          <section class="wrapper">
+          <div class="row">
+                  <div class="col-sm-12">
+                      <aside class="profile-info col-lg-10">
+                      <section class="panel">
+                          <div class="panel-body bio-graph-info">
+                              <h1> {$result.id?'编辑栏目':'添加栏目'}</h1>
+                              <form class="form-horizontal" role="form" id="formid" method="post">
+                                  <div class="form-group">
+                                      <label class="col-lg-2 control-label">栏目名称</label>
+                                      <div class="col-lg-8">
+                                          <input type="text" class="form-control" value="{$result.a_title?$result.a_title:''}" placeholder="请填写栏目名称" name="a_title">
+                                      </div>
+                                  </div>
+                                  <div class="form-group">
+                                      <label class="col-lg-2 control-label">栏目内容</label>
+                                      <div class="col-lg-8">{$FCKeditor}</div>
+                                  </div>
+                                  <div class="form-group">
+                                      <label class="col-lg-2 control-label">排序</label>
+                                      <div class="col-lg-8">
+                                          <input type="text" class="form-control" value="{$result.a_sort?$result.a_sort:''}" name="a_sort">
+                                      </div>
+                                  </div>
+                                  {if $result}
+                                    <div class="form-group">
+                                        <label class="col-lg-2 control-label">显示</label>
+                                        <div class="col-lg-8">
+                                            <label><input type="radio" {if $result['a_show'] eq 1} checked="checked" {/if} value="1" name="a_show">是&nbsp;&nbsp;&nbsp;<input type="radio" {if $result['a_show'] eq 0} checked="checked" {/if} value="0" name="a_show">否</label>
+                                        </div>
+                                    </div>
+                                  {else}
+                                    <div class="form-group">
+                                        <label class="col-lg-2 control-label">显示</label>
+                                        <div class="col-lg-8">
+                                            <label><input type="radio" checked="checked" value="1" name="a_show">是&nbsp;&nbsp;&nbsp;<input type="radio" value="0" name="a_show">否</label>
+                                        </div>
+                                    </div>
+                                  {/if}
+                                  <input type="hidden" name="id" value="{$result.id?$result.id:''}">
+                                  <input type="hidden" name="act" value="{$act?$act:''}">
+                                  <div class="form-group">
+                                      <div class="col-lg-offset-2 col-lg-10">
+                                          <input type="submit" class="btn btn-success" onclick="return confirmedit(this.form)" value="提交">
+                                      </div>
+                                  </div>
+                              </form>
+                          </div>
+                      </section>
+                  </aside>
+                  </div>
+          </div>
+          </section>
+      </section>
+      <!--main content end-->
+  </section>
+
+
+{include file="foot" /}
+<!-- <script>
+function confirmedit(form){
+  var title = form.a_title.value;
+  var content = form.content.value;
+  if(!title){
+    layer.msg('请输入栏目名称'); 
+    return false;
+  }
+  // if(!content){
+  //   layer.msg('请输入栏目内容');
+  //   return false;
+  // }
+  var formurl = "{:Url('about/aboutadd')}";
+  var data = $('#formid').serialize();
+  var locurl = "{:Url('admin/about/aboutlist')}";
+  WPpost(formurl,data,locurl);
+  return false;
+}
+</script> -->

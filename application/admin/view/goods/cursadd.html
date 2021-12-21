@@ -1,0 +1,142 @@
+{include file="head" /}
+<style>
+    .form-box{
+        width: 30%;
+        float: left;
+        border: 1px solid red;
+        margin-left:1%;
+        margin-bottom: 10px;
+        position: relative;
+    }
+    .col-lg-8 .picture{
+        display: block;
+        width: 100%;
+        cursor: pointer;
+        padding: 5px;
+        height: 150px;
+    }
+    .form-box .deluploads{
+        position: absolute;
+        z-index: 90;
+        top: 0;
+        right: 0;
+        width: 20px;
+        height: 20px;
+        margin: auto;
+        cursor: pointer;
+        display: none;
+    }
+</style>
+{include file="menu" /}
+
+
+<!--main content start-->
+      <section id="main-content">
+          <section class="wrapper">
+              
+            
+          <div class="row">
+                  <div class="col-sm-12">
+                      <aside class="profile-info col-lg-10">
+                      <section class="panel">
+                          
+                          <div class="panel-body bio-graph-info">
+                              <h1> {$id?'编辑法币':'添加法币'}</h1>
+                              <form class="form-horizontal" role="form" id="formid" method="post">
+                                  
+                                  <div class="form-group">
+                                      <label class="col-lg-2 control-label">法币名称</label>
+                                      
+                                      
+                                      <div class="col-lg-8">
+                                          <input type="text" class="form-control m-cpmc" value="{$name?$name:''}"  placeholder="请填写法币名称" name="name"  />
+
+                                      </div>
+                                      
+                                      
+                                  </div>
+
+                                  <div class="form-group">
+                                      <label class="col-lg-2 control-label">法币符号</label>
+
+
+                                      <div class="col-lg-8">
+                                          <input type="text" class="form-control m-cpmc" value="{$symbol?$symbol:''}"  placeholder="请填写法币符号" name="symbol"  />
+
+                                      </div>
+
+
+                                  </div>
+                                  <div class="form-group">
+                                      <label class="col-lg-2 control-label">汇率</label>
+
+
+                                      <div class="col-lg-8">
+                                          <input type="text" class="form-control m-cpmc" value="{$huilv?$huilv:''}"  placeholder="请填写汇率" name="huilv"  />
+
+                                      </div>
+
+
+                                  </div>
+
+
+								
+								<input type="hidden" name="id" value="{$id?$id:''}">
+                                  <div class="form-group">
+                                      <div class="col-lg-offset-2 col-lg-10">
+                                          <input type="submit" class="btn btn-success m-tj" onclick="return editpro(this.form)" value="提交">
+                                          
+                                      </div>
+                                  </div>
+                              </form>
+                          </div>
+                      </section>
+                      
+                  </aside>
+                  </div>
+
+          </div>       
+          
+          
+             
+
+          </section>
+      </section>
+      <!--main content end-->
+  </section>
+
+
+{include file="foot" /}
+
+<script src="/index/js/jquery-2.1.4.min.js">
+    $(".m-tj").click(function(){
+        var cpmc=$(".m-cpmc").val();
+        $.post("/index/Assets/gx2",
+            {
+                cpmc:cpmc,
+
+            },
+            function(re){
+
+            });
+    });
+</script>
+<script>
+function editpro(form){
+
+
+
+	var formurl = "{:Url('goods/cursadd')}"
+   var data = $('#formid').serialize();
+   var locurl = "{:Url('admin/goods/curslist')}";
+
+   WPpost(formurl,data,locurl);
+
+
+
+
+	return false;
+
+}
+
+</script>

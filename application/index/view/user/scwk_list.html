@@ -1,0 +1,141 @@
+<html style="font-size: 120px;">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+    <!-- 是否启用全屏模式 -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <!-- 全屏时状态颜色设置 -->
+    <meta name="apple-mobile-web-status-bar-style" content="white">
+    <!-- 禁用电话号码自动识别 -->
+    <meta name="format-detection" content="telephone=no">
+    <!--禁止读取本地缓存模板-->
+    <meta http-equiv="Pragma" contect="no-cache">
+    <script type="text/javascript">
+        window.onload=function(){
+//设置适配rem
+            var change_rem = ((window.screen.width > 450) ? 450 : window.screen.width)/375*100;
+            document.getElementsByTagName("html")[0].style.fontSize=change_rem+"px";
+            window.onresize = function(){
+                change_rem = ((window.screen.width > 450) ? 450 : window.screen.width)/375*100;
+                document.getElementsByTagName("html")[0].style.fontSize=change_rem+"px";
+            }
+        }
+    </script>
+    <title>
+    </title>
+    <link href="__HOME__/css/pay1.css" rel="stylesheet" media="screen">
+    <link rel="stylesheet" href="/application/index/view/user/font_6eef7oyizr7/iconfont.css" />
+    <script type="text/javascript" src="__HOME__/js/jquery-3.2.1.min.js"></script>
+    <script type="text/javascript" src="__HOME__/js/lk/user.js"></script>
+</head>
+<body style="background: black">
+<style>
+    .daohang{width: 100%;height: 2.3rem;background: #000033;position: relative;top: 0;left: 0;z-index: 999;}
+    .daohang-zuo{position: absolute;width: 15px;margin-left: 2%;margin-top: 5%}
+    .daohang-zhong{position: absolute;font-size: 15px;color: white;line-height: 45px;font-weight: 600;right: 10px;}
+    .kongbaikuang{margin: 0 auto;margin-top: 0.2rem;width: 94%;height: 250px;background: white;border-radius: 10px}
+    .zhuanbi{width: 90%;margin: 0 auto;font-size: 0.18rem;color: black;font-weight: 600;height: 18%}
+    .wl_justify_between{-webkit-justify-content: space-between;-moz-justify-content: space-between;-ms-justify-content: space-between;-webkit-box-pack: justify;justify-content: space-between;}
+    .wl_flex{display:-webkit-box;/*Chrome4+,Safari3.1,iOSSafari3.2+*/display:-moz-box;/*Firefox17-*/display:-webkit-flex;/*Chrome21+,Safari6.1+,iOSSafari7+,Opera15/16*/display:-moz-flex;/*Firefox18+*/display:-ms-flexbox;/*IE10*/display:flex;}
+    .shuliang{width: 90%;margin: 0 auto;font-size: 0.14rem;height: 15%;line-height: 35px;background: #F1F1F1;border-radius: 2px;}
+    .yuji{width: 90%;margin: 0 auto;font-size: 0.14rem;height: 5%;padding: 10px}
+    .shuliangs{width: 90%;margin: 0 auto;font-size: 0.14rem;height: 10%;line-height: 18px;}
+    .yujiyhe{width: 90%;margin: 0 auto;font-size: 0.25rem;height: 10%;}
+    .shuliangxi{width: 90%;margin: 0 auto;font-size: 0.14rem;height: 15%;line-height: 38px;}
+    .goumai{width: 90%;height: 14%;background: #00a0e9;color: white;margin: auto;text-align: center;font-size: 0.17rem;border-radius: 7px;line-height: 30px}
+</style>
+
+
+<style>
+    @font-face {
+        font-family: "iconfont logo";
+        src: url('https://at.alicdn.com/t/font_985780_km7mi63cihi.eot?t=1545807318834');
+        src: url('https://at.alicdn.com/t/font_985780_km7mi63cihi.eot?t=1545807318834#iefix') format('embedded-opentype'),
+        url('https://at.alicdn.com/t/font_985780_km7mi63cihi.woff?t=1545807318834') format('woff'),
+        url('https://at.alicdn.com/t/font_985780_km7mi63cihi.ttf?t=1545807318834') format('truetype'),
+        url('https://at.alicdn.com/t/font_985780_km7mi63cihi.svg?t=1545807318834#iconfont') format('svg');
+    }
+
+
+    .iconfont {
+        font-family: "iconfont" !important;
+        font-size: 20px;
+        font-style: normal;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        color: #fff;
+    }
+</style>
+
+<style>
+    .sklt-toubu{width: 100%;height: 44px; position: fixed;top: 0px; background-color: #102030; }
+    .sjlt-jiantou{width: 20%;height: 100%; float: left;}
+    .sklt-tb{width: 60%;height: 100%; color: #fff; font-size: 18px;float: left;line-height: 44px;text-align: center;}
+    .sjlt-jiantou>a{text-decoration: none;line-height: 44px;}
+    .sklt-coun{width: 96%; background-color: #102030; margin: 0 auto; overflow: inherit;}
+    .sklt-whole{width: 100%;height: 208px;margin: 0 auto;}
+    .sklt-noe{width: 100%;height: 14px; margin-top: 12px;}
+    .sklt-noe>span{width: 50%;font-size: 12px;display: block;}
+    .sklt-noe>span:nth-child(1){float: left;text-align: left;color: #218bde;}
+    .sklt-noe>span:nth-child(2){ float: right;text-align: right; color: #fff;}
+    .sklt-noe:nth-child(8)>span:nth-child(2){color: rgb(76,175,80);}
+    .sklt-top{width: 100%;height: 5px;}
+    .a{width: 100%;height: auto;}
+    .a>div{margin-top: 20px;}
+    .a>div:nth-child(1){margin-top: 50px;}
+</style>
+
+<div class="sklt-toubu">
+    <div class="sjlt-jiantou"><a href="javascript:history.go(-1);"><span class="iconfont">&#xe64e;</span></a></div>
+    <div class="sklt-tb">{$Think.lang.sl_sclb}</div>
+</div>
+<div class="a">
+    
+    <!-- {volist name="orderlist" id="vo"} -->
+    <div class="sklt-coun" style="border-radius: 5px;">
+        <div class="sklt-whole">
+            <div class="sklt-top"></div>
+            <div class="sklt-noe">
+                <span>{$Think.lang.sl_xmbh}</span>
+                <span>{$vo.id}&#8194;</span>
+            </div>
+            <div class="sklt-noe">
+                <span>{$Think.lang.sl_bz}</span>
+                <span>{$vo.name}&#8194;</span>
+            </div>
+            <div class="sklt-noe">
+                <span>{$Think.lang.sl_cbsl}</span>
+                <span>{$vo.num}{$vo.name}&#8194;</span>
+            </div>
+            <div class="sklt-noe">
+                <span>{$Think.lang.sl_zlx}</span>
+                <span>{$vo.gain}{$vo.name}&#8194;</span>
+            </div>
+            <div class="sklt-noe">
+                <span>{$Think.lang.sl_scsj}</span>
+                <span>{$vo.starttime|date="Y-m-d H:i:s",###}&#8194;</span>
+            </div>
+            <div class="sklt-noe">
+                <span>{$Think.lang.sl_dqsj}</span>
+                <span>{$vo.endtime|date="Y-m-d H:i:s",###}&#8194;</span>
+            </div>
+            <div class="sklt-noe">
+                <span>{$Think.lang.sl_zt}</span>
+                {if $vo.state eq 0}
+                <span>{$Think.lang.sl_jxz}&#8194;</span>
+                {else if $vo.state eq 1}
+                <span>{$Think.lang.sl_ywc}&#8194;</span>
+                {/if}
+            </div>
+            <div class="sklt-top"></div>
+        </div>
+    </div>
+    <!-- {/volist} -->
+   
+</div>
+
+
+
+
+</body>
+</html>

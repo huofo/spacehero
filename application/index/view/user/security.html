@@ -1,0 +1,78 @@
+<html style="font-size: 120px;">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+    <!-- 是否启用全屏模式 -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <!-- 全屏时状态颜色设置 -->
+    <meta name="apple-mobile-web-status-bar-style" content="white">
+    <!-- 禁用电话号码自动识别 -->
+    <meta name="format-detection" content="telephone=no">
+    <!--禁止读取本地缓存模板-->
+    <meta http-equiv="Pragma" contect="no-cache">
+    <script type="text/javascript">
+        window.onload=function(){
+            //设置适配rem
+            var change_rem = ((window.screen.width > 450) ? 450 : window.screen.width)/375*100;
+            document.getElementsByTagName("html")[0].style.fontSize=change_rem+"px";
+            window.onresize = function(){
+                change_rem = ((window.screen.width > 450) ? 450 : window.screen.width)/375*100;
+                document.getElementsByTagName("html")[0].style.fontSize=change_rem+"px";
+            }
+        }
+    </script>
+    <title>
+    </title>
+    <link href="__HOME__/css/pay1.css" rel="stylesheet" media="screen">
+    <link rel="stylesheet" href="//at.alicdn.com/t/font_2846038_l708rd13yqb.css" >
+    {include file="alyslt" /}
+    <!--        夜间白天切换的文件-->
+    {if $_SESSION["night"]=="yes"}<link rel="stylesheet" href="/index/css/security.css" >{/if}
+    <script type="text/javascript" src="__HOME__/js/jquery-3.2.1.min.js"></script>
+    <script type="text/javascript" src="__HOME__/js/lk/user.js"></script>
+</head>
+<body style="background: black">
+<style>
+    .daohang{width: 100%;height: 45px;background: #000033;position: relative;top: 0;left: 0;z-index: 999;}
+    .daohang-zuo{float: left;margin-left: 5px;width: 15px;margin-left: 2%;}
+    .daohang-zhong{text-align: center;font-size: 15px;color: white;line-height: 45px;font-weight: 600;}
+    .woyao{width: 100%;height: 50px;background: black;}
+    .woyaozuo{font-size: 0.15rem;color: white;font-weight: 500;display: inline-block;width: 50%}
+    .woyaozuo span{font-size: 0.18rem;color: white;font-weight: 500;line-height: 50px;margin-left: 10px}
+    .woyaozuo a{font-size: 0.18rem;color: white;font-weight: 500;line-height: 50px;margin-left: 10px}
+    .woyaoyou{float: right;margin-right: 10px;width: 22px; line-height: 50px;}
+    .usdtgggg a:active{border-bottom: 2px solid blue;}
+    .woyaos{width: 100%;height: 50px;background: black;}
+    .woyaozuos{font-size: 0.15rem;color: white;font-weight: 500;display: inline-block;width: 50%}
+    .woyaozuos a{font-size: 0.18rem;color: white;font-weight: 500;line-height: 50px;margin-left: 10px}
+    .woyaoyous{float: right;margin-right: 10px;width: 22px;}
+    
+    .woyaoyous span{font-size: 0.18rem;color: white;font-weight: 500;line-height: 50px;margin-left: 10px}
+    .woyaoyous a{font-size: 0.18rem;color: white;font-weight: 500;line-height: 50px;margin-left: 10px}
+    .daohang-zuo{width: 20%;height: 40px;position: fixed;}
+    .daohang-zuo>a{width: 100%;height: 100%; display: block; line-height: 50px;}
+    .daohang-zuo>a>i{font-size: 25px;}
+</style>
+<div class="daohang">
+    <div class="daohang-zuo"><a  href="javascript:void(0)" onclick="javascript:history.back(-1);"><i class="iconfont icon-31fanhui1"></i></a></div>
+    <div class="daohang-zhong">{$Think.lang.su_aqzg}</div>
+</div>
+
+
+
+<div class="woyao">
+    <div class="woyaozuo"><span>{$Think.lang.su_dlmm}</span></div>
+    <div class="xiugai" style="color: white;display: inline-block;font-size: 0.18rem; margin-left: 15%; "><a href="{:url('user/resetpwd')}">{$Think.lang.su_xg}</a></div>
+    <div class="woyaoyou"><a href="{:url('user/resetpwd')}" ><i class="iconfont icon-youjiantou-copy"></i></a></div>
+</div>
+
+
+<div class="woyao">
+    <div class="woyaozuo"><span>{$Think.lang.su_jxmm}</span></div>
+    <div class="xiugai" style="color: white;display: inline-block;font-size: 0.18rem; margin-left: 15%; "><a href="{:url('user/reseterjipwd')}">{$Think.lang.su_xg}</a></div>
+    <div class="woyaoyou"><a href="{:url('user/reseterjipwd')}"><i class="iconfont icon-youjiantou-copy"></i></a></div>
+</div>
+
+
+</body>
+</html>

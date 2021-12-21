@@ -1,0 +1,7 @@
+body{background-color: #000000!important;}
+.zhsz-left {background-color: #1c242c!important;}
+.zhsz-right {background-color: #1c242c;}
+.zhsz-right-div1>div:nth-child(2)>p {color: #FFFFFF;}
+.zhsz-right-div2-div2 {color: #FFFFFF;}
+.zhsz-right-div1 {border-color: #666666;}
+.zhsz-right-div2 {border-color: #666666;}

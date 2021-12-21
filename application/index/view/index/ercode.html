@@ -1,0 +1,56 @@
+<html style="font-size: 120px;">
+<head>
+    {include file="alyslt" /}
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+    <!-- 是否启用全屏模式 -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <!-- 全屏时状态颜色设置 -->
+    <meta name="apple-mobile-web-status-bar-style" content="white">
+    <!-- 禁用电话号码自动识别 -->
+    <meta name="format-detection" content="telephone=no">
+    <!--禁止读取本地缓存模板-->
+    <meta http-equiv="Pragma" contect="no-cache">
+    <script type="text/javascript">
+        window.onload=function(){
+//设置适配rem
+            var change_rem = ((window.screen.width > 450) ? 450 : window.screen.width)/375*100;
+            document.getElementsByTagName("html")[0].style.fontSize=change_rem+"px";
+            window.onresize = function(){
+                change_rem = ((window.screen.width > 450) ? 450 : window.screen.width)/375*100;
+                document.getElementsByTagName("html")[0].style.fontSize=change_rem+"px";
+            }
+        }
+    </script>
+    <title>
+    </title>
+    <link href="/static/index/css/pay1.css" rel="stylesheet" media="screen">
+    <!--        夜间白天切换的文件-->
+    {if $_SESSION["night"]=="yes"}<link rel="stylesheet" href="/index/css/ercode.css" >{/if}
+    <!--    <link rel="stylesheet" href="/index/css/ercode.css" >-->
+
+    <script type="text/javascript" src="/static/index/js/jquery-3.2.1.min.js"></script>
+    <script type="text/javascript" src="/static/index/js/lk/user.js"></script>
+</head>
+<body style="background: black; margin:0px;">
+<style>
+    a{text-decoration: none;}
+    .daohang{width: 100%;height: 45px;background: #000033;position: relative;top: 0;left: 0;z-index: 999;}
+    .daohang-zuo{float: left;margin-left: 5px;width: 15px;margin-left: 2%;}
+    .daohang-zhong{text-align: center;font-size: 15px;color: white;line-height: 45px;font-weight: 600;}
+    .erweima{margin: 0 auto;margin-top: 50%;width: 150px;height: 150px;background: white}
+    .daohang-zuo>a{ width: 50px; height: 100%; display: block; overflow: hidden;}
+    .daohang-zuo>a>i{font-size: 25px; line-height: 40px; color: #FFFFFF;}
+</style>
+<div class="daohang">
+    <div class="daohang-zuo">
+        <a href="javascript:void(0)" onclick="javascript:history.back(-1);">
+            <i class="iconfont icon-31fanhui1"></i>
+        </a>
+    </div>
+    <div class="daohang-zhong">{$Think.lang.eo_wdtgm}</div>
+</div>
+<div class="erweima"><img src="https://api.qrserver.com/v1/create-qr-code/?size=150%C3%97150&data={$oid_url}" width="150" height="150" alt="" ></div>
+<p class="ercode-p1" style="color: white;font-size: 0.16rem;font-weight: 600;margin-top: 15px;text-align:center">{$Think.lang.eo_wdtgm}:{$oid}</p>
+</body>
+</html>

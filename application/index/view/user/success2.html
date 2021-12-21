@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0, user-scalable=no">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+    <!-- 是否启用全屏模式 -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <!-- 全屏时状态颜色设置 -->
+    <meta name="apple-mobile-web-status-bar-style" content="white">
+    <!-- 禁用电话号码自动识别 -->
+    <meta name="format-detection" content="telephone=no">
+    <!--禁止读取本地缓存模板-->
+    <meta http-equiv="Pragma" contect="no-cache">
+    <title></title>
+    {include file="alyslt" /}
+    {include file="fbjy_js" /}
+    <link rel="stylesheet" href="/index/css/optional.css" >
+    {if $_SESSION["night"]=="yes"}<link rel="stylesheet" href="/index/css/optional.css" >{else} <link rel="stylesheet" href="/index/css/user-succsss.css" >{/if}
+<!--    黑夜模式-->
+<!--    <link rel="stylesheet" href="/index/css/user-succsss.css" >-->
+    <script src="/index/js/jquery-2.1.4.min.js"></script>
+</head>
+<style>
+    body{background-color: #f5f5f5;}
+    .cld-whole2>p{line-height: 29px;}
+</style>
+<body>
+<div class="suc-hode">
+    <div class="suc-hode-noe">
+        <div><a href="javascript:window.history.go(-1)"><i class="iconfont icon-31fanhui1"></i></a></div>
+        {if $talk_side}
+        <div><a href="/index/user/lxmj?oid={$id}"><i class="iconfont icon-xiaoxi"></i> {$Think.lang.fbjy_lx}{$seller_msg}</a></div>
+        {/if}
+    </div>
+    <div class="suc-hode-tow">
+        <div>
+            <h4>{$Think.lang.fbjy_jycg}</h4>
+            <p>{$Think.lang.fbjy_nycg}{$order.trade_name} {$order.t_num} {$order.symbol}</p>
+        </div>
+        <div><i class="iconfont icon-dagou1"></i></div>
+    </div>
+</div>
+<div class="cld-whole">
+    <div class="cld-whole2">
+        <p><span>{$order.trade_name}</span> {$order.symbol} <i class="iconfont icon-USDT"></i></p>
+        <p><span>{$Think.lang.fbjy_zj}</span><span>{$order.currency_icon}{$order.all_pay_amount}</span></p>
+        <p><span>{$Think.lang.bi_js}</span><span>{$order.currency_icon}{$order.s_price * $order.c_exc_rate}</span></p>
+        <p><span>{$Think.lang.bi_sl}</span><span>{$order.t_num} {$order.symbol}</span></p>
+        <div></div>
+        <p><span>{$Think.lang.fbjy_ddh}</span><span>{$order.order_sn} <i class="iconfont icon-tubiao_dingdan"></i></span></p>
+        <p><span>{$Think.lang.fbjy_cjsj}</span><span>{$order.addtime}</span></p>
+        {if $order.trade_type eq 0}
+<!--        <p><span>买家昵称</span><span>生牛牛资金安全</span></p>-->
+        {/if}
+    </div>
+</div>
+<div class="suc-zffs">
+    <div class="suc-zffs-div1">
+        <span>{$Think.lang.fbjy_zffs}</span>
+        <span>{$order.pay_way}</span>
+    </div>
+</div>
+
+<!--<div class="suc-zffs">-->
+<!--    <div class="suc-zffs-div1">-->
+<!--        <span>联系客服</span>-->
+<!--        <span><a href=""><i class="iconfont icon-youjiantou-copy"></i></a></span>-->
+<!--    </div>-->
+<!--</div>-->
+<!--<div class="suc-evaluate">-->
+<!--    <div class="suc-evaluate-div1">-->
+<!--        <p>请您对商家进行评价</p>-->
+<!--        <div>-->
+<!--            <span>&#8195;<i class="iconfont icon-haoping-yuankuang"></i><span class="suc-evaluate-sp1">好评</span></span>-->
+<!--            <span>&#8195;<i class="iconfont icon-chaping-yuankuang"></i><span class="suc-evaluate-sp1">差评</span></span>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--    <div class="suc-evaluate-div2"></div>-->
+<!--    <button class="suc-evaluate-butt">申诉</button>-->
+<!--</div>-->
+<!--<div class="m-jywc">-->
+<!--    <div class="m-jywc-noe"><i class="iconfont icon-dagou1"></i></div>-->
+<!--    <p class="m-jywc-p1">{$order.currency_icon} {$order.all_pay_amount}</p>-->
+<!--    <p class="m-jywc-p2">您以成功{$order.trade_name} {$order.t_num} {$order.symbol}</p>-->
+<!--    <button class="m-jywc-bott">完成</button>-->
+<!--</div>-->
+
+
+<script>
+    $(".m-jywc-bott").click(function () {
+        $(".m-jywc").hide();
+    })
+</script>
+</body>
+</html>

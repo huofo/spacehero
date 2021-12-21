@@ -1,0 +1,154 @@
+*{margin: 0;padding: 0}
+.daohang{width: 100%;height: 60px;background-color: black;color: white;display: flex}
+.logoxt{width: 150px;margin-left: 15px;margin-top: 10px}
+.zhongbu{width: 63%;height: 60px;background: black;margin-right: 20px}
+.xiala{height: 60px;background: black;font-size: 0.11rem;text-align: center;line-height: 60px;}
+.logoxt img{width: 64%;height: 29px;margin-top: 6px;}
+.wl_flex{
+    display:-webkit-box;/*Chrome4+,Safari3.1,iOSSafari3.2+*/
+    display:-moz-box;/*Firefox17-*/
+    display:-webkit-flex;/*Chrome21+,Safari6.1+,iOSSafari7+,Opera15/16*/
+    display:-moz-flex;/*Firefox18+*/
+    display:-ms-flexbox;/*IE10*/
+    display:flex;
+    /*//这个必须有用来创建盒子*/
+}
+.wl_align_center{
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+    align-items: center;
+}
+.wl_align-items-start{
+    -ms-flex-align: start;
+    align-items: flex-start;
+}
+.wl_justify_between{
+    -webkit-justify-content: space-between;
+    -moz-justify-content: space-between;
+    -ms-justify-content: space-between;
+    -webkit-box-pack: justify;
+    justify-content: space-between;
+    /*//左右分布排列*/
+}
+.wl_justify-content{
+    -webkit-justify-content: space-around;
+    justify-content: space-around;
+}
+.wl_justify-content-start{
+    -ms-flex-pack: start;
+    justify-content: flex-start;
+}
+.neirongji{font-size: 12px;text-align: center;width: auto;line-height: 60px}
+.zhongbu img{width: 18px;height: 18px;background: none}
+.zhongbu a{text-decoration: none;line-height: 60px;}
+.zhongbu a:hover{color: white;}
+.xiala a{text-decoration: none}
+.xiala a:link{color: white}
+.neirongji a{color: white}
+.sygq2{font-size: 15px!important;}
+/*    shiyan*/
+.zhongjianbu{width: 100%;height: 550px;background: #000033}
+.jigezi{width: 800px;height: 40px;position: absolute;left: 50%;margin-left: -400px;margin-top: 80px;text-align: center;}
+.jigezi span{font-size: 0.27rem; /* background: white; */font-weight: 600;color: white;}
+.shigeanniu{width: 80px;height: 35px;line-height: 35px;background: white;color: black;text-align: center;font-size: 14px;position: absolute;left: 50%;margin-left: -40px;margin-top: 140px;border-radius: 15px}
+.sizhangtu{width: 90%;height: 120px;position: absolute;left: 5%;top: 290px}
+.tutu{width: 24%;height: 120px;padding: 0 8px;}
+.tutu img{width: 100%;height: 100%;border-radius: 5px}
+.gonggaolan{width: 80%;height: 40px;position: absolute;left: 10%;top: 480px;font-size: 0.2rem;line-height: 40px;color: white}
+.xiaoyangsheng{width: 15%;text-align: center;margin: 15px 0}
+.xiaoyangsheng img{width: 25px;height: 25px}
+.gundongzi{width: 85%;height: 50px;text-align: center;line-height: 50px;font-size: 0.15rem}
+.daneir{width: 100%;height: auto;background: #f0f0f0;}
+#shuju{padding-bottom: 5px!important;}
+.kongwu{width: 100%;height: 30px;background: #f0f0f0}
+.zhongneir{width: 90%;margin-left: 5%;background: white!important;border-radius: 5px}
+.zhuliusvt{width: 96%;height: 45px;background: none;margin: auto;font-size: 0.13rem;border-left: 3px solid #2356ac;}
+.zhuliuugh{width: 96%;height: 45px;background: whitesmoke;margin: 15px auto 0;border: 1px solid white;}
+.sanuq{padding: 0 0 0 20px;height: 45px;line-height: 45px;text-align: center;width: 90px}
+.xijienei{font-size: 0.12rem;display: flex;margin: 0 25px;}
+.dashuju{width: 96%;height: 45px;background: white;margin: auto}
+.jutishuju{font-size: 0.12rem;display: flex;margin: 0 25px;}
+.huodezhe{width: 90%;margin-left: 5%;display: flex;margin-top: 20px;}
+.hhxiaosi{width: 48%;height: 330px;background: white}
+.shangm{height: 40px;border-left: 3px solid #2356ac;font-size: 0.15rem;line-height: 40px;padding-left: 10px;color: #2356ac;background: white}
+.huodezhes{width: 90%;height: 50%;margin-left: 5%;margin-top: 400px;}
+.hhxiaosis{width: 48%;height: 330px;background: white}
+.disanzhu{width: 100%;height: 160px;background: #3b41a4;font-size: 0.2rem}
+.disizhu{width: 100%;height: 450px;background: black;font-size: 0.2rem;color: white}
+.hanzijige{width: 450px;height: 80px;line-height: 90px;font-size: 24px;color: white;margin: 0 auto;text-align: center}
+.liangganniu{width: 200px;height: 50px;color: white;margin: 0 auto;}
+.syuk{width: 48%;height: 35px;border: 1px solid white;color: white;text-align: center;}
+.syuk a{text-decoration: none;display: block;color: white;line-height: 34px;font-size: 15px}
+.xiadahezi{width: 90%;height: 220px;position: absolute;background: none;margin-left: 5%;margin-top: 10px;}
+.sigeneir{width: 25%;height: 80%;font-size: 0.14rem;margin-top: 15px}
+.tuhezi{width: 100%;height: 30%;}
+.diyihangzi{width: 100%;height: 15%;font-size: 0.2rem;padding-top: 15px}
+.youxiangsm{width: 100%;height: 40px;font-size: 0.14rem}
+.diyihangzist{width: 100%;height: 15%;font-size: 0.2rem;}
+.zuihoukuang{width: 90%;height: auto;color: #858b9a;font-size: 16px;position: absolute;left: 5%;margin-top: 200px;line-height: 2}
+.sanuq .active{background: #2356ac;color: white;border-radius: 20px}
+.sanuq a{color: black}
+.neirongji .active{border-bottom: 3px solid palevioletred;box-sizing: border-box}
+.neirongji p{height: 60px}
+*{box-sizing: border-box}
+.text-l{
+    text-align: center;
+}
+.pagination{text-align:center;margin-top:20px;margin-bottom: 20px;}
+.pagination li{margin: 0px 5px;
+    width: 30px;
+    display: inline-block;
+    font-size: 20px;
+    border-radius: 50px;
+    line-height: 30px;
+    height: 30px;}
+.pagination .active{background-color: #dd1a20;color: #fff;}
+.pagination .disabled{color:red;}
+
+
+
+#navMenus ul{float:left;height:40px;}
+#navMenus li{float:left;font-size:14px;}
+#navMenus li a{color:#fff!important;text-decoration:none;line-height:60px;text-align:center;background:none;display:block;}
+#navMenus li a:hover{background-position:0 -20px;}
+/*-------- 下拉菜单 --------------*/
+.dropMenus{position:absolute;z-index:100;visibility:hidden;margin-top:-2px;width:120px;height: 120px;margin-left: 20px;}
+.dropMenus li{float:left;width:100%;}
+.dropMenus li a{display:block;padding:-5px 0 0px 0px;color:#0f335d;text-decoration: none}
+.dropMenus a:hover{text-decoration:none;color:navajowhite;background: #50dab5}
+#navMenu ul{float:left;height:40px;}
+#navMenu li{float:left;font-size:14px;}
+#navMenu li a{color:#fff!important;text-decoration:none;height:60px;line-height:60px;text-align:center;background:none;display:block;width: 66px;}
+#navMenu li a:hover{background-position:0 -20px;}
+/*-------- 下拉菜单 --------------*/
+.dropMenu{position:absolute;z-index:100;visibility:hidden;margin-top:-2px;border-top:0;background:#f5f5f5;width:160px;}
+.dropMenu li{float:left;width:100%;}
+.dropMenu li a{display:block;padding:-5px 0 0px 0px;color:#0f335d;text-decoration: none}
+.dropMenu a:hover{text-decoration:none;color:black;background: #f0f8ff}
+
+#navMenuv ul{float:left;height:35px;}
+#navMenuv li{float:left;font-size:14px;width: 100%;}
+#navMenuv li a{color: #fff!important;text-decoration: none;line-height: 35px;text-align: center;margin-top: 8px;height: 52px;background: none;display: block;}
+#navMenuv li a:hover{background-position:0 -20px;}
+/*-------- 下拉菜单 --------------*/
+.dropMenuv{position:absolute;z-index:100;color: #6d7882!important;visibility:hidden;margin-top:-1px;border-top:0;background-color:#f5f5f5;width:130px;}
+.dropMenuv li{float:left;width:100%;}
+.dropMenuv li a{display:block;padding:-5px 0 0px 0px;text-decoration: none;}
+.dropMenuv a:hover{text-decoration:none;color:#596a7a!important;background: #f0f8ff}
+.kus{width: auto}
+.dah_yanshi{color: #596a7a;}
+.dah_zw img{width: 28px;position: absolute;top: 16px;left: 18px;}
+.dah_rw img{width: 32px;position: absolute;top: 75px;left: 16px;border-radius: 32px}
+.dah_hw img{width: 32px;position: absolute;top: 133px;left: 16px;}
+.dah_yw img{width: 25px;position: absolute;top: 196px;left: 18px;}
+
+
+
+
+
+
+
+
+
+
+

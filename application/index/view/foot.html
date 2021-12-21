@@ -1,0 +1,82 @@
+        <!-- 底部导航 -->
+        <style>
+            .bottom-nav ul li {
+                width: 20%;
+                
+            }
+            
+            
+        </style>
+
+        <link rel="stylesheet" href="/index/iconfont/iconfont.css">
+        <script type="text/javascript" src="/index/iconfont/iconfont.js"></script>
+        <link rel="stylesheet" href="/index/bibi/iconfont.css">
+        
+        <div class="bottom-nav">
+            <ul>
+                <li>
+                    <a id="index" href="{:url('index/index')}">
+                        <i></i>
+                        <p>{$Think.lang.ti_sy}</p>
+                    </a>
+                </li>
+
+                <li>
+                    <a id="token" href="{:Url('/index/trades/index/token/'.$token)}">
+                        <i></i>
+                        <p>{$Think.lang.ti_hq}</p>
+                    </a>
+                </li>
+
+                <li>
+                    <a id="bibi" href="{:url('/index/goods/bibi')}">
+                        <i></i>
+                        <p>{$Think.lang.ti_bibi}</p>
+                    </a>
+                </li>
+
+
+                <li>
+                    <a id="lever" href="{:url('/index/goods/lever')}">
+                        <i></i>
+                        <p>{$Think.lang.ti_hy}</p>
+                    </a>
+                </li>
+
+                <li>
+                    <a id="bibi2" href="{:url('index/Assets/bibi')}">
+                        <i></i>
+                        <p>{$Think.lang.ti_zc}</p>
+                    </a>
+                </li>
+                <div class="clear"></div>
+            </ul>
+        </div>
+        <script type="text/javascript">
+            var url = window.location.href;
+            var map = url.split("/");
+            var str = map[map.length-1];
+            var str2 = str.split(".")
+            var str3 = str2[str2.length-2];
+            $("#" + str3).addClass('cur')
+
+
+
+
+            function set_active(id) {
+                $('#zy img').attr('src', '__STATIC__/module/index/images/shouye/zy.png');
+                $('#sc img').attr('src', '__STATIC__/module/index/images/shouye/sc.png');
+                $('#tuig img').attr('src', '__STATIC__/module/index/images/shouye/tuig.png');
+                $('#wd img').attr('src', '__STATIC__/module/index/images/shouye/wd.png');
+
+                $('#zy p').addClass('foot');
+                $('#sc p').addClass('foot');
+                $('#tuig p').addClass('foot');
+                $('#wd p').addClass('foot');
+
+                $('#' + id + ' img').attr('src', '__STATIC__/module/index/images/shouye/' + id + '1.png');
+                $('#' + id + ' p').removeClass('foot');
+            }
+        </script>
+    </body>
+</html>

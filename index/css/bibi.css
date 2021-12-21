@@ -1,0 +1,50 @@
+#bibi-text{ display: block; width: 70%; text-align: center; color: #FFFFFF; border: 1px solid #42526a; background-color: #102030; float: left;}
+.bibi-text2{ width: 15%; text-align: center;     border-bottom: 1px solid #33333387;border-top: 1px solid #33333387;border-right: 0px;border-left: 0px; float: left;}
+.bibi-text2:nth-child(3){border-right: 1px solid #33333387;}
+.bibi-sl{width: 100%; margin-top: 30px}
+.bibi-sl-inp1{ width: 70%; float: left;border: 1px solid #42526a; border-right: 0px; background-color: #102030;}
+.bibi-sl-inp2{ width: 30%; text-align: center; float: right; border: 1px solid #33333387;border-left: 0px;}
+.bibi-ky{margin-top: 40%}
+.bibi-bfb{width: 100%; height: 30px; margin-top: 5%;}
+.bibi-bfb ul{width: 100%;}
+.bibi-bfb ul li{ width: 23%;float: left; text-align: center; border: 1px solid #1a1927;border: 1px solid #42526a;color: #607490;}
+.bibi-bfb ul li:nth-child(2),
+.bibi-bfb ul li:nth-child(3),
+.bibi-bfb ul li:nth-child(4){margin-left: 2.5%;}
+.bibi-cje{width: 100%;}
+.bibi-mr{line-height: 30px;margin-left: 2%;}
+.bibi-bp{width: 33%;height: auto;float: left;}
+.bibi-bbu{float: right;}
+
+
+div#place {
+}
+
+div#place {}
+
+.pull-left.active {}
+
+.pull-right.active1 {
+    background-color: #102030;
+}
+
+body.grade-a.platform-browser.platform-ios.platform-ios9.platform-ios9_1.platform-ready {
+}
+
+.flex1.mr5 {
+    color: #fff;
+}
+
+.flex2.tc.gray.ft12.shuliang {}
+
+.flex2.tc.gray.ft12.shuliang {
+    color: #fff;
+}
+
+
+/*.bibi-jg{text-align: left;}*/
+/*.bibi-sl2{text-align: center;}*/
+/*.bibi-jyd{text-align: right;}*/
+
+
+

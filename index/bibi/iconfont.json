@@ -1,0 +1,44 @@
+{
+  "id": "2691776",
+  "name": "bibi",
+  "font_family": "iconfont",
+  "css_prefix_text": "icon-",
+  "description": "",
+  "glyphs": [
+    {
+      "icon_id": "719185",
+      "name": "首页",
+      "font_class": "shouye",
+      "unicode": "e621",
+      "unicode_decimal": 58913
+    },
+    {
+      "icon_id": "974968",
+      "name": "资产",
+      "font_class": "zichan",
+      "unicode": "e6e4",
+      "unicode_decimal": 59108
+    },
+    {
+      "icon_id": "11494999",
+      "name": "行情",
+      "font_class": "hangqing",
+      "unicode": "e662",
+      "unicode_decimal": 58978
+    },
+    {
+      "icon_id": "12371093",
+      "name": "我的",
+      "font_class": "wode",
+      "unicode": "e603",
+      "unicode_decimal": 58883
+    },
+    {
+      "icon_id": "16391083",
+      "name": "交易",
+      "font_class": "biaoqiankuozhan_jiaoyi-179",
+      "unicode": "eb2b",
+      "unicode_decimal": 60203
+    }
+  ]
+}

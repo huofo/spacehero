@@ -1,0 +1,45 @@
+.ui-app{width: 100%;height: 1350px;background: #283142;color: #637085}
+.ui-shang{width: 96%;height: 70px;background: white;border-radius: 5px;margin-left: 2%;margin-top: 30px;position: absolute;font-size: 1.2rem}
+.ui-xiamian{width: 96%;height:1185px;background: white;border-radius: 5px;margin-left: 2%;margin-top: 130px;position: absolute;}
+.xh_flex{
+    display:-webkit-box;/*Chrome4+,Safari3.1,iOSSafari3.2+*/
+    display:-moz-box;/*Firefox17-*/
+    display:-webkit-flex;/*Chrome21+,Safari6.1+,iOSSafari7+,Opera15/16*/
+    display:-moz-flex;/*Firefox18+*/
+    display:-ms-flexbox;/*IE10*/
+    display:flex;
+    /*//这个必须有用创建盒子*/
+}
+.xh_align_center{
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+    align-items: center;
+}
+.xh_align-items-start{
+    -ms-flex-align: start;
+    align-items: flex-start;
+}
+.xh_justify_between{
+    -webkit-justify-content: space-between;
+    -moz-justify-content: space-between;
+    -ms-justify-content: space-between;
+    -webkit-box-pack: justify;
+    justify-content: space-between;
+    /*//左右分布排列*/
+}
+.xh_justify-content{
+    -webkit-justify-content: space-around;
+    justify-content: space-around;
+}
+.xh_justify-content-start{
+    -ms-flex-pack: start;
+    justify-content: flex-start;
+}
+.ui-shang span{margin-left: 25px;line-height: 70px}
+.ui-shang a{margin-right: 25px;line-height: 70px}
+.neirongyis{width: 94%;height: 80px;margin-left: 3%;}
+.neirongers{width: 94%;height: 1000px;margin-left: 3%;}
+.xiaonei{width: 100%;height: 140px;}
+.neirongsis{width: 94%;height: 100px;margin-left: 3%;}
+.ul-shangs{width: 100%;height: 50px;line-height: 50px}
+.ul-xias{width: 100%;height: 50px;}

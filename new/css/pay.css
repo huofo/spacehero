@@ -1,0 +1,205 @@
+
+
+.main{
+	width: 100%;
+	background: #fff;
+	padding: 0 2.5% 80px;
+	box-sizing: border-box;
+	overflow: hidden;
+}
+
+
+
+
+
+
+.main .top-box{
+	text-align: center;
+	color: #fff;
+	border-radius: 2px;
+	background: linear-gradient(to right, #86a0ff, #d260ff);
+	padding: 10px 0;
+	display: flex;
+	justify-content: space-around;
+	position: relative;
+}
+.main .top-box::after{
+	content: '';
+	width: 1px;
+	height: 50%;
+	background: #eee;
+	margin: auto;
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+}
+.main .top-box .text{
+	line-height: 2em;
+}
+.main .top-box .number{
+	line-height: 1.5em;
+	font-size: 18px;
+}
+
+
+.main .two-box{
+	color: #fff;
+	border-radius: 2px;
+	background: linear-gradient(to right, #86a0ff, #d260ff);
+	margin: 10px 0;
+	padding: 15px 5%;
+	box-sizing: border-box;
+	display: flex;
+}
+.main .two-box .left{
+	margin-right: 10%;
+	display: flex;
+	align-items: center;
+}
+.main .two-box .left p{
+	font-size: 14px;
+	color: #fff;
+	margin-right: 1em;
+}
+.main .two-box .ewm{
+	width: 80px;
+	height: 80px;
+	background: #ddd;
+	padding: 5px;
+	box-sizing: border-box;
+}
+.main .two-box .ewm img{
+	width: 100%;
+}
+.main .two-box .right p{
+	line-height: 2em;
+	font-size: 14px;
+	color: #fff;
+}
+
+.main .two-box [btn="PFstart"]{
+	width: 2em;
+	height: 1.8em;
+	text-align: center;
+	line-height: 1.8em;
+	font-size: 14px;
+	color: #c66aff;
+	border: none;
+	border-radius: 2px;
+	background: #fff;
+	margin: 5px auto 0;
+	padding: 0 1em;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.main>.item{
+	border-radius: 2px;
+	background: #fff;
+}
+.main .one{
+	height: 50px;
+	line-height: 50px;
+	padding: 0 10px;
+	box-sizing: border-box;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+}
+.main .one .icon{
+	width: 30px;
+	height: 30px;
+	text-align: center;
+	line-height: 30px;
+	font-size: 20px;
+}
+.main .one input[type="text"]{
+	width: 40%;
+	height: 1.5em;
+	font-size: 16px;
+	border: 1px solid #ccc;
+	border-radius: 2px;
+	padding: 0 2px;
+	box-sizing: border-box;
+}
+
+.main .one input[type="button"]{
+	height: 2em;
+	font-size: 14px;
+	color: #fff;
+	border: none;
+	border-radius: 2px;
+	background: linear-gradient(to right, #86a0ff, #d260ff);
+	margin-left: 5px;
+	padding: 0 1em;
+}
+
+.main .log-box{
+	max-height: 500px;
+	color: #333;
+	border-radius: 2px;
+	box-shadow: 0px 0px 3px inset rgba(0,0,0,0.3);
+	padding: 10px 5%;
+	box-sizing: border-box;
+	overflow: auto;
+}
+
+.main .log-box .item{
+	border-bottom: 1px solid #999;
+	padding: 5% 10px;
+}
+.main .log-box .item:last-of-type{
+	border: none;
+}
+.main .log-box .item p{
+	line-height: 1.8em;
+}
+.main .log-box .item .state{
+	color: #673ab7;
+	float: right;
+}
+
+
+
+
+
+.main #limit-box{
+	text-align: center;
+	background: #fff;
+	padding: 5% 0;
+}
+.main #limit-box input{
+	height: 2em;
+	border: 1px solid #ccc;
+	border-radius: 2px;
+	background: none;
+	margin: 10% 0 5%;
+	padding: 0 5px;
+	width: 70%;
+}
+.main #limit-box [type="submit"]{
+	width: 60%;
+	height: 2em;
+	font-size: 16px;
+	color: #fff;
+	border: none;
+	border-radius: 2px;
+	background: #009688;
+	margin: 10% auto 10%;
+	display: block;
+}

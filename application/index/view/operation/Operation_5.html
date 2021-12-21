@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html style="font-size: 132.813px;">
+
+	<head>
+		<meta charset="utf-8">
+		<title>B.Kingenctrades操作指导|秒合约&amp;合约交易开户流程(图文)</title>
+		<meta name="keywords" content="B.Kingenctrades操作,秒合约,合约交易,开户指导">
+		<meta name="description" content="B.Kingenctrades操作指导-为您提供秒合约&amp;合约交易开户、入金、取款等操作流程，双交易模式，秒合约让新手轻松入门，极速盈利！合约交易助力老手倍增收益！">
+		<meta name="full-screen" content="yes">
+		<meta name="browsermode" content="application">
+		<meta name="x5-page-mode" content="app">
+		<meta name="x5-fullscreen" content="true">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport">
+		<link href="/index/css/index_for.css" rel="stylesheet" type="text/css">
+		<script src="https://hm.baidu.com/hm.js?ea5da0ed025ce44718399d39b666bfc5"></script>
+		<script type="text/javascript">
+			//web端自适应rem样式
+			//auto adaptation
+			var calculate_size = function() {
+				var BASE_FONT_SIZE = 100;
+				var docEl = document.documentElement,
+					clientWidth = docEl.clientWidth;
+				if(!clientWidth) return;
+				docEl.style.fontSize = BASE_FONT_SIZE * (clientWidth / 320) + 'px';
+			};
+			// Abort if browser does not support addEventListener
+			if(document.addEventListener) {
+				var resizeEvt = 'orientationchange' in window ? 'orientationchange' : 'resize';
+				window.addEventListener(resizeEvt, calculate_size, false);
+				document.addEventListener('DOMContentLoaded', calculate_size, false);
+				calculate_size();
+			}
+		</script>
+		<script type="text/javascript" src="/index/js/jquery-2.1.4.min.js"></script>
+		<script type="text/javascript" src="/index/js/touchSlider.js"></script>
+		<script type="text/javascript" src="/index/js/index.js"></script>
+		<script type="text/javascript" src="/index/js/jquery.touchSlider.js"></script>
+	</head>
+
+	<body style="background:#262b3e;">
+		<div class="inner-head">
+			<a href="javascript:history.go(-1)">
+				<img class="return_img" src="/index/images/gg-icon13.png">
+			</a>
+			取款指导
+		</div>
+		<div class="withdrawal-ins">
+			<div class="path">
+				<div class="lead"></div><span class="bold">操作指导</span><span>| 取款指导</span>
+				<div class="clear"></div>
+			</div>
+			<div class="step-box">
+				<li>
+					<div class="dot">
+						<span class="st">step1</span>
+						<span class="txt">点击<i>【个人中心】</i>或者<i>【立即登录】</i>按钮。</span>
+						<div class="clear"></div>
+					</div>
+				</li>
+				<li>
+					<div class="dot">
+						<span class="st">step2</span>
+						<span class="txt">完成登录后，点击<i>【提现】</i>按钮。</span>
+						<div class="clear"></div>
+					</div>
+				</li>
+				<li>
+					<div class="dot">
+						<span class="st">step3</span>
+						<span class="txt">填写相关取款信息，点击<i>【提交】</i>按钮，审核通过后，资金闪电到账。</span>
+						<div class="clear"></div>
+					</div>
+				</li>
+			</div>
+			<img src="/index/images/withdrawal3.jpg">
+			<img src="/index/images/withdrawal1.jpg">
+			<img src="/index/images/withdrawal2.jpg">
+			<!-- <div class="main_visual">
+				<div class="main_image">
+					<ul style="width: 391px; overflow: visible;">
+						<li class="img_1" style="float: none; display: block; position: absolute; top: 0px; left: 0px; width: 391px;"><img src="/index/images/withdrawal1.jpg"></li>
+						<li class="img_1" style="float: none; display: block; position: absolute; top: 0px; left: -782px; width: 391px;"><img src="/index/images/withdrawal2.jpg"></li>
+						<li class="img_1" style="float: none; display: block; position: absolute; top: 0px; left: -391px; width: 391px;"><img src="/index/images/withdrawal3.jpg"></li>
+					</ul>
+					<a href="javascript:;" id="btn_prev" class="btn_prev" style="width: 391px; overflow: visible;"></a>
+					<a href="javascript:;" id="btn_next" class="btn_next" style="width: 391px; overflow: visible;"></a>
+				</div>
+			</div> -->
+		</div>
+		<!-- 图片切换js -->
+		<script type="text/javascript">
+			$(document).ready(function() {
+				$(".main_visual").hover(function() {
+					$("#btn_prev,#btn_next").fadeIn()
+				}, function() {
+					$("#btn_prev,#btn_next").fadeOut()
+				});
+
+				$dragBln = false;
+
+				$(".main_image").touchSlider({
+					flexible: true,
+					speed: 200,
+					btn_prev: $("#btn_prev"),
+					btn_next: $("#btn_next"),
+					paging: $(".flicking_con a"),
+					counter: function(e) {
+						$(".flicking_con a").removeClass("on").eq(e.current - 1).addClass("on");
+					}
+				});
+
+				$(".main_image").bind("mousedown", function() {
+					$dragBln = false;
+				});
+
+				$(".main_image").bind("dragstart", function() {
+					$dragBln = true;
+				});
+
+				$(".main_image a").click(function() {
+					if($dragBln) {
+						return false;
+					}
+				});
+
+				timer = setInterval(function() {
+					$("#btn_next").click();
+				}, 3000);
+
+				$(".main_visual").hover(function() {
+					clearInterval(timer);
+				}, function() {
+					timer = setInterval(function() {
+						$("#btn_next").click();
+					}, 3000);
+				});
+
+				$(".main_image").bind("touchstart", function() {
+					clearInterval(timer);
+				}).bind("touchend", function() {
+					timer = setInterval(function() {
+						$("#btn_next").click();
+					}, 3000);
+				});
+			});
+		</script>
+		{include file="foot" /}

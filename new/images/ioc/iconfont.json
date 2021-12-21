@@ -1,0 +1,58 @@
+{
+  "id": "1595739",
+  "name": "ioc",
+  "font_family": "iconfont",
+  "css_prefix_text": "icon-",
+  "description": "",
+  "glyphs": [
+    {
+      "icon_id": "739107",
+      "name": "二维码",
+      "font_class": "erweima",
+      "unicode": "e630",
+      "unicode_decimal": 58928
+    },
+    {
+      "icon_id": "774528",
+      "name": "账单",
+      "font_class": "zhangdan",
+      "unicode": "e6b0",
+      "unicode_decimal": 59056
+    },
+    {
+      "icon_id": "1227534",
+      "name": "留言",
+      "font_class": "liuyan",
+      "unicode": "e638",
+      "unicode_decimal": 58936
+    },
+    {
+      "icon_id": "1766324",
+      "name": "人物-团队",
+      "font_class": "tuandui",
+      "unicode": "e68c",
+      "unicode_decimal": 59020
+    },
+    {
+      "icon_id": "5692722",
+      "name": "资料",
+      "font_class": "gerenxinxi",
+      "unicode": "e629",
+      "unicode_decimal": 58921
+    },
+    {
+      "icon_id": "7090053",
+      "name": "公告",
+      "font_class": "gonggao",
+      "unicode": "e70d",
+      "unicode_decimal": 59149
+    },
+    {
+      "icon_id": "8922346",
+      "name": "锁",
+      "font_class": "suo",
+      "unicode": "e60a",
+      "unicode_decimal": 58890
+    }
+  ]
+}

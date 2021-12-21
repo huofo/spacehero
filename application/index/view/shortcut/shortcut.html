@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html style="font-size: 132.813px;">
+
+	<head>
+		<meta charset="utf-8">
+		<title>B.King官网|期权,外汇,虚拟币投资开户交易平台-enctrades.COM</title>
+		<meta name="keywords" content="B.Kingenctrades,B.King,安信enctrades,合约交易,秒合约">
+		<meta name="description" content="B.Kingenctrades平台拥有合约_秒合约2种交易模式，双重监管，正规安全。合约交易助力老手增加盈利，秒合约让新手轻松入门，闪电盈利！多终端交易，用户可24小时体验一流交易!">
+		<meta name="full-screen" content="yes">
+		<meta name="browsermode" content="application">
+		<meta name="x5-page-mode" content="app">
+		<meta name="x5-fullscreen" content="true">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport">
+		<link href="/index/css/index_for.css" rel="stylesheet" type="text/css">
+		<script type="text/javascript">
+			//web端自适应rem样式
+			//auto adaptation
+			var calculate_size = function() {
+				var BASE_FONT_SIZE = 100;
+				var docEl = document.documentElement,
+					clientWidth = docEl.clientWidth;
+				if(!clientWidth) return;
+				docEl.style.fontSize = BASE_FONT_SIZE * (clientWidth / 320) + 'px';
+			};
+			// Abort if browser does not support addEventListener
+			if(document.addEventListener) {
+				var resizeEvt = 'orientationchange' in window ? 'orientationchange' : 'resize';
+				window.addEventListener(resizeEvt, calculate_size, false);
+				document.addEventListener('DOMContentLoaded', calculate_size, false);
+				calculate_size();
+			}
+		</script>
+		<script type="text/javascript" src="/index/js/jquery-2.1.4.min.js"></script>
+		<script type="text/javascript" src="/index/js/index.js"></script>
+	</head>
+
+	<body>
+		<div class="head">
+			<div class="nav"></div>
+			<div class="logo"></div>
+		</div>
+		<div class="pop hide">
+			<script type="text/javascript">
+				//1
+				$(document).ready(function() {
+					$(".pop-shut").click(function() {
+						$(".pop").toggle(300);
+					});
+					$(".nav").click(function() {
+						$(".pop").toggle(300);
+					});
+				});
+			</script>
+			<div class="pop-shut"></div>
+			<div class="list">
+				<a href="{:url('index/index')}" style="color:#fff">
+                    <div class="list-1">首页</div>
+                </a>
+                <a href="{:url('about/about')}" style="color:#fff">
+                    <div class="list-1">关于我们</div>
+                </a>
+                <a href="{:url('operation/operation')}" style="color:#fff">
+                    <div class="list-1">操作指导</div>
+                </a>
+                <a href="{:url('contact/contact')}" style="color:#fff">
+                    <div class="list-1">联系我们</div>
+                </a>
+			</div>
+		</div>
+		<div class="register-box">
+			<form method="post" id="deposit_submit" action="/Shortcut/?op=pay&amp;clients=phone">
+				<input type="hidden" name="login" value="0">
+				<div class="title">充值<span>|DEPOSIT</span></div>
+				<div class="bar">
+					<div class="rech-text">充值账号：</div>
+					<input type="text" class="rech-input" name="username" placeholder="请输入账号">
+					<div class="clear"></div>
+				</div>
+				<div class="bar">
+					<div class="rech-text">充值密码：</div>
+					<input type="password" class="rech-input" name="password" placeholder="请输入密码">
+					<div class="clear"></div>
+				</div>
+				<div class="bar">
+					<div class="rech-text">充值钱包：</div>
+					<select class="rech-input" name="deposit_type" style="height:0.35rem;width:2.06rem;">
+						<option value="qq">秒合约（USD）</option>
+						<option value="fx">合约交易（USD）</option>
+					</select>
+					<div class="clear"></div>
+				</div>
+				<div class="bar">
+					<div class="rech-text">充值金额：</div>
+					<div class="rech-input">
+						<div class="dollar currency">$</div>
+						<input type="text" class="rech-put" name="usd" placeholder="请输入金额" value="100">
+						<div class="clear"></div>
+					</div>
+					<div class="clear"></div>
+				</div>
+				<div class="bar">
+					<div class="rech-text">使用优惠：</div>
+					<div id="preferential_select_box" style="display: initial;">
+						<select class="rech-input" id="preferential_select" name="preferential" style="height:0.35rem;width:2.06rem;">
+							<option value="0">登录账号才能使用优惠券</option>
+						</select>
+					</div>
+					<div class="clear"></div>
+				</div>
+				<input type="hidden" name="exchange" value="6.7114">
+				<div class="bar">
+					<div class="rech-text">合人民币：</div>
+					<div class="swop">
+						<input type="text" class="rate" name="rmb" value="$0" readonly="readonly">
+						<span class="huil">当前汇率为6.7114</span>
+						<div class="clear"></div>
+					</div>
+					<div class="clear"></div>
+				</div>
+				<div class="bar">
+					<div class="rech-text">实际支付：</div>
+					<div class="swop">
+						<input type="text" class="rate" name="rmb_real" value="$0" readonly="readonly">
+						<span class="huil" id="preferential_rmb"></span>
+						<div class="clear"></div>
+					</div>
+					<div class="clear"></div>
+				</div>
+				<div class="bar">
+					<div class="rech-text">支付方式：</div>
+					<input type="hidden" name="bank_type" value="2">
+					<!-- class="disabled" -->
+					<div class="pay">
+						<li type="2" class="disabled"><img class="p_img" src="/index/images/icn58.png">支付宝(维护)</li>
+						<li type="3" class="disabled"><img class="p_img" src="/index/images/icn59.png">微信(维护)</li>
+					</div>
+					<div class="clear"></div>
+				</div>
+				<div class="pay-bg-wx" style="width:100%;display:none;background: #a21717;color:#fff;height:30px;line-height: 30px;font-size: 12px;text-align: center;"></div>
+				<div class="login_ps" id="login_ps"></div>
+				<div class="register_btn">
+					<input type="submit" name="submit" value="确定充值" class="sub_btn">
+				</div>
+			</form>
+		</div>
+		<script>
+			//保留两位小数
+			function round(v, e) {
+				var t = 1;
+				for(; e > 0; t *= 10, e--);
+				for(; e < 0; t /= 10, e++);
+				return Math.round(v * t) / t;
+			}
+			//更新人民币显示
+			function update_rmb() {
+				var login = $("input[name='login']").val();
+				var bank_type = $("input[name='bank_type']").val();
+				var exchange = $("input[name='exchange']").val();
+				var money = $("input[name='usd']").val();
+				var inp_t_money_e = /^([123456789]+)\d*$/;
+				var preferential_usd = $("#preferential_select option:selected").val();
+				var rmb_real = 0;
+
+				if(money == '' || !inp_t_money_e.exec(money)) {
+					$("input[name='usd']").val("");
+					$("input[name='rmb']").val('$' + 0);
+					$("input[name='rmb_real']").val('$' + 0);
+				} else {
+					/*
+					if(parseInt(bank_type) == parseInt(3)){
+					    //微信默认292美元
+					    $("input[name='usd']").val(288);
+					    money = 288;
+					}
+					*/
+
+					if(parseInt(login) == parseInt(0)) {
+						var rmb = parseFloat(money) * parseFloat(exchange);
+						rmb = round(rmb, 2);
+						if(parseInt(bank_type) == parseInt(3)) {
+							//微信
+							rmb_real = rmb;
+
+							//微信默认292美元
+							/*
+							rmb_real = 1999.08;
+							var preferential_rmb =  round(parseFloat(rmb)-parseFloat(1999.08),2);
+							$(".pay-bg-wx").html("微信支付固定$288,立省"+preferential_rmb+"人民币");
+							$(".pay-bg-wx").show();//微信默认292美元提示
+							*/
+						} else {
+							rmb_real = rmb;
+							//$(".pay-bg-wx").hide();//微信默认292美元提示
+						}
+
+						$("input[name='rmb']").val('$' + rmb);
+						$("input[name='rmb_real']").val('$' + rmb_real);
+					} else {
+						//使用优惠券
+						var preferential_rmb = parseFloat(preferential_usd) * parseFloat(exchange);
+						preferential_rmb = round(preferential_rmb, 2);
+
+						var rmb = parseFloat(money) * parseFloat(exchange);
+						rmb = round(rmb, 2);
+
+						if(parseInt(bank_type) == parseInt(2)) {
+							//$(".pay-bg-wx").hide();//微信默认292美元提示
+						} else if(parseInt(bank_type) == parseInt(3)) {
+							//微信
+
+							//微信默认292美元
+							/*
+							$("select#preferential_select").val(0);//不可以使用优惠券
+							preferential_rmb =  round(rmb-2000,2);
+							$(".pay-bg-wx").html("微信支付固定$288,立省"+preferential_rmb+"人民币");
+							$(".pay-bg-wx").show();//微信默认292美元提示
+							*/
+						} else {
+							//$(".pay-bg-wx").hide();//微信默认292美元提示
+						}
+
+						var money_real = round((rmb - preferential_rmb), 2);
+						if(parseFloat(money_real) < parseFloat(0)) {
+							money_real = 0;
+						}
+						if(parseInt(bank_type) == parseInt(2)) {
+							money_real = Math.ceil(money_real);
+						}
+
+						$("input[name='rmb']").val('$' + rmb);
+						$("input[name='rmb_real']").val('$' + money_real);
+						$("#preferential_rmb").html("-" + preferential_rmb + "美元");
+					}
+				}
+			}
+			//默认点击事件
+			update_rmb();
+			//支付通道选择
+			$('.pay li').click(function() {
+				$(this).addClass("cuurt").siblings().removeClass("cuurt");
+				var type = $(this).attr("type");
+				$("input[name='bank_type']").val(type);
+
+				//更新人民币显示
+				update_rmb();
+			});
+			//选择优惠券
+			$(document).on("change", "#preferential_select", function() {
+				//更新人民币显示
+				update_rmb();
+			});
+			//金额输入
+			$("input[name='usd']").keyup(function() {
+				//更新人民币显示
+				update_rmb();
+			});
+			//刷新当前页面
+			function myrefresh() {
+				window.location.href = "/"
+			}
+			//发起支付
+			$("#deposit_submit").submit(function() {
+				var login = $("input[name='login']").val();
+				var usd = $("input[name='usd']").val();
+				var bank_type = $("input[name='bank_type']").val();
+				var exchange = $("input[name='exchange']").val();
+				var inp_t_money_e = /^([123456789]+)\d*$/;
+				var preferential_usd = $("#preferential_select option:selected").val();
+				if(parseInt(login) == parseInt(0)) {
+					var username = $("input[name='username']").val();
+					var password = $("input[name='password']").val();
+					if(username == "") {
+						$("#login_ps").html("充值账号不能为空");
+						return false;
+					}
+					if(password == "") {
+						$("#login_ps").html("充值密码不能为空");
+						return false;
+					}
+				}
+
+				//优惠券判断
+				if(parseInt(preferential_usd) == parseInt(50)) {
+					if(parseFloat(usd) < parseFloat(500)) {
+						message(false, "入金要500美金以上才可以使用50美金的优惠券", "");
+						return false;
+					}
+				}
+				//银联
+				if(parseInt(bank_type) == parseInt(1)) {}
+				//支付宝限制金额
+				if(parseInt(bank_type) == parseInt(2)) {
+					if(!inp_t_money_e.exec(usd) || (parseInt(usd) < parseInt(50))) {
+						$("#login_ps").html("入金金额只能是整数，并且不能少于50美金");
+						return false;
+					}
+					if(parseInt(usd) > parseInt(700)) {
+						$("#login_ps").html("支付宝单笔入金金额不能超过700美金");
+						return false;
+					}
+				}
+				//微信限制金额
+				if(parseInt(bank_type) == parseInt(3)) {
+					if(!inp_t_money_e.exec(usd) || (parseInt(usd) < parseInt(50))) {
+						$("#login_ps").html("入金金额只能是整数，并且不能少于50美金");
+						return false;
+					}
+					if(parseInt(usd) > parseInt(700)) {
+						$("#login_ps").html("微信单笔入金金额不能超过700美金");
+						return false;
+					}
+				}
+				//QQ钱包制金额
+				if(parseInt(bank_type) == parseInt(4)) {
+					if(!inp_t_money_e.exec(usd) || (parseInt(usd) < parseInt(100))) {
+						$("#login_ps").html("入金金额只能是整数，并且不能少于100美金");
+						return false;
+					}
+					if(parseInt(usd) > parseInt(700)) {
+						$("#login_ps").html("QQ钱包单笔入金金额不能超过700美金");
+						return false;
+					}
+				}
+			})
+		</script>
+
+	</body>
+
+</html>

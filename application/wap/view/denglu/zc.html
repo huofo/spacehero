@@ -1,0 +1,922 @@
+<!DOCTYPE html>
+{include file="nodejs" /}
+<html>
+
+	<head>
+<!--		<meta charset="utf-8">-->
+<!--		<title>B.King</title>-->
+<!--		<link rel="stylesheet" href="/application/wap/view/denglu/css5.css" />-->
+<!--		<link href="/index/css/mango.css" rel="stylesheet" media="screen">-->
+<!--		<link rel="stylesheet" href="/application/wap/view/denglu/font_2751125_5o320nmu6m7/iconfont.css" />-->
+<!--		<script src="/application/wap/view/denglu/js/jquery-3.1.1.min.js"></script>-->
+<!--		<script src="/static/public/js/function.js"></script>-->
+<!--		<script src="/static/layer/layer.js"></script>-->
+
+		{include file="head" /}
+		<link rel="stylesheet" href="/application/wap/view/denglu/css5.css" />
+		{if $_SESSION["night"]=="yes"}<link rel="stylesheet" href="/index/css/wap_css/denglu-zc.css" >{/if}
+	</head>
+	<style>
+
+		.zc-div10>div:nth-child(1) {overflow: hidden;}
+	</style>
+	<body style="background-color: #e5ebf5;">
+	{include file="daohang" /}
+<!--	<div class="daohang">-->
+<!--		<div class="logoxt"><img src="/index/images/logoxty.png" alt=""></div>-->
+<!--		<div class="zhongbu wl_flex wl_justify_between wl_align_center">-->
+<!--			<div class="neirongji"><p><a href="/wap/index/hangqing/"style="font-size: 0.8rem;">行情</a></p></div>-->
+<!--			<div class="neirongji"><p><a href="/wap/index/bibijiaoyi/"style="font-size: 0.8rem;">币币交易</a></p></div>-->
+<!--			<div class="neirongji"><p><a href="/wap/index/heyuejiaoyi/"style="font-size: 0.8rem;">合约交易</a></p></div>-->
+<!--			<div class="neirongji"><p><a href="/wap/second/index"style="font-size: 0.8rem;">秒合约交易</a></p></div>-->
+<!--			<div class="neirongji"><p><a href="/wap/mining/index"style="font-size: 0.8rem;">锁仓挖矿</a></p></div>-->
+<!--			<div class="neirongji"><p><a href="/wap/zichan/bibi"style="font-size: 0.8rem;">我的资产</a></p></div>-->
+<!--			<div class="neirongji"><p><span style="font-size: 0.8rem;">1919076544@qq.com</span></p></div>-->
+<!--			<div class="neirongji">-->
+<!--				<ul id="navMenuv" style="list-style: none;">-->
+<!--					<li><a href="#" rel='dropmenu1v'><img src="/index/images/dengluxiao.png" alt="" style="margin-top: 10px;"></a></li>-->
+<!--				</ul>-->
+<!--				<ul id="dropmenu1v" class="dropMenuv"style="margin-left: -50px;border-radius: 5px;">-->
+<!--					<li><a href="/wap/setup/shezhi"style="color: black;font-size: 0.8rem">账户设置</a></li>-->
+<!--					<li><a href="/wap/setup/rzhi"style="color: black;font-size: 0.8rem">交易日志</a></li>-->
+<!--					<li><a href="/wap/setup/sksz"style="color: black;font-size: 0.8rem">收款设置</a></li>-->
+<!--					<li><a href="/wap/setup/sfrz"style="color: black;font-size: 0.8rem">身份认证</a></li>-->
+<!--					<li><a href="#"style="color: black;font-size: 0.8rem">退出登录</a></li>-->
+<!--				</ul>-->
+
+<!--			</div>-->
+<!--			<div class="neirongji wl_flex wl_align_center">-->
+<!--				<div><img src="/index/images/dengluxiao.png" alt="" style="margin-top: 25px;"></div>-->
+<!--				<div><a href="/wap/denglu/dl"style="color: white;font-size: 0.8rem;">登录</a></div>-->
+<!--			</div>-->
+<!--			<div class="neirongji wl_flex wl_align_center">-->
+<!--				<div><img src="/index/images/zhuchexiao.png" alt="" style="margin-top: 25px"></div>-->
+<!--				<div><a href="/wap/denglu/zc"style="color: white;font-size: 0.8rem;">注册</a></div>-->
+<!--			</div>-->
+<!--			<div class="neirongji"><a href=""><img src="/index/images/yangshengqi.png" alt=""style="margin-top: 25px;"/></a></div>-->
+
+<!--		</div>-->
+<!--		<div class="xiala wl_flex wl_justify_between">-->
+<!--			<div class="jianti wl_flex wl_align_center" style="width: 100%;font-size: 0.11rem">-->
+<!--				<div class="gvs"><img src="/index/images/wangluovsy.png" alt=""style="width: 25px;margin-top: 25px;"></div>-->
+<!--				<div class="gvs">-->
+<!--					&lt;!&ndash;                <a href="">简体中文</a>&ndash;&gt;-->
+<!--					<ul id="navMenu" style="list-style: none;">-->
+<!--						<li><a href="#" rel='dropmenu1'>简体中文</a></li>-->
+<!--					</ul>-->
+<!--					<ul id="dropmenu1" class="dropMenu"style="margin-left: -50px;border-radius: 5px;">-->
+<!--						<li><a href="#"style="color: #596a7a;font-size: 0.8rem">简体中文</a></li>-->
+<!--						<li><a href="#"style="color: #596a7a;font-size: 0.8rem">繁體中文</a></li>-->
+<!--						<li><a href="#"style="color: #596a7a;font-size: 0.8rem">日本語</a></li>-->
+<!--						<li><a href="#"style="color: #596a7a;font-size: 0.8rem">한국어</a></li>-->
+<!--						<li><a href="#"style="color: #596a7a;font-size: 0.8rem">English</a></li>-->
+<!--					</ul>-->
+<!--				</div>-->
+<!--			</div>-->
+
+<!--			<div class="jianti" style="width: 100%">-->
+<!--				<a href="">-->
+<!--					<ul id="navMenus" style="list-style: none;">-->
+<!--						<li><a href="#" rel='dropmenu1s'>Android & IOS下载</a></li>-->
+<!--					</ul>-->
+<!--					<ul id="dropmenu1s" class="dropMenus">-->
+<!--						<li><img src="/index/images/huangxinghua.png" alt=""style="width: 120px;height: 120px;border-radius: 5px;"></li>-->
+<!--					</ul>-->
+<!--				</a>-->
+<!--			</div>-->
+<!--		</div>-->
+<!--	</div>-->
+
+	<div class="zc-whole">
+<!--			<div class="zc-div0 zc-div0-sj">-->
+<!--				<div class="zc-div1"><p>注册</p></div>-->
+<!--				<div class="zc-div2"><span><span>手机注册</span></span><span><span>邮箱注册</span></span></div>-->
+<!--				<div class="zc-div3">-->
+<!--					<p>国籍</p>-->
+<!--					<div class="zc-div4">-->
+<!--						<div><span class="zc-div4-sp">Macao</span></div>-->
+<!--						<div class="zc-an-div0"><span class="iconfont zc-an">&#xe62d;</span><span class="iconfont zc-an">&#xe62e;</span></div>-->
+<!--					</div>-->
+<!--					<div class="zc-tcc">-->
+<!--						<ul>-->
+<!--							<li class="Amind"><div>Amind</div><div>美国</div></li>-->
+<!--							<li class="Macao"><div>Macao</div><div>香港</div></li>-->
+<!--							<li class="Amind"><div>Amind</div><div>美国</div></li>-->
+<!--							<li class="Macao"><div>Macao</div><div>香港</div></li>-->
+<!--							<li class="Amind"><div>Amind</div><div>美国</div></li>-->
+<!--							<li class="Macao"><div>Macao</div><div>香港</div></li>-->
+<!--							<li class="Amind"><div>Amind</div><div>美国</div></li>-->
+<!--							<li class="Macao"><div>Macao</div><div>香港</div></li>-->
+<!--						</ul>-->
+<!--					</div>-->
+<!--					<p class="zc-p1">请输入手机号</p>-->
+<!--					<div class="zc-div5">-->
+<!--						<div class="zc-div5-div1"><span class="zc-dhhm">+84</span><span class="iconfont zc-dh">&#xe62e;</span><span class="iconfont zc-dh">&#xe62d;</span></div>-->
+<!--						<div class="zc-div5-div2"><input class="zc-sj-sjh" /></div>-->
+<!--					</div>-->
+<!--					<div class="zc-div6">-->
+<!--						<ul>-->
+<!--							<li class="+1"><div>America</div><div>+1</div></li>-->
+<!--							<li class="+886"><div>Taiwan</div><div>+886</div></li>-->
+<!--							<li class="+1"><div>America</div><div>+1</div></li>-->
+<!--							<li class="+886"><div>Taiwan</div><div>+886</div></li>-->
+<!--							<li class="+1"><div>America</div><div>+1</div></li>-->
+<!--							<li class="+886"><div>Taiwan</div><div>+886</div></li>-->
+<!--							<li class="+1"><div>America</div><div>+1</div></li>-->
+<!--							<li class="+886"><div>Taiwan</div><div>+886</div></li>-->
+<!--						</ul>-->
+<!--					</div>-->
+<!--					<p class="zc-p1">请输入密码</p>-->
+<!--					<div class="zc-div7">-->
+<!--						<input class="zc-sj-mm" placeholder="密码不能小于6位数" type="password" />-->
+<!--					</div>-->
+<!--					<p class="zc-p1">请再次输入密码</p>-->
+<!--					<div class="zc-div7">-->
+<!--						<input class="zc-sj-mm" placeholder="请输入再次输入密码" type="password" />-->
+<!--					</div>-->
+<!--					<p class="zc-p1">请输入验证码</p>-->
+<!--					<div class="zc-div10">-->
+<!--						<div><input class="zc-sj-yzm" /></div>-->
+<!--						<div class=""><a href="javascript:">发送验证码</a></div>-->
+<!--					</div>-->
+<!--					<p class="zc-p1">请邀请码</p>-->
+<!--					<div class="zc-div7">-->
+<!--						<input class="zc-sj-yqm" placeholder="请输入邀请码" />-->
+<!--					</div>-->
+<!--					<div class="zc-div8">-->
+<!--						<div><input type="checkbox" ></div>-->
+<!--						<div>我已阅读并同意《用户协议》</div>-->
+<!--					</div>-->
+<!--					<div class="zc-div9">-->
+<!--						<a href="#">注册</a>-->
+<!--					</div>-->
+<!--				</div>-->
+<!--			</div>-->
+			
+			
+			
+			<div class="zc-div0 zc-div0-yx">
+				<div class="zc-div1"><p>{$Think.lang.regetit}</p></div>
+				<div class="zc-div2">
+<!--					<span><span>手机注册</span></span>-->
+					<span><span>{$Think.lang.zc_yxzc}</span></span>
+				</div>
+				<div class="zc-div3">
+<!--					<p>国籍</p>-->
+<!--					<div class="zc-div4">-->
+<!--						<div><span class="zc-div4-sp">Macao</span></div>-->
+<!--						<div class="zc-an-div0"><span class="iconfont zc-an3">&#xe62d;</span><span class="iconfont zc-an4">&#xe62e;</span></div>-->
+<!--					</div>-->
+<!--					<div class="zc-tcc">-->
+<!--						<ul>-->
+<!--							<li class="Amind"><div>Amind</div><div>美国</div></li>-->
+<!--							<li class="Macao"><div>Macao</div><div>香港</div></li>-->
+<!--							<li class="Amind"><div>Amind</div><div>美国</div></li>-->
+<!--							<li class="Macao"><div>Macao</div><div>香港</div></li>-->
+<!--							<li class="Amind"><div>Amind</div><div>美国</div></li>-->
+<!--							<li class="Macao"><div>Macao</div><div>香港</div></li>-->
+<!--							<li class="Amind"><div>Amind</div><div>美国</div></li>-->
+<!--							<li class="Macao"><div>Macao</div><div>香港</div></li>-->
+<!--						</ul>-->
+<!--					</div>-->
+					<form id="form_submit" >
+					<p class="zc-p1">{$Think.lang.ue_qsrzsxm}</p>
+					<div class="zc-div7">
+						<input class="" name="nickname" id="real_name" />
+					</div>
+					<p class="zc-p1">{$Think.lang.ri_qsryx}</p>
+					<div class="zc-div7">
+						<input class="zc-yx" name="username" />
+					</div>
+					<p class="zc-p1">{$Think.lang.ri_qsyzm}</p>
+					<div class="zc-div10">
+						<div><input class="zc-yzm" name="phonecode"/></div>
+						<div class=""><a class="code_btn" href="javascript:"   onclick ="return get_svg();" >{$Think.lang.wap_wa_fs}</a></div>
+					</div>
+
+
+					<p class="zc-p1">{$Think.lang.qsrmm}</p>
+					<div class="zc-div7">
+						<input class="zc-mm1" name="upwd" placeholder="{$Think.lang.zc_mmcdlw}" type="password" />
+					</div>
+					<p class="zc-p1">{$Think.lang.ai_qzcsrmm}</p>
+					<div class="zc-div7">
+						<input class="zc-mm1" name="upwd2" placeholder="{$Think.lang.ai_qzcsrmm}" type="password" />
+					</div>
+					<p class="zc-p1">{$Think.lang.ri_tjm}</p>
+					<div class="zc-div7">
+						<input class="zc-yqm" name="oid" placeholder="{$Think.lang.ri_qsmyqm}" />
+					</div>
+
+					<div class="zc-div8">
+						<div><input class="zc-sj-xy" name="protocol" type="checkbox" ></div>
+						<div>{$Think.lang.zc_wyyd}</div>
+					</div>
+					</form>
+					<div class="zc-div9">
+						<a href="javascript:;">{$Think.lang.regetit}</a>
+					</div>
+				</div>
+			</div>
+			
+			
+			
+
+			<div class="zc-rageh">
+				<div class="zc-rageh-div1">
+
+				<!--<p>国籍信息注册后不可修改，请务必如实选择。</p> -->
+					<p>{$Think.lang.zc_yzmkn}</p>
+					<p>{$Think.lang.zc_qtsbc}</p>
+					<p>{$Think.lang.zc_qwhqt}</p>
+				</div>
+			</div>
+		</div>
+
+	</body>
+	<script src="/application/wap/view/denglu/js/jquery-3.1.1.min.js"></script>
+	<script>
+		var wap_zc_bunk='{$Think.lang.wap_zc_bunk}';
+		var wap_zc_ybk='{$Think.lang.wap_zc_ybk}';
+		var wap_zc_mbk='{$Think.lang.wap_zc_mbk}';
+		var wap_zc_yqbk='{$Think.lang.wap_zc_yqbk}';
+		var wap_zc_smm='{$Think.lang.wap_zc_smm}';
+		var wap_zc_zsmm='{$Think.lang.wap_zc_zsmm}';
+		var wap_wa_lws='{$Think.lang.wap_wa_lws}';
+		var wap_wa_buts='{$Think.lang.wap_wa_buts}';
+		var wap_wa_qsx='{$Think.lang.wap_wa_qsx}';
+	</script>
+	<script>
+
+		//向下箭头的改变
+		// $(".zc-an").eq(0).hide();
+		// $(".zc-div4").click(function(){
+		// 	$(".zc-an").eq(0).show();
+		// 	$(".zc-an").eq(1).hide();
+		// });
+		// //国籍选择div的显示
+		// $(".zc-tcc").eq(0).hide();
+		// $(".zc-div4").click(function(){
+		// 	$(".zc-an4").hide();
+		// 	$(".zc-an3").show();
+		// 	$(".zc-tcc").show();
+		// });
+		// //点击之后现在国籍选择div的隐藏
+		// $(".zc-tcc").click(function(){
+		// 	$(this).hide();
+		// 	$(".zc-an3").hide();
+		// 	$(".zc-an4").show();
+		// 	$(".zc-an").eq(1).show();
+		// 	$(".zc-an").eq(0).hide();
+		// });
+		//
+		// //国籍的内容的改变
+		// $(".zc-tcc>ul>li").click(function(){
+		// 	var a=$(this).attr("class");
+		// 	$(".zc-div4-sp").text(a);
+		// });
+		//
+		// //选择手机号div的显示
+		// $(".zc-dh").eq(1).hide();
+		// $(".zc-div6").hide();
+		// $(".zc-div5-div1").click(function(){
+		// 	$(".zc-dh").eq(0).hide();
+		// 	$(".zc-dh").eq(1).show();
+		// 	$(".zc-div6").show();
+		// });
+		//
+		// //选择手机号div的隐藏
+		// $(".zc-div6>ul>li").click(function(){
+		// 	var vle=$(this).attr("class");
+		// 	$(".zc-dhhm").text(vle);
+		// 	$(".zc-dh").eq(1).hide();
+		// 	$(".zc-dh").eq(0).show();
+		// 	$(".zc-div6").hide();
+		//
+		// });
+		//
+		//
+		// //选择邮箱注册还是手机号注册之间颜色的切换
+		$(".zc-div2>span>span").eq(0).css("color","#7a98f7")
+		$(".zc-div2>span>span").eq(0).css("border-color","#7a98f7")
+		// $(".zc-div2>span>span").click(function(){
+		// 	$(".zc-div2>span>span").css("color","#c7cce6")
+		// 	$(".zc-div2>span>span").css("border-color","#e5ebf5")
+		// 	$(this).css("color","#7a98f7")
+		// 	$(this).css("border-color","#7a98f7")
+		// });
+		//
+		//
+		//
+		//
+		// //手机注册还是邮箱注册之间的切换
+		// $(".zc-div0-yx").hide();
+		// $(".zc-div2>span").eq(1).click(function(){
+		// 	$(".zc-div2>span>span").eq(3).css("color","#7a98f7")
+		// 	$(".zc-div2>span>span").eq(3).css("border-color","#7a98f7")
+		// 	$(".zc-tcc").hide();
+		// 	$(".zc-an4").hide();
+		// 	$(".zc-an3").show();
+		// 	$(".zc-div0-sj").hide();
+		// 	$(".zc-div0-yx").show();
+		// });
+		// $(".zc-div2>span").eq(2).click(function(){
+		// 	$(".zc-div2>span>span").eq(0).css("color","#7a98f7")
+		// 	$(".zc-div2>span>span").eq(0).css("border-color","#7a98f7")
+		// 	$(".zc-tcc").hide();
+		// 	$(".zc-an4").hide();
+		// 	$(".zc-an3").show();
+		// 	$(".zc-div0-sj").show();
+		// 	$(".zc-div0-yx").hide();
+		// });
+
+		//短信验证码
+		function get_svg() {
+
+
+			var phone = $('.zc-yx').val();
+			/*
+                if(!(/^1[3456789]\d{9}$/.test(phone))){
+                    layer.msg("请正确输入邮箱！");
+                    return false;
+                }*/
+
+			var url = "/wap/Denglu/sendmsm/phone/"+phone;
+			$.get(url,function(resdata){
+				layer.msg(resdata.data);
+				if(resdata.type == 1){
+					$(".code_btn").attr('onclick',"return false;");
+					listion_sendmsm();
+				}
+			})
+			return false;
+		}
+
+		function listion_sendmsm(){
+
+			var time= 61;
+			setTime=setInterval(function(){
+				if(time<=1){
+					clearInterval(setTime);
+					$(".code_btn").html("{$Think.lang.jse_zfyc}");
+					$(".code_btn").attr('onclick',"return get_svg();");
+					return;
+				}
+				time--;
+				$(".code_btn").html(time+"s");
+
+			},1000);
+		}
+
+		//邮箱注册判断邮箱、密码、邀请码等是否为空，同时设置密码长度不能小于6位数
+		$(".zc-div9>a").eq(0).click(function(){
+			var real_name = $("#real_name").val();
+			var yx=$(".zc-yx").val();
+			var yqm=$(".zc-yqm").val();
+			var yzm=$(".zc-yzm").val();
+			var vau=$(".zc-mm1").eq(0).val();
+			var vau2=vau.length;
+			var vau3=$(".zc-mm1").eq(1).val();
+			if(!real_name){layer.msg(wap_zc_bunk);return;}
+			if(!yx){layer.msg(wap_zc_ybk);return;}
+			if(!yzm){layer.msg(wap_zc_mbk);return;}
+			if(!yqm){layer.msg(wap_zc_yqbk);return;}
+			if(!vau){layer.msg(wap_zc_smm);return;}
+			if(!vau3){layer.msg(wap_zc_zsmm);return;}
+			if(vau2<6){layer.msg(wap_wa_lws);return;}
+			if(vau3!=vau){layer.msg(wap_wa_buts); $(".zc-mm1").eq(0).val("");  $(".zc-mm1").eq(1).val("");  return;}
+			if(!($("input[type='checkbox']").eq(0).is(':checked'))){layer.msg(wap_wa_qsx);return;}
+
+
+			var data = $('#form_submit').serialize();
+			var formurl = "{:Url('denglu/register')}";
+			var locurl = "{:Url('index/index')}";
+			WPpost(formurl,data,locurl);
+			return false;
+		});
+
+
+
+
+
+		//邮箱注册判断邮箱、密码、邀请码等是否为空，同时设置密码长度不能小于6位数
+		// $(".zc-div9>a").eq(0).click(function(){
+		// 	var vau=$(".zc-sj-sjh").val();
+		// 	var vau2=$(".zc-sj-mm").eq(0).val();
+		// 	var vau3=$(".zc-sj-mm").eq(1).val();
+		// 	var vau4=$(".zc-sj-yqm").val();
+		// 	var vau5=$(".zc-sj-yzm").val();
+		// 	var vau6=vau2.length;
+		// 	if(!vau){alert("请输入手机号");return;}
+		// 	if(!vau2){alert("请输入密码");return;}
+		// 	if(!vau3){alert("请再次输入密码");return;}
+		// 	if(!vau5){alert("请输入验证码");return;}
+		// 	if(!vau4){alert("请输入邀请码");return;}
+		// 	if(vau6<6){alert("输入的密码长度不能小于6位数");return;}
+		// 	if(vau2!=vau3){alert("此输入的密码不相同请重新输入"); $(".zc-sj-mm").eq(0).val(""); $(".zc-sj-mm").eq(1).val(""); return;}
+		// 	if(!($("input[type='checkbox']").eq(0).is(':checked'))){alert("请勾选用户协议");return;}
+		//
+		// });
+
+
+
+
+		// $(".zc-div4").click(function(){
+		// 	$(".zc-an").eq(0).hide();
+		// 	$(".zc-an").eq(1).show();
+		// });
+
+
+		// $().click()
+	</script>
+
+	<script>
+		$(function () {
+			$(".neirongji p").click(function () {
+				$(".neirongji p").removeClass('active');
+				$(this).addClass('active');
+			})
+		});
+	</script>
+	<script>
+		// 类名是需要隐藏的div
+		$(".huhuhus").show();
+		$(".gugugus").show();
+		// 点击的按钮
+		$(".kjkjkj>a").click(function(){
+			// 类名是需要隐藏的div
+			$(".huhuhus").show();
+			$(".gugugus").show();
+		});
+		$(".klklkl>a").click(function(){
+			// 类名是需要隐藏的div
+			$(".huhuhus").show();
+			$(".gugugus").hide();
+		});
+		$(".kukuku>a").click(function(){
+			// 类名是需要隐藏的div
+			$(".zhuliuugh").show();
+			$(".huhuhus").hide();
+			$(".gugugus").hide();
+		});
+	</script>
+	<script>
+		var cssdropdown={
+			disappeardelay: 250,
+			disablemenuclick: false,
+			enableswipe: 1,
+			enableiframeshim: 1,
+			dropmenuobj: null, ie: document.all, firefox: document.getElementById&&!document.all, swipetimer: undefined, bottomclip:0,
+
+			getposOffset:function(what, offsettype){
+				var totaloffset=(offsettype=="left")? what.offsetLeft : what.offsetTop;
+				var parentEl=what.offsetParent;
+				while (parentEl!=null){
+					totaloffset=(offsettype=="left")? totaloffset+parentEl.offsetLeft : totaloffset+parentEl.offsetTop;
+					parentEl=parentEl.offsetParent;
+				}
+				return totaloffset;
+			},
+
+			swipeeffect:function(){
+				if (this.bottomclip<parseInt(this.dropmenuobj.offsetHeight)){
+					this.bottomclip+=10+(this.bottomclip/10)
+					this.dropmenuobj.style.clip="rect(0 auto "+this.bottomclip+"px 0)"
+				}
+				else
+					return
+				this.swipetimer=setTimeout("cssdropdown.swipeeffect()", 10)
+			},
+
+			showhide:function(obj, e){
+				if (this.ie || this.firefox)
+					this.dropmenuobj.style.left=this.dropmenuobj.style.top="-500px"
+				if (e.type=="click" && obj.visibility==hidden || e.type=="mouseover"){
+					if (this.enableswipe==1){
+						if (typeof this.swipetimer!="undefined")
+							clearTimeout(this.swipetimer)
+						obj.clip="rect(0 auto 0 0)"
+						this.bottomclip=0
+						this.swipeeffect()
+					}
+					obj.visibility="visible"
+				}
+				else if (e.type=="click")
+					obj.visibility="hidden"
+			},
+
+			iecompattest:function(){
+				return (document.compatMode && document.compatMode!="BackCompat")? document.documentElement : document.body
+			},
+
+			clearbrowseredge:function(obj, whichedge){
+				var edgeoffset=0
+				if (whichedge=="rightedge"){
+					var windowedge=this.ie && !window.opera? this.iecompattest().scrollLeft+this.iecompattest().clientWidth-15 : window.pageXOffset+window.innerWidth-15
+					this.dropmenuobj.contentmeasure=this.dropmenuobj.offsetWidth
+					if (windowedge-this.dropmenuobj.x < this.dropmenuobj.contentmeasure)
+						edgeoffset=this.dropmenuobj.contentmeasure-obj.offsetWidth
+				}
+				else{
+					var topedge=this.ie && !window.opera? this.iecompattest().scrollTop : window.pageYOffset
+					var windowedge=this.ie && !window.opera? this.iecompattest().scrollTop+this.iecompattest().clientHeight-15 : window.pageYOffset+window.innerHeight-18
+					this.dropmenuobj.contentmeasure=this.dropmenuobj.offsetHeight
+					if (windowedge-this.dropmenuobj.y < this.dropmenuobj.contentmeasure){
+						edgeoffset=this.dropmenuobj.contentmeasure+obj.offsetHeight
+						if ((this.dropmenuobj.y-topedge)<this.dropmenuobj.contentmeasure)
+							edgeoffset=this.dropmenuobj.y+obj.offsetHeight-topedge
+					}
+				}
+				return edgeoffset
+			},
+
+			dropit:function(obj, e, dropmenuID){
+				if (this.dropmenuobj!=null)
+					this.dropmenuobj.style.visibility="hidden"
+				this.clearhidemenu()
+				if (this.ie||this.firefox){
+					obj.onmouseout=function(){cssdropdown.delayhidemenu()}
+					obj.onclick=function(){return !cssdropdown.disablemenuclick}
+					this.dropmenuobj=document.getElementById(dropmenuID)
+					if(!this.dropmenuobj) return;
+					this.dropmenuobj.onmouseover=function(){cssdropdown.clearhidemenu()}
+					this.dropmenuobj.onmouseout=function(e){cssdropdown.dynamichide(e)}
+					this.dropmenuobj.onclick=function(){cssdropdown.delayhidemenu()}
+					this.showhide(this.dropmenuobj.style, e)
+					this.dropmenuobj.x=this.getposOffset(obj, "left")
+					this.dropmenuobj.y=this.getposOffset(obj, "top")
+					this.dropmenuobj.style.left=this.dropmenuobj.x-this.clearbrowseredge(obj, "rightedge")+"px"
+					this.dropmenuobj.style.top=this.dropmenuobj.y-this.clearbrowseredge(obj, "bottomedge")+obj.offsetHeight+1+"px"
+					this.positionshim()
+				}
+			},
+
+			positionshim:function(){
+				if (this.enableiframeshim && typeof this.shimobject!="undefined"){
+					if (this.dropmenuobj.style.visibility=="visible"){
+						this.shimobject.style.width=this.dropmenuobj.offsetWidth+"px"
+						this.shimobject.style.height=this.dropmenuobj.offsetHeight+"px"
+						this.shimobject.style.left=this.dropmenuobj.style.left
+						this.shimobject.style.top=this.dropmenuobj.style.top
+					}
+					this.shimobject.style.display=(this.dropmenuobj.style.visibility=="visible")? "block" : "none"
+				}
+			},
+
+			hideshim:function(){
+				if (this.enableiframeshim && typeof this.shimobject!="undefined")
+					this.shimobject.style.display='none'
+			},
+
+			contains_firefox:function(a, b) {
+				while (b.parentNode)
+					if ((b = b.parentNode) == a)
+						return true;
+				return false;
+			},
+
+			dynamichide:function(e){
+				var evtobj=window.event? window.event : e
+				if (this.ie&&!this.dropmenuobj.contains(evtobj.toElement))
+					this.delayhidemenu()
+				else if (this.firefox&&e.currentTarget!= evtobj.relatedTarget&& !this.contains_firefox(evtobj.currentTarget, evtobj.relatedTarget))
+					this.delayhidemenu()
+			},
+
+			delayhidemenu:function(){
+				this.delayhide=setTimeout("cssdropdown.dropmenuobj.style.visibility='hidden'; cssdropdown.hideshim()",this.disappeardelay)
+			},
+
+			clearhidemenu:function(){
+				if (this.delayhide!="undefined")
+					clearTimeout(this.delayhide)
+			},
+
+			startchrome:function(){
+				for (var ids=0; ids<arguments.length; ids++){
+					var menuitems=document.getElementById(arguments[ids]).getElementsByTagName("a")
+					for (var i=0; i<menuitems.length; i++){
+						if (menuitems[i].getAttribute("rel")){
+							var relvalue=menuitems[i].getAttribute("rel")
+							menuitems[i].onmouseover=function(e){
+								var event=typeof e!="undefined"? e : window.event
+								cssdropdown.dropit(this,event,this.getAttribute("rel"))
+							}
+						}
+					}
+				}
+				if (window.createPopup && !window.XmlHttpRequest){
+					document.write('<IFRAME id="iframeshim"  src="" style="display: none; left: 0; top: 0; z-index: 90; position: absolute; filter: progid:DXImageTransform.Microsoft.Alpha(style=0,opacity=0)" frameBorder="0" scrolling="no"></IFRAME>')
+					this.shimobject=document.getElementById("iframeshim")
+				}
+			}
+
+		}
+	</script><script type="text/javascript">cssdropdown.startchrome("navMenu")</script>
+	<script>
+		var cssdropdowns={
+			disappeardelay: 250,
+			disablemenuclick: false,
+			enableswipe: 1,
+			enableiframeshim: 1,
+			dropmenuobj: null, ie: document.all, firefox: document.getElementById&&!document.all, swipetimer: undefined, bottomclip:0,
+
+			getposOffset:function(what, offsettype){
+				var totaloffset=(offsettype=="left")? what.offsetLeft : what.offsetTop;
+				var parentEl=what.offsetParent;
+				while (parentEl!=null){
+					totaloffset=(offsettype=="left")? totaloffset+parentEl.offsetLeft : totaloffset+parentEl.offsetTop;
+					parentEl=parentEl.offsetParent;
+				}
+				return totaloffset;
+			},
+
+			swipeeffect:function(){
+				if (this.bottomclip<parseInt(this.dropmenuobj.offsetHeight)){
+					this.bottomclip+=10+(this.bottomclip/10)
+					this.dropmenuobj.style.clip="rect(0 auto "+this.bottomclip+"px 0)"
+				}
+				else
+					return
+				this.swipetimer=setTimeout("cssdropdown.swipeeffect()", 10)
+			},
+
+			showhide:function(obj, e){
+				if (this.ie || this.firefox)
+					this.dropmenuobj.style.left=this.dropmenuobj.style.top="-500px"
+				if (e.type=="click" && obj.visibility==hidden || e.type=="mouseover"){
+					if (this.enableswipe==1){
+						if (typeof this.swipetimer!="undefined")
+							clearTimeout(this.swipetimer)
+						obj.clip="rect(0 auto 0 0)"
+						this.bottomclip=0
+						this.swipeeffect()
+					}
+					obj.visibility="visible"
+				}
+				else if (e.type=="click")
+					obj.visibility="hidden"
+			},
+
+			iecompattest:function(){
+				return (document.compatMode && document.compatMode!="BackCompat")? document.documentElement : document.body
+			},
+
+			clearbrowseredge:function(obj, whichedge){
+				var edgeoffset=0
+				if (whichedge=="rightedge"){
+					var windowedge=this.ie && !window.opera? this.iecompattest().scrollLeft+this.iecompattest().clientWidth-15 : window.pageXOffset+window.innerWidth-15
+					this.dropmenuobj.contentmeasure=this.dropmenuobj.offsetWidth
+					if (windowedge-this.dropmenuobj.x < this.dropmenuobj.contentmeasure)
+						edgeoffset=this.dropmenuobj.contentmeasure-obj.offsetWidth
+				}
+				else{
+					var topedge=this.ie && !window.opera? this.iecompattest().scrollTop : window.pageYOffset
+					var windowedge=this.ie && !window.opera? this.iecompattest().scrollTop+this.iecompattest().clientHeight-15 : window.pageYOffset+window.innerHeight-18
+					this.dropmenuobj.contentmeasure=this.dropmenuobj.offsetHeight
+					if (windowedge-this.dropmenuobj.y < this.dropmenuobj.contentmeasure){
+						edgeoffset=this.dropmenuobj.contentmeasure+obj.offsetHeight
+						if ((this.dropmenuobj.y-topedge)<this.dropmenuobj.contentmeasure)
+							edgeoffset=this.dropmenuobj.y+obj.offsetHeight-topedge
+					}
+				}
+				return edgeoffset
+			},
+
+			dropit:function(obj, e, dropmenuID){
+				if (this.dropmenuobj!=null)
+					this.dropmenuobj.style.visibility="hidden"
+				this.clearhidemenu()
+				if (this.ie||this.firefox){
+					obj.onmouseout=function(){cssdropdown.delayhidemenu()}
+					obj.onclick=function(){return !cssdropdown.disablemenuclick}
+					this.dropmenuobj=document.getElementById(dropmenuID)
+					if(!this.dropmenuobj) return;
+					this.dropmenuobj.onmouseover=function(){cssdropdown.clearhidemenu()}
+					this.dropmenuobj.onmouseout=function(e){cssdropdown.dynamichide(e)}
+					this.dropmenuobj.onclick=function(){cssdropdown.delayhidemenu()}
+					this.showhide(this.dropmenuobj.style, e)
+					this.dropmenuobj.x=this.getposOffset(obj, "left")
+					this.dropmenuobj.y=this.getposOffset(obj, "top")
+					this.dropmenuobj.style.left=this.dropmenuobj.x-this.clearbrowseredge(obj, "rightedge")+"px"
+					this.dropmenuobj.style.top=this.dropmenuobj.y-this.clearbrowseredge(obj, "bottomedge")+obj.offsetHeight+1+"px"
+					this.positionshim()
+				}
+			},
+
+			positionshim:function(){
+				if (this.enableiframeshim && typeof this.shimobject!="undefined"){
+					if (this.dropmenuobj.style.visibility=="visible"){
+						this.shimobject.style.width=this.dropmenuobj.offsetWidth+"px"
+						this.shimobject.style.height=this.dropmenuobj.offsetHeight+"px"
+						this.shimobject.style.left=this.dropmenuobj.style.left
+						this.shimobject.style.top=this.dropmenuobj.style.top
+					}
+					this.shimobject.style.display=(this.dropmenuobj.style.visibility=="visible")? "block" : "none"
+				}
+			},
+
+			hideshim:function(){
+				if (this.enableiframeshim && typeof this.shimobject!="undefined")
+					this.shimobject.style.display='none'
+			},
+
+			contains_firefox:function(a, b) {
+				while (b.parentNode)
+					if ((b = b.parentNode) == a)
+						return true;
+				return false;
+			},
+
+			dynamichide:function(e){
+				var evtobj=window.event? window.event : e
+				if (this.ie&&!this.dropmenuobj.contains(evtobj.toElement))
+					this.delayhidemenu()
+				else if (this.firefox&&e.currentTarget!= evtobj.relatedTarget&& !this.contains_firefox(evtobj.currentTarget, evtobj.relatedTarget))
+					this.delayhidemenu()
+			},
+
+			delayhidemenu:function(){
+				this.delayhide=setTimeout("cssdropdown.dropmenuobj.style.visibility='hidden'; cssdropdown.hideshim()",this.disappeardelay)
+			},
+
+			clearhidemenu:function(){
+				if (this.delayhide!="undefined")
+					clearTimeout(this.delayhide)
+			},
+
+			startchrome:function(){
+				for (var ids=0; ids<arguments.length; ids++){
+					var menuitems=document.getElementById(arguments[ids]).getElementsByTagName("a")
+					for (var i=0; i<menuitems.length; i++){
+						if (menuitems[i].getAttribute("rel")){
+							var relvalue=menuitems[i].getAttribute("rel")
+							menuitems[i].onmouseover=function(e){
+								var event=typeof e!="undefined"? e : window.event
+								cssdropdown.dropit(this,event,this.getAttribute("rel"))
+							}
+						}
+					}
+				}
+				if (window.createPopup && !window.XmlHttpRequest){
+					document.write('<IFRAME id="iframeshim"  src="" style="display: none; left: 0; top: 0; z-index: 90; position: absolute; filter: progid:DXImageTransform.Microsoft.Alpha(style=0,opacity=0)" frameBorder="0" scrolling="no"></IFRAME>')
+					this.shimobject=document.getElementById("iframeshim")
+				}
+			}
+
+		}
+	</script><script type="text/javascript">cssdropdown.startchrome("navMenus")</script>
+	<script>
+		var cssdropdownv={
+			disappeardelay: 250,
+			disablemenuclick: false,
+			enableswipe: 1,
+			enableiframeshim: 1,
+			dropmenuobj: null, ie: document.all, firefox: document.getElementById&&!document.all, swipetimer: undefined, bottomclip:0,
+
+			getposOffset:function(what, offsettype){
+				var totaloffset=(offsettype=="left")? what.offsetLeft : what.offsetTop;
+				var parentEl=what.offsetParent;
+				while (parentEl!=null){
+					totaloffset=(offsettype=="left")? totaloffset+parentEl.offsetLeft : totaloffset+parentEl.offsetTop;
+					parentEl=parentEl.offsetParent;
+				}
+				return totaloffset;
+			},
+
+			swipeeffect:function(){
+				if (this.bottomclip<parseInt(this.dropmenuobj.offsetHeight)){
+					this.bottomclip+=10+(this.bottomclip/10)
+					this.dropmenuobj.style.clip="rect(0 auto "+this.bottomclip+"px 0)"
+				}
+				else
+					return
+				this.swipetimer=setTimeout("cssdropdown.swipeeffect()", 10)
+			},
+
+			showhide:function(obj, e){
+				if (this.ie || this.firefox)
+					this.dropmenuobj.style.left=this.dropmenuobj.style.top="-500px"
+				if (e.type=="click" && obj.visibility==hidden || e.type=="mouseover"){
+					if (this.enableswipe==1){
+						if (typeof this.swipetimer!="undefined")
+							clearTimeout(this.swipetimer)
+						obj.clip="rect(0 auto 0 0)"
+						this.bottomclip=0
+						this.swipeeffect()
+					}
+					obj.visibility="visible"
+				}
+				else if (e.type=="click")
+					obj.visibility="hidden"
+			},
+
+			iecompattest:function(){
+				return (document.compatMode && document.compatMode!="BackCompat")? document.documentElement : document.body
+			},
+
+			clearbrowseredge:function(obj, whichedge){
+				var edgeoffset=0
+				if (whichedge=="rightedge"){
+					var windowedge=this.ie && !window.opera? this.iecompattest().scrollLeft+this.iecompattest().clientWidth-15 : window.pageXOffset+window.innerWidth-15
+					this.dropmenuobj.contentmeasure=this.dropmenuobj.offsetWidth
+					if (windowedge-this.dropmenuobj.x < this.dropmenuobj.contentmeasure)
+						edgeoffset=this.dropmenuobj.contentmeasure-obj.offsetWidth
+				}
+				else{
+					var topedge=this.ie && !window.opera? this.iecompattest().scrollTop : window.pageYOffset
+					var windowedge=this.ie && !window.opera? this.iecompattest().scrollTop+this.iecompattest().clientHeight-15 : window.pageYOffset+window.innerHeight-18
+					this.dropmenuobj.contentmeasure=this.dropmenuobj.offsetHeight
+					if (windowedge-this.dropmenuobj.y < this.dropmenuobj.contentmeasure){
+						edgeoffset=this.dropmenuobj.contentmeasure+obj.offsetHeight
+						if ((this.dropmenuobj.y-topedge)<this.dropmenuobj.contentmeasure)
+							edgeoffset=this.dropmenuobj.y+obj.offsetHeight-topedge
+					}
+				}
+				return edgeoffset
+			},
+
+			dropit:function(obj, e, dropmenuID){
+				if (this.dropmenuobj!=null)
+					this.dropmenuobj.style.visibility="hidden"
+				this.clearhidemenu()
+				if (this.ie||this.firefox){
+					obj.onmouseout=function(){cssdropdown.delayhidemenu()}
+					obj.onclick=function(){return !cssdropdown.disablemenuclick}
+					this.dropmenuobj=document.getElementById(dropmenuID)
+					if(!this.dropmenuobj) return;
+					this.dropmenuobj.onmouseover=function(){cssdropdown.clearhidemenu()}
+					this.dropmenuobj.onmouseout=function(e){cssdropdown.dynamichide(e)}
+					this.dropmenuobj.onclick=function(){cssdropdown.delayhidemenu()}
+					this.showhide(this.dropmenuobj.style, e)
+					this.dropmenuobj.x=this.getposOffset(obj, "left")
+					this.dropmenuobj.y=this.getposOffset(obj, "top")
+					this.dropmenuobj.style.left=this.dropmenuobj.x-this.clearbrowseredge(obj, "rightedge")+"px"
+					this.dropmenuobj.style.top=this.dropmenuobj.y-this.clearbrowseredge(obj, "bottomedge")+obj.offsetHeight+1+"px"
+					this.positionshim()
+				}
+			},
+
+			positionshim:function(){
+				if (this.enableiframeshim && typeof this.shimobject!="undefined"){
+					if (this.dropmenuobj.style.visibility=="visible"){
+						this.shimobject.style.width=this.dropmenuobj.offsetWidth+"px"
+						this.shimobject.style.height=this.dropmenuobj.offsetHeight+"px"
+						this.shimobject.style.left=this.dropmenuobj.style.left
+						this.shimobject.style.top=this.dropmenuobj.style.top
+					}
+					this.shimobject.style.display=(this.dropmenuobj.style.visibility=="visible")? "block" : "none"
+				}
+			},
+
+			hideshim:function(){
+				if (this.enableiframeshim && typeof this.shimobject!="undefined")
+					this.shimobject.style.display='none'
+			},
+
+			contains_firefox:function(a, b) {
+				while (b.parentNode)
+					if ((b = b.parentNode) == a)
+						return true;
+				return false;
+			},
+
+			dynamichide:function(e){
+				var evtobj=window.event? window.event : e
+				if (this.ie&&!this.dropmenuobj.contains(evtobj.toElement))
+					this.delayhidemenu()
+				else if (this.firefox&&e.currentTarget!= evtobj.relatedTarget&& !this.contains_firefox(evtobj.currentTarget, evtobj.relatedTarget))
+					this.delayhidemenu()
+			},
+
+			delayhidemenu:function(){
+				this.delayhide=setTimeout("cssdropdown.dropmenuobj.style.visibility='hidden'; cssdropdown.hideshim()",this.disappeardelay)
+			},
+
+			clearhidemenu:function(){
+				if (this.delayhide!="undefined")
+					clearTimeout(this.delayhide)
+			},
+
+			startchrome:function(){
+				for (var ids=0; ids<arguments.length; ids++){
+					var menuitems=document.getElementById(arguments[ids]).getElementsByTagName("a")
+					for (var i=0; i<menuitems.length; i++){
+						if (menuitems[i].getAttribute("rel")){
+							var relvalue=menuitems[i].getAttribute("rel")
+							menuitems[i].onmouseover=function(e){
+								var event=typeof e!="undefined"? e : window.event
+								cssdropdown.dropit(this,event,this.getAttribute("rel"))
+							}
+						}
+					}
+				}
+				if (window.createPopup && !window.XmlHttpRequest){
+					document.write('<IFRAME id="iframeshim"  src="" style="display: none; left: 0; top: 0; z-index: 90; position: absolute; filter: progid:DXImageTransform.Microsoft.Alpha(style=0,opacity=0)" frameBorder="0" scrolling="no"></IFRAME>')
+					this.shimobject=document.getElementById("iframeshim")
+				}
+			}
+
+		}
+	</script><script type="text/javascript">cssdropdown.startchrome("navMenuv")</script>
+</html>

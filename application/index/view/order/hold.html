@@ -1,0 +1,174 @@
+{include file="head" /}
+<!--        夜间白天切换的文件-->
+{if $_SESSION["night"]=="yes"}<link rel="stylesheet" href="/index/css/wap_css/order-hold.css" >{/if}
+<script>
+    var gs_mhy ='{$Think.lang.gs_mhy}';
+    var iin_mz ='{$Think.lang.iin_mz}';
+    var iin_md ='{$Think.lang.iin_md}';
+    var hl_wu ='{$Think.lang.hl_wu}';
+    var hl_sp ='{$Think.lang.hl_sp}';
+    var gs_cjj ='{$Think.lang.gs_cjj}';
+    var hl_jsj ='{$Think.lang.hl_jsj}';
+    var hl_pclx ='{$Think.lang.hl_pclx}';
+    var ind_hyjy ='{$Think.lang.ind_hyjy}';
+    var or_bzj ='{$Think.lang.or_bzj}';
+    var hl_gmss ='{$Think.lang.hl_gmss}';
+    var gs_zfy ='{$Think.lang.gs_zfy}';
+    var gs_syf ='{$Think.lang.gs_syf}';
+    var hl_yk ='{$Think.lang.hl_yk}';
+    var gs_zy ='{$Think.lang.gs_zy}';
+    var gs_zs ='{$Think.lang.gs_zs}';
+    var gb_jssj ='{$Think.lang.gb_jssj}';
+    var hl_cjsj ='{$Think.lang.hl_cjsj}';
+</script>
+<style>
+    body{
+        background: #0b1622;
+        color: #f2f5ff;
+    }
+
+    ion-slide.slider-slide.slider-right {
+        background-color: #102030;
+    }
+
+    ul.uls {
+        background-color: #102030;
+    }
+    .trade_history_list ul li section:nth-of-type(1) {
+        width: 65%;
+    }
+    .trade_history_list ul li section:nth-of-type(1) p {
+        line-height: 0.1rem;
+    }
+    .trade_history_list ul li {
+        height: 1rem;
+    }
+</style>
+<body ng-app="starter" ng-controller="AppCtrl" class="grade-a platform-browser platform-ios platform-ios9 platform-ios9_1 platform-ready">
+<ion-nav-bar class="bar-stable headerbar nav-bar-container" nav-bar-transition="ios" nav-bar-direction="swap" nav-swipe="">
+
+	<div class="nav-bar-block" nav-bar="active">
+		<ion-header-bar class="bar-stable headerbar bar bar-header" align-title="center">
+            <div class="title title-center header-item jiaoyilishi" style="transition-duration: 0ms; transform: translate3d(0px, 0px, 0px); left: 15px; right: 15px;">{$Think.lang.hd_mhyjyls}</div>
+            <a class="close" href="javascript:void(0)" onclick="javascript:history.back(-1);">
+                <i class="icon ion-ios-arrow-left"></i>
+            </a>
+		</ion-header-bar>
+	</div>
+</ion-nav-bar>
+
+<ion-nav-view class="view-container" nav-view-transition="ios" nav-view-direction="none" nav-swipe=""><ion-tabs class="tabs-icon-top navbar pane tabs-bottom tabs-standard" abstract="true" nav-view="active" style="opacity: 1; transform: translate3d(0%, 0px, 0px);">
+
+<div class="bottom-nav">
+        <ul>
+            <li>
+                <a id="index" href="{:url('index/index')}">
+                    <i></i>
+                    <p>{$Think.lang.ti_sy}</p>
+                </a>
+            </li>
+
+            <li>
+                <a id="token" href="{:Url('/index/trades/index/token/'.$token)}" class="cur">
+                    <i></i>
+                    <p>{$Think.lang.ti_hq}</p>
+                </a>
+            </li>
+
+            <li>
+                <a id="bibi" href="{:url('/index/goods/bibi')}">
+                    <i></i>
+                    <p>{$Think.lang.ti_bibi}</p>
+                </a>
+            </li>
+
+
+            <li>
+                <a id="lever" href="{:url('/index/goods/lever')}">
+                    <i></i>
+                    <p>{$Think.lang.ti_hy}</p>
+                </a>
+            </li>
+
+            <li>
+                <a id="bibi2" href="{:url('index/Assets/bibi')}">
+                    <i></i>
+                    <p>{$Think.lang.ti_zc}</p>
+                </a>
+            </li>
+            <div class="clear"></div>
+        </ul>
+    </div>
+<ion-nav-view name="tab-qoute" class="view-container tab-content" nav-view="cached" nav-view-transition="ios" nav-view-direction="none" nav-swipe="">
+    </ion-nav-view><ion-nav-view name="tab-history" class="view-container tab-content" nav-view="active" nav-view-transition="ios" nav-view-direction="swap" nav-swipe=""><ion-view view-title="" hide-nav-bar="false" class="pane" state="tab.history" nav-view="active" style="opacity: 1; transform: translate3d(0%, 0px, 0px);">
+    <ion-nav-buttons side="right" class="hide"></ion-nav-buttons>
+    <ion-content class="trade_history scroll-content ionic-scroll scroll-content-false  has-header has-tabs" scroll="false">
+        <header>
+            <article class="left-table" onclick="change_category(0)"  class="active" style="">
+            	<p class="chicangmingxi">
+            		
+            	</p>
+            </article>
+            <article class="right-table"  onclick="change_category(1)"  >
+            	<p class="lishimingxi">
+            		
+            	</p>
+            </article>
+        </header>
+
+        <div class="trade_history_list slider" style="visibility: visible;overflow-y:scroll;     background-color: #102030;"><div class="slider-slides" ng-transclude="" >
+            <ion-slide class="slider-slide slider-left" data-index="0" style="width: 100%px; left: 0px; transition-duration: 0ms; transform: translate(0px, 0px) translateZ(0px); background-color: #102030; ">
+            	<ul>
+            		
+                        
+
+
+                        
+
+            	</ul>
+            </ion-slide>
+            <ion-slide class="slider-slide slider-right" data-index="1" style=" left: 0px; top: -100%;transition-duration: 0ms; transform: translate(414px, 0px) translateZ(0px);">
+                <ul class="uls">
+
+
+
+                </ul>
+                
+            </ion-slide>
+        </div>
+                
+                <div class="modal-backdrop ng-hide"><div class="modal-backdrop-bg"></div><div class="modal-wrapper" ng-transclude=""><ion-modal-view class="order-modal modal slide-in-up ng-enter active ng-enter-active">
+    <ion-header-bar class="order-modal-header bar bar-header">
+        <h1 class="title lishimingxi" style="left: 54px; right: 54px;"></h1>
+        <div class="close" ng-click="close_order_modal.hide()">
+            <i class="icon ion-ios-close-empty"></i>
+        </div>
+    </ion-header-bar>
+    <ion-content class="order-modal-content scroll-content ionic-scroll  has-header"><div class="scroll" style="transform: translate3d(0px, 0px, 0px) scale(1);">
+        <ul class="list" id="hold_order_info" style="background-color: #102030;"></ul>
+    </div><div class="scroll-bar scroll-bar-v"><div class="scroll-bar-indicator scroll-bar-fade-out" style="transform: translate3d(0px, 0px, 0px) scaleY(1); height: 0px; transform-origin: center bottom 0px;"></div></div></ion-content>
+    <div class="button-bar">
+        <a class="button button-dark" onClick="close_order_modal()">{$Think.lang.gs_gb}</a>
+    </div>
+
+    <script>
+
+var charturl = '{:url("getchart")}';
+$.get(charturl,function(_res){
+    var res = jQuery.parseJSON(Base64.decode(_res)); 
+    $.each(res,function(k,v){
+        $('.'+k).html(v);
+    })
+})
+</script>
+</ion-modal-view></div></div>
+
+        </div>
+    </ion-content>
+</ion-view></ion-nav-view></ion-tabs></ion-nav-view>
+<script src="__HOME__/js/lk/hold.js"></script>
+<script type="text/javascript">
+  change_category(0)
+</script>
+<div class="backdrop"></div><div class="ionic_toast"><div class="toast_section" ng-class="ionicToast.toastClass" ng-style="ionicToast.toastStyle" ng-click="hideToast()" style="display: none; opacity: 0;"><span class="ionic_toast_close"><i class="ion-android-close toast_close_icon"></i></span><span ng-bind-html="ionicToast.toastMessage" class="ng-binding"></span></div></div></body></html>
+

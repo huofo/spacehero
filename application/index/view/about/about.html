@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html style="font-size: 117.188px;">
+
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<meta name="keywords" content="B.Kingenctrades,B.King,安信enctrades,合约交易,秒合约">
+		<meta name="description" content="B.Kingenctrades平台拥有合约_秒合约2种交易模式，双重监管，正规安全。合约交易助力老手增加盈利，秒合约让新手轻松入门，闪电盈利！多终端交易，用户可24小时体验一流交易!">
+		<meta name="full-screen" content="yes">
+		<meta name="browsermode" content="application">
+		<meta name="x5-page-mode" content="app">
+		<meta name="x5-fullscreen" content="true">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport">
+		<link href="/index/css/index_for.css" rel="stylesheet" type="text/css">
+		<link rel="stylesheet" href="//at.alicdn.com/t/font_2805586_as3rpjoc9x9.css" >
+		{include file="alyslt" /}
+		<script src="https://hm.baidu.com/hm.js?ea5da0ed025ce44718399d39b666bfc5"></script>
+		<script type="text/javascript" src="/index/js/jquery-2.1.4.min.js"></script>
+		<script type="text/javascript" src="/index/js/touchSlider.js"></script>
+		<script type="text/javascript" src="/index/js/index.js"></script>
+
+		<style>
+			.about_a{
+				display: block;
+				width: 100%;
+				height: 40px;
+				display:-webkit-box;/*Chrome4+,Safari3.1,iOSSafari3.2+*/
+				display:-moz-box;/*Firefox17-*/
+				display:-webkit-flex;/*Chrome21+,Safari6.1+,iOSSafari7+,Opera15/16*/
+				display:-moz-flex;/*Firefox18+*/
+				display:-ms-flexbox;/*IE10*/
+				display:flex;
+				-webkit-box-align: center;
+				-webkit-align-items: center;
+				align-items: center;
+				-webkit-justify-content: space-between;
+				-moz-justify-content: space-between;
+				-ms-justify-content: space-between;
+				-webkit-box-pack: justify;
+				justify-content: space-between;
+			}
+		</style>
+	</head>
+	<body>
+		<style>
+			.mgywo{width: 100%; height: 100%;position: fixed;top: 0%;z-index: 9999;}
+			.mgywo>ul{width: 96%; margin: 5% auto;}
+			.mgywo>ul>li{width: 100%;height: 40px;font-size: 20px; line-height: 38px; }
+			.mgywo>ul>li>a{color: #ffffff;}
+			.mgywo>ul>li>span{float: right; color: #ffffff;}
+			.inner-head>a{float: left;color: #ffffff;}
+			.inner-head>a>i{font-size: 20px;}
+		</style>
+		<div class="mgywo">
+			<div>
+				<div class="inner-head">
+					<a href="javascript:history.go(-1)">
+						<i class="iconfont icon-31fanhui1"></i>
+					</a>
+					{$Think.lang.ind_gywm}
+				</div>
+			</div>
+			<ul>
+				<!-- {volist name="aboutlist" id="vo" key="ko"} -->
+				<li><a class="about_a" style="width: 100%;height: 40px" href="{:url('about/aboutdetail',array('id'=>$vo['id']))}">{$vo.a_title}<span><i class="iconfont icon-youjiantou"></i></span></a></li>
+				<!-- {/volist} -->
+
+
+
+
+			</ul>
+		</div>
+		<div class="inner-head">
+			<a class="inner-head-ma" href="javascript:">
+				<img class="return_img" src="/index/images/gg-icon13.png">
+			</a>
+			{$Think.lang.ind_gywm}
+		</div>
+
+
+		{include file="foot" /}

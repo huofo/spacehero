@@ -1,0 +1,77 @@
+
+{include file="head" /}
+<style>
+.white-bg{
+  background: #000;
+  border-bottom:#000;
+}
+a.logo{
+  color:#fff
+}
+.admin_logo{
+      text-align: center;
+    padding-top: 120px;
+    margin-bottom: -90px;
+}
+.admin_logo img{
+  height: 150px
+}
+.form-signin h2.form-signin-heading {background: #a9d86e;}
+.form-signin .btn-login {background: #41cac0;box-shadow: 0 4px #41beca;}
+</style>
+<body class="login-body">
+
+    <div class="container" >
+  
+      <form class="form-signin" action="" method="post" id="formid">
+        <h2 class="form-signin-heading" >登录</h2>
+        <div class="login-wrap">
+            <input type="text" class="form-control" name="username" placeholder="请输入用户名" value="{$rememberme}">
+            <input type="password" class="form-control" name="password" placeholder="请输入密码">
+            <label class="checkbox">
+                <input type="checkbox" value="1" name="rememberme"> 记住密码</label>
+            <input type="submit" onclick="return check_admin_login(this.form)" class="btn btn-lg btn-login btn-block"  />
+        </div>
+      </form>
+    </div>
+
+{include file="foot" /}
+
+<script>
+/*
+
+ */
+function check_admin_login (form)
+   {
+      $username = form.username.value;
+      $password = form.password.value;
+      if (!$username) {
+        layer.msg('请输入用户名');
+        return false;
+      }
+
+      if(!$password){
+        layer.msg('请输入密码');
+        return false;
+      }
+
+      var formurl = "{:Url('admin/login/login')}"
+      var data = $('#formid').serialize();
+      $.post(formurl,data,function(data){
+        if (data.type == 1) {
+
+          layer.msg(data.data, {icon: 1,time: 1000},function(){
+            window.location.href="{:Url('admin/index/index')}";
+          }); 
+
+        }else if(data.type == -1){
+          layer.msg(data.data, {icon: 2}); 
+        }
+
+      });
+
+      return false;
+   }
+
+   $(".white-bg").hide();
+</script>

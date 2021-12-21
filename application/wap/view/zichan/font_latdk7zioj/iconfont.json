@@ -1,0 +1,23 @@
+{
+  "id": "",
+  "name": "",
+  "font_family": "iconfont",
+  "css_prefix_text": "icon-",
+  "description": "",
+  "glyphs": [
+    {
+      "icon_id": "17814564",
+      "name": "钱包 (1)",
+      "font_class": "qianbao1",
+      "unicode": "e610",
+      "unicode_decimal": 58896
+    },
+    {
+      "icon_id": "21500997",
+      "name": "担保品划转",
+      "font_class": "danbaopinhuazhuan",
+      "unicode": "e612",
+      "unicode_decimal": 58898
+    }
+  ]
+}

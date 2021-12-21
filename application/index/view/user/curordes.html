@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0, user-scalable=no">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+    <!-- 是否启用全屏模式 -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <!-- 全屏时状态颜色设置 -->
+    <meta name="apple-mobile-web-status-bar-style" content="white">
+    <!-- 禁用电话号码自动识别 -->
+    <meta name="format-detection" content="telephone=no">
+    <!--禁止读取本地缓存模板-->
+    <meta http-equiv="Pragma" contect="no-cache">
+    {include file="alyslt" /}
+    {include file="fbjy_js" /}
+    <link rel="stylesheet" href="/index/css/optional.css" >
+    {if $_SESSION["night"]=="yes"}<link rel="stylesheet" href="/index/css/optional.css" >{else}<link rel="stylesheet" href="/index/css/user-curordes.css" >{/if}
+<!--        黑夜模式-->
+<!--        <link rel="stylesheet" href="/index/css/user-curordes.css" >-->
+
+    <script src="/index/js/jquery-2.1.4.min.js"></script>
+    <script type="text/javascript" src="/static/public/js/lowgetmoredata.js"></script>
+    <script src="/static/layer/layer.js"></script>
+    <style>
+        .active{
+            color: red;
+        }
+    </style>
+</head>
+<body class="cur-body" style="width: 100%; position: absolute;">
+<style>
+    .ods-list-two>p:nth-child(2)>span:nth-child(2){color: #f7f7f7;}
+    .cur-xx,.cur-xs{color: #666666;}
+</style>
+
+<div class="ods-hode">
+    <div><a href="javascript:window.history.go(-1);"><i class="iconfont icon-31fanhui1"></i></a></div>
+    <div class="fabi-xzfb-div1 Search1" style=" height: 80%;">
+        <input class="cur-input Search-input1" id="search_curr_1" value="全部" >
+        <span><i class="iconfont icon-down cur-xx cur-xx1"></i><i class="iconfont icon-xiangshang cur-xs cur-xs1" style="font-size: 20px !important;"></i></span>
+    </div>
+    <div class="fabi-xzfb-div1 Search2" style=" height: 80%;">
+        <input class="cur-input Search-input2" id="search_curr_2" value="全部">
+        <span><i class="iconfont icon-down cur-xx cur-xx2"></i><i class="iconfont icon-xiangshang cur-xs cur-xs2" style="font-size: 20px !important;"></i></span>
+    </div>
+    <div class="fabi-xzfb-div1 Search3" style=" height: 80%;">
+        <input class="cur-input Search-input3" id="search_curr_3" value="全部" >
+        <span><i class="iconfont icon-down cur-xx cur-xx3"></i><i class="iconfont icon-xiangshang cur-xs cur-xs3" style="font-size: 20px !important;"></i></span>
+    </div>
+    <div></div>
+</div>
+<div class="curinputdiv curinputdiv1">
+    <ul>
+        <li data-id="0">{$Think.lang.ti_qb}</li>
+        <li data-id="2">{$Think.lang.fbjy_ywc}</li>
+        <li data-id="3">{$Think.lang.fbjy_yqx}</li>
+        <li data-id="1">{$Think.lang.ll_jyz}</li>
+    </ul>
+</div>
+<div class="curinputdiv curinputdiv2">
+    <ul>
+        <li data-id="0">{$Think.lang.ti_qb}</li>
+        <li data-id="1">{$Think.lang.isdelete_dzf}</li>
+        <li data-id="2">{$Think.lang.isdelete_yzfdqr}</li>
+        <li data-id="3">{$Think.lang.isdelete_wwc}</li>
+        <li data-id="4">{$Think.lang.fbjy_ssz}</li>
+        <li data-id="5">{$Think.lang.isdelete_wzfsb}</li>
+        <li data-id="6">{$Think.lang.isdelete_mjqxdd}</li>
+        <li data-id="7">{$Think.lang.isdelete_mjjjdd}</li>
+    </ul>
+</div>
+<div class="curinputdiv curinputdiv3">
+    <ul>
+        <li data-id="0">{$Think.lang.ti_qb}</li>
+        <li data-id="1">{$Think.lang.isdelete_dzf}</li>
+        <li data-id="2">{$Think.lang.isdelete_yzfdqr}</li>
+        <li data-id="3">{$Think.lang.isdelete_wwc}</li>
+        <li data-id="4">{$Think.lang.fbjy_ssz}</li>
+        <li data-id="5">{$Think.lang.isdelete_wzfsb}</li>
+        <li data-id="6">{$Think.lang.isdelete_mjqxdd}</li>
+        <li data-id="7">{$Think.lang.isdelete_mjjjdd}</li>
+    </ul>
+</div>
+<div class="cur-top" style="width: 100%; padding: 10px;margin: 10px auto;">
+    <span style="width: 30%;float: left;text-align: center;" class="head_div head_div_0 active" onclick="get_order(0)">{$Think.lang.fbjy_gqdd}</span>
+    <span style="width: 30%;float: left;text-align: center;" class="head_div head_div_1"  onclick="get_order(1)">{$Think.lang.fbjy_bppdd}</span>
+    <span style="width: 30%;float: left;text-align: center;" class="head_div head_div_2"  onclick="get_order(2)">{$Think.lang.fbjy_ppdd}</span>
+</div>
+<div class="ods-list ods-list_0">
+    <ul id="olist_0">
+        <!-- <li>
+             <div class="ods-list-one">
+                 <span><span>购买 </span>USDT</span>
+                 <span><a href="/index/User/cancelled">已取消 <i class="iconfont icon-youjiantou-copy"></i></a></span>
+             </div>
+             <div class="ods-list-two">
+                 <p><span>单价 ￥6.42</span><span>10-29 09:02:06</span></p>
+                 <p><span>数量：15.57 USDT</span><span>￥ 100.00</span></p>
+             </div>
+         </li>
+         <li>
+             <div class="ods-list-one">
+                 <span><span>购买 </span>USDT</span>
+                 <span><a href="">已取消 <i class="iconfont icon-youjiantou-copy"></i></a></span>
+             </div>
+             <div class="ods-list-two">
+                 <p><span>单价 ￥6.42</span><span>10-29 09:02:06</span></p>
+                 <p><span>数量：15.57 USDT</span><span>￥ 100.00</span></p>
+             </div>
+         </li>
+         <li>
+             <div class="ods-list-one">
+                 <span><span>购买 </span>USDT</span>
+                 <span><a href="/index/User/success2">交易成功 <i class="iconfont icon-youjiantou-copy"></i></a></span>
+             </div>
+             <div class="ods-list-two">
+                 <p><span>单价 ￥6.42</span><span>10-29 09:02:06</span></p>
+                 <p><span>数量：15.57 USDT</span><span>￥ 100.00</span></p>
+             </div>
+         </li>
+         <li>
+             <div class="ods-list-one">
+                 <span><span>购买 </span>USDT</span>
+                 <span><a href="">交易成功 <i class="iconfont icon-youjiantou-copy"></i></a></span>
+             </div>
+             <div class="ods-list-two">
+                 <p><span>单价 ￥6.42</span><span>10-29 09:02:06</span></p>
+                 <p><span>数量：15.57 USDT</span><span>￥ 100.00</span></p>
+             </div>
+         </li>-->
+    </ul>
+</div>
+<div class="ods-list ods-list_1" style="display: none">
+    <ul id="olist_1"></ul>
+</div>
+<div class="ods-list ods-list_2" style="display: none">
+    <ul id="olist_2"></ul>
+</div>
+</body>
+<script>
+    var type = 0;
+    function get_order(newtype) {
+        $('.head_div').removeClass('active');
+        $('.head_div_'+newtype).addClass('active');
+        $('.ods-list').hide();
+        $('.ods-list_'+newtype).show();
+        type = newtype;
+    }
+    var page_0 = 0;
+    var status_0 = 0;
+
+    var page_1 = 0;
+    var status_1 = 0;
+
+
+    var page_2 = 0;
+    var status_2 = 0;
+    first_run();
+    function first_run(){
+
+        getmore(1);
+
+        getmore(2);
+        getmore(0);
+    }
+
+    // 下架订单
+    function back_order(id) {
+        layer.confirm(bi_qx, {
+            btn: ['YES','NO'] //按钮
+        }, function(){
+
+
+            $.ajax({
+                url: '/index/currencytrade/goback_shevles_order',
+                type: 'post',
+                dataType: 'json',
+                data: {
+                    'oid': id,
+                },
+                success: function (res) {
+                    layer.msg(res.msg);
+                    if(res.code == 1){
+                        setTimeout(function () {
+                            window.location.reload();
+                        },2000)
+
+                    }
+                }
+            });
+
+
+        }, function(){
+
+        });
+
+    }
+
+
+    function getmore(num){
+        var ajax_type;
+        if(num){
+            ajax_type = num;
+        }else{
+            ajax_type = type;
+        }
+
+        var ajax_page = eval("page_"+ajax_type);
+        var ajax_status = eval("status_"+ajax_type);
+
+        let url = '';
+        console.log('type',ajax_type);
+        if(ajax_type == 0){
+            url =  '/index/Currencytrade/ajax_get_sorder';
+        }else if(ajax_type == 1){
+            url = '/index/Currencytrade/ajax_get_waitin_order';
+        }else if(ajax_type == 2){
+            url =  '/index/Currencytrade/ajax_get_torder';
+        }
+
+
+
+        $.ajax({
+            url: url,
+            type: 'post',
+            dataType: 'json',
+            data: {
+
+                'page': ajax_page,
+                'status':ajax_status,
+
+            },
+            success: function (res) {
+                //console.log(res);
+
+                if(res.code == 1){
+                    if(res.page !== ajax_page){
+                        var html = '';
+                        if(ajax_type == 1){
+
+                            $.each(res.data,function (index,item) {
+
+                                html += ' <li>\n' +
+                                    '            <div class="ods-list-one">\n' +
+                                    '                <span><span>'+item.type+' </span>'+item.symbol+'</span>\n' +
+                                    '                <span>' ;
+                                if(item.status <= 1){
+                                    if(item.trade_type == 0){
+                                        html +=  '<a href="/index/User/payment.html?id='+item.id+'">';
+                                    }else{
+                                        html +=  '<a href="/index/User/qfk.html?id='+item.id+'">';
+                                    }
+                                }else if(item.status == 2){
+                                    html +=  '<a href="/index/User/success2.html?id='+item.id+'">';
+                                }
+                                else{
+                                    html +=    '<a href="/index/User/cancelled.html?id='+item.id+'">';
+                                }
+
+
+
+                                html += item.status_name+' <i class="iconfont icon-youjiantou-copy"></i></a></span>\n' +
+                                    '            </div>\n' +
+                                    '            <div class="ods-list-two">\n' +
+                                    '                <p><span>'+fbjy_dj+' '+item.icon+item.one_price+'</span><span>'+item.add_time+'</span></p>\n' +
+                                    '                <p><span>'+bi_sl+'：'+item.t_num+item.symbol+'</span><span>'+item.icon+item.all_pay+'</span></p>\n' +
+                                    '                <p><span>'+fbjy_ppddh+'：'+item.order_sn+'</span><span></span></p>\n' +
+                                    '                <p><span>'+fbjy_gqddh+'：'+item.old_order_sn+'</span><span></span></p>\n' +
+                                    '            </div>\n' +
+                                    '        </li>';
+
+
+
+
+                            })
+                        }else if(ajax_type == 2){
+                            $.each(res.data,function (index,item) {
+                                html += ' <li>\n' +
+                                    '            <div class="ods-list-one">\n' +
+                                    '                <span><span>' + item.type + ' </span>' + item.symbol + '</span>\n' +
+                                    '                <span>';
+                                if (item.status <= 1) {
+                                    if(item.status <= 1){
+                                        if(item.trade_type == 1){
+                                            html +=  '<a href="/index/User/payment.html?id='+item.id+'">';
+                                        }else{
+                                            html +=  '<a href="/index/User/qfk.html?id='+item.id+'">';
+                                        }
+                                    }
+                                    // html += '<a href="/index/User/qfk.html?id=' + item.id + '">';
+                                } else if (item.status == 2) {
+                                    html += '<a href="/index/User/success2.html?id=' + item.id + '">';
+                                } else {
+                                    html += '<a href="/index/User/cancelled.html?id=' + item.id + '">';
+                                }
+
+
+                                html += item.status_name + ' <i class="iconfont icon-youjiantou-copy"></i></a></span>\n' +
+                                    '            </div>\n' +
+                                    '            <div class="ods-list-two">\n' +
+                                    '                <p><span>'+fbjy_dj+' ' + item.icon + item.one_price + '</span><span>' + item.add_time + '</span></p>\n' +
+                                    '                <p><span>'+bi_sl+'：' + item.t_num + item.symbol + '</span><span>' + item.icon + item.all_pay + '</span></p>\n' +
+                                    '                <p><span>'+fbjy_ppddh+'：' + item.order_sn + '</span><span></span></p>\n' +
+                                    '                <p><span>'+fbjy_gqddh+'：' + item.old_order_sn + '</span><span></span></p>\n' +
+                                    '            </div>\n' +
+                                    '        </li>';
+
+
+                            });
+
+                        }else if(ajax_type == 0) {
+                            $.each(res.data,function (index,item) {
+
+
+                                html += ' <li>\n' +
+                                    '            <div class="ods-list-one">\n' +
+                                    '                <span>' ;
+                                if(item.trade_type == 1){
+                                    html +=  '<span >'+item.type+' </span>' ;
+                                }else{
+                                    html +=  '<span style="color: blue;">'+item.type+' </span>' ;
+                                }
+
+
+                                html += item.symbol+'</span>\n' +
+                                    '                <span>' ;
+
+                                html +=    '<a href="javascript:void(0)">';
+
+
+
+
+                                html += item.status_name+' </a></span>\n' +
+                                    '            </div>\n' +
+                                    '            <div class="ods-list-two">\n' +
+
+                                    '                <p><span>'+fbjy_dj+' '+item.icon+item.one_price+'</span><span>'+item.add_time+'</span></p>\n' +
+                                    '                <p><span>'+fbjy_ddh+'：'+item.order_sn+'</span><span>'+item.icon+item.all_pay+'</span></p>\n' +
+                                    '                <p><span>'+bi_sl+'：'+item.t_num+item.symbol+'</span><span>'+fbjy_wcj+'：'+item.isnotdone_num+item.symbol+'</span></p>\n' ;
+                                if(item.status == 0){
+                                   html += '                <p><span></span><button class="curo-cancel" onclick="back_order('+item.id+')">'+bi_qx+'</button></p>\n' ;
+                                }
+
+                                html += '            </div>\n' +
+                                    '        </li>';
+
+
+                            })
+                        }
+                        // console.log(ajax_type);
+                        // console.log('#olist_'+ajax_type);
+                        $('#olist_'+ajax_type).append(html);
+                        if(ajax_type == 0){
+                            page_0 = res.page;
+                            console.log('page0',page_0);
+                        }else if(ajax_type == 1){
+                            page_1 = res.page;
+                            console.log('page1',page_1);
+                        }else if(ajax_type == 2){
+                            page_2 = res.page;
+                            console.log('page2',page_2);
+                        }
+
+
+
+
+                    }
+
+
+                }
+
+            }
+        });
+    }
+
+    //curordes页面点击输入框弹出div
+    $("#olist_0").click(function () {
+        $(".cur-xs1").toggle();
+        $(".cur-xx1").toggle();
+        $(".curinputdiv1").hide();
+    })
+    $("#olist_1").click(function () {
+        $(".cur-xs2").toggle();
+        $(".cur-xx2").toggle();
+        $(".curinputdiv2").hide();
+    })
+    $("#olist_2").click(function () {
+        $(".cur-xs3").toggle();
+        $(".cur-xx3").toggle();
+        $(".curinputdiv3").hide();
+    })
+    $(".curinputdiv1>ul>li").click(function () {
+        $(".cur-xs1").toggle();
+        $(".cur-xx1").toggle();
+        $(".curinputdiv1").hide();
+        var id = $(this).data('id');
+        var name = $(this).html();
+        console.log(id);
+        if(status_0 !== id){
+            status_0 = id;
+            page_0 = 0;
+            $('#olist_0').html('');
+            getmore(0);
+            $('#search_curr_1').val(name)
+        }
+
+    });
+    $(".curinputdiv2>ul>li").click(function () {
+        $(".cur-xs2").toggle();
+        $(".cur-xx2").toggle();
+        $(".curinputdiv2").hide();
+        var id = $(this).data('id');
+        var name = $(this).html();
+        console.log(id);
+      /*  if(status_1 !== id){*/
+            status_1 = id;
+            page_1 = 0;
+            $('#olist_1').html('');
+            $('#search_curr_2').val(name)
+            getmore(1);
+        /*}*/
+    });
+    $(".curinputdiv3>ul>li").click(function () {
+        $(".cur-xs3").toggle();
+        $(".cur-xx3").toggle();
+        $(".curinputdiv3").hide();
+        var id = $(this).data('id');
+        var name = $(this).html();
+        console.log(id);
+        if(status_2 !== id){
+            status_2 = id;
+            page_2 = 0;
+            $('#olist_2').html('');
+            $('#search_curr_3').val(name)
+            getmore(2);
+        }
+    });
+    $(".cur-xs1").hide();
+    $(".curinputdiv1").hide();
+    $(".Search-input1").click(function () {
+        $(".cur-xs1").show();
+        $(".cur-xx1").hide();
+        $(".curinputdiv1").show();
+    });
+    $(".cur-xs2").hide();
+    $(".curinputdiv2").hide();
+    $(".Search-input2").click(function () {
+        $(".cur-xs2").show();
+        $(".cur-xx2").hide();
+        $(".curinputdiv2").show();
+    });
+    $(".cur-xs3").hide();
+    $(".curinputdiv3").hide();
+    $(".Search-input3").click(function () {
+        $(".cur-xs3").show();
+        $(".cur-xx3").hide();
+        $(".curinputdiv3").show();
+    });
+
+    $(".Search1").show();
+    $(".Search2").hide();
+    $(".Search3").hide();
+    $(".head_div_0").click(function () {
+        $(".cur-xs1").hide();
+        $(".cur-xx1").show();
+        $(".Search1").show();
+        $(".Search2").hide();
+        $(".Search3").hide();
+    });
+
+    $(".head_div_1").click(function () {
+        $(".cur-xs2").hide();
+        $(".cur-xx2").show();
+        $(".Search1").hide();
+        $(".Search2").show();
+        $(".Search3").hide();
+    });
+    $(".head_div_2").click(function () {
+        $(".cur-xs3").hide();
+        $(".cur-xx3").show();
+        $(".Search1").hide();
+        $(".Search2").hide();
+        $(".Search3").show();
+    });
+
+</script>
+<script src="/index/js/m-fbjy.js"></script>
+</html>

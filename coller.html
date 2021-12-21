@@ -1,0 +1,88 @@
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<script src="/static/public/js/jquery.js"></script>
+<script type="text/javascript">
+	var dataisclose = 0;
+	var orderisclose = 0;
+	var allotisclose = 0;
+	var free_order = 0;
+	setInterval('datanewisclose()', 1000);
+	setInterval('ordernewisclose()', 1500);
+	//setInterval('add_order()', 100);
+	//setInterval('allotorderisclose()', 1500);
+	//setInterval('checkbal()', 3000);
+	setInterval('timing_free_order()', 1500);
+	setInterval('overnight()',1500);
+	//********产品更新*********//
+	function datanewisclose(){
+		if(dataisclose == 0){
+			flash_product();
+		}
+	}
+
+    function flash_product(){
+    	dataisclose = 1;
+		$.get("/index/api/getdate", {}, function() {
+			dataisclose = 0;
+		});
+
+  	}
+  	//********订单更新*********//
+  	function ordernewisclose() {
+		if(orderisclose == 0){
+			flash_order();
+		}
+	}
+
+	function flash_order() {
+		orderisclose = 1;
+		$.get("/index/api/order", {}, function() {
+			orderisclose = 0;
+		});
+	}
+
+	//********模拟更新*********//
+
+	function add_order() {
+		
+		$.get("/index/test/addorder");
+	}
+
+	//********订单对冲*********//
+  	function allotorderisclose() {
+		if(allotisclose == 0){
+			allot_order();
+		}
+	}
+
+	function allot_order() {
+		allotisclose = 1;
+		$.get("/index/api/allotorder", {}, function() {
+			allotisclose = 0;
+		});
+	}
+	
+	
+	function checkbal(){
+	
+		$.get("/index/api/checkbal");
+		
+	}
+
+	function overnight(){
+		$.get("/index/api/overnight");
+	}
+
+	function timing_free_order(){
+		// $.get("index/api/timing_free_order");
+		free_order = 1;
+		$.get("index/api/timing_free_order",{},function(){
+			free_order = 0;
+		});
+	}
+</script>
+<script>
+   setInterval("window.location.reload();",1000*60*20);
+</script>
+<h>
+	波动已经打开，请勿关111闭此页面。
+</h>

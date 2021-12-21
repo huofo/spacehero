@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link href="/index/css/index_for.css" rel="stylesheet" type="text/css">
+    <!--        夜间白天切换的文件-->
+    {if $_SESSION["night"]=="yes"}<link rel="stylesheet" href="/index/css/assets-fabi.css" >{/if}
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+    <title>法币账户</title>
+</head>
+<body style="background: black;">
+    <style>
+        *{
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+        .clear{
+            clear: both;
+        }
+        .daohangt{
+            width: 100%;
+            height: 54px;
+            font-size: 0.9rem;
+            background-color: #663366;
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 999;
+            display: flex;
+        }
+        .child{
+            height: auto;
+            width: 20%;
+            display: inline-block;
+            text-align: center;
+            flex: 1;
+            line-height: 40px;
+            color: white;
+        }
+        .neirong{
+            width: 100%;
+            height: 110px;
+            margin-top: 55px;
+            background-color: #663366;
+        }
+        .neirongs{
+            width: 100%;
+            height: 100%;
+            
+            float: left;
+        }
+        .neirongy{
+            width: 30%;
+            height: 100%;
+            
+            float: right;
+        }
+
+        .childs{
+            margin-left: 5.5%;
+            padding: 0.25rem;
+            font-size: 0.72rem;
+            color: white;
+        }
+        .childs:nth-child(1){
+            color: #999999;
+        }
+        .childs:nth-child(3){
+            color: #999999;
+        }
+        /* 以上为导航和78996样式 */
+        .xuni{
+            width: 100%;
+            margin-bottom: 70px;
+            background-color: black;
+            position: absolute;
+        }
+        .neirongt{
+            width: 95%;
+            height: 85px;
+            background-color: #6666;
+            margin: auto;
+            margin-top: 2%;
+            border-radius: 5px;
+        }
+        .child-btc{
+            width: 100%;
+            height: 30%;
+        }
+        .child-btc-zuo{
+            font-weight: 600;
+            float: left;
+            color: #3399ff;
+            margin-left: 5px;
+        }
+        .child-btc-you{
+            float: right;
+            margin-right: 5px;
+        }
+        .child-keyong{
+            width: 100%;
+            height: 30%;
+            display: flex;
+            text-align: center;
+        }
+        .childkeyongs{
+            color: #dcdcdc;
+            text-align: center;
+            display: block;
+            font-size: 0.7rem;
+
+        }
+        .wl_flex{
+            display:-webkit-box;/*Chrome4+,Safari3.1,iOSSafari3.2+*/
+            display:-moz-box;/*Firefox17-*/
+            display:-webkit-flex;/*Chrome21+,Safari6.1+,iOSSafari7+,Opera15/16*/
+            display:-moz-flex;/*Firefox18+*/
+            display:-ms-flexbox;/*IE10*/
+            display:flex;
+        }
+        .wl_align_center{
+            -webkit-box-align: center;
+            -webkit-align-items: center;
+            align-items: center;
+        }
+        .wl_align-items-start{
+            -ms-flex-align: start;
+            align-items: flex-start;
+        }
+        .wl_justify_between{
+            -webkit-justify-content: space-between;
+            -moz-justify-content: space-between;
+            -ms-justify-content: space-between;
+            -webkit-box-pack: justify;
+            justify-content: space-between;
+        }
+        .wl_justify-content{
+            -webkit-justify-content: space-around;
+            justify-content: space-around;
+        }
+        .wl_justify-content-start{
+            -ms-flex-pack: start;
+            justify-content: flex-start;
+        }
+        .child-shuzis{
+            width: 100%;
+            height: 30%;
+            display: flex;
+            
+        }
+        .childkeyongg{
+            width: 33.33%;
+            display: block;
+            font-size: 0.8rem;
+            margin-right: 0.9rem;
+
+        }
+        .childkeyongg:nth-child(1){
+            text-align: left;
+        }
+        .childkeyongg:nth-child(2){
+            text-align: center;
+        }
+        .childkeyongg:nth-child(3){
+            text-align: right;
+        }
+        .neirongy img{
+            width: 20px;
+            height: 15px;
+            margin-top: 5px;
+            float: right;
+            margin-right: 10px;
+        }
+        .neirongy a:nth-child(2){
+            width: 20px;
+            height: 20px;
+            float: right;
+            margin-right: -1.8rem;
+            margin-top: 3.5rem;
+        }
+        /* 试验样式 */
+        .child li{
+            list-style: none;
+            list-style-type: none;
+        }
+        .child a{
+            color: #afeeee;
+            font-weight: 600;
+        }
+        .child li>a{
+            text-decoration: none;
+        }
+        .child a:hover{
+            color: white;
+        }
+        .bottom-nav ul li {
+            height: 50px!important;
+        }
+        .child {line-height: inherit;}
+        .bottom-nav ul li a {font-size: 12px;}
+    </style>
+    <!-- 头部导航 -->
+    <div class="daohangt wl_align_center wl_justify-content">
+        <div class="wl_flex wl_align_center wl_justify-content-start" style="width: 100%;">
+            <div class="child"><li><a href="/index/Assets/bibi">{$Think.lang.ti_bibi}</a></li></div>
+            <div class="child"><li><a href="/index/Assets/heyue">{$Think.lang.bii_hy}</a></li></div>
+            <div class="child"><li><a href="/index/Assets/fabi" style="color: #ffffff">{$Think.lang.bii_fb}</a></li></div>
+            <div class="child"><li><a href="/index/Assets/miaoheyue">{$Think.lang.bii_mhy}</a></li></div>
+        </div>
+    </div>
+    <!-- 头部导航下面内容 -->
+    <div class="neirong">
+        <div class="neirongs">
+        <div class="childs">{$Think.lang.bii_zcc}（$）</div>
+        <div class="childs" style="font-size: 0.8rem;font-weight: 600;">
+            {$all_money}
+        </div>
+        <div class="childs">
+            <span style="font-size: 1rem;">{$Think.lang.fb_fbzh}</span> {$Think.lang.bii_zcc}（$）</div>
+        <div class="childs" style="font-size: 0.8rem;font-weight: 600;">
+             {$allbibi_money}
+        </div>
+        </div>
+        <!-- 小眼睛 -->
+        <div class="neirongy">
+
+        </div>
+        <div class="clear"></div>
+    </div>
+    <!-- 以上为导航和·78996内容 -->
+    <div class="xuni">
+        {foreach $bibi as $k=>$v}
+        <div class="neirongt">
+            <div class="child-btc">
+
+                <div class="child-btc-zuo">
+                    {$v.cp}
+                </div>
+                <div class="child-btc-you">
+                    <a href="{:url('assets/tradeaccount',array('qb'=>3,'cp'=>$v.cp))}"><img src="/application/index/view/assets/youjiantou.png" style="height: 23px;"></a>
+                </div>
+            </div>
+            <div class="child-keyong wl_align_center wl_justify_between" style="padding: 0 5px;">
+                <div class="childkeyongs">{$Think.lang.bii_ky}</div>
+                <div class="childkeyongs" style="margin-left: 2.5rem;">{$Think.lang.bii_dj}</div>
+                <div class="childkeyongs" style="margin-right: 5px;">{$Think.lang.bii_zh}（$）</div>
+            </div>
+            <div class="child-shuzis wl_align_center wl_justify_between" style="padding: 0 5px;color: white;">
+                <div class="childkeyongg">{$v.sl}</div>
+                <div class="childkeyongg">{$v.dj}</div>
+                <div class="childkeyongg">
+                    {:isset($v.zhehe)?$v.zhehe:'0'}
+                </div>
+            </div>
+        </div>
+        {/foreach}
+    </div>
+    <!-- 底部导航 -->
+    <style>
+        .bottom-nav ul li {
+            width: 20%;
+
+        }
+    </style>
+
+    <link rel="stylesheet" href="/index/iconfont/iconfont.css">
+    <script type="text/javascript" src="/index/iconfont/iconfont.js"></script>
+    <link rel="stylesheet" href="/index/bibi/iconfont.css">
+
+    <div class="bottom-nav">
+        <ul>
+            <li>
+                <a id="index" href="{:url('index/index')}">
+                    <i></i>
+                    <p>{$Think.lang.ti_sy}</p>
+                </a>
+            </li>
+
+            <li>
+                <a id="token" href="{:Url('/index/trades/index/token/'.$token)}">
+                    <i></i>
+                    <p>{$Think.lang.ti_hq}</p>
+                </a>
+            </li>
+
+            <li>
+                <a id="bibi" href="{:url('/index/goods/bibi')}">
+                    <i></i>
+                    <p>{$Think.lang.ti_bibi}</p>
+                </a>
+            </li>
+
+
+            <li>
+                <a id="lever" href="{:url('/index/goods/lever')}">
+                    <i></i>
+                    <p>{$Think.lang.ti_hy}</p>
+                </a>
+            </li>
+
+            <li>
+                <a id="bibi2" href="{:url('index/Assets/bibi')}" class="cur">
+                    <i></i>
+                    <p>{$Think.lang.ti_zc}</p>
+                </a>
+            </li>
+            <div class="clear"></div>
+        </ul>
+    </div>
+    <script type="text/javascript">
+        $(document).ready(function() {
+            //底部导航
+            $('.bottom-nav li').click(function() {
+                $(this).addClass("butcour").siblings().removeClass("butcour");
+            })
+        });
+    </script>
+</body>
+</html>

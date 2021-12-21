@@ -1,0 +1,122 @@
+﻿<html style="font-size: 120px;">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+<!-- 是否启用全屏模式 -->
+<meta name="apple-mobile-web-app-capable" content="yes">
+<!-- 全屏时状态颜色设置 -->
+<meta name="apple-mobile-web-status-bar-style" content="white">
+<!-- 禁用电话号码自动识别 -->
+<meta name="format-detection" content="telephone=no">
+<!--禁止读取本地缓存模板-->
+<meta http-equiv="Pragma" contect="no-cache">
+<script type="text/javascript">
+window.onload=function(){
+//设置适配rem
+var change_rem = ((window.screen.width > 450) ? 450 : window.screen.width)/375*100;
+document.getElementsByTagName("html")[0].style.fontSize=change_rem+"px";
+window.onresize = function(){
+    change_rem = ((window.screen.width > 450) ? 450 : window.screen.width)/375*100;
+    document.getElementsByTagName("html")[0].style.fontSize=change_rem+"px";
+}
+}
+
+</script>
+<title>提币</title>
+<link href="/index/css/index_for.css" rel="stylesheet" type="text/css">
+<!--<link href="__HOME__/css/pay1.css" rel="stylesheet" media="screen">-->
+<script type="text/javascript" src="__HOME__/js/jquery-3.2.1.min.js"></script>
+<script type="text/javascript" src="__HOME__/js/lk/user.js"></script>
+
+<link rel="stylesheet" href="/index/iconfont/iconfont.css">
+<script type="text/javascript" src="/index/iconfont/iconfont.js"></script>
+
+
+<style>
+    body{background: #FFFFFF;}
+    .bar-stable{width: 100%; height: 40px; position: fixed;top: 0;left: 0;z-index: 3;border-bottom: 1px solid #F1F1F1!important;}
+    .bottom-nav ul li{float: left;text-align: center;height: 0.5rem;padding: 1% 0 0;}
+    .headerbar .header-item{color: black!important;}
+    .bar-header .close{color: black!important;}
+</style>
+</head>
+
+<body id="tibi">
+    <ion-nav-bar class="bar-stable headerbar nav-bar-container" nav-bar-transition="ios" nav-bar-direction="swap" nav-swipe="">
+        <div class="nav-bar-block" nav-bar="active">
+            <ion-header-bar class="bar-stable headerbar bar bar-header" align-title="center">
+                <div class="title title-center header-item" style="transition-duration: 0ms; transform: translate3d(0px, 0px, 0px);">提币</div>
+                <a class="close" href="javascript:void(0)" onclick="javascript:history.back(-1);">
+                    <i class="iconfont icon-back_icon"></i>
+                </a>
+            </ion-header-bar>
+        </div>
+    </ion-nav-bar>
+
+    <div style="width: 100%;height: 40px"></div>
+    <div class="plr15 ft14 mt20">
+        <from id="tibi-from">
+            <div class="tibi-biz">
+                <h1>提币币种</h1>
+            </div>
+            <div class="selectbiz">
+                <select>
+                    <option value ="USDT">USDT</option>
+                    <option value ="BTC">BTC</option>
+                    <option value="ETH">ETH</option>
+                </select>
+            </div>
+            <div class="tibi-biz mt20">
+                <h1>提币地址</h1>
+            </div>
+            <div class="tibi-address">
+                <input type="text" placeholder="输入或长按粘贴地址" class="ft14 address">
+            </div>
+            <div class="tibi-biz mt20">
+                <h1>提币数量</h1>
+            </div>
+            <div class="tibi-sl">
+                <div class="flex between alcenter">
+                    <input type="number" placeholder="最小提币数量2.00" class="ft14 count">
+                    <div>
+                        <span class="white_gray title">USDT</span>
+                        <span>|</span>
+                        <span data-localize="deals.all" class="all_in">全部</span>
+                    </div>
+                </div>
+            </div>
+            <div class="tibi-balance">
+                <p>可用</p>
+                <p class=" ft14">
+                    <span class="balance-num">4500.23000000</span>
+                    <span class="title">USDT</span>
+                </p>
+            </div>
+            <div class="tibi-biz mt20">
+                <h1>手续费</h1>
+            </div>
+            <div class="tibi-fee">
+                <span style="color: rgb(185, 185, 185);">手续费</span>
+                <article>
+                    <span class="ratenum" style="color: rgb(98, 117, 154);">1.0000</span>
+                    <span class="title" style="color: rgb(98, 117, 154);">USDT</span>
+                </article>
+            </div>
+            <div class="tibi-biz mt20">
+                <h1>到账数量</h1>
+            </div>
+            <div class="tibi-fee">
+                <span style="color: rgb(185, 185, 185);">到账数量</span>
+                <article>
+                    <span class="reach-num" style="color: rgb(98, 117, 154);">4499.22</span>
+                    <span class="title" style="color: rgb(98, 117, 154);">USDT</span>
+                </article>
+            </div>
+            <input class="mention tc ft14 mt20" value="提币" />
+        </from>
+    </div>
+
+
+    <script type="text/javascript" src="/index/js/element-ui.js"></script>
+</body>
+</html>

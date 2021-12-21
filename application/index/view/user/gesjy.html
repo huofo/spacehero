@@ -1,0 +1,352 @@
+<html style="font-size: 120px;">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+    <!-- 是否启用全屏模式 -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <!-- 全屏时状态颜色设置 -->
+    <meta name="apple-mobile-web-status-bar-style" content="white">
+    <!-- 禁用电话号码自动识别 -->
+    <meta name="format-detection" content="telephone=no">
+    <!--禁止读取本地缓存模板-->
+    <meta http-equiv="Pragma" contect="no-cache">
+    {include file="fbjy_js" /}
+    <script type="text/javascript">
+        window.onload=function(){
+//设置适配rem
+            var change_rem = ((window.screen.width > 450) ? 450 : window.screen.width)/375*100;
+            document.getElementsByTagName("html")[0].style.fontSize=change_rem+"px";
+            window.onresize = function(){
+                change_rem = ((window.screen.width > 450) ? 450 : window.screen.width)/375*100;
+                document.getElementsByTagName("html")[0].style.fontSize=change_rem+"px";
+            }
+        }
+
+    </script>
+    <title>{$Think.lang.ud_cb}</title>
+    <link href="/index/css/index_for.css" rel="stylesheet" type="text/css">
+    <!--<link href="__HOME__/css/pay1.css" rel="stylesheet" media="screen">-->
+    <script type="text/javascript" src="__HOME__/js/jquery-3.2.1.min.js"></script>
+    <script type="text/javascript" src="__HOME__/js/lk/user.js"></script>
+    <link href="/index/css/uploadImg.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="https://at.alicdn.com/t/font_1805932_ysrcp4y0uy9.css">
+    <link rel="stylesheet" href="/static/index/layui/css/modules/layer/default/layer.css?v=3.1.1" >
+    <!--layui插件-->
+    <link href="__HOME__/layui/css/layui.css" rel="stylesheet">
+    <link rel="stylesheet" href="/index/css/optional.css" >
+    <script src="__HOME__/layui/layui.js"></script>
+    <!--图标字体插件-->
+    <link rel="stylesheet" href="/index/iconfont/iconfont.css">
+
+    {if $_SESSION["night"]=="yes"}<link rel="stylesheet" href="/index/css/optional.css" >{else} <link rel="stylesheet" href="/index/css/user-gesjy.css" >{/if}
+
+<!--    黑夜模式-->
+<!--    <link rel="stylesheet" href="/index/css/user-gesjy.css" >-->
+    <script type="text/javascript" src="/index/iconfont/iconfont.js"></script>
+    <!--复制插件-->
+    <script type="text/javascript" src="/index/js/jquery.min.js"></script>
+    <script type="text/javascript" src="/index/js/clipboard.js"></script>
+    <script type="text/javascript" src="/index/js/clipboard.min.js"></script>
+    <script type="text/javascript" src="/static/index/layui/lay/modules/layer.js"></script>
+    <style>
+        body{background: #f4f8fb;font-size: 14px}
+        .bar-stable{width: 100%; height: 40px; position: fixed;top: 0;left: 0;z-index: 3;background: #102030;}
+        .bottom-nav ul li{float: left;text-align: center;height: 0.5rem;padding: 1% 0 0;}
+        .headerbar .header-item{color: #fff; background-color: #102030; }
+        .bar-header .close{color: #fff!important;}
+        .cb-top{
+            padding: 15px;
+            border-radius: 4px;
+            background: #102030;
+        }
+        .czbt_fz{
+            width: 80px;
+            height: 30px;
+            margin: 0 auto;
+            line-height: 30px;
+            border-radius: 4px;
+            background: #1881d2;
+            font-size: 12px;
+            color: #ffffff!important;
+        }
+        .cz-input-box{
+            margin-top: 20px;
+            text-align: left;
+        }
+        .cz-input-box .blueinput{
+            width: 100%;
+            padding: 0 5%;
+            height: 30px;
+            line-height: 30px;
+            border: 1px solid #007aff;
+            background: none;
+            color: #ffffff;
+            box-sizing: border-box;
+            margin-top: 10px;
+        }
+        .czbt_tj{
+            width: 80px;
+            height: 30px;
+            line-height: 30px;
+            border-radius: 4px;
+            background: #1881d2;
+            font-size: 12px;
+            color: #ffffff!important;
+            border: none;
+        }
+        #pingzheng {
+            position: absolute;
+            width: 100px;
+            height: 100px;
+            top: 0;
+            left: 0;
+            z-index: 1;
+        }
+        .upload-content .file {
+            position: relative;
+            display: inline-block;
+            border: 1px dashed #DEDEDE;
+            border-radius: 4px;
+            width: 100px;
+            height: 100px;
+            line-height: 100px;
+            text-align: center;
+            /* background-color: #fff; */
+            vertical-align: top;
+            margin: 7px;
+        }
+        .cz-input-box .blueinput {color: black;}
+        .headerbar .header-item {background-color: #FFFFFF; color: #0d1721;}
+        .bar-header .close {color: #0d1721;}
+        .cb-top {background-color: #FFFFFF;}
+        .cb-top>span{ color: #0d1721; background-color: #FFFFFF;}
+        .tb-two>div { color: #0d1721!important; }
+        .tb-two{width: 100%;height: 34px; margin-top: 10px;}
+        .tb-two>div{width: 33.3%; height: 34px; font-size: 12px; color: #f2f5ff;text-align: center;line-height: 34px;}
+        .tb-two>div.active{background-color: #007aff;}
+        .tb-two>div{background-color: #102030;width: 100% ;float: right;}
+        .tb-two>div.active { color: #FFFFFF!important; background-color: #eb373a!important;}
+        .czbt_fz {background-color: #eb373a;}
+        .cz-input-box .blueinput{border-color: #0d1721;}
+        .czbt_tj{background-color: #eb373a;}
+        .m-bou>span{color: #0d1721;}
+    </style>
+</head>
+
+<body id="cbxq">
+<ion-nav-bar class="bar-stable headerbar nav-bar-container" nav-bar-transition="ios" nav-bar-direction="swap" nav-swipe="">
+    <div class="nav-bar-block" nav-bar="active">
+        <ion-header-bar class="bar-stable headerbar bar bar-header" align-title="center">
+            <div class="title title-center header-item" style="transition-duration: 0ms; transform: translate3d(0px, 0px, 0px);">{$Think.lang.pa_cz}AGC</div>
+            <a class="close" href="javascript:void(0)" onClick="javascript:history.back(-1);">
+                <i class="iconfont icon-back_icon"></i>
+            </a>
+        </ion-header-bar>
+    </div>
+</ion-nav-bar>
+
+<div style="width: 100%;height: 40px"></div>
+
+
+<div class="plr15" style="padding: 20px 15px 0;color: #9fbedc;font-size: 12px;box-sizing: border-box">
+    <div class="cb-top wl_flex wl_align_center wl_justify_between" style="display: none">
+        <span>{$Think.lang.ra_bz}</span>
+        <span>USDT</span>
+    </div>
+
+
+    <div class="tb-two wl_flex wl_justify_between">
+        <div date-type="0" style="background-color: #FFFFFF;display: none">ERC20</div>
+        <div date-type="1" style="background-color: #FFFFFF;display: none">OMNI</div>
+        <div  class="active" date-type="2" style="background-color: #FFFFFF;">TRC20</div>
+    </div>
+
+
+    <div class="gesjy-whole" style="margin-top: 10px;background: #FFFFFF;padding: 20px 15px">
+
+        <div class="codebox">
+            <div style="width: 100%;height: 1px"></div>
+            <div class="codes wl_flex wl_align_center wl_justify-content" style="margin: 40px auto 10px;height: 220px;overflow: hidden">
+                <div id="code" style="padding: 0;margin: 0 auto;width: 218px;height: 218px;border: none">
+                    <img id="urlimg" src="{$url}" style="width: 218px;height: 218px"  />
+                </div>
+            </div>
+        </div>
+
+        <div class="address tc plr10 ft14" id="cz_cbadz" style="color: #0d1721;">{$urltext}</div>
+        <div class="copy blue tc mt10 ft14 czbt_fz" data-clipboard-action="copy" data-clipboard-target="#cz_cbadz">{$Think.lang.cb_fzdz}</div>
+
+
+
+        <div class="upload-content" style="text-align: left;background: none">
+            <h3 style="padding-left:0;color:#000">{$Think.lang.fbjy_scpz}</h3>
+            <div class="content-img" style="text-align: center">
+                <ul class="content-img-list" style="height: auto;text-align: left"></ul>
+                <div class="file"  id="upimg">
+                    <i class="gcl gcladd"></i>
+                    <img id="pingzheng" />
+                    <input type="hidden" name="skewmurl" id="skewmurl" >
+                </div>
+            </div>
+        </div>
+
+
+
+
+        <div class="cz-input-box">
+            <p>
+                <span style="color: #0d1721;">{$Think.lang.fbjy_scpz}</span>
+            </p>
+            <input type="number" class="blueinput" id="num" placeholder="{$Think.lang.cb_qsrcbsl}" />
+        </div>
+
+
+
+
+
+
+        <div style="width: 100%;text-align: center">
+            <button type="button" class="copy blue tc mt10 ft14 czbt_tj" id="tijiao">{$Think.lang.cb_tjsh}</button>
+        </div>
+    </div>
+    <div class="ft12 colorGrey m-bou" style="    margin: 20px 0;color: #9fbedc;">
+        <span>{$Think.lang.cb_butt1}</span> <span class="titles">USDT（TRC20）</span><span>{$Think.lang.ti_zc}</span><span>{$Think.lang.cd_butt2}</span><br>
+        <!-- <span>{$Think.lang.ra_but3}</span><br>-->
+        <span>{$Think.lang.cd_butt4}</span><br>
+
+        <!-- <span>{$Think.lang.ra_but5}：<span>100 </span><span class="titles">USDT</span>{$Think.lang.ra_but6}</span><br>-->
+
+
+        <!--   <span>{$Think.lang.ra_but7}</span><br>-->
+        <!--     <span>{$Think.lang.ra_but8}</span><br>-->
+        <span>{$Think.lang.cd_butt9}</span>
+
+    </div>
+</div>
+
+<script>
+
+    layui.use(['layer', 'form'], function(){
+        var layer = layui.layer
+            ,form = layui.form;
+    });
+
+    //复制文本 JS
+    var clipboard = new Clipboard('.czbt_fz');
+    clipboard.on('success', function(e) {
+        layer.msg(cd_fzcg);
+        console.log(cd_fzcg);
+        console.log(e);
+    });
+    clipboard.on('error', function(e) {
+        layer.msg(cd_fzsb);
+        console.log(cd_fzsb);
+        console.log(e);
+    });
+
+    //新选项卡切换效果
+    $(function () {
+
+        $(".tb-two div").click(function () {
+            $(".tb-two div").removeClass('active');
+            $(this).addClass('active');
+            var types = $(this).attr('date-type');
+
+            $('#urlimg').attr('src','');
+            $('#cz_cbadz').html(cd_hqz);
+            $('#alt').attr('src',cd_hqz);
+            $.ajax({
+                type:'POST',
+                url:'/index/user/url',
+                data:{types:types},
+                success: function(msg){
+                    var msg = eval("(" + msg + ")");
+                    $('#cz_cbadz').html(msg.urltext);
+                    $('#urlimg').attr('src',msg.url);
+
+                }
+            })
+
+        })
+    })
+
+
+
+    layui.use('upload', function(){
+        var upload = layui.upload;
+
+        //执行实例
+        var uploadInst = upload.render({
+            elem: '#upimg' //绑定元素
+            ,url: '/index/user/uppzimg' //上传接口
+            , exts: 'jpg|png|gif|jpeg|'        //可传输文件的后缀
+            , accept: 'file'              //video audio images
+            ,done: function(res){
+                if(res.error==1){
+                    layer.msg(res.msg);
+                }else{
+                    layer.msg(res.msg);
+                    $("#skewmurl").val(res.file_url);
+                    $("#pingzheng").attr('src',"/public/uploads/"+res.file_url);
+                }
+                //上传完毕回调
+            }
+            ,error: function(){
+                layer.msg(ue_scsbqcs);
+                //请求异常回调
+            }
+        });
+    });
+
+
+    $("#tijiao").click(function(){
+        var num =  $("#num").val();
+        var usdt_type = $(".tb-two .active").html()
+        var cbdz =  $('#cz_cbadz').html();
+        if(num==''||num<=0){
+            layer.msg(bibi_qsrczsl);return;
+        }
+
+        if(cbdz==''){
+            layer.msg(fbjy_qxzcbfs);return;
+        }
+
+        var pingzheng =  $("#skewmurl").val();
+
+
+        if(pingzheng==''){
+            layer.msg(fbjy_scpz);return;
+        }
+
+
+
+        $.ajax({
+            url: '/index/user/dorecharge',
+            type: 'post',
+            data: {num:num,cbdz:cbdz,usdt_type:usdt_type},
+            success: function(res){
+                res =$.parseJSON(res);
+
+                if(res.error==1){
+                    layer.msg(res.msg);
+                }else{
+
+                    layer.msg(cb_tjcg, {
+                        time: 1500,
+                        end: function(){
+                            window.location.href="index/user/rechange";
+                        }
+                    });
+
+                }
+
+            }
+        });
+
+    });
+
+
+
+</script>
+</body>
+</html>

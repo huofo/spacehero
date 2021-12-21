@@ -1,0 +1,15 @@
+body{background-color: rgb(22,31,62);}
+.ods-hode>div:nth-child(1)>a>i{color: #ffffff;}
+.ods-hode>div:nth-child(2){color: #ffffff;}
+.ods-list>ul>li {border-bottom: 1px solid #333333;}
+.cur-top{color: #dddddd;}
+.ods-list-one>span:nth-child(1){color: #eeeeee;}
+.ods-list-two>p {color: #eeeeee;}
+.ods-list-one a {color: #ffffff;}
+.ods-list-two>p:nth-child(2)>span:nth-child(2) {color: #ffffff!important;}
+.curo-cancel{background-color: #eeeeee;}
+.curinputdiv {background-color: #999999!important;}
+.curinputdiv>ul>li {color: #eeeeee}
+.cur-input{color: #eeeeee;}
+.cur-xx,.cur-xs{color: #f7f7f7!important;}
+

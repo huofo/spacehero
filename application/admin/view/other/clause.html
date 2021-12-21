@@ -1,0 +1,96 @@
+{include file="head" /}
+<!-- 编辑器引入结束 -->
+{include file="menu" /}
+<!--main content start-->
+      <section id="main-content">
+          <section class="wrapper">
+
+
+          <div class="row">
+                  <div class="col-sm-12">
+                      <aside class="profile-info col-lg-9">
+                      <section class="panel">
+
+                          <div class="panel-body bio-graph-info">
+                              <h1>其他配置</h1>
+                              <form class="form-horizontal" role="form" method="post" id="formid">
+                                  <div class="form-group">
+                                      <label class="col-lg-2 control-label">客服号码</label>
+                                      <div class="col-lg-6">
+                                          <input type="text" class="form-control" name="service_number"  value="{$service_number?$service_number:''}"  >
+                                      </div>
+                                  </div>
+                                  <div class="form-group">
+                                      <label class="col-lg-2 control-label">客服QQ</label>
+                                      <div class="col-lg-6">
+                                          <input type="text" class="form-control" name="service_qq"  value="{$service_qq?$service_qq:''}"  >
+                                          <div class="alert alert-block alert-danger fade in" style="margin:10px 0 0 0 ">
+                                             <strong>说明：</strong>客服QQ，如果还未开通QQ推广功能，请到<a href="http://shang.qq.com/v3/widget.html" target="_blank">http://shang.qq.com/v3/widget.html</a>网站免费开通QQ推广功能
+                                          </div>
+                                      </div>
+                                  </div>
+                                  <div class="form-group">
+                                      <label class="col-lg-2 control-label">加盟热线</label>
+                                      <div class="col-lg-6">
+                                          <input type="text" class="form-control" name="ally_number"  value="{$ally_number?$ally_number:''}"  >
+                                      </div>
+                                  </div>
+                                  <div class="form-group">
+                                      <label class="col-lg-2 control-label">加盟QQ</label>
+                                      <div class="col-lg-6">
+                                          <input type="text" class="form-control" name="ally_qq"  value="{$ally_qq?$ally_qq:''}"  >
+                                      </div>
+                                  </div>
+                                  <div class="form-group">
+                                      <label class="col-lg-2 control-label">风险提示</label>
+                                      <div class="col-lg-6">
+                                          <textarea name="risk"  class="form-control" cols="30" rows="10">{$risk?$risk:''}</textarea>
+                                          <div class="alert alert-block alert-danger fade in" style="margin:10px 0 0 0 ">
+                                             <strong>风险提示：</strong>风险提示是显示在网站首页底部，底部菜单栏上端
+                                          </div>
+                                      </div>
+                                      
+                                  </div>
+                                  <div class="form-group">
+                                      <label class="col-lg-2 control-label">版权</label>
+                                      <div class="col-lg-6">
+                                          <input type="text" class="form-control" name="copy"  value="{$copy?$copy:''}"  >
+                                          <div class="alert alert-block alert-danger fade in" style="margin:10px 0 0 0 ">
+                                             <strong>网站版权：</strong>可以不输入
+                                          </div>
+                                      </div>
+                                  </div>
+                                  <div class="form-group">
+                                      <div class="col-lg-offset-2 col-lg-10">
+                                          <input type="submit" value="提交"  onclick="return service_conf(this.form)" class="btn btn-success">
+                                      </div>
+                                  </div>
+
+                              </form>
+                          </div>
+                      </section>
+
+                  </aside>
+                  </div>
+
+          </div>
+
+
+
+
+          </section>
+      </section>
+      <!--main content end-->
+  </section>
+
+
+{include file="foot" /}
+<script>
+  function service_conf(form){
+    var formurl = "{:Url('other/config')}";
+    var data = $('#formid').serialize();
+    var locurl = "{:Url('other/other')}";
+    WPpost(formurl,data,locurl);
+    return false;
+  }
+</script>

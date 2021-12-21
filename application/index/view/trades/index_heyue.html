@@ -1,0 +1,176 @@
+﻿{include file="head" /}
+{include file="alyslt" /}
+<!--        夜间白天切换的文件-->
+<script>
+    var ti_wlfm='{$Think.lang.ti_wlfm}';
+</script>
+{if $_SESSION["night"]=="yes"}<link rel="stylesheet" href="/index/css/trades-index.css" >{/if}
+<body ng-app="starter" ng-controller="AppCtrl" class="grade-a platform-browser platform-win32 platform-ready">
+
+<div id="mask"></div>
+<ion-nav-bar class="bar-stable headerbar nav-bar-container" nav-bar-transition="ios" nav-bar-direction="none" nav-swipe="">
+    <div class="nav-bar-block" nav-bar="cached"><ion-header-bar class="bar-stable headerbar bar bar-header" align-title="center"><div class="title title-center hangqing header-item" style="transition-duration: 0ms; transform: translate3d(-176.414px, 0px, 0px); opacity: 0;"></div><div class="buttons buttons-right" style="transition-duration: 0ms; opacity: 0;"></div></ion-header-bar></div><div class="nav-bar-block" nav-bar="active"><ion-header-bar class="bar-stable headerbar bar bar-header" align-title="center"><div class="buttons buttons-left" style="transition-duration: 0ms;"></div><div class="title hangqing title-center header-item" style="transition-duration: 0ms; transform: translate3d(0px, 0px, 0px);">{$Think.lang.ti_sssl}</div></ion-header-bar></div></ion-nav-bar>
+<section class="product-classification" >
+    <div class="current">{$Think.lang.ti_qb}</div>
+    <!-- {volist name="proclass" id="vo"} -->
+    <div ak="{$vo.pcid}">{$vo.pcname}</div>
+    <!-- {/volist} -->
+</section>
+<ion-nav-view class="view-container" nav-view-transition="ios" nav-view-direction="enter" nav-swipe=""><ion-tabs class="tabs-icon-top navbar pane tabs-bottom tabs-standard" abstract="true" nav-view="active" style="opacity: 1; transform: translate3d(0%, 0px, 0px);">
+    
+   <div class="bottom-nav">
+        <ul>
+            <li>
+                <a id="index" href="{:url('index/index')}">
+                    <i></i>
+                    <p>{$Think.lang.ti_sy}</p>
+                </a>
+            </li>
+
+            <li>
+                <a id="token" href="{:Url('/index/trades/index/token/'.$token)}" class="cur">
+                    <i></i>
+                    <p>{$Think.lang.ti_hq}</p>
+                </a>
+            </li>
+
+            <li>
+                <a id="bibi" href="{:url('/index/goods/bibi')}">
+                    <i></i>
+                    <p>{$Think.lang.ti_bibi}</p>
+                </a>
+            </li>
+
+
+            <li>
+                <a id="lever" href="{:url('/index/goods/lever')}">
+                    <i></i>
+                    <p>{$Think.lang.ti_hy}</p>
+                </a>
+            </li>
+
+            <li>
+                <a id="bibi2" href="{:url('index/Assets/bibi')}">
+                    <i></i>
+                    <p>{$Think.lang.ti_zc}</p>
+                </a>
+            </li>
+            <div class="clear"></div>
+        </ul>
+    </div>
+<ion-nav-view name="tab-qoute" class="view-container tab-content" nav-view="active" nav-view-transition="ios" nav-view-direction="none" nav-swipe="">
+    <ion-view view-title="" hide-nav-bar="false" class="pane" state="tab.qoute" nav-view="active" style="opacity: 1; transform: translate3d(0%, 0px, 0px);">
+    <ion-content style="top: 0px;" class="content-background scroll-content ionic-scroll scroll-content-false  has-header has-tabs" scroll="false">
+
+        <div class="slide-qoute slider" delegate-handle="slide-qoute" on-slide-changed="slide_change($index)" show-pager="false" style="visibility: visible;top:75px"><div class="slider-slides" ng-transclude="" style="width: 100%;">
+            <!-- ngRepeat: c in category_list --><ion-slide ng-repeat="c in category_list" class="slider-slide" data-index="0" style="width: 100%; left: 0px; transition-duration: 300ms; transform: translate(0px, 0px) translateZ(0px);">
+                <div class="qoute-view">
+                    <div class="qoute-view-header">
+                        <ul>
+                            <li class="shangpinmingcheng"></li>
+                            <li class="xianjia"></li>
+                            <li class="zuidi"></li>
+                            <li class="zuigao"></li>
+                        </ul>
+                    </div>
+                    <div class="qoute-view-content">
+                        <ion-scroll class="scroll-view ionic-scroll scroll-y"><div class="scroll" style="transform: translate3d(0px, 0px, 0px) scale(1);">
+
+						<!-- {volist name="pro" id="vo"} -->
+                            <ul onClick="parent.location='{:url('goods/goods_heyue',array('pid'=>$vo['pid'],'token'=>$token))}';"  id="pid{$vo.pid}">
+                                <li>
+                                    <a href="javascript:;" class="ng-binding prtitle"></a>
+                                </li>
+                                <li>
+                                    <a  href="javascript:;" class="ng-binding rise-value now-value">
+
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="javascript:;" class="ng-binding rise rise-low">
+
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="javascript:;" class="ng-binding rise rise-high">
+
+                                    </a>
+                                </li>
+                            </ul>
+						<!-- {/volist} -->
+
+                        </div>
+
+
+
+                        <div style="width: 100%;height: 50px">
+
+                        </div>
+                        </ion-scroll>
+                    </div>
+                </div>
+            </ion-slide>
+
+        </div>
+        </div>
+    </ion-content>
+</ion-view></ion-nav-view></ion-tabs></ion-nav-view>
+
+<script>
+
+var charturl = '{:url("getchart")}';
+$.get(charturl,function(_res){
+
+
+    var res = jQuery.parseJSON(Base64.decode(_res));
+
+    $.each(res,function(k,v){
+        $('.'+k).html(v);
+    })
+})
+
+{if isset($_SESSION['isshow']) && $_SESSION['isshow'] == 1}
+$('.pay_code_area').hide();
+{else}
+
+$('.pay_code_area').show();
+{/if}
+
+<?php  $_SESSION['isshow'] = 1;?>
+function pay_code_area() {
+    $('.pay_code_area').hide();
+}
+</script>
+</body></html>
+<script src="__HOME__/js/lk/index.js">ajaxpro()</script>
+<script type="text/javascript">
+$(function(){
+    $('.product-classification div').click(function(){
+        var obj = $(this);
+        var int = obj.attr('ak');
+        $.ajax({
+            type:"post",
+            url:"{:url('trades/ajaxclass')}",
+            data:{
+                int:int
+            },
+            dataType:'JSON',
+            async:false,
+            beforeSend: function(){
+                $('#mask').css({'display':'block'});
+            },
+            success:function(msg){
+                $('.scroll-view.ionic-scroll.scroll-y').html(msg);
+                $('.product-classification div').removeClass('current');
+                obj.addClass('current');
+            },
+            complete: function () {
+                $('#mask').css({'display':'none'});
+            },
+            error:function(){
+              alert(ti_wlfm);
+            }
+        });
+    });
+});
+</script>

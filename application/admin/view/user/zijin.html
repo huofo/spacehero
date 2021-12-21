@@ -1,0 +1,131 @@
+{include file="head" /}
+
+<!-- 编辑器引入开始 -->
+<link href="/static/public/umeditor/themes/default/css/umeditor.css" type="text/css" rel="stylesheet">
+<script type="text/javascript" src="/static/public/umeditor/third-party/jquery.min.js"></script>
+<script type="text/javascript" src="/static/public/umeditor/third-party/template.min.js"></script>
+<script type="text/javascript" charset="utf-8" src="/static/public/umeditor/umeditor.config.js"></script>
+<script type="text/javascript" charset="utf-8" src="/static/public/umeditor/umeditor.min.js"></script>
+<script type="text/javascript" src="/static/public/umeditor/lang/zh-cn/zh-cn.js"></script>
+<script src="/index/js/jquery-2.1.4.min.js"></script>
+
+<!-- 编辑器引入结束 -->
+
+{include file="menu" /}
+
+
+<!--main content start-->
+<style>
+    .for-butt{width: 100%;height: 34px; display: block; text-align: center; color: #FFFFFF; line-height: 34px;font-size: 14px;background-color: #47a447; outline: none;border: none; cursor: pointer; border-radius: 5px;}
+</style>
+<section id="main-content">
+    <section class="wrapper">
+
+
+        <div class="row">
+            <div class="col-sm-12">
+                <aside class="profile-info col-lg-9">
+                    <section class="panel">
+
+                        <div class="panel-body bio-graph-info">
+                            <h1> 修改资金</h1>
+                            <form class="form-horizontal" role="form" method="post" id="formid">
+
+                                <div class="form-group">
+                                    <label class="col-lg-2 control-label">用户ID</label>
+                                    <div class="col-lg-6">
+                                        <input type="text" class="form-control zj-uid"  value="{$user.uid}" disabled="true" >
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="col-lg-2 control-label">用户名</label>
+                                    <div class="col-lg-6">
+                                        <input type="text" class="form-control"  value="{$user.username}" disabled="true" >
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="col-lg-2 control-label">真实姓名</label>
+                                    <div class="col-lg-6">
+                                        <input type="text" class="form-control"  value="{$user.nickname}" disabled="true" >
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="col-lg-2 control-label">类型</label>
+                                    <div class="col-lg-6">
+                                        <input type="text" class="form-control zj-ye"  value="{$account.lx}" disabled="true" >
+                                    </div>
+                                </div>
+
+
+                                <div class="form-group">
+                                    <label class="col-lg-2 control-label">币种</label>
+                                    <div class="col-lg-6">
+                                        <input type="text" class="form-control zj-ye"  value="{$account.cp}" disabled="true" >
+                                    </div>
+                                </div>
+
+
+                                <div class="form-group">
+                                    <label class="col-lg-2 control-label">可用</label>
+                                    <div class="col-lg-6">
+                                        <input type="number" name="sl" class="form-control zj-ye" placeholder="请输入数量" value=""  >当前数量：{$account.sl}
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="col-lg-2 control-label">冻结</label>
+                                    <div class="col-lg-6">
+                                        <input type="number"   name="dj"  class="form-control zj-ye"  placeholder="请输入数量"  value=" "  >当前数量：{$account.dj}
+                                    </div>
+                                </div>
+
+                                <input type="hidden" id="account_id" name="id" value="{$account.id}">
+
+
+                                <div class="form-group">
+                                    <div class="col-lg-offset-2 col-lg-10">
+                                        <input type="submit" value="提交"  onclick="return editcon(this.form)"  class="btn zj-tj btn-success">
+                                    </div>
+                                </div>
+
+                            </form>
+                        </div>
+                    </section>
+
+                </aside>
+            </div>
+
+        </div>
+        <div class="zj-cs">
+
+        </div>
+
+
+
+    </section>
+</section>
+<!--main content end-->
+</section>
+{include file="foot" /}
+<script type="text/javascript" src="/static/public/umeditor/umindex.js"></script>
+<script>
+
+    function editcon(form){
+        var sl = form.sl.value;
+        var dj = form.dj.value;
+        var id = form.id.value;
+        if(sl=='' && dj==''){
+            return false;
+        }
+        var data = $('#formid').serialize();
+        var locurl = "/admin/user/zijin/id/"+id;
+        var formurl = "{:Url('user/dozijin')}";
+        WPpost(formurl,data,locurl);
+        return false;
+    }
+
+
+</script>

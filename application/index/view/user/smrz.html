@@ -1,0 +1,97 @@
+<html style="font-size: 120px;">
+<head>
+    {include file="alyslt" /}
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+    <!-- 是否启用全屏模式 -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <!-- 全屏时状态颜色设置 -->
+    <meta name="apple-mobile-web-status-bar-style" content="white">
+    <!-- 禁用电话号码自动识别 -->
+    <meta name="format-detection" content="telephone=no">
+    <!--禁止读取本地缓存模板-->
+    <meta http-equiv="Pragma" contect="no-cache">
+    <script type="text/javascript">
+        window.onload=function(){
+//设置适配rem
+            var change_rem = ((window.screen.width > 450) ? 450 : window.screen.width)/375*100;
+            document.getElementsByTagName("html")[0].style.fontSize=change_rem+"px";
+            window.onresize = function(){
+                change_rem = ((window.screen.width > 450) ? 450 : window.screen.width)/375*100;
+                document.getElementsByTagName("html")[0].style.fontSize=change_rem+"px";
+            }
+        }
+    </script>
+    <title>
+    </title>
+    <link href="__HOME__/css/pay1.css" rel="stylesheet" media="screen">
+    <!--        夜间白天切换的文件-->
+    {if $_SESSION["night"]=="yes"}<link href="/index/css/smrz.css" rel="stylesheet" media="screen">{/if}
+    <script type="text/javascript" src="__HOME__/js/jquery-3.2.1.min.js"></script>
+    <script type="text/javascript" src="__HOME__/js/lk/user.js"></script>
+</head>
+<body style="background: rgb(16, 32, 48);">
+<style>
+    .daohang{width: 100%;height: 45px;background: #000033;position: relative;top: 0;left: 0;z-index: 999;}
+    .daohang-zuo{float: left;margin-left: 5px;width: 15px;margin-left: 2%;}
+    .daohang-zhong{text-align: center;font-size: 15px;color: white;line-height: 45px;font-weight: 600;}
+    .shenfen{width: 100%;height: 50px;}
+    .shenfenxiang{width: 100%;height: 120px}
+    .wl_flex{
+        display:-webkit-box;/*Chrome4+,Safari3.1,iOSSafari3.2+*/
+        display:-moz-box;/*Firefox17-*/
+        display:-webkit-flex;/*Chrome21+,Safari6.1+,iOSSafari7+,Opera15/16*/
+        display:-moz-flex;/*Firefox18+*/
+        display:-ms-flexbox;/*IE10*/
+        display:flex;
+    }
+    .wl_align_center{
+        -webkit-box-align: center;
+        -webkit-align-items: center;
+        align-items: center;
+    }
+    .wl_align-items-start{
+        -ms-flex-align: start;
+        align-items: flex-start;
+    }
+    .wl_justify_between{
+        -webkit-justify-content: space-between;
+        -moz-justify-content: space-between;
+        -ms-justify-content: space-between;
+        -webkit-box-pack: justify;
+        justify-content: space-between;
+    }
+    .wl_justify-content{
+        -webkit-justify-content: space-around;
+        justify-content: space-around;
+    }
+    .wl_justify-content-start{
+        -ms-flex-pack: start;
+        justify-content: flex-start;
+    }
+    .daohang-zuo>a{ width: 50px; height: 100%; display: block; overflow: hidden;}
+    .daohang-zuo>a>i{font-size: 25px; line-height: 40px; color: #FFFFFF;}
+
+</style>
+<div class="daohang">
+    <div class="daohang-zuo">
+        <a  href="javascript:void(0)" onclick="javascript:history.back(-1);" >
+            <i class="iconfont icon-31fanhui1"></i>
+        </a>
+    </div>
+    <div class="daohang-zhong">{$Think.lang.sr_srzr}</div>
+</div>
+<div class="shenfen wl_flex wl_justify_between">
+    <div><span style="font-size: 0.19rem;line-height: 50px;margin-left: 10px;"><span class="smrz-span1"  style="color: white;">{$Think.lang.sr_srzr}</span></span></div>
+    <div><span style="font-size: 0.17rem;color: #00a0e9;line-height: 50px;margin-right: 10px;"><span >{if $user.smsh_state eq 2}{$Think.lang.sr_yrz}{else}{$Think.lang.sr_shz}{/if}</span></span></div>
+</div>
+<div class="shenfenxiang">
+    <div style="height: 25%"><span style="font-size: 0.15rem;line-height: 40px;margin-left: 10px;"><span class="smrz-span1"  style="color: white">{$Think.lang.sr_xm}：{$user.nickname}</span></span></div>
+    <div style="height: 25%"><span style="font-size: 0.15rem;line-height: 40px;margin-left: 10px;"><span class="smrz-span1" style="color: white;">{$Think.lang.sr_zh}：{$user.utel}</span></span></div>
+    <div style="height: 25%"><span style="font-size: 0.15rem;line-height: 40px;margin-left: 10px;"><span class="smrz-span1" style="color: white;">UID：{$user.uid}</span></span></div>
+    <div style="height: 25%"><span style="font-size: 0.15rem;line-height: 40px;margin-left: 10px;"><span class="smrz-span1" style="color: white;">{$Think.lang.sr_zjh}：{$user.id_card}</span></span></div>
+</div>
+
+
+</body>
+</html>

@@ -1,0 +1,206 @@
+<html style="font-size: 120px;">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+    <!-- 是否启用全屏模式 -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <!-- 全屏时状态颜色设置 -->
+    <meta name="apple-mobile-web-status-bar-style" content="white">
+    <!-- 禁用电话号码自动识别 -->
+    <meta name="format-detection" content="telephone=no">
+    <!--禁止读取本地缓存模板-->
+    <meta http-equiv="Pragma" contect="no-cache">
+    <script type="text/javascript">
+        window.onload=function(){
+//设置适配rem
+            var change_rem = ((window.screen.width > 450) ? 450 : window.screen.width)/375*100;
+            document.getElementsByTagName("html")[0].style.fontSize=change_rem+"px";
+            window.onresize = function(){
+                change_rem = ((window.screen.width > 450) ? 450 : window.screen.width)/375*100;
+                document.getElementsByTagName("html")[0].style.fontSize=change_rem+"px";
+            }
+        }
+    </script>
+    <title>
+    </title>
+    <link href="__HOME__/css/pay1.css" rel="stylesheet" media="screen">
+    <script type="text/javascript" src="__HOME__/js/jquery-3.2.1.min.js"></script>
+    <script type="text/javascript" src="__HOME__/js/lk/user.js"></script>
+    <link href="__HOME__/css/mystyle.css" rel="stylesheet">
+    <link href="__HOME__/layui/css/layui.css" rel="stylesheet">
+    <!--        夜间白天切换的文件-->
+    {if $_SESSION["night"]=="yes"}<link href="/index/css/scwk.css" rel="stylesheet" >{/if}
+    <script src="__HOME__/layui/layui.js"></script>
+</head>
+<body>
+<style>
+    .daohang{width: 100%;height: 2.3rem;background: #000033;position: relative;top: 0;left: 0;z-index: 999;}
+    .daohang-zuo{position: absolute;width: 15px;margin-left: 2%;margin-top: 5%}
+    .daohang-zhong{position: absolute;font-size: 15px;color: white;line-height: 45px;font-weight: 600;right: 10px;}
+    .kongbaikuang{margin: 0 auto;margin-top: 0.2rem;width: 94%;height: 250px;background: white;border-radius: 10px}
+    .zhuanbi{width: 90%;margin: 0 auto;font-size: 0.18rem;color: black;font-weight: 600;height: 18%}
+    .wl_justify_between{-webkit-justify-content: space-between;-moz-justify-content: space-between;-ms-justify-content: space-between;-webkit-box-pack: justify;justify-content: space-between;}
+    .wl_flex{display:-webkit-box;/*Chrome4+,Safari3.1,iOSSafari3.2+*/display:-moz-box;/*Firefox17-*/display:-webkit-flex;/*Chrome21+,Safari6.1+,iOSSafari7+,Opera15/16*/display:-moz-flex;/*Firefox18+*/display:-ms-flexbox;/*IE10*/display:flex;}
+    .shuliang{width: 90%;margin: 0 auto;font-size: 0.14rem;height: 15%;line-height: 35px;background: #F1F1F1;border-radius: 2px;}
+    .yuji{width: 90%;margin: 0 auto;font-size: 0.14rem;height: 5%;padding: 10px}
+    .shuliangs{width: 90%;margin: 0 auto;font-size: 0.14rem;height: 10%;line-height: 18px;}
+    .yujiyhe{width: 90%;margin: 0 auto;font-size: 0.18rem;height: 10%;}
+    .shuliangxi{width: 90%;margin: 0 auto;font-size: 0.14rem;height: 15%;line-height: 38px;}
+    .goumai{width: 90%;height: 14%;background: #00a0e9;color: white;margin: auto;text-align: center;font-size: 0.17rem;border-radius: 7px;line-height: 30px}
+
+</style>
+<div class="daohang">
+    <img src="/index/images/shiyantu.png"  style="width: 100%;height: 2.4rem;position: absolute;top: 0;left: 0">
+    <div class="daohang-zuo"><a  href="javascript:void(0)" onclick="javascript:history.back(-1);" ><img src="/index/images/zuojiantouss.png"  style="width: 25px;margin-top: -5px"></a></div>
+    <div class="daohang-zhong"><a href="{:url('user/scwk_list')}"><img src="/index/images/caogaohdb.png"  style="width: 25px;margin-top: 12px"></a></div>
+</div>
+<!-- {volist name="prolist" id="vo"} -->
+<div class="kongbaikuang" style="margin-bottom:15px">
+    <div class="zhuanbi" ><span style="line-height: 40px">{$vo.title}</span></div>
+    <div class="shuliang wl_justify_between wl_flex" style="color: black">
+        <div class="shuliangse">
+            <input type="number" placeholder="{$Think.lang.sw_cbsl}" name="num" id="num_{$vo.id}" oninput="yuqi({$vo.id})" style="height: 36px;border: none;background-color: #f1f1f1;width: 100%;outline: none;">
+           
+        </div>
+        <div class="shuliangsss"><span style="color: black">{$vo.name}</span></div>
+    </div>
+    <div class="yuji"><span>{$Think.lang.sw_yjzsy}</span></div>
+    <div class="shuliangs wl_justify_between wl_flex" style="color: black">
+        <div class="shuliangses"><span style="color: black" id="yujishouyi_{$vo.id}" >0.00000000</span></div>
+        <div class="shuliangsss"><span style="color: black">{$vo.name}</span></div>
+    </div>
+    <div class="yujiyhe"><span  style="color: #1fc65b">{$Think.lang.sw_rbly}:<span id="lilv_{$vo.id}">{$vo.lilv}</span>%[{$vo.name}]</span></div>
+    <div class="shuliangxi wl_justify_between wl_flex" style="color: black">
+        <div class="shuliangsesxi"><span style="color: black">{$Think.lang.sw_scqx}:<span id="cycle_{$vo.id}">{$vo.cycle}</span>{$Think.lang.sw_t}</span></div>
+    </div>
+    <div class="goumai"><span onclick="buy({$vo.id});">{$Think.lang.sw_gm}</span></div>
+
+</div>
+<!-- {/volist} -->
+
+<script>
+    //加法
+    function accAdd(arg1,arg2){
+        var r1,r2,m;
+        try{r1=arg1.toString().split(".")[1].length}catch(e){r1=0}
+        try{r2=arg2.toString().split(".")[1].length}catch(e){r2=0}
+        m=Math.pow(10,Math.max(r1,r2))
+        return (arg1*m+arg2*m)/m
+    }
+    //减法
+    function Subtr(arg1,arg2){
+        var r1,r2,m,n;
+        try{r1=arg1.toString().split(".")[1].length}catch(e){r1=0}
+        try{r2=arg2.toString().split(".")[1].length}catch(e){r2=0}
+        m=Math.pow(10,Math.max(r1,r2));
+        n=(r1>=r2)?r1:r2;
+        return ((arg1*m-arg2*m)/m).toFixed(n);
+    }
+    
+    //乘法 
+     function accMul(arg1,arg2) 
+     { 
+         var m=0,s1=arg1.toString(),s2=arg2.toString(); 
+         try{m+=s1.split(".")[1].length}catch(e){} 
+         try{m+=s2.split(".")[1].length}catch(e){} 
+         return Number(s1.replace(".",""))*Number(s2.replace(".",""))/Math.pow(10,m) 
+     }
+
+    function cutZero(old){
+        //拷贝一份 返回去掉零的新串
+        newstr=old;
+        //循环变量 小数部分长度
+        var leng = old.length-old.indexOf(".")-1
+        //判断是否有效数
+        if(old.indexOf(".")>-1){
+            //循环小数部分
+            for(i=leng;i>0;i--){
+                //如果newstr末尾有0
+                if(newstr.lastIndexOf("0")>-1 && newstr.substr(newstr.length-1,1)==0){
+                    var k = newstr.lastIndexOf("0");
+                    //如果小数点后只有一个0 去掉小数点
+                    if(newstr.charAt(k-1)=="."){
+                        return  newstr.substring(0,k-1);
+                    }else{
+                        //否则 去掉一个0
+                        newstr=newstr.substring(0,k);
+                    }
+                }else{
+                    //如果末尾没有0
+                    return newstr;
+                }
+            }
+        }
+        return old;
+    }
+</script>
+
+<script>
+
+
+    
+
+	layui.use('layer', function(){
+		var layer = layui.layer;
+
+	});
+	
+	function buy(id){
+	   var num = $("#num_"+id).val(); 
+	   if(num=='' || num <=0){
+	       layer.msg('请输入存币数量');
+	       return false;
+	   }
+	  
+	   
+	   $.ajax({
+                url: '/index/user/doscwk',
+                type: 'post',
+                data: {num:num,id:id},
+                success: function(res){
+                    res =$.parseJSON(res);
+    
+                    if(res.error==1){
+                        layer.msg(res.msg);
+                    }else{
+    
+                        layer.msg("购买成功", {
+                            time: 1500,
+                            end: function(){
+                                window.location.href="index/user/scwk_list";
+                            }
+                        });
+    
+                    }
+    
+                }
+            });
+	   
+	   
+	}
+	
+	function yuqi(id){
+	   var num = $("#num_"+id).val(); 
+	   if(num=='' || num <=0){
+	       num = 0;
+	   }
+	   var cycle = $("#cycle_"+id).html(); 
+	   var lilv = $("#lilv_"+id).html(); 
+	  
+	   var rilixi = accMul(num,lilv/100);
+	   var zong = accMul(rilixi,cycle);
+	 
+	   
+	   $("#yujishouyi_"+id).html(zong); 
+	}
+	
+	
+	
+	
+	
+	
+</script>
+
+
+</body>
+</html>
